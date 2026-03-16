@@ -11,14 +11,13 @@
             "id": "8bb6bb98fa2800db",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "bases",
               "state": {
-                "file": "source/_posts/我的第一篇hexo博客.md",
-                "mode": "source",
-                "source": false
+                "file": "未命名.base",
+                "viewName": "表格"
               },
-              "icon": "lucide-file",
-              "title": "我的第一篇hexo博客"
+              "icon": "lucide-table",
+              "title": "未命名"
             }
           }
         ]
@@ -197,12 +196,20 @@
   },
   "active": "8bb6bb98fa2800db",
   "lastOpenFiles": [
+    "未命名 1.base",
+    "未命名.base",
+    "未命名.canvas",
+    "未命名 1.canvas",
+    "public/2026/03/15/yuque/博览知识/💡_1_分钟玩转语雀文档/1643261198014-1b94d73a-8d53-416b-bc0e-05c2b61793ea.jpeg",
+    "public/2026/03/15/yuque/博览知识/💡_1_分钟玩转语雀文档/1615777131960-5c187699-2aff-4132-a4bb-61aaa8d837ae.jpeg",
     "source/_posts/hello-world.md",
+    "source/about/index.md",
+    "source/archives/index.md",
+    "source/link/index.md",
+    "Pasted.md",
     "source/_posts/我的第一篇hexo博客.md",
     "source/_posts/我的第一篇hexo博客/file-20260317062327606.png",
     "source/categories/index.md",
-    "source/archives/index.md",
-    "source/about/index.md",
     "source/_posts/yuque/博览知识/💡_1_分钟玩转语雀文档/1615777131960-5c187699-2aff-4132-a4bb-61aaa8d837ae.jpeg",
     "source/_posts/yuque/Capture_The_Flag_夺旗赛/CTF解题妙具/AI网络流量分析/1765282396696-09230299-4afa-4248-a96f-fe75710e86bd.png",
     "public/img/index-bg.jpg",
@@ -210,13 +217,7 @@
     "public/img/butterfly-icon.png",
     "public/img/avatar.jpg",
     "public/img/404.jpg",
-    "source/img/avatar.jpg",
-    "source/img/index-bg.jpg",
     "source/tags/index.md",
-    "未命名.base",
-    "Pasted.md",
-    "未命名 1.base",
-    "未命名.canvas",
     "source/_posts/yuque/课题项目/法底捞针_基于AI智能主持人的海龟汤式互动反诈网站设计研究/部署阿里云服务器/无标题文档.md",
     "source/_posts/yuque/Forensic_电子取证/取证write-up/龙信杯/25龙信杯个人.md",
     "source/_posts/yuque/Capture_The_Flag_夺旗赛.md",
