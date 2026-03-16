@@ -11,10 +11,12 @@
             "id": "22fedef00d8f607e",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "新标签页"
+              "type": "image",
+              "state": {
+                "file": "source/_posts/博览知识/💡_1_分钟玩转语雀文档/1615777131960-5c187699-2aff-4132-a4bb-61aaa8d837ae.jpeg"
+              },
+              "icon": "lucide-image",
+              "title": "1615777131960-5c187699-2aff-4132-a4bb-61aaa8d837ae"
             }
           }
         ]
@@ -193,6 +195,7 @@
   },
   "active": "22fedef00d8f607e",
   "lastOpenFiles": [
+    "未命名.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/《CTF安全竞赛入门》.md",
     "source/_posts/课题项目/法底捞针_基于AI智能主持人的海龟汤式互动反诈网站设计研究/论文完善.md",
     "source/_posts/课题项目/法底捞针_基于AI智能主持人的海龟汤式互动反诈网站设计研究/部署阿里云服务器/无标题文档.md",
@@ -237,7 +240,6 @@
     "source/_posts/博览知识/Github.md",
     "source/_posts/博览知识/Ubuntu镜像配置_版本24.04.03_.md",
     "source/_posts/博览知识/xiaomiAPI.md",
-    "source/_posts/博览知识/Python虚拟环境路径问题_Could_not_find_platform_independent_libraries__prefix__.md",
     "source/_posts/博览知识/DoS拒绝服务攻击",
     "未命名.canvas",
     "未命名 1.canvas"
