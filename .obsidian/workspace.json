@@ -11,13 +11,10 @@
             "id": "8bb6bb98fa2800db",
             "type": "leaf",
             "state": {
-              "type": "bases",
-              "state": {
-                "file": "未命名.base",
-                "viewName": "表格"
-              },
-              "icon": "lucide-table",
-              "title": "未命名"
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "新标签页"
             }
           }
         ]
@@ -194,11 +191,12 @@
       "bases:新建数据库": false
     }
   },
-  "active": "8bb6bb98fa2800db",
+  "active": "6ee123e5035b92d7",
   "lastOpenFiles": [
-    "未命名 1.base",
-    "未命名.base",
     "未命名.canvas",
+    "Pasted.md",
+    "未命名.base",
+    "未命名 1.base",
     "未命名 1.canvas",
     "public/2026/03/15/yuque/博览知识/💡_1_分钟玩转语雀文档/1643261198014-1b94d73a-8d53-416b-bc0e-05c2b61793ea.jpeg",
     "public/2026/03/15/yuque/博览知识/💡_1_分钟玩转语雀文档/1615777131960-5c187699-2aff-4132-a4bb-61aaa8d837ae.jpeg",
@@ -206,7 +204,6 @@
     "source/about/index.md",
     "source/archives/index.md",
     "source/link/index.md",
-    "Pasted.md",
     "source/_posts/我的第一篇hexo博客.md",
     "source/_posts/我的第一篇hexo博客/file-20260317062327606.png",
     "source/categories/index.md",
