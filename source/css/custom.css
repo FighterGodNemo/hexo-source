@@ -1,0 +1,71 @@
+:root {
+  --global-bg: transparent;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --sidebar-bg: rgba(255, 255, 255, 0.88);
+  --search-bg: rgba(255, 255, 255, 0.92);
+  --blockquote-bg: rgba(255, 255, 255, 0.86);
+  --reward-pop: rgba(255, 255, 255, 0.92);
+  --nav-bg: rgba(255, 255, 255, 0.88);
+}
+
+[data-theme='dark'] {
+  --global-bg: transparent;
+  --card-bg: rgba(0, 0, 0, 0.84);
+  --sidebar-bg: rgba(0, 0, 0, 0.8);
+  --search-bg: rgba(0, 0, 0, 0.86);
+  --blockquote-bg: rgba(0, 0, 0, 0.78);
+  --reward-pop: rgba(0, 0, 0, 0.86);
+  --nav-bg: rgba(0, 0, 0, 0.8);
+}
+
+html,
+body,
+#body-wrap,
+#content-inner {
+  background: transparent !important;
+}
+
+#page-header.not-top-img #nav,
+#page-header.nav-fixed #nav {
+  background: var(--nav-bg);
+}
+
+[data-theme='dark'] #page-header.not-top-img #nav,
+[data-theme='dark'] #page-header.nav-fixed #nav {
+  background: var(--nav-bg);
+}
+
+#content-inner,
+.layout,
+#recent-posts {
+  background: transparent !important;
+}
+
+#content-inner > div:first-child,
+#aside-content .card-widget,
+.recent-post-item,
+#page,
+#post,
+.category-lists,
+.tag-cloud-list,
+.flink {
+  background-color: var(--card-bg) !important;
+}
+
+#archive {
+  background-color: var(--card-bg) !important;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+#rightside {
+  opacity: 0.9 !important;
+  right: 0 !important;
+  transform: translate(-58px, 0) !important;
+}
+
+@media (max-width: 900px) {
+  #rightside {
+    transform: translate(-48px, 0) !important;
+  }
+}
