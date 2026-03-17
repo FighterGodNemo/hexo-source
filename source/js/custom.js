@@ -64,6 +64,24 @@
       });
   }
 
+  function waitForAPlayer(timeoutMs) {
+    return new Promise(function (resolve) {
+      if (window.APlayer) return resolve(true);
+      var start = Date.now();
+      var timer = setInterval(function () {
+        if (window.APlayer) {
+          clearInterval(timer);
+          resolve(true);
+          return;
+        }
+        if (Date.now() - start > timeoutMs) {
+          clearInterval(timer);
+          resolve(false);
+        }
+      }, 200);
+    });
+  }
+
   var bgState = {
     list: [],
     index: 0,
@@ -72,7 +90,9 @@
 
   var musicState = {
     map: null,
-    ap: null
+    ap: null,
+    initing: false,
+    ready: false
   };
 
   function getSavedBgIndex(list) {
@@ -151,16 +171,24 @@
   }
 
   async function initBgmPlayer() {
-    if (document.getElementById('bgm-btn')) return;
-    var rightside = document.getElementById('rightside-config-show') || document.getElementById('rightside');
-    if (!rightside) return;
+    if (musicState.ready || musicState.initing) return;
+    musicState.initing = true;
 
-    var btn = document.createElement('button');
-    btn.id = 'bgm-btn';
-    btn.type = 'button';
-    btn.title = 'BGM';
-    btn.innerHTML = '<i class="fas fa-music"></i>';
-    rightside.appendChild(btn);
+    var rightside = document.getElementById('rightside-config-show') || document.getElementById('rightside');
+    if (!rightside) {
+      musicState.initing = false;
+      return;
+    }
+
+    var btn = document.getElementById('bgm-btn');
+    if (!btn) {
+      btn = document.createElement('button');
+      btn.id = 'bgm-btn';
+      btn.type = 'button';
+      btn.title = 'BGM';
+      btn.innerHTML = '<i class="fas fa-music"></i>';
+      rightside.appendChild(btn);
+    }
 
     var wrap = document.getElementById('bgm-player');
     if (!wrap) {
@@ -180,8 +208,16 @@
     }
 
     var list = pickMusicListForBg(bgState.current || '');
-    if (!Array.isArray(list) || list.length === 0 || !window.APlayer) {
+    if (!Array.isArray(list) || list.length === 0) {
       btn.style.display = 'none';
+      musicState.initing = false;
+      return;
+    }
+
+    var hasAPlayer = await waitForAPlayer(4000);
+    if (!hasAPlayer) {
+      musicState.initing = false;
+      setTimeout(initBgmPlayer, 800);
       return;
     }
 
@@ -199,6 +235,8 @@
     });
 
     musicState.ap = ap;
+    musicState.ready = true;
+    musicState.initing = false;
 
     var visible = false;
     btn.addEventListener('click', function () {
