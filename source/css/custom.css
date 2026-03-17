@@ -60,11 +60,21 @@ body,
 #page-site-info,
 #site-info {
   display: inline-block;
-  background: var(--card-strong-bg);
   padding: 14px 18px;
   border-radius: 14px;
   box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
   backdrop-filter: blur(4px);
+}
+
+#post-info {
+  background: var(--card-strong-bg);
+}
+
+#page-site-info,
+#site-info {
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
 }
 
 [data-theme='dark'] #post-info,
