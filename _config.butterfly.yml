@@ -25,6 +25,7 @@ menu:
     标签: /tags/ || fas fa-tags
   社交 || fas fa-user-friends:
     友链: /link/ || fas fa-link
+    留言板: /messageboard/ || fas fa-comment-dots
   关于: /about/ || fas fa-user
 
 # --------------------------------------
@@ -296,7 +297,9 @@ aside:
       link: https://github.com/FighterGodNemo
   card_announcement:
     enable: true
-    content: This is my Blog
+    content: |-
+      热爱 CTF 和 Forensic 的网安人一枚～
+      欢迎各位大佬交流点评！
   card_recent_post:
     enable: true
     # If set 0 will show all
@@ -996,7 +999,7 @@ pjax:
 
 # Inject the css and script (aplayer/meting)
 aplayerInject:
-  enable: false
+  enable: true
   per_page: true
 
 # Snackbar - Toast Notification
@@ -1065,7 +1068,7 @@ inject:
   head:
     - <link rel="stylesheet" href="/css/custom.css">
   bottom:
-    # - <script src="xxxx"></script>
+    - <script src="/js/custom.js"></script>
 
 # CDN Settings
 # Don't modify the following settings unless you know how they work
