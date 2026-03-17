@@ -92,7 +92,12 @@
     map: null,
     ap: null,
     initing: false,
-    ready: false
+    ready: false,
+    lists: [],
+    listKey: '__bg__',
+    listIndex: 0,
+    labelEl: null,
+    switchBtn: null
   };
 
   function getSavedBgIndex(list) {
@@ -104,6 +109,116 @@
 
   function setSavedBgIndex(idx) {
     localStorage.setItem('bgIndex', String(idx));
+  }
+
+  function getSavedMusicListKey(lists) {
+    var key = localStorage.getItem('bgmListKey') || '__bg__';
+    if (!lists || !lists.length) return '__bg__';
+    for (var i = 0; i < lists.length; i++) {
+      if (lists[i].key === key) return key;
+    }
+    return lists[0].key;
+  }
+
+  function setSavedMusicListKey(key) {
+    localStorage.setItem('bgmListKey', key);
+  }
+
+  function buildMusicLists(map) {
+    var lists = [];
+    var seen = {};
+    if (map && (map.all && map.all.length || (map.folders && Object.keys(map.folders).length))) {
+      lists.push({ key: '__bg__', name: '跟随背景' });
+    }
+
+    var order = [];
+    if (map && Array.isArray(map.order)) order = map.order.slice();
+    if (map && map.folders) {
+      Object.keys(map.folders).forEach(function (k) {
+        if (order.indexOf(k) === -1) order.push(k);
+      });
+      order.forEach(function (k) {
+        if (seen[k]) return;
+        var items = map.folders[k];
+        if (Array.isArray(items) && items.length) {
+          lists.push({ key: k, name: k });
+          seen[k] = true;
+        }
+      });
+    }
+
+    if (map && Array.isArray(map.all) && map.all.length) {
+      lists.push({ key: '__all__', name: '全部' });
+    }
+
+    return lists;
+  }
+
+  function getListItemsByKey(key) {
+    if (key === '__bg__') return pickMusicListForBg(bgState.current || '');
+    if (key === '__all__') return musicState.map && musicState.map.all ? musicState.map.all : [];
+    if (musicState.map && musicState.map.folders && musicState.map.folders[key]) {
+      return musicState.map.folders[key];
+    }
+    return [];
+  }
+
+  function getBgListName() {
+    if (musicState.map && Array.isArray(musicState.map.order) && bgState.index < musicState.map.order.length) {
+      return musicState.map.order[bgState.index];
+    }
+    return getBasenameFromUrl(bgState.current || '');
+  }
+
+  function getMusicListDisplayName(key) {
+    if (key === '__bg__') {
+      var bgName = getBgListName();
+      return bgName ? ('跟随背景：' + bgName) : '跟随背景';
+    }
+    if (key === '__all__') return '全部';
+    return key || '歌单';
+  }
+
+  function updateMusicListLabel() {
+    if (!musicState.labelEl) return;
+    musicState.labelEl.textContent = '歌单：' + getMusicListDisplayName(musicState.listKey);
+  }
+
+  function syncMusicListIndex() {
+    var lists = musicState.lists || [];
+    for (var i = 0; i < lists.length; i++) {
+      if (lists[i].key === musicState.listKey) {
+        musicState.listIndex = i;
+        return;
+      }
+    }
+    musicState.listIndex = 0;
+  }
+
+  function applyMusicListByKey(key, save) {
+    var items = getListItemsByKey(key);
+    if (!Array.isArray(items) || !items.length) return false;
+    applyPlaylist(musicState.ap, items);
+    musicState.listKey = key;
+    if (save) setSavedMusicListKey(key);
+    updateMusicListLabel();
+    return true;
+  }
+
+  function applyMusicListByIndex(idx, save) {
+    if (!musicState.lists || !musicState.lists.length) return;
+    var start = idx;
+    var tries = 0;
+    while (tries < musicState.lists.length) {
+      var list = musicState.lists[idx];
+      if (applyMusicListByKey(list.key, save)) {
+        musicState.listIndex = idx;
+        return;
+      }
+      idx = (idx + 1) % musicState.lists.length;
+      tries += 1;
+      if (idx === start) break;
+    }
   }
 
   function pickMusicListForBg(bgUrl) {
@@ -163,9 +278,10 @@
       bgState.index = idx;
       bgState.current = list[idx];
       applyBackground(bgState.current);
-      if (musicState.ap) {
+      if (musicState.ap && musicState.listKey === '__bg__') {
         var nextList = pickMusicListForBg(bgState.current);
         applyPlaylist(musicState.ap, nextList);
+        updateMusicListLabel();
       }
     });
   }
@@ -207,7 +323,30 @@
       musicState.map = map;
     }
 
-    var list = pickMusicListForBg(bgState.current || '');
+    musicState.lists = buildMusicLists(musicState.map);
+    if (!musicState.lists.length) {
+      btn.style.display = 'none';
+      musicState.initing = false;
+      return;
+    }
+
+    var savedKey = getSavedMusicListKey(musicState.lists);
+    musicState.listKey = savedKey;
+    syncMusicListIndex();
+    var list = getListItemsByKey(musicState.listKey);
+    if (!Array.isArray(list) || list.length === 0) {
+      for (var i = 0; i < musicState.lists.length; i++) {
+        var tryKey = musicState.lists[i].key;
+        var tryList = getListItemsByKey(tryKey);
+        if (Array.isArray(tryList) && tryList.length) {
+          list = tryList;
+          musicState.listKey = tryKey;
+          musicState.listIndex = i;
+          break;
+        }
+      }
+    }
+
     if (!Array.isArray(list) || list.length === 0) {
       btn.style.display = 'none';
       musicState.initing = false;
@@ -237,6 +376,31 @@
     musicState.ap = ap;
     musicState.ready = true;
     musicState.initing = false;
+
+    var toolbar = wrap.querySelector('.bgm-toolbar');
+    if (!toolbar) {
+      toolbar = document.createElement('div');
+      toolbar.className = 'bgm-toolbar';
+      toolbar.innerHTML = '<span class="bgm-list-label"></span><button type="button" class="bgm-list-switch" title="切换歌单"><i class="fas fa-exchange-alt"></i><span>切换</span></button>';
+      wrap.insertBefore(toolbar, wrap.firstChild);
+    }
+    wrap.classList.add('has-toolbar');
+    musicState.labelEl = toolbar.querySelector('.bgm-list-label');
+    musicState.switchBtn = toolbar.querySelector('.bgm-list-switch');
+    updateMusicListLabel();
+
+    if (musicState.switchBtn) {
+      if (musicState.lists.length <= 1) {
+        musicState.switchBtn.disabled = true;
+        musicState.switchBtn.style.display = 'none';
+      } else {
+        musicState.switchBtn.style.display = '';
+        musicState.switchBtn.addEventListener('click', function () {
+          var next = (musicState.listIndex + 1) % musicState.lists.length;
+          applyMusicListByIndex(next, true);
+        });
+      }
+    }
 
     var visible = false;
     btn.addEventListener('click', function () {
