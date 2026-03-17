@@ -107,7 +107,7 @@ theme: butterfly
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: https://github.com/FighterGodNemo/FighterGodNemo.github.io.git
+  repo: git@github.com:FighterGodNemo/FighterGodNemo.github.io.git
   branch: master
 
 # Search (hexo-generator-searchdb)
