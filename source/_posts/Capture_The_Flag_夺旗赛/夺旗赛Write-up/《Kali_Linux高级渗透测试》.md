@@ -1,9 +1,11 @@
 ---
-title: "《Kali_Linux高级渗透测试》"
+title: 《Kali_Linux高级渗透测试》
 date: 2026-03-15 13:28:20
 categories:
-- Capture_The_Flag_夺旗赛
-- 夺旗赛Write-up
+  - Capture_The_Flag_夺旗赛
+  - 夺旗赛Write-up
+created: 2026-03-15T16:49
+updated: 2026-03-17T19:27
 ---
 
 # 第一章 基于目标的渗透测试

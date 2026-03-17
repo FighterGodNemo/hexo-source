@@ -1,8 +1,10 @@
 ---
-title: "Python虚拟环境路径问题_Could_not_find_platform_independent_libraries__prefix__"
+title: Python虚拟环境路径问题_Could_not_find_platform_independent_libraries__prefix__
 date: 2026-03-15 13:28:20
 categories:
-- 博览知识
+  - 博览知识
+created: 2026-03-15T16:49
+updated: 2026-03-17T19:26
 ---
 
 **<font style="color:rgb(0, 0, 0) !important;">重新创建虚拟环境</font>**

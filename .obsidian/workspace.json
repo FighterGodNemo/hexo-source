@@ -13,15 +13,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/博览知识/💡_1_分钟玩转语雀文档.md",
+                "file": "source/_posts/Forensic_电子取证/Forensic知识/经验之谈.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "💡_1_分钟玩转语雀文档"
+              "title": "经验之谈"
+            }
+          },
+          {
+            "id": "db0c16c50c68832c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "VeraCrypt关闭截图保护.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "VeraCrypt关闭截图保护"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -195,8 +210,31 @@
       "bases:新建数据库": false
     }
   },
-  "active": "fa1c0615bea2fd38",
+  "active": "db0c16c50c68832c",
   "lastOpenFiles": [
+    "source/_posts/Forensic_电子取证/Forensic知识/经验之谈.md",
+    "VeraCrypt关闭截图保护.md",
+    "未命名.md",
+    "source/_posts/Forensic_电子取证/Forensic知识/密码爆破.md",
+    "public/2026/03/15/Forensic_电子取证/Forensic知识/经验之谈/VeraCrypt关闭截图保护.md",
+    "source/_posts/Forensic_电子取证/取证write-up/龙信杯/25龙信杯个人.md",
+    "source/_posts/Forensic_电子取证/应急响应.md",
+    "source/_posts/Capture_The_Flag_夺旗赛/CTF知识/Web.md",
+    "source/_posts/Capture_The_Flag_夺旗赛/CTF知识/Reverse.md",
+    "source/_posts/我的第一篇hexo博客.md",
+    "source/_posts/Capture_The_Flag_夺旗赛.md",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/《CTF安全竞赛入门》.md",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/《Kali_Linux高级渗透测试》.md",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/古剑山.md",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/楚慧杯.md",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/看雪论坛.md",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/青少年CTF_S1.md",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/25警铮杯/1763911981676-95419f26-62e8-405c-93a8-a2262a4eedcd.png",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/25警铮杯/1763911036579-69120e35-1fe4-4c86-b1dd-e253bf633f6a.png",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/《CTF安全竞赛入门》/1769499679184-2eebd148-0e9f-40c2-833b-ef9e6026d97a.png",
+    "source/_posts/我的第一篇hexo博客/你好.md",
+    "source/_posts/博览知识/Python虚拟环境路径问题_Could_not_find_platform_independent_libraries__prefix__.md",
+    "source/_posts/博览知识/💡_1_分钟玩转语雀文档.md",
     "source/img/favicon.jpg",
     "source/img/微信头像.jpg",
     "public/archives/2026/03/page/20/index.html",
@@ -214,35 +252,12 @@
     "public/2026/03/15/Forensic_电子取证/取证write-up/数证杯/25数证杯初赛团体/1762050921670-b00c0568-03ec-4867-93dd-32af2025f369.png",
     "public/2026/03/15/Capture_The_Flag_夺旗赛/夺旗赛Write-up/25警铮杯/1763913133089-76d0193f-0203-4381-8af4-337dff138261.png",
     "public/2026/03/15/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/哈基米南北绿豆/1762230876272-58c178ca-2915-469d-84c6-caed5e897d5f.png",
-    "public/2026/03/15/Capture_The_Flag_夺旗赛/CTF知识/Crypto/RSA加解密/1757417823081-71f56af5-2143-4d84-b623-ccdcfaae6def.jpeg",
-    "public/2026/03/15/Forensic_电子取证/取证write-up/SPC/25黑龙江刑侦个人/1762258168191-590ca97a-51c4-4035-bebf-cd8e461dbf57.png",
-    "public/2026/03/15/Capture_The_Flag_夺旗赛/夺旗赛Write-up/五题积累/1766578755244-cee54438-05a2-4497-9493-b268907a4384.png",
-    "public/2026/03/15/Capture_The_Flag_夺旗赛/夺旗赛Write-up/五题积累/1766579964875-f5e639ac-1d24-4756-adfe-95b97f62c2f6.png",
     "public/2026/03/15/Capture_The_Flag_夺旗赛/夺旗赛Write-up/上海awdp赛前培训/沙盒攻防赛/Pwn攻防实战课程讲义/ida还原proto文件.md",
     "source/_posts/博览知识/《C程序设计（第五版）》.md",
     "source/_posts/博览知识/时间戳信息.md",
-    "source/_posts/我的第一篇hexo博客/你好.md",
-    "未命名.md",
-    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/《CTF安全竞赛入门》.md",
     "source/_posts/课题项目/法底捞针_基于AI智能主持人的海龟汤式互动反诈网站设计研究/论文完善.md",
     "source/_posts/课题项目/法底捞针_基于AI智能主持人的海龟汤式互动反诈网站设计研究/部署阿里云服务器/无标题文档.md",
     "source/_posts/课题项目/法底捞针_基于AI智能主持人的海龟汤式互动反诈网站设计研究/部署阿里云服务器/修改文件.md",
-    "source/_posts/课题项目/法底捞针_基于AI智能主持人的海龟汤式互动反诈网站设计研究/前端/frontend_package.json.md",
-    "source/_posts/课题项目/法底捞针_基于AI智能主持人的海龟汤式互动反诈网站设计研究/前端/React+TypeScript.md",
-    "source/_posts/课题项目/法底捞针_基于AI智能主持人的海龟汤式互动反诈网站设计研究/后端.md",
-    "source/_posts/课题项目/法底捞针_基于AI智能主持人的海龟汤式互动反诈网站设计研究/部署阿里云服务器.md",
-    "source/_posts/课题项目/法底捞针_基于AI智能主持人的海龟汤式互动反诈网站设计研究/ai主持人服务.md",
-    "source/_posts/课题项目/法底捞针_基于AI智能主持人的海龟汤式互动反诈网站设计研究.md",
-    "source/_posts/博览知识/蜜罐、蜜网与蜜场.md",
-    "source/_posts/博览知识/💡_1_分钟玩转语雀文档.md",
-    "source/_posts/博览知识/集训队.md",
-    "source/_posts/博览知识/账号.md",
-    "source/_posts/博览知识/特洛伊木马.md",
-    "source/_posts/博览知识/僵尸网络.md",
-    "source/_posts/博览知识/溢出漏洞.md",
-    "source/_posts/博览知识/提问的智慧.md",
-    "source/_posts/博览知识/哈希值.md",
-    "source/_posts/博览知识/常见编码及加解密.md",
     "未命名.canvas",
     "未命名 1.canvas"
   ]
