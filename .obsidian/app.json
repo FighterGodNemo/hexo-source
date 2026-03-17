@@ -3,5 +3,5 @@
   "useMarkdownLinks": false,
   "openBehavior": "",
   "newLinkFormat": "relative",
-  "newFileLocation": "current"
+  "newFileLocation": "folder"
 }
