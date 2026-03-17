@@ -11,7 +11,7 @@ hexo.extend.filter.register('before_generate', () => {
   let list = [];
 
   if (fs.existsSync(bgDir)) {
-    const files = fs.readdirSync(bgDir).filter(isImage);
+    const files = fs.readdirSync(bgDir).filter(isImage).sort();
     list = files.map((f) => `/img/bg/${encodeURIComponent(f)}`);
   }
 

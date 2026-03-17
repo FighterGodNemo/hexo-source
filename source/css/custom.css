@@ -127,7 +127,7 @@ body,
   position: fixed;
   right: 24px;
   bottom: 120px;
-  width: 320px;
+  width: 360px;
   max-width: 90vw;
   z-index: 9999;
   display: none;
@@ -141,6 +141,11 @@ body,
   background: var(--card-bg);
   border-radius: 12px;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+#bgm-player .aplayer .aplayer-list {
+  max-height: 220px;
+  overflow: auto;
 }
 
 #rightside #bgm-btn,
