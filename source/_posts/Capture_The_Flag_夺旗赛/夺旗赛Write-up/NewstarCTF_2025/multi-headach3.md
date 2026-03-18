@@ -11,13 +11,13 @@ categories:
 
 什么叫机器人控制了我的头？
 
-![](multi-headach3/1759219443638-71fd331f-f804-44d4-a72e-4646166e2de0.png)
+![](1759219443638-71fd331f-f804-44d4-a72e-4646166e2de0.png)
 
 解答：
 
 <font style="color:rgb(15, 17, 21);">这提示我们查看 </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">/robots.txt</font>`<font style="color:rgb(15, 17, 21);"> 文件，这是网站用来与搜索引擎爬虫（机器人）通信的标准文件。</font>
 
-![](multi-headach3/1759219481688-ddd5dcb1-c914-456a-8dae-2ded5e809037.png)
+![](1759219481688-ddd5dcb1-c914-456a-8dae-2ded5e809037.png)
 
 <font style="color:rgb(15, 17, 21);">这明确告诉我们有一个隐藏页面：</font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">/hidden.php</font>`<font style="color:rgb(15, 17, 21);">。</font>
 
@@ -27,7 +27,7 @@ categories:
 
 + <font style="color:rgb(15, 17, 21);">可能要求修改 </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">User-Agent</font>`<font style="color:rgb(15, 17, 21);">、</font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">Referer</font>`<font style="color:rgb(15, 17, 21);">、</font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">X-Forwarded-For</font>`<font style="color:rgb(15, 17, 21);"> 等请求头</font>
 + <font style="color:rgb(15, 17, 21);">先尝试直接访问</font><font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">/hidden.php</font><font style="color:rgb(15, 17, 21);">  
-</font>![](multi-headach3/1759219801150-53673b8b-8330-479f-938a-ac84928d5719.png)
+</font>![](1759219801150-53673b8b-8330-479f-938a-ac84928d5719.png)
 + 没那么简单。。。意味着单一条件可能不够，需要组合多个头部，正如题目的multi所提示
 
 ### <font style="color:rgb(15, 17, 21);">组合头部</font>
@@ -98,3 +98,4 @@ flag{e6c421da-4941-447c-a22a-6f09984bdd21}
     - `<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">User-Agent: Robot</font>`
     - `<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">Referer: https://eci-2zeiz5c9arq9crpj8d1x.cloudeci1.ichunqiu.com</font>`
     - `<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">X-Forwarded-For: 127.0.0.1</font>`
+

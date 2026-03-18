@@ -9,5 +9,6 @@ categories:
 
 被硬控了
 
-![](pwn46/1762256279954-edf01a79-d291-4ff4-ac18-7d1d7351ea4a.png)
+![](1762256279954-edf01a79-d291-4ff4-ac18-7d1d7351ea4a.png)
+
 

@@ -76,5 +76,6 @@ flag = binascii.unhexlify(hex(m)[2:]).decode()
 
 print(flag)
 
-![](Sagemath使用指哪_/1759231704437-90bd9ea4-0ba7-4b55-b354-4df47501d26c.png)
+![](1759231704437-90bd9ea4-0ba7-4b55-b354-4df47501d26c.png)
+
 

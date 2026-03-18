@@ -9,7 +9,7 @@ categories:
 - Web攻防实战课程讲义
 ---
 
-![](Ciscn_Search_Engine/1773463410765-976fa95d-0ca7-401c-baa4-d89ebe373377.png)
+![](1773463410765-976fa95d-0ca7-401c-baa4-d89ebe373377.png)
 
 ## 题目描述
 <font style="color:#000000;background-color:rgba(255, 255, 255, 0);">小明写了一个搜索引擎，但是看起来似乎有些问题。</font>
@@ -29,24 +29,24 @@ cd /app && nohup python app.py &
 
 打开内嵌浏览器，开启拦截
 
-![](Ciscn_Search_Engine/1773537243896-9d34e616-c567-4417-9fb4-1cb1734d3661.png)
+![](1773537243896-9d34e616-c567-4417-9fb4-1cb1734d3661.png)
 
-![](Ciscn_Search_Engine/1773537348008-58e50cc2-a733-4202-bc47-69e6ea05da24.png)
+![](1773537348008-58e50cc2-a733-4202-bc47-69e6ea05da24.png)
 
 输入东西。看看反馈。
 
-![](Ciscn_Search_Engine/1773537372097-e9659207-623d-45a5-92f7-7f03357979f6.png)
+![](1773537372097-e9659207-623d-45a5-92f7-7f03357979f6.png)
 
 看到可攻击参数word。
 
 cmd输入fenjing webui
 
-![](Ciscn_Search_Engine/1773463304178-d38da639-b09a-446e-8c91-dbb3a7c37351.png)
+![](1773463304178-d38da639-b09a-446e-8c91-dbb3a7c37351.png)
 
 开始分析。结束后cat /flag
 
-![](Ciscn_Search_Engine/1773463327243-fbeb4edc-bda5-4935-9cf0-6f6d233a98b8.png)  
-![](Ciscn_Search_Engine/1773463344187-6f5a7f57-3166-4fb1-8d99-db59e27b0995.png)
+![](1773463327243-fbeb4edc-bda5-4935-9cf0-6f6d233a98b8.png)  
+![](1773463344187-6f5a7f57-3166-4fb1-8d99-db59e27b0995.png)
 
 flag{xUveftQXrLuG10e69RaoME72IdSfo6MQ}
 
@@ -227,3 +227,4 @@ if __name__ == '__main__':
 
 
 [patch.tar.gz](Ciscn_Search_Engine/1773538513173-c7ee1458-424a-4a11-acd2-d82ffd5ddfb2.gz)
+

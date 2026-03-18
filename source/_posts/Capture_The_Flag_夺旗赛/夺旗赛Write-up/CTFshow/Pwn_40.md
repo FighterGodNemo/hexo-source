@@ -9,7 +9,7 @@ categories:
 
 题目：64位的 system(); "/bin/sh"
 
-![](Pwn_40/1760618725040-59e3a325-8935-421a-958e-cd65f335efb9.png)
+![](1760618725040-59e3a325-8935-421a-958e-cd65f335efb9.png)
 
 ### `<font style="color:rgb(0, 0, 0);">Arch: amd64-64-little</font>`
 + <font style="color:rgb(0, 0, 0);">说明程序的架构是</font><font style="color:rgb(0, 0, 0);"> </font>**<font style="color:rgb(0, 0, 0) !important;">64 位的小端（Little-endian）x86-64</font>**<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">架构。小端是指数据的低位字节存储在内存的低地址处，这是 x86 系列处理器常用的字节序。在 64 位程序中，寄存器是 64 位的（如</font><font style="color:rgb(0, 0, 0);"> </font>`<font style="color:rgb(0, 0, 0);">RDI</font>`<font style="color:rgb(0, 0, 0);">、</font>`<font style="color:rgb(0, 0, 0);">RSI</font>`<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">等），函数调用的参数传递、栈操作等都遵循 64 位的规则。</font>
@@ -28,7 +28,7 @@ categories:
 + `<font style="color:rgb(0, 0, 0);">PIE</font>`<font style="color:rgb(0, 0, 0);">（Position-Independent Executable，地址无关可执行文件）未开启。程序加载时的基地址是固定的（这里显示为</font><font style="color:rgb(0, 0, 0);"> </font>`<font style="color:rgb(0, 0, 0);">0x400000</font>`<font style="color:rgb(0, 0, 0);">）。这对漏洞利用很有利，因为程序中函数、字符串等的地址是固定的，攻击者可以直接使用这些固定地址来构造攻击载荷，而无需动态计算地址偏移。</font>
 
 ### `<font style="color:rgb(0, 0, 0);">Stripped: No</font>`
-+ <font style="color:rgb(0, 0, 0);">表示程序 </font>**<font style="color:rgb(0, 0, 0) !important;">没有被剥离（Stripped）符号表</font>**<font style="color:rgb(0, 0, 0);">。符号表中包含了函数名、变量名等调试信息。没有被剥离符号表的话，攻击者可以很方便地通过工具（如 </font>`<font style="color:rgb(0, 0, 0);">objdump</font>`<font style="color:rgb(0, 0, 0);">、</font>`<font style="color:rgb(0, 0, 0);">gdb</font>`<font style="color:rgb(0, 0, 0);"> 等）查看程序中的函数、变量等信息，有助于分析程序结构和寻找漏洞利用点。</font>![](Pwn_40/1760660400019-4c8a1334-8afa-4a53-a17f-b5b491e2a8ce.png)
++ <font style="color:rgb(0, 0, 0);">表示程序 </font>**<font style="color:rgb(0, 0, 0) !important;">没有被剥离（Stripped）符号表</font>**<font style="color:rgb(0, 0, 0);">。符号表中包含了函数名、变量名等调试信息。没有被剥离符号表的话，攻击者可以很方便地通过工具（如 </font>`<font style="color:rgb(0, 0, 0);">objdump</font>`<font style="color:rgb(0, 0, 0);">、</font>`<font style="color:rgb(0, 0, 0);">gdb</font>`<font style="color:rgb(0, 0, 0);"> 等）查看程序中的函数、变量等信息，有助于分析程序结构和寻找漏洞利用点。</font>![](1760660400019-4c8a1334-8afa-4a53-a17f-b5b491e2a8ce.png)
 1. **<font style="color:rgb(0, 0, 0) !important;">信息收集</font>**
 
 <font style="color:rgb(0, 0, 0);">首先通过</font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">nc 152.32.191.198 33784</font>`<font style="color:rgb(0, 0, 0);">连接目标服务，观察输入输出模式（如是否有固定提示、输入长度限制等），判断溢出点可能存在的位置。</font>
@@ -46,7 +46,7 @@ p.sendline(payload)
 p.interactive()
 ```
 
-![](Pwn_40/1760582863377-e25febc4-027c-47d1-a2fa-0b84cd9b7d26.png)<font style="color:rgb(0, 0, 0);">程序崩溃后，通过调试获取崩溃时的</font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">rip</font>`<font style="color:rgb(0, 0, 0);">值（如</font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">0x6161616161616168</font>`<font style="color:rgb(0, 0, 0);">），再用</font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">cyclic_find(0x6161616161616168)</font>`<font style="color:rgb(0, 0, 0);">计算偏移量</font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">offset</font>`<font style="color:rgb(0, 0, 0);">。</font>
+![](1760582863377-e25febc4-027c-47d1-a2fa-0b84cd9b7d26.png)<font style="color:rgb(0, 0, 0);">程序崩溃后，通过调试获取崩溃时的</font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">rip</font>`<font style="color:rgb(0, 0, 0);">值（如</font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">0x6161616161616168</font>`<font style="color:rgb(0, 0, 0);">），再用</font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">cyclic_find(0x6161616161616168)</font>`<font style="color:rgb(0, 0, 0);">计算偏移量</font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">offset</font>`<font style="color:rgb(0, 0, 0);">。</font>
 
 #### <font style="color:rgb(0, 0, 0);">2. 查找关键地址</font>
 <font style="color:rgb(0, 0, 0);">若程序中已存在</font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">system</font>`<font style="color:rgb(0, 0, 0);">函数和</font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">"/bin/sh"</font>`<font style="color:rgb(0, 0, 0);">字符串（ret2text 的核心前提）：</font>
@@ -185,7 +185,7 @@ print(f"最终计算的溢出偏移量：{offset}")
 
 <font style="color:rgb(0, 0, 0);"></font>
 
-![](Pwn_40/1760663762309-5f42e0fa-9947-4f28-8081-05320b19d7d0.png)
+![](1760663762309-5f42e0fa-9947-4f28-8081-05320b19d7d0.png)
 
 <font style="color:rgb(77, 77, 77);"> /bin/sh </font><font style="color:rgb(78, 161, 219) !important;">字符串</font><font style="color:rgb(77, 77, 77);">的地址：0x400808</font><font style="color:rgb(77, 77, 77);">64 位程序与 32 位程序传参规则的不同：</font>
 
@@ -268,6 +268,7 @@ for cmd in common_flag_paths:
 # 最后保留手动交互，方便后续操作
 p.interactive()
 ```
+
 
 
 

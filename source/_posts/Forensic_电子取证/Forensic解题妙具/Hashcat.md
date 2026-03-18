@@ -305,11 +305,12 @@ cd D:\CaptureTheFlag\CTFTool\hashcat-7.1.2
 
 hashcat -m 0 -a 0 C:\Users\glj07\Desktop\hash.txt D:\Forensic\ForensicTool\Decrypt\rockyou\rockyou.txt -d 1 -O
 
-![](Hashcat/1763818241816-45a15e17-eab4-4a68-8b79-3e53b1a94a1f.png)![](Hashcat/1763818313205-5c2fb803-8fff-4911-a83d-8c9621556604.png)
+![](1763818241816-45a15e17-eab4-4a68-8b79-3e53b1a94a1f.png)![](1763818313205-5c2fb803-8fff-4911-a83d-8c9621556604.png)
 
 ```plain
 hashcat -m 0 --show C:\Users\glj07\Desktop\hash.txt
 ```
 
-![](Hashcat/1763820315969-4dd993cb-5205-4f60-a8f4-69ff313d292d.png)
+![](1763820315969-4dd993cb-5205-4f60-a8f4-69ff313d292d.png)
+
 

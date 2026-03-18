@@ -19,7 +19,7 @@ categories:
 
 + <font style="color:rgb(15, 17, 21);">访问方式：</font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">http://47.94.87.199:33001/</font>`
 
-![](宇宙的中心是php/1759220834289-c72b440e-11bb-461a-8216-faef3dd20a63.png)![](宇宙的中心是php/1759220921957-ad0d353a-8b54-4e4c-bae5-3c89a0716018.png)<font style="color:rgb(15, 17, 21);">html</font>
+![](1759220834289-c72b440e-11bb-461a-8216-faef3dd20a63.png)![](1759220921957-ad0d353a-8b54-4e4c-bae5-3c89a0716018.png)<font style="color:rgb(15, 17, 21);">html</font>
 
 ```plain
 <!-- 你还是找到了......这片黑暗的秘密 -->
@@ -30,7 +30,7 @@ categories:
 
 访问：http://47.94.87.199:33001/s3kret.php
 
-![](宇宙的中心是php/1759221397995-79068d44-7fd5-4195-82d1-e848569b381b.png)
+![](1759221397995-79068d44-7fd5-4195-82d1-e848569b381b.png)
 
 ### <font style="color:rgb(0, 0, 0);">分析代码逻辑</font>
 <font style="color:rgb(0, 0, 0);">代码首先包含了</font><font style="color:rgb(0, 0, 0);"> </font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">flag.php</font>`<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">文件（里面应该存放着我们需要的</font><font style="color:rgb(0, 0, 0);"> </font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">flag</font>`<font style="color:rgb(0, 0, 0);">），然后判断是否通过</font><font style="color:rgb(0, 0, 0);"> </font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">POST</font>`<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">方法提交了名为</font><font style="color:rgb(0, 0, 0);"> </font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">newstar2025</font>`<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">的参数。如果提交了，就将该参数的值赋给</font><font style="color:rgb(0, 0, 0);"> </font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">$answer</font>`<font style="color:rgb(0, 0, 0);">，接着进行关键判断：</font>
@@ -98,4 +98,5 @@ categories:
 <font style="color:rgb(15, 17, 21);">这个漏洞利用的是</font>**<u><font style="color:#01B2BC;"> PHP 在不同进制下对同一字符串解析结果不同</font></u>**<font style="color:rgb(15, 17, 21);"> 的特性，通过八进制/十六进制与十进制的转换差异来满足矛盾条件。</font>
 
 <font style="color:rgb(15, 17, 21);">这就是 CTF 中常见的 </font>**<u><font style="color:#DF2A3F;">PHP 类型混淆/进制混淆 漏洞</font></u>**<font style="color:rgb(15, 17, 21);">。</font>
+
 

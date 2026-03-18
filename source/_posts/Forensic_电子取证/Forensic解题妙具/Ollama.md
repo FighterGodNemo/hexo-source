@@ -6,7 +6,7 @@ categories:
 - Forensic解题妙具
 ---
 
-![](Ollama/1761118786294-d746b81f-778c-485f-ba77-b1cd9da7fb96.png)
+![](1761118786294-d746b81f-778c-485f-ba77-b1cd9da7fb96.png)
 
     - **<font style="color:rgb(97, 102, 107);">qwen2.5:3b</font>**<font style="color:rgb(97, 102, 107);">（通义千问3B版本）</font>
         * **<font style="color:rgb(97, 102, 107);">优势</font>**<font style="color:rgb(97, 102, 107);">：模型较小，推理速度快，内存占用低。对中文支持非常好（由阿里开发），适合处理中文任务。对于一般的问答、文本分析等任务，如果对质量要求不是极高，这个模型可以快速给出结果。</font>
@@ -115,4 +115,5 @@ ollama run gemma2:9b "为这些证据创建一个调查时间线：[证据列表
 <font style="color:rgb(192, 52, 29);background-color:rgba(0, 0, 0, 0.04);">ollama serve</font>
 
 <font style="color:rgb(192, 52, 29);background-color:rgba(0, 0, 0, 0.04);"></font>
+
 

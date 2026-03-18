@@ -29,5 +29,6 @@ if ($id=="wllmNB"&&$json['x']=="wllm")
 curl -X POST "http://node7.anna.nssctf.cn:27541/index.php?json=%7B%22x%22%3A%22wllm%22%7D" -d "id=wllmNB"
 ```
 
-![]([SWPUCTF_2021_新生赛]jicao/1764333513217-cc6c2ca7-1019-43f2-a84c-85f381ef214e.png)NSSCTF{5e3b5793-b1f6-488a-bac4-53e9c4889ed7}
+![](1764333513217-cc6c2ca7-1019-43f2-a84c-85f381ef214e.png)NSSCTF{5e3b5793-b1f6-488a-bac4-53e9c4889ed7}
+
 

@@ -11,7 +11,7 @@ categories:
 
 <font style="color:rgba(0, 0, 0, 0.85);">我当然知道1=1了！？</font>
 
-![](strange_login/1759157210268-e9530b2c-7371-4d04-b027-c97e361333ef.png)
+![](1759157210268-e9530b2c-7371-4d04-b027-c97e361333ef.png)
 
 <font style="color:rgba(0, 0, 0, 0.85);">解题：</font><font style="color:rgb(0, 0, 0);">这很可能是在暗示可以利用 SQL 注入的方式进行登录。</font>
 
@@ -67,5 +67,6 @@ SELECT * FROM users WHERE username = 'admin' OR 1=1#' AND password = '123'
 1. <font style="color:rgb(0, 0, 0);">不同数据库的注释符可能不同（如 MySQL 用</font>`<font style="color:rgb(0, 0, 0);">#</font>`<font style="color:rgb(0, 0, 0);">，Oracle 用</font>`<font style="color:rgb(0, 0, 0);">--</font><font style="color:rgb(0, 0, 0);"> </font>`<font style="color:rgb(0, 0, 0);">）</font>
 2. <font style="color:rgb(0, 0, 0);">若遇到过滤（如过滤</font>`<font style="color:rgb(0, 0, 0);">OR</font>`<font style="color:rgb(0, 0, 0);">、</font>`<font style="color:rgb(0, 0, 0);">=</font>`<font style="color:rgb(0, 0, 0);">），可尝试大小写变形（</font>`<font style="color:rgb(0, 0, 0);">Or</font>`<font style="color:rgb(0, 0, 0);">、</font>`<font style="color:rgb(0, 0, 0);">1=1</font>`<font style="color:rgb(0, 0, 0);">→</font>`<font style="color:rgb(0, 0, 0);">1 Like 1</font>`<font style="color:rgb(0, 0, 0);">）或编码绕过</font>
 
-![](strange_login/1759157928586-b0882f17-aaae-498a-8f56-9f8b23755899.png)
+![](1759157928586-b0882f17-aaae-498a-8f56-9f8b23755899.png)
+
 

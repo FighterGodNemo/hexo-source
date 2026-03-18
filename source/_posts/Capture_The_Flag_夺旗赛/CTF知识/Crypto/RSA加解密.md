@@ -7,7 +7,7 @@ categories:
 - Crypto
 ---
 
-![](RSA加解密/1757417823081-71f56af5-2143-4d84-b623-ccdcfaae6def.jpeg)
+![](1757417823081-71f56af5-2143-4d84-b623-ccdcfaae6def.jpeg)
 
 _<font style="color:#DF2A3F;"></font>_
 
@@ -174,6 +174,7 @@ b'flag{...}' ← 你的目标   c (你拿到的)
 1. <font style="color:rgba(0, 0, 0, 0.5) !important;">使用 sympy 的 discrete_log 或 gmpy2 求解 e，高效且省内存。</font>
 2. <font style="color:rgba(0, 0, 0, 0.5) !important;">正确解方程组得到 p、q、r，验证是否为质数。</font>
 3. <font style="color:rgba(0, 0, 0, 0.5) !important;">计算 n、phi (n)、d，解密 c 得到 m，转换为 flag。</font>
+
 
 
 

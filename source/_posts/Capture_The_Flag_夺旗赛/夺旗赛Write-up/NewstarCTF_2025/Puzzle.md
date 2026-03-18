@@ -13,5 +13,6 @@ categories:
 
 解答：
 
-![](Puzzle/1759232901717-4af3d5f7-4349-46bd-bbd9-df630fda616e.png)![](Puzzle/1759232961150-e720ac52-a2c3-4828-afba-4409f42018e2.png)
+![](1759232901717-4af3d5f7-4349-46bd-bbd9-df630fda616e.png)![](1759232961150-e720ac52-a2c3-4828-afba-4409f42018e2.png)
+
 

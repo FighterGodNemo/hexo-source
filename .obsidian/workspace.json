@@ -40,7 +40,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "25黑龙江刑侦个人",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -74,7 +74,8 @@
               "title": "文件列表"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -194,7 +195,7 @@
       "bases:新建数据库": false
     }
   },
-  "active": "dbd69793ef8d8ee2",
+  "active": "6ee123e5035b92d7",
   "lastOpenFiles": [
     "source/_posts/Forensic_电子取证/Forensic知识/经验之谈.md",
     "source/_posts/Hello World！我的第一篇hexo博客.md",

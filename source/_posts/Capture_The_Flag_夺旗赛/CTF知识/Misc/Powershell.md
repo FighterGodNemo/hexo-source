@@ -7,5 +7,6 @@ categories:
 - Misc
 ---
 
-![](Powershell/1759996646693-14a84067-4697-43da-aaa9-6d2101ea54f0.png)
+![](1759996646693-14a84067-4697-43da-aaa9-6d2101ea54f0.png)
+
 

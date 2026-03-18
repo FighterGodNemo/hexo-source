@@ -9,15 +9,15 @@ categories:
 
 题目内容：
 
-![](X0r/1759155991311-4578c694-b4a6-4a34-a09d-18872c4db4d4.png)
+![](1759155991311-4578c694-b4a6-4a34-a09d-18872c4db4d4.png)
 
 解答：
 
-● 用IDA打开：![](X0r/1759660720436-89fd346e-1c12-44e7-ab60-a4092030887d.png)
+● 用IDA打开：![](1759660720436-89fd346e-1c12-44e7-ab60-a4092030887d.png)
 
 + 按F5反编译成c语言代码：
 
-![](X0r/1759660699927-c827163e-39f1-4ce2-b5ef-4b4a4d538ae4.png)
+![](1759660699927-c827163e-39f1-4ce2-b5ef-4b4a4d538ae4.png)
 
 ```plain
 for ( i = 0; i <= 27; ++i )
@@ -42,7 +42,7 @@ for ( i = 0; i <= 27; ++i )
 
 <font style="color:rgb(15, 17, 21);">所以只要在 IDA 里找到 </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">enc_0</font>`<font style="color:rgb(15, 17, 21);"> 数组的内容（应该是 28 个字节），然后每个字节与 </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">0x7A</font>`<font style="color:rgb(15, 17, 21);"> 异或，就能得到 flag。</font>
 
-![](X0r/1759661451706-03378e70-f93b-4018-94af-0dffcd104ab0.png)
+![](1759661451706-03378e70-f93b-4018-94af-0dffcd104ab0.png)
 
 ```python
 def decrypt_flag(enc_data, xor_key=0x7A):
@@ -58,4 +58,5 @@ print(f"解密后的 flag: {flag}")
 ```
 
 NSSCTF{Xor_is_basic_reverse}
+
 
