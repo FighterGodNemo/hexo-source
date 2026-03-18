@@ -17,11 +17,15 @@
     }
   }
 
+  function isColorValue(val) {
+    return /^(#|rgb|hsl|linear-gradient|radial-gradient)/i.test(val);
+  }
+
   function applyBackground(bg) {
     var webBg = document.getElementById('web_bg');
     var pageHeader = document.getElementById('page-header');
     if (!bg) return;
-    var isColor = /^(#|rgb|hsl|linear-gradient|radial-gradient)/i.test(bg);
+    var isColor = isColorValue(bg);
     if (webBg) {
       if (isColor) {
         webBg.style.backgroundImage = 'none';
@@ -40,15 +44,7 @@
         pageHeader.style.backgroundImage = 'url(' + bg + ')';
       }
     }
-
-    var root = document.documentElement;
-    if (root) {
-      if (isColor) {
-        root.style.setProperty('--bgm-cover', 'none');
-      } else {
-        root.style.setProperty('--bgm-cover', 'url(\"' + bg + '\")');
-      }
-    }
+    updateBgmCover();
 
     try {
       localStorage.setItem('bgUrl', String(bg));
@@ -83,6 +79,43 @@
 
   function stripAudioExt(name) {
     return String(name || '').replace(/\.(mp3|m4a|aac|ogg|wav|flac)$/i, '');
+  }
+
+  function getBgUrlByName(name) {
+    if (!name || !bgState.list || !bgState.list.length) return '';
+    var target = normalizeFileName(name);
+    for (var i = 0; i < bgState.list.length; i++) {
+      var url = bgState.list[i];
+      var base = normalizeFileName(getBasenameFromUrl(url));
+      if (base === target) return url;
+    }
+    return '';
+  }
+
+  function setBgmCover(bg) {
+    var root = document.documentElement;
+    if (!root) return;
+    if (!bg) {
+      root.style.setProperty('--bgm-cover', 'none');
+      return;
+    }
+    if (isColorValue(bg)) {
+      root.style.setProperty('--bgm-cover', 'none');
+    } else {
+      root.style.setProperty('--bgm-cover', 'url(\"' + bg + '\")');
+    }
+  }
+
+  function getCoverBg() {
+    if (musicState.listKey && musicState.listKey !== '__bg__' && musicState.listKey !== '__all__') {
+      var listBg = getBgUrlByName(musicState.listKey);
+      if (listBg) return listBg;
+    }
+    return bgState.current || '';
+  }
+
+  function updateBgmCover() {
+    setBgmCover(getCoverBg());
   }
 
   function addCacheBuster(url) {
@@ -345,6 +378,7 @@
     musicState.listKey = key;
     if (save) setSavedMusicListKey(key);
     updateMusicListLabel();
+    updateBgmCover();
     return true;
   }
 
@@ -483,6 +517,7 @@
     var savedKey = getSavedMusicListKey(musicState.lists);
     musicState.listKey = savedKey;
     syncMusicListIndex();
+    updateBgmCover();
     var list = getListItemsByKey(musicState.listKey);
     if (!Array.isArray(list) || list.length === 0) {
       for (var i = 0; i < musicState.lists.length; i++) {
