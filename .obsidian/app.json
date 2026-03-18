@@ -4,5 +4,6 @@
   "openBehavior": "",
   "newLinkFormat": "relative",
   "newFileLocation": "folder",
-  "newFileFolderPath": "source/_posts"
+  "newFileFolderPath": "source/_posts",
+  "promptDelete": false
 }
