@@ -1,9 +1,11 @@
 ---
-title: "SSH"
+title: SSH
 date: 2026-03-15 13:28:28
 categories:
-- Forensic_电子取证
-- Forensic知识
+  - Forensic_电子取证
+  - Forensic知识
+created: 2026-03-15T16:49
+updated: 2026-03-18T09:42
 ---
 
 ### <font style="color:rgb(15, 17, 21);">一、核心概念：什么是 SSH？</font>

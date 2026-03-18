@@ -1,9 +1,11 @@
 ---
-title: "仿真后打开命令行查看Linux的版本"
+title: 仿真后打开命令行查看Linux的版本
 date: 2026-03-15 13:28:28
 categories:
-- Forensic_电子取证
-- Forensic知识
+  - Forensic_电子取证
+  - Forensic知识
+created: 2026-03-15T16:49
+updated: 2026-03-18T09:42
 ---
 
 输入 **wsl --list --verbose**

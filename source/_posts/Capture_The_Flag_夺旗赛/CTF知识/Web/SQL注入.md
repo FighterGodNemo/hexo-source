@@ -1,10 +1,12 @@
 ---
-title: "SQL注入"
+title: SQL注入
 date: 2026-03-15 13:28:16
 categories:
-- Capture_The_Flag_夺旗赛
-- CTF知识
-- Web
+  - Capture_The_Flag_夺旗赛
+  - CTF知识
+  - Web
+created: 2026-03-15T16:49
+updated: 2026-03-18T09:42
 ---
 
 SQL（Structured Query Language）结构化查询语言，是一种关系型数据库查询的标准编程语言，用于存取数据以及查询、更新、删除和管理关系型数据库（即SQL是一种数据库查询语言）

@@ -1,9 +1,11 @@
 ---
-title: "XML与HTML"
+title: XML与HTML
 date: 2026-03-15 13:28:28
 categories:
-- Forensic_电子取证
-- Forensic知识
+  - Forensic_电子取证
+  - Forensic知识
+created: 2026-03-15T16:49
+updated: 2026-03-18T09:46
 ---
 
 | <font style="color:rgb(15, 17, 21);">特性</font> | <font style="color:rgb(15, 17, 21);">XML（可扩展标记语言）</font> | <font style="color:rgb(15, 17, 21);">HTML（超文本标记语言）</font> |

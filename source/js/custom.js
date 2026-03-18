@@ -298,7 +298,7 @@
 
   function updateMusicListLabel() {
     if (!musicState.labelEl) return;
-    musicState.labelEl.textContent = '歌单：' + getMusicListDisplayName(musicState.listKey);
+    musicState.labelEl.textContent = '歌单：';
   }
 
   function getCurrentAudioItem() {
@@ -437,7 +437,7 @@
     var btn = document.createElement('button');
     btn.id = 'bg-switch-btn';
     btn.type = 'button';
-    btn.title = '切换背景';
+    btn.title = '切换默认背景';
     btn.innerHTML = '<i class="fas fa-image"></i>';
     rightside.appendChild(btn);
 
@@ -471,12 +471,8 @@
   }
 
   async function initBgmPlayer() {
-    if (musicState.ready || musicState.initing) return;
-    musicState.initing = true;
-
     var rightside = document.getElementById('rightside-config-show') || document.getElementById('rightside');
     if (!rightside) {
-      musicState.initing = false;
       return;
     }
 
@@ -498,6 +494,18 @@
       wrap.innerHTML = '<div id="bgm-aplayer"></div>';
       document.body.appendChild(wrap);
     }
+
+    if (!btn.dataset.bound) {
+      var visible = wrap.classList.contains('active');
+      btn.addEventListener('click', function () {
+        visible = !visible;
+        wrap.classList.toggle('active', visible);
+      });
+      btn.dataset.bound = '1';
+    }
+
+    if (musicState.ready || musicState.initing) return;
+    musicState.initing = true;
 
     var map = await loadJson('/music-map.json', null);
     if (map && map.folders) {
@@ -565,6 +573,10 @@
     });
 
     musicState.ap = ap;
+    // Prevent theme pjax handler from destroying our persistent player
+    try {
+      ap.options.fixed = true;
+    } catch (e) {}
     musicState.ready = true;
     musicState.initing = false;
 
@@ -607,11 +619,6 @@
       });
     }
 
-    var visible = false;
-    btn.addEventListener('click', function () {
-      visible = !visible;
-      wrap.classList.toggle('active', visible);
-    });
   }
 
   async function initAll() {

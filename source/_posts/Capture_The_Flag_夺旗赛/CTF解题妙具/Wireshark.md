@@ -1,9 +1,11 @@
 ---
-title: "Wireshark"
+title: Wireshark
 date: 2026-03-15 13:28:16
 categories:
-- Capture_The_Flag_夺旗赛
-- CTF解题妙具
+  - Capture_The_Flag_夺旗赛
+  - CTF解题妙具
+created: 2026-03-15T16:49
+updated: 2026-03-18T09:42
 ---
 
 网络协议分析工具，用于捕获和分析网络流量。<font style="color:rgba(0, 0, 0, 0.87);">网络流量分析是指捕捉网络中流动的数据包，并通过查看包内部数据以及进行相关的协议、流量分析、统计等来发现网络运行过程中出现的问题。</font>

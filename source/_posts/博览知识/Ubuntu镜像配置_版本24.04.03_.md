@@ -1,8 +1,10 @@
 ---
-title: "Ubuntu镜像配置_版本24.04.03_"
+title: Ubuntu镜像配置_版本24.04.03_
 date: 2026-03-15 13:28:20
 categories:
-- 博览知识
+  - 博览知识
+created: 2026-03-15T16:49
+updated: 2026-03-18T09:35
 ---
 
 ### <font style="color:rgb(15, 17, 21);">认识 Ubuntu 24.04 的源配置</font>

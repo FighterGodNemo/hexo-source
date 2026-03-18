@@ -5,9 +5,8 @@ categories:
   - Capture_The_Flag_夺旗赛
   - 夺旗赛Write-up
 created: 2026-03-15T16:49
-updated: 2026-03-17T07:46
+updated: 2026-03-18T09:37
 ---
-
 # Web
 ## 信息收集
 ### 题目2-2 where is the logo
@@ -20,7 +19,7 @@ updated: 2026-03-17T07:46
 
 启动一个Web服务器来运行index.html。有几个方法：
 
-`**cd "C:\Users\glj07\Desktop\题目2-2-Where is logo"**`
+`cd "C:\Users\glj07\Desktop\题目2-2-Where is logo"`
 
 **方法1：使用Python内置服务器**
 

@@ -1,11 +1,12 @@
 ---
-title: "上海awdp赛前培训"
+title: 上海awdp赛前培训
 date: 2026-03-15 13:28:16
 categories:
-- Capture_The_Flag_夺旗赛
-- 夺旗赛Write-up
+  - Capture_The_Flag_夺旗赛
+  - 夺旗赛Write-up
+created: 2026-03-15T16:49
+updated: 2026-03-18T09:39
 ---
-
 AWDP赛制：（Attack,Defense,Web and Pwn）
 
 一般来说，修复比利用更快。

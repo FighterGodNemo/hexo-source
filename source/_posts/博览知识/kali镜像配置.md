@@ -1,10 +1,12 @@
 ---
-title: "kali镜像配置"
+title: kali镜像配置
 date: 2026-03-15 13:28:22
 categories:
-- 博览知识
+  - 博览知识
+created: 2026-03-15T16:49
+updated: 2026-03-18T09:35
 ---
-
+## 镜像源：
 sudo nano /etc/apt/sources.list
 
 输入：

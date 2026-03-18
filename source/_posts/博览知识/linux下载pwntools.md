@@ -1,8 +1,10 @@
 ---
-title: "linux下载pwntools"
+title: linux下载pwntools
 date: 2026-03-15 13:28:22
 categories:
-- 博览知识
+  - 博览知识
+created: 2026-03-15T16:49
+updated: 2026-03-18T09:35
 ---
 
 ### <font style="color:rgb(15, 17, 21);">先完成系统依赖安装</font>
