@@ -49,6 +49,10 @@
         root.style.setProperty('--bgm-cover', 'url(\"' + bg + '\")');
       }
     }
+
+    try {
+      localStorage.setItem('bgUrl', String(bg));
+    } catch (e) {}
   }
 
   function getBasenameFromUrl(url) {
