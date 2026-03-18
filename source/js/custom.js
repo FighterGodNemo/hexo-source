@@ -23,7 +23,6 @@
 
   function applyBackground(bg) {
     var webBg = document.getElementById('web_bg');
-    var pageHeader = document.getElementById('page-header');
     if (!bg) return;
     var preloadStyle = document.getElementById('bg-preload-style');
     if (preloadStyle && preloadStyle.parentNode) {
@@ -37,15 +36,6 @@
       } else {
         webBg.style.background = '';
         webBg.style.backgroundImage = 'url(' + bg + ')';
-      }
-    }
-    if (pageHeader) {
-      if (isColor) {
-        pageHeader.style.backgroundImage = 'none';
-        pageHeader.style.background = bg;
-      } else {
-        pageHeader.style.background = '';
-        pageHeader.style.backgroundImage = 'url(' + bg + ')';
       }
     }
     updateBgmCover();
