@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/Forensic_电子取证/取证write-up/美亚杯/25美亚杯资格赛.md",
+                "file": "source/_posts/博览知识/《C程序设计（第五版）》.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "25美亚杯资格赛"
+              "title": "《C程序设计（第五版）》"
             }
           }
         ]
@@ -95,7 +95,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/about/index.md",
+                "file": "source/_posts/博览知识/《C程序设计（第五版）》.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +105,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "index 的反向链接列表"
+              "title": "《C程序设计（第五版）》 的反向链接列表"
             }
           },
           {
@@ -114,12 +114,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/about/index.md",
+                "file": "source/_posts/博览知识/《C程序设计（第五版）》.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "index 的出链列表"
+              "title": "《C程序设计（第五版）》 的出链列表"
             }
           },
           {
@@ -157,13 +157,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/Forensic_电子取证/取证write-up/美亚杯/25美亚杯资格赛.md",
+                "file": "source/_posts/博览知识/《C程序设计（第五版）》.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "25美亚杯资格赛 的大纲"
+              "title": "《C程序设计（第五版）》 的大纲"
             }
           },
           {
@@ -181,7 +181,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 365.5
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -195,8 +195,15 @@
       "bases:新建数据库": false
     }
   },
-  "active": "963c86de8fcba8a2",
+  "active": "4717085d984e301d",
   "lastOpenFiles": [
+    "source/_posts/博览知识/《C程序设计（第五版）》/file-20260318140402017.png",
+    "source/_posts/博览知识/《C程序设计（第五版）》",
+    "source/_posts/博览知识/闰年定义（公历）.md",
+    "source/_posts/博览知识/时间戳信息.md",
+    "source/_posts/博览知识/《C程序设计（第五版）》.md",
+    "source/_posts/未命名.md",
+    "source/_posts/Forensic_电子取证/取证write-up/美亚杯/25美亚杯资格赛.md",
     "source/_posts/Forensic_电子取证/取证write-up/美亚杯/25美亚杯团体赛.md",
     "source/_posts/Forensic_电子取证/取证write-up/美亚杯/22美亚杯团队赛.md",
     "source/_posts/Forensic_电子取证/取证write-up/美亚杯/25美亚杯团体赛/file-20260318094802330.png",
@@ -222,7 +229,6 @@
     "public/img/bg/背景一.jpg",
     "public/img/index-bg.jpg",
     "public/img/bg/背景三.jpg",
-    "public/page/15/index.html",
     "public/2026/03/15/Capture_The_Flag_夺旗赛/夺旗赛Write-up/上海awdp赛前培训/沙盒攻防赛/Web攻防实战课程讲义/Ciscn_Search_Engine/1773537348008-58e50cc2-a733-4202-bc47-69e6ea05da24.png",
     "public/2026/03/15/Capture_The_Flag_夺旗赛/夺旗赛Write-up/上海awdp赛前培训/沙盒攻防赛/Web攻防实战课程讲义/Ciscn_Search_Engine/1773537372097-e9659207-623d-45a5-92f7-7f03357979f6.png",
     "public/2026/03/15/Capture_The_Flag_夺旗赛/夺旗赛Write-up/上海awdp赛前培训/沙盒攻防赛/Web攻防实战课程讲义/Ciscn_Search_Engine/1773537243896-9d34e616-c567-4417-9fb4-1cb1734d3661.png",
@@ -237,12 +243,6 @@
     "source/_posts/Forensic_电子取证/Forensic知识/SSH.md",
     "source/_posts/Forensic_电子取证/Forensic知识/ss_-tunlp___grep操作.md",
     "source/_posts/Forensic_电子取证/Forensic知识/SQL.md",
-    "source/_posts/Forensic_电子取证/Forensic知识/imei杂谈.md",
-    "source/_posts/Forensic_电子取证/Forensic知识/无标题文档.md",
-    "source/_posts/Forensic_电子取证/Forensic知识/怎么从内存中提取bitlocker密码以及原理.md",
-    "source/_posts/Forensic_电子取证/Forensic知识/文件类型与文件头.md",
-    "source/_posts/Forensic_电子取证/Forensic知识/文件类型.md",
-    "source/_posts/Forensic_电子取证/Forensic知识/未命名.md",
     "未命名.canvas",
     "未命名 1.canvas"
   ]
