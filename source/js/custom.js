@@ -25,6 +25,10 @@
     var webBg = document.getElementById('web_bg');
     var pageHeader = document.getElementById('page-header');
     if (!bg) return;
+    var preloadStyle = document.getElementById('bg-preload-style');
+    if (preloadStyle && preloadStyle.parentNode) {
+      preloadStyle.parentNode.removeChild(preloadStyle);
+    }
     var isColor = isColorValue(bg);
     if (webBg) {
       if (isColor) {
