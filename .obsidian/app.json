@@ -1,7 +1,7 @@
 {
-  "attachmentFolderPath": "./${noteFileName}",
+  "attachmentFolderPath": "./",
   "useMarkdownLinks": false,
   "openBehavior": "",
   "newLinkFormat": "relative",
-  "newFileLocation": "folder"
+  "newFileLocation": "current"
 }

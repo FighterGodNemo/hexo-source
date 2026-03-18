@@ -40,6 +40,15 @@
         pageHeader.style.backgroundImage = 'url(' + bg + ')';
       }
     }
+
+    var root = document.documentElement;
+    if (root) {
+      if (isColor) {
+        root.style.setProperty('--bgm-cover', 'none');
+      } else {
+        root.style.setProperty('--bgm-cover', 'url(\"' + bg + '\")');
+      }
+    }
   }
 
   function getBasenameFromUrl(url) {
@@ -53,8 +62,33 @@
     return last.replace(/\.(png|jpe?g|webp|gif)$/i, '');
   }
 
+  function getFileNameFromUrl(url) {
+    if (!url) return '';
+    var clean = url.split('?')[0].split('#')[0];
+    var parts = clean.split('/');
+    var last = parts[parts.length - 1] || '';
+    try {
+      last = decodeURIComponent(last);
+    } catch (e) {}
+    return last;
+  }
+
+  function normalizeFileName(name) {
+    return String(name || '').replace(/\s+/g, ' ').trim();
+  }
+
+  function stripAudioExt(name) {
+    return String(name || '').replace(/\.(mp3|m4a|aac|ogg|wav|flac)$/i, '');
+  }
+
+  function addCacheBuster(url) {
+    var ts = String(Date.now());
+    return url + (url.indexOf('?') === -1 ? '?' : '&') + 'v=' + ts;
+  }
+
   function loadJson(url, fallback) {
-    return fetch(url, { cache: 'no-store' })
+    var requestUrl = addCacheBuster(url);
+    return fetch(requestUrl, { cache: 'no-store' })
       .then(function (res) {
         if (!res.ok) return fallback;
         return res.json();
@@ -88,6 +122,30 @@
     current: ''
   };
 
+  var builtInDefaultMap = {
+    '背景一': [
+      '彼女は旅に出る - 鎖那.flac',
+      '鎖那 - 彼女は旅に出る.flac',
+      '鎖那 - 彼女は旅に出る.mp3',
+      '彼女は旅に出る.flac',
+      '彼女は旅に出る.mp3'
+    ],
+    '背景二': [
+      '溯 (Reverse) - CORSAK胡梦周,马吟吟.flac',
+      'CORSAK胡梦周,马吟吟 - 溯 (Reverse) .flac',
+      'CORSAK胡梦周,马吟吟 - 溯 (Reverse) .mp3',
+      '溯 (Reverse).flac',
+      '溯 (Reverse).mp3'
+    ],
+    '背景三': [
+      '虚妄与荣光 - 碧蓝航线.flac',
+      '碧蓝航线 - 虚妄与荣光.flac',
+      '碧蓝航线 - 虚妄与荣光.mp3',
+      '虚妄与荣光.flac',
+      '虚妄与荣光.mp3'
+    ]
+  };
+
   var musicState = {
     map: null,
     ap: null,
@@ -97,7 +155,8 @@
     listKey: '__bg__',
     listIndex: 0,
     labelEl: null,
-    switchBtn: null
+    switchBtn: null,
+    defaultBtn: null
   };
 
   function getSavedBgIndex(list) {
@@ -122,6 +181,23 @@
 
   function setSavedMusicListKey(key) {
     localStorage.setItem('bgmListKey', key);
+  }
+
+  function getSavedDefaultMap() {
+    var raw = localStorage.getItem('bgmDefaultMap') || '';
+    if (!raw) return {};
+    try {
+      var parsed = JSON.parse(raw);
+      if (parsed && typeof parsed === 'object') return parsed;
+    } catch (e) {}
+    return {};
+  }
+
+  function setSavedDefault(bgKey, fileName) {
+    if (!bgKey || !fileName) return;
+    var map = getSavedDefaultMap();
+    map[bgKey] = fileName;
+    localStorage.setItem('bgmDefaultMap', JSON.stringify(map));
   }
 
   function buildMusicLists(map) {
@@ -170,6 +246,10 @@
     return getBasenameFromUrl(bgState.current || '');
   }
 
+  function getBgKey() {
+    return getBgListName() || '';
+  }
+
   function getMusicListDisplayName(key) {
     if (key === '__bg__') {
       var bgName = getBgListName();
@@ -182,6 +262,64 @@
   function updateMusicListLabel() {
     if (!musicState.labelEl) return;
     musicState.labelEl.textContent = '歌单：' + getMusicListDisplayName(musicState.listKey);
+  }
+
+  function getCurrentAudioItem() {
+    if (!musicState.ap || !musicState.ap.list || !musicState.ap.list.audios) return null;
+    var idx = typeof musicState.ap.list.index === 'number' ? musicState.ap.list.index : 0;
+    return musicState.ap.list.audios[idx] || musicState.ap.list.audios[0] || null;
+  }
+
+  function updateDefaultBtnState() {
+    if (!musicState.defaultBtn) return;
+    var bgKey = getBgKey();
+    var map = getSavedDefaultMap();
+    var current = getCurrentAudioItem();
+    var currentFile = current ? getFileNameFromUrl(current.url) : '';
+    var saved = map[bgKey];
+    var isSet = saved && currentFile &&
+      normalizeFileName(saved) === normalizeFileName(currentFile);
+    if (isSet) {
+      musicState.defaultBtn.textContent = '默认 ✓';
+      musicState.defaultBtn.classList.add('is-set');
+    } else {
+      musicState.defaultBtn.textContent = '设为默认';
+      musicState.defaultBtn.classList.remove('is-set');
+    }
+  }
+
+  function findDefaultIndex(list, bgKey) {
+    if (!Array.isArray(list) || !list.length || !bgKey) return 0;
+    var targets = [];
+    var map = getSavedDefaultMap();
+    if (map[bgKey]) targets.push(map[bgKey]);
+    if (builtInDefaultMap[bgKey] && builtInDefaultMap[bgKey].length) {
+      targets = targets.concat(builtInDefaultMap[bgKey]);
+    }
+    if (!targets.length) return 0;
+    var normalizedTargets = targets.map(function (t) { return normalizeFileName(t); });
+    var baseTargets = normalizedTargets.map(stripAudioExt);
+    for (var i = 0; i < list.length; i++) {
+      var file = getFileNameFromUrl(list[i].url || '');
+      var norm = normalizeFileName(file);
+      if (normalizedTargets.indexOf(norm) !== -1) return i;
+      if (baseTargets.indexOf(stripAudioExt(norm)) !== -1) return i;
+    }
+    return 0;
+  }
+
+  function moveItemToFront(list, idx) {
+    if (!Array.isArray(list) || idx <= 0 || idx >= list.length) return list;
+    var copy = list.slice();
+    var item = copy.splice(idx, 1)[0];
+    copy.unshift(item);
+    return copy;
+  }
+
+  function getDefaultKeyForList(key) {
+    if (key === '__bg__') return getBgKey();
+    if (key === '__all__') return '';
+    return key || '';
   }
 
   function syncMusicListIndex() {
@@ -198,7 +336,8 @@
   function applyMusicListByKey(key, save) {
     var items = getListItemsByKey(key);
     if (!Array.isArray(items) || !items.length) return false;
-    applyPlaylist(musicState.ap, items);
+    var defaultKey = getDefaultKeyForList(key);
+    applyPlaylist(musicState.ap, items, defaultKey);
     musicState.listKey = key;
     if (save) setSavedMusicListKey(key);
     updateMusicListLabel();
@@ -238,12 +377,18 @@
     return [];
   }
 
-  function applyPlaylist(ap, list) {
+  function applyPlaylist(ap, list, defaultKey) {
     if (!ap || !Array.isArray(list) || !list.length) return;
+    var finalList = list;
+    if (defaultKey) {
+      var idx = findDefaultIndex(list, defaultKey);
+      finalList = moveItemToFront(list, idx);
+    }
     ap.list.clear();
-    ap.list.add(list);
+    ap.list.add(finalList);
     ap.list.switch(0);
     ap.pause();
+    updateDefaultBtnState();
   }
 
   async function initBgSwitcher() {
@@ -280,9 +425,10 @@
       applyBackground(bgState.current);
       if (musicState.ap && musicState.listKey === '__bg__') {
         var nextList = pickMusicListForBg(bgState.current);
-        applyPlaylist(musicState.ap, nextList);
+        applyPlaylist(musicState.ap, nextList, getBgKey());
         updateMusicListLabel();
       }
+      updateDefaultBtnState();
     });
   }
 
@@ -360,6 +506,12 @@
       return;
     }
 
+    var initialKey = getDefaultKeyForList(musicState.listKey);
+    if (initialKey) {
+      var initialIdx = findDefaultIndex(list, initialKey);
+      list = moveItemToFront(list, initialIdx);
+    }
+
     var ap = new APlayer({
       container: document.getElementById('bgm-aplayer'),
       mini: false,
@@ -381,13 +533,15 @@
     if (!toolbar) {
       toolbar = document.createElement('div');
       toolbar.className = 'bgm-toolbar';
-      toolbar.innerHTML = '<span class="bgm-list-label"></span><button type="button" class="bgm-list-switch" title="切换歌单"><i class="fas fa-exchange-alt"></i><span>切换</span></button>';
+      toolbar.innerHTML = '<span class="bgm-list-label"></span><div class="bgm-toolbar-actions"><button type="button" class="bgm-default-btn" title="设为默认">设为默认</button><button type="button" class="bgm-list-switch" title="切换歌单"><i class="fas fa-exchange-alt"></i><span>切换</span></button></div>';
       wrap.insertBefore(toolbar, wrap.firstChild);
     }
     wrap.classList.add('has-toolbar');
     musicState.labelEl = toolbar.querySelector('.bgm-list-label');
     musicState.switchBtn = toolbar.querySelector('.bgm-list-switch');
+    musicState.defaultBtn = toolbar.querySelector('.bgm-default-btn');
     updateMusicListLabel();
+    updateDefaultBtnState();
 
     if (musicState.switchBtn) {
       if (musicState.lists.length <= 1) {
@@ -400,6 +554,18 @@
           applyMusicListByIndex(next, true);
         });
       }
+    }
+
+    if (musicState.defaultBtn) {
+      musicState.defaultBtn.addEventListener('click', function () {
+        var bgKey = getBgKey();
+        var current = getCurrentAudioItem();
+        if (!bgKey || !current || !current.url) return;
+        var file = getFileNameFromUrl(current.url);
+        if (!file) return;
+        setSavedDefault(bgKey, file);
+        updateDefaultBtnState();
+      });
     }
 
     var visible = false;

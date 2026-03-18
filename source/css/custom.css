@@ -8,6 +8,7 @@
   --reward-pop: rgba(255, 255, 255, 0.98);
   --nav-bg: rgba(255, 255, 255, 0.96);
   --tree-line: rgba(0, 0, 0, 0.18);
+  --bgm-cover: none;
 }
 
 [data-theme='dark'] {
@@ -153,6 +154,12 @@ body,
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
 }
 
+#bgm-player .bgm-toolbar-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
 #bgm-player .bgm-list-label {
   font-size: 13px;
   color: var(--font-color);
@@ -161,6 +168,7 @@ body,
   white-space: nowrap;
 }
 
+#bgm-player .bgm-default-btn,
 #bgm-player .bgm-list-switch {
   display: inline-flex;
   align-items: center;
@@ -175,6 +183,15 @@ body,
   transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 }
 
+#bgm-player .bgm-default-btn {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+#bgm-player .bgm-default-btn.is-set {
+  border-color: rgba(0, 0, 0, 0.16);
+  background: rgba(0, 0, 0, 0.08);
+}
+
 #bgm-player .bgm-list-switch:hover {
   transform: translateY(-1px);
   background: rgba(0, 0, 0, 0.08);
@@ -186,6 +203,16 @@ body,
   cursor: default;
   box-shadow: none;
   transform: none;
+}
+
+[data-theme='dark'] #bgm-player .bgm-default-btn {
+  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme='dark'] #bgm-player .bgm-default-btn.is-set {
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.14);
 }
 
 [data-theme='dark'] #bgm-player .bgm-toolbar {
@@ -205,6 +232,12 @@ body,
   background: var(--card-bg);
   border-radius: 12px;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+#bgm-player .aplayer .aplayer-pic {
+  background-image: var(--bgm-cover) !important;
+  background-size: cover !important;
+  background-position: center !important;
 }
 
 #bgm-player .aplayer .aplayer-list {
