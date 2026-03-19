@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/五题积累.md",
+                "file": "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Web.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "五题积累"
+              "title": "Web"
             }
           }
         ]
@@ -157,13 +157,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/五题积累.md",
+                "file": "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Web.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "五题积累 的大纲"
+              "title": "Web 的大纲"
             }
           },
           {
@@ -197,6 +197,10 @@
   },
   "active": "6ea2527799d5b966",
   "lastOpenFiles": [
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Web/file-20260319151723327.png",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Web/file-20260319151609084.png",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/web签到题1/1765884045559-b8bf02c9-df16-4809-8be4-a41302a06020.png",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/五题积累.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/山河.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/古剑山.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/25警铮杯.md",
@@ -214,8 +218,6 @@
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/pwn46.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Web.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/web签到题1.md",
-    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Web/file-20260319151723327.png",
-    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Web/file-20260319151710970.png",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Web",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Pwn/Pwn",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Base64编码隐藏.md",
@@ -236,8 +238,6 @@
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/上海awdp赛前培训/沙盒攻防赛/Pwn攻防实战课程讲义/ida还原proto文件.md.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/上海awdp赛前培训/沙盒攻防赛/Web攻防实战课程讲义.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/上海awdp赛前培训/沙盒攻防赛/Pwn攻防实战课程讲义.md",
-    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/上海awdp赛前培训/沙盒攻防赛.md",
-    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/上海awdp赛前培训.md",
     "public/2026/03/15/Capture_The_Flag_夺旗赛/夺旗赛Write-up/NewstarCTF_2025/随机数之旅1/index.html",
     "public/2026/03/15/Capture_The_Flag_夺旗赛/夺旗赛Write-up/NewstarCTF_2025/随机数之旅1",
     "public/2026/03/15/Capture_The_Flag_夺旗赛/夺旗赛Write-up/NewstarCTF_2025/小跳蛙/index.html",
