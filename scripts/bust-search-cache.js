@@ -31,7 +31,7 @@ hexo.on('generateBefore', () => {
   themeConfig.search.local_search.CDN = joinRoot(root, versionedPath);
 });
 
-hexo.on('generateAfter', () => {
+hexo.extend.filter.register('after_generate', () => {
   if (!cacheInfo) return;
   const publicDir = hexo.public_dir || path.join(hexo.base_dir, 'public');
   const src = path.join(publicDir, cacheInfo.searchPath);
