@@ -1,10 +1,12 @@
 ---
-title: "Pwn35"
+title: Pwn35
 date: 2026-03-15 13:28:16
 categories:
-- Capture_The_Flag_夺旗赛
-- 夺旗赛Write-up
-- CTFshow
+  - Capture_The_Flag_夺旗赛
+  - 夺旗赛Write-up
+  - CTFshow
+created: 2026-03-15T16:49
+updated: 2026-03-19T15:07
 ---
 
 ![](1762254414703-b94ad4ec-db20-4af3-9bdf-85c3eabc4436.png)
