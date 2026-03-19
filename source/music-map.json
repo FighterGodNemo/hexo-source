@@ -2,14 +2,16 @@
   "order": [
     "背景一",
     "背景二",
-    "背景三"
+    "背景三",
+    "背景四",
+    "背景五"
   ],
   "folders": {
     "背景一": [
       {
         "name": "彼女は旅に出る",
         "artist": "鎖那",
-        "url": "/music/%E8%83%8C%E6%99%AF%E4%B8%80/%E9%8E%96%E9%82%A3%20-%20%E5%BD%BC%E5%A5%B3%E3%81%AF%E6%97%85%E3%81%AB%E5%87%BA%E3%82%8B.mp3",
+        "url": "/music/%E8%83%8C%E6%99%AF%E4%B8%80/%E9%8E%96%E9%82%A3%20-%20%E5%BD%BC%E5%A5%B3%E3%81%AF%E6%97%85%E3%81%AB%E5%87%BA%E3%82%8B%2001.mp3",
         "cover": "/img/index-bg.jpg"
       }
     ],
@@ -17,21 +19,55 @@
       {
         "name": "溯 (Reverse)",
         "artist": "CORSAK胡梦周,马吟吟",
-        "url": "/music/%E8%83%8C%E6%99%AF%E4%BA%8C/CORSAK%E8%83%A1%E6%A2%A6%E5%91%A8%2C%E9%A9%AC%E5%90%9F%E5%90%9F%20-%20%E6%BA%AF%20(Reverse).mp3",
+        "url": "/music/%E8%83%8C%E6%99%AF%E4%BA%8C/CORSAK%E8%83%A1%E6%A2%A6%E5%91%A8%2C%E9%A9%AC%E5%90%9F%E5%90%9F%20-%20%E6%BA%AF%20(Reverse)%2001.mp3",
         "cover": "/img/index-bg.jpg"
       }
     ],
     "背景三": [
       {
-        "name": "破碎之光",
-        "artist": "碧蓝航线",
-        "url": "/music/%E8%83%8C%E6%99%AF%E4%B8%89/%E7%A2%A7%E8%93%9D%E8%88%AA%E7%BA%BF%20-%20%E7%A0%B4%E7%A2%8E%E4%B9%8B%E5%85%89.mp3",
+        "name": "There is a will, there is a way",
+        "artist": "出羽良彰",
+        "url": "/music/%E8%83%8C%E6%99%AF%E4%B8%89/%E5%87%BA%E7%BE%BD%E8%89%AF%E5%BD%B0%20-%20There%20is%20a%20will%2C%20there%20is%20a%20way%2001.mp3",
         "cover": "/img/index-bg.jpg"
       },
       {
+        "name": "十个字（纯音乐）",
+        "artist": "褚晨茜,你的九儿",
+        "url": "/music/%E8%83%8C%E6%99%AF%E4%B8%89/%E8%A4%9A%E6%99%A8%E8%8C%9C%2C%E4%BD%A0%E7%9A%84%E4%B9%9D%E5%84%BF%20-%20%E5%8D%81%E4%B8%AA%E5%AD%97%EF%BC%88%E7%BA%AF%E9%9F%B3%E4%B9%90%EF%BC%89%2002.mp3",
+        "cover": "/img/index-bg.jpg"
+      }
+    ],
+    "背景四": [
+      {
         "name": "虚妄与荣光",
         "artist": "碧蓝航线",
-        "url": "/music/%E8%83%8C%E6%99%AF%E4%B8%89/%E7%A2%A7%E8%93%9D%E8%88%AA%E7%BA%BF%20-%20%E8%99%9A%E5%A6%84%E4%B8%8E%E8%8D%A3%E5%85%89.mp3",
+        "url": "/music/%E8%83%8C%E6%99%AF%E5%9B%9B/%E7%A2%A7%E8%93%9D%E8%88%AA%E7%BA%BF%20-%20%E8%99%9A%E5%A6%84%E4%B8%8E%E8%8D%A3%E5%85%89%2001.mp3",
+        "cover": "/img/index-bg.jpg"
+      },
+      {
+        "name": "破碎之光",
+        "artist": "碧蓝航线",
+        "url": "/music/%E8%83%8C%E6%99%AF%E5%9B%9B/%E7%A2%A7%E8%93%9D%E8%88%AA%E7%BA%BF%20-%20%E7%A0%B4%E7%A2%8E%E4%B9%8B%E5%85%89%2002.mp3",
+        "cover": "/img/index-bg.jpg"
+      },
+      {
+        "name": "Daylight",
+        "artist": "Seredris",
+        "url": "/music/%E8%83%8C%E6%99%AF%E5%9B%9B/Seredris%20-%20Daylight%2003.mp3",
+        "cover": "/img/index-bg.jpg"
+      },
+      {
+        "name": "Samuel Kim",
+        "artist": "Call of Silence (Eye-Water)",
+        "url": "/music/%E8%83%8C%E6%99%AF%E5%9B%9B/Call%20of%20Silence%20(Eye-Water)%20-%20Samuel%20Kim%2004.mp3",
+        "cover": "/img/index-bg.jpg"
+      }
+    ],
+    "背景五": [
+      {
+        "name": "Guidance",
+        "artist": "Liam Ferrari",
+        "url": "/music/%E8%83%8C%E6%99%AF%E4%BA%94/Liam%20Ferrari%20-%20Guidance%2001.mp3",
         "cover": "/img/index-bg.jpg"
       }
     ]
@@ -40,25 +76,55 @@
     {
       "name": "彼女は旅に出る",
       "artist": "鎖那",
-      "url": "/music/%E8%83%8C%E6%99%AF%E4%B8%80/%E9%8E%96%E9%82%A3%20-%20%E5%BD%BC%E5%A5%B3%E3%81%AF%E6%97%85%E3%81%AB%E5%87%BA%E3%82%8B.mp3",
+      "url": "/music/%E8%83%8C%E6%99%AF%E4%B8%80/%E9%8E%96%E9%82%A3%20-%20%E5%BD%BC%E5%A5%B3%E3%81%AF%E6%97%85%E3%81%AB%E5%87%BA%E3%82%8B%2001.mp3",
       "cover": "/img/index-bg.jpg"
     },
     {
       "name": "溯 (Reverse)",
       "artist": "CORSAK胡梦周,马吟吟",
-      "url": "/music/%E8%83%8C%E6%99%AF%E4%BA%8C/CORSAK%E8%83%A1%E6%A2%A6%E5%91%A8%2C%E9%A9%AC%E5%90%9F%E5%90%9F%20-%20%E6%BA%AF%20(Reverse).mp3",
+      "url": "/music/%E8%83%8C%E6%99%AF%E4%BA%8C/CORSAK%E8%83%A1%E6%A2%A6%E5%91%A8%2C%E9%A9%AC%E5%90%9F%E5%90%9F%20-%20%E6%BA%AF%20(Reverse)%2001.mp3",
       "cover": "/img/index-bg.jpg"
     },
     {
-      "name": "破碎之光",
-      "artist": "碧蓝航线",
-      "url": "/music/%E8%83%8C%E6%99%AF%E4%B8%89/%E7%A2%A7%E8%93%9D%E8%88%AA%E7%BA%BF%20-%20%E7%A0%B4%E7%A2%8E%E4%B9%8B%E5%85%89.mp3",
+      "name": "There is a will, there is a way",
+      "artist": "出羽良彰",
+      "url": "/music/%E8%83%8C%E6%99%AF%E4%B8%89/%E5%87%BA%E7%BE%BD%E8%89%AF%E5%BD%B0%20-%20There%20is%20a%20will%2C%20there%20is%20a%20way%2001.mp3",
+      "cover": "/img/index-bg.jpg"
+    },
+    {
+      "name": "十个字（纯音乐）",
+      "artist": "褚晨茜,你的九儿",
+      "url": "/music/%E8%83%8C%E6%99%AF%E4%B8%89/%E8%A4%9A%E6%99%A8%E8%8C%9C%2C%E4%BD%A0%E7%9A%84%E4%B9%9D%E5%84%BF%20-%20%E5%8D%81%E4%B8%AA%E5%AD%97%EF%BC%88%E7%BA%AF%E9%9F%B3%E4%B9%90%EF%BC%89%2002.mp3",
       "cover": "/img/index-bg.jpg"
     },
     {
       "name": "虚妄与荣光",
       "artist": "碧蓝航线",
-      "url": "/music/%E8%83%8C%E6%99%AF%E4%B8%89/%E7%A2%A7%E8%93%9D%E8%88%AA%E7%BA%BF%20-%20%E8%99%9A%E5%A6%84%E4%B8%8E%E8%8D%A3%E5%85%89.mp3",
+      "url": "/music/%E8%83%8C%E6%99%AF%E5%9B%9B/%E7%A2%A7%E8%93%9D%E8%88%AA%E7%BA%BF%20-%20%E8%99%9A%E5%A6%84%E4%B8%8E%E8%8D%A3%E5%85%89%2001.mp3",
+      "cover": "/img/index-bg.jpg"
+    },
+    {
+      "name": "破碎之光",
+      "artist": "碧蓝航线",
+      "url": "/music/%E8%83%8C%E6%99%AF%E5%9B%9B/%E7%A2%A7%E8%93%9D%E8%88%AA%E7%BA%BF%20-%20%E7%A0%B4%E7%A2%8E%E4%B9%8B%E5%85%89%2002.mp3",
+      "cover": "/img/index-bg.jpg"
+    },
+    {
+      "name": "Daylight",
+      "artist": "Seredris",
+      "url": "/music/%E8%83%8C%E6%99%AF%E5%9B%9B/Seredris%20-%20Daylight%2003.mp3",
+      "cover": "/img/index-bg.jpg"
+    },
+    {
+      "name": "Samuel Kim",
+      "artist": "Call of Silence (Eye-Water)",
+      "url": "/music/%E8%83%8C%E6%99%AF%E5%9B%9B/Call%20of%20Silence%20(Eye-Water)%20-%20Samuel%20Kim%2004.mp3",
+      "cover": "/img/index-bg.jpg"
+    },
+    {
+      "name": "Guidance",
+      "artist": "Liam Ferrari",
+      "url": "/music/%E8%83%8C%E6%99%AF%E4%BA%94/Liam%20Ferrari%20-%20Guidance%2001.mp3",
       "cover": "/img/index-bg.jpg"
     }
   ]

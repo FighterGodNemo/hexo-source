@@ -5,6 +5,35 @@ function isAudio(file) {
   return /\.(mp3|m4a|aac|ogg|wav|flac)$/i.test(file);
 }
 
+function filterPreferred(files) {
+  const lowerSet = new Set(files.map((file) => file.toLowerCase()));
+  return files.filter((file) => {
+    if (/\.flac$/i.test(file)) {
+      const mp3 = file.replace(/\.flac$/i, '.mp3');
+      if (lowerSet.has(mp3.toLowerCase())) return false;
+    }
+    return true;
+  });
+}
+
+const CN_NUM_RE = '[\\u4e00\\u4e8c\\u4e09\\u56db\\u4e94\\u516d\\u4e03\\u516b\\u4e5d\\u5341]+';
+const ORDER_TOKEN_RE = '(?:\\d{1,3}|' + CN_NUM_RE + ')';
+const LEAD_SEP_RE = '(?:[\\s._-]+)';
+const LEAD_RE = new RegExp('^\\s*' + ORDER_TOKEN_RE + LEAD_SEP_RE, 'u');
+const LEAD_BRACKET_RE = new RegExp('^\\s*[\\(\\uFF08\\[]\\s*' + ORDER_TOKEN_RE + '\\s*[\\)\\uFF09\\]]\\s*', 'u');
+const TRAIL_RE = new RegExp('(?:[\\s._-]+)' + ORDER_TOKEN_RE + '\\s*$', 'u');
+const TRAIL_BRACKET_RE = new RegExp('\\s*[\\(\\uFF08\\[]\\s*' + ORDER_TOKEN_RE + '\\s*[\\)\\uFF09\\]]\\s*$', 'u');
+
+function stripOrderToken(name) {
+  let out = String(name || '').trim();
+  if (!out) return out;
+  out = out.replace(LEAD_BRACKET_RE, '');
+  out = out.replace(LEAD_RE, '');
+  out = out.replace(TRAIL_BRACKET_RE, '');
+  out = out.replace(TRAIL_RE, '');
+  return out.trim();
+}
+
 function cnDigitValue(ch) {
   const map = {
     '\u4e00': 1,
@@ -52,15 +81,19 @@ function compareByOrder(a, b) {
 
 function toTrack(filePath, publicPath) {
   const baseName = path.parse(filePath).name;
+  const cleanedBase = stripOrderToken(baseName) || baseName;
   let artist = 'FighterGodNemo';
-  let name = baseName;
-  if (baseName.includes(' - ')) {
-    const parts = baseName.split(' - ');
+  let name = cleanedBase;
+  const splitBase = cleanedBase.includes(' - ') ? cleanedBase : baseName;
+  if (splitBase.includes(' - ')) {
+    const parts = splitBase.split(' - ');
     if (parts.length >= 2) {
       artist = parts[0].trim() || artist;
       name = parts.slice(1).join(' - ').trim() || name;
     }
   }
+  artist = stripOrderToken(artist) || artist;
+  name = stripOrderToken(name) || name;
   return {
     name,
     artist,
@@ -71,9 +104,9 @@ function toTrack(filePath, publicPath) {
 
 function readAudioFiles(dir) {
   if (!fs.existsSync(dir)) return [];
-  return fs
-    .readdirSync(dir)
-    .filter((file) => isAudio(file))
+  const files = fs.readdirSync(dir).filter((file) => isAudio(file));
+  return filterPreferred(files)
+    .sort(compareByOrder)
     .map((file) => ({
       file,
       fullPath: path.join(dir, file)
@@ -88,7 +121,11 @@ hexo.extend.filter.register('before_generate', () => {
   }
 
   const entries = fs.readdirSync(musicDir, { withFileTypes: true });
-  const rootFiles = entries.filter((e) => e.isFile()).map((e) => e.name);
+  const rootFiles = filterPreferred(entries
+    .filter((e) => e.isFile())
+    .map((e) => e.name)
+    .filter(isAudio))
+    .sort(compareByOrder);
   const folders = entries.filter((e) => e.isDirectory()).map((e) => e.name).sort(compareByOrder);
 
   const map = {
@@ -97,7 +134,7 @@ hexo.extend.filter.register('before_generate', () => {
     all: []
   };
 
-  const rootList = rootFiles.filter(isAudio).map((file) => {
+  const rootList = rootFiles.map((file) => {
     const url = `/music/${encodeURIComponent(file)}`;
     return toTrack(file, url);
   });
