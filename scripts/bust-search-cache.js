@@ -1,10 +1,9 @@
 'use strict';
 
 // Cache-bust local search index without breaking JSON detection.
-const fs = require('fs');
 const path = require('path');
 
-let cacheInfo = null;
+let originalSearchPath = null;
 
 function joinRoot(root, rel) {
   if (root.endsWith('/') || rel.startsWith('/')) return `${root}${rel}`;
@@ -16,32 +15,27 @@ hexo.on('generateBefore', () => {
   const searchConfig = hexo.config.search || {};
 
   const root = hexo.config.root || '/';
-  const rawSearchPath = searchConfig.path || 'search.json';
-  const searchPath = rawSearchPath.replace(/^\/+/, '');
+  originalSearchPath = searchConfig.path || 'search.json';
+
+  const searchPath = originalSearchPath.replace(/^\/+/, '');
   const ext = path.extname(searchPath) || '';
   const baseName = ext ? searchPath.slice(0, -ext.length) : searchPath;
 
   const version = new Date().toISOString().replace(/[-:.TZ]/g, '');
   const versionedPath = `${baseName}.${version}${ext}`;
 
-  cacheInfo = { searchPath, versionedPath };
+  // Update generator output path so the versioned file is produced directly.
+  hexo.config.search = hexo.config.search || {};
+  hexo.config.search.path = versionedPath;
 
+  // Ensure theme uses the same versioned path.
   themeConfig.search = themeConfig.search || {};
   themeConfig.search.local_search = themeConfig.search.local_search || {};
   themeConfig.search.local_search.CDN = joinRoot(root, versionedPath);
 });
 
 hexo.extend.filter.register('after_generate', () => {
-  if (!cacheInfo) return;
-  const publicDir = hexo.public_dir || path.join(hexo.base_dir, 'public');
-  const src = path.join(publicDir, cacheInfo.searchPath);
-  const dest = path.join(publicDir, cacheInfo.versionedPath);
-
-  try {
-    if (!fs.existsSync(src)) return;
-    fs.mkdirSync(path.dirname(dest), { recursive: true });
-    fs.copyFileSync(src, dest);
-  } catch (err) {
-    console.log('[bust-search-cache] copy failed:', err.message);
-  }
+  if (!originalSearchPath) return;
+  hexo.config.search = hexo.config.search || {};
+  hexo.config.search.path = originalSearchPath;
 });
