@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/Forensic_电子取证/Forensic解题妙具.md",
+                "file": "source/_posts/Forensic_电子取证/取证write-up/SPC/25黑龙江刑侦个人.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Forensic解题妙具"
+              "title": "25黑龙江刑侦个人"
             }
           }
         ]
@@ -40,7 +40,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "25黑龙江刑侦个人",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -74,8 +74,7 @@
               "title": "文件列表"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
@@ -196,6 +195,7 @@
   },
   "active": "6ea2527799d5b966",
   "lastOpenFiles": [
+    "source/_posts/Forensic_电子取证/Forensic解题妙具.md",
     "source/_posts/Capture_The_Flag_夺旗赛.md",
     "source/_posts/Hello World！我的第一篇hexo博客.md",
     "source/_posts/Forensic_电子取证/Forensic解题妙具/foremost使用指南.md",
@@ -241,7 +241,6 @@
     "source/_posts/博览知识/时间戳信息.md",
     "source/_posts/未命名.md",
     "source/_posts/Forensic_电子取证/取证write-up/美亚杯/25美亚杯团体赛.md",
-    "source/_posts/Forensic_电子取证/取证write-up/美亚杯/22美亚杯团队赛.md",
     "未命名.canvas",
     "未命名 1.canvas"
   ]
