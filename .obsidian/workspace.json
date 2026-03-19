@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/Forensic_电子取证/Forensic解题妙具/foremost使用指南.md",
+                "file": "source/_posts/Forensic_电子取证/Forensic解题妙具.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "foremost使用指南"
+              "title": "Forensic解题妙具"
             }
           }
         ]
@@ -194,8 +194,11 @@
       "bases:新建数据库": false
     }
   },
-  "active": "6ee123e5035b92d7",
+  "active": "6ea2527799d5b966",
   "lastOpenFiles": [
+    "source/_posts/Capture_The_Flag_夺旗赛.md",
+    "source/_posts/Hello World！我的第一篇hexo博客.md",
+    "source/_posts/Forensic_电子取证/Forensic解题妙具/foremost使用指南.md",
     "scripts/bust-search-cache.js",
     "source/_posts/Forensic_电子取证/Forensic知识/如何用kali命令提取文件隐含文件.md",
     "source/_posts/博览知识/DoS拒绝服务攻击/1760612661032-f9c47957-e580-47a3-96f1-d03d4ce27f98.jpeg",
@@ -231,7 +234,6 @@
     "public/2026/03/15/Capture_The_Flag_夺旗赛/夺旗赛Write-up/NewstarCTF_2025/初识RSA/index.html",
     "public/2026/03/15/Capture_The_Flag_夺旗赛/夺旗赛Write-up/NewstarCTF_2025/初识RSA",
     "public/2026/03/15/Capture_The_Flag_夺旗赛/夺旗赛Write-up/NewstarCTF_2025/GNU_Debugger/index.html",
-    "public/2026/03/15/Capture_The_Flag_夺旗赛/夺旗赛Write-up/NewstarCTF_2025/GNU_Debugger",
     "source/_posts/Capture_The_Flag_夺旗赛/CTF解题妙具/Ciphey.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/25警铮杯.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/《CTF安全竞赛入门》.md",
@@ -240,8 +242,6 @@
     "source/_posts/未命名.md",
     "source/_posts/Forensic_电子取证/取证write-up/美亚杯/25美亚杯团体赛.md",
     "source/_posts/Forensic_电子取证/取证write-up/美亚杯/22美亚杯团队赛.md",
-    "source/_posts/Forensic_电子取证/取证write-up/平航杯/25平航杯改编练习题.md",
-    "source/_posts/Forensic_电子取证/取证write-up/平航杯/2025平航杯.md",
     "未命名.canvas",
     "未命名 1.canvas"
   ]
