@@ -195,8 +195,9 @@
       "bases:新建数据库": false
     }
   },
-  "active": "6ee123e5035b92d7",
+  "active": "6ea2527799d5b966",
   "lastOpenFiles": [
+    "source/_posts/Forensic_电子取证/取证write-up/美亚杯/25美亚杯资格赛/file-20260319162652779.png",
     "source/_posts/Capture_The_Flag_夺旗赛/CTF解题妙具/MySQL.md",
     "source/_posts/Capture_The_Flag_夺旗赛/CTF解题妙具/GIF时间帧.md",
     "source/_posts/Capture_The_Flag_夺旗赛/CTF解题妙具/bkcrack.md",
@@ -242,7 +243,6 @@
     "source/_posts/Hello World！我的第一篇hexo博客.md",
     "source/_posts/Forensic_电子取证/Forensic知识/如何用kali命令提取文件隐含文件.md",
     "source/_posts/博览知识/僵尸网络.md",
-    "source/_posts/博览知识/特洛伊木马.md",
     "未命名.canvas",
     "未命名 1.canvas"
   ]
