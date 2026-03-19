@@ -193,8 +193,9 @@
       "bases:新建数据库": false
     }
   },
-  "active": "6ea2527799d5b966",
+  "active": "dbd69793ef8d8ee2",
   "lastOpenFiles": [
+    "scripts/bust-search-cache.js",
     "source/_posts/Forensic_电子取证/Forensic知识/如何用kali命令提取文件隐含文件.md",
     "source/_posts/博览知识/DoS拒绝服务攻击/1760612661032-f9c47957-e580-47a3-96f1-d03d4ce27f98.jpeg",
     "source/_posts/博览知识/僵尸网络.md",
@@ -240,7 +241,6 @@
     "source/_posts/Forensic_电子取证/取证write-up/美亚杯/22美亚杯团队赛.md",
     "source/_posts/Forensic_电子取证/取证write-up/平航杯/25平航杯改编练习题.md",
     "source/_posts/Forensic_电子取证/取证write-up/平航杯/2025平航杯.md",
-    "source/_posts/Forensic_电子取证/Forensic知识/计算机网卡.md",
     "未命名.canvas",
     "未命名 1.canvas"
   ]
