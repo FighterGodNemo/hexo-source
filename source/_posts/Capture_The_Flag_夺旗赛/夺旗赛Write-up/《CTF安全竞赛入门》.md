@@ -64,7 +64,7 @@ with open(r"C:\Users\glj07\Desktop\题目2-2-Where is logo\robots.txt", 'r') as 
     print(flag)
 ```
 
-<font style="color:#5C8D07;">venusctf{haha_-_-}</font>
+venusctf{haha_-_-}
 
 tips：
 

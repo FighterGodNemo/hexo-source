@@ -6,29 +6,29 @@ categories:
 - Forensic解题妙具
 ---
 
-`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">foremost</font>`<font style="color:rgb(15, 17, 21);"> 是一个基于文件头、尾和内部数据结构的数据恢复工具，常用于从磁盘镜像或文件中提取隐藏/嵌入的文件。</font>
+`foremost` 是一个基于文件头、尾和内部数据结构的数据恢复工具，常用于从磁盘镜像或文件中提取隐藏/嵌入的文件。
 
-## <font style="color:rgb(15, 17, 21);">基本语法</font>
-<font style="color:rgb(15, 17, 21);">bash</font>
+## 基本语法
+bash
 
-<font style="color:rgb(15, 17, 21);">foremost -i 输入文件 -o 输出目录 [选项]</font>
+foremost -i 输入文件 -o 输出目录 [选项]
 
-## <font style="color:rgb(15, 17, 21);">常用参数</font>
-| <font style="color:rgb(15, 17, 21);">参数</font> | <font style="color:rgb(15, 17, 21);">说明</font> |
+## 常用参数
+| 参数 | 说明 |
 | --- | --- |
-| `<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">-i 文件</font>` | <font style="color:rgb(15, 17, 21);">指定输入文件</font> |
-| `<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">-o 目录</font>` | <font style="color:rgb(15, 17, 21);">指定输出目录</font> |
-| `<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">-t 类型</font>` | <font style="color:rgb(15, 17, 21);">指定要提取的文件类型</font> |
-| `<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">-c 配置文件</font>` | <font style="color:rgb(15, 17, 21);">使用自定义配置文件</font> |
-| `<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">-v</font>` | <font style="color:rgb(15, 17, 21);">详细模式</font> |
-| `<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">-q</font>` | <font style="color:rgb(15, 17, 21);">快速模式</font> |
-| `<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">-Q</font>` | <font style="color:rgb(15, 17, 21);">安静模式</font> |
-| `<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">-a</font>` | <font style="color:rgb(15, 17, 21);">写入所有文件头</font> |
+| `-i 文件` | 指定输入文件 |
+| `-o 目录` | 指定输出目录 |
+| `-t 类型` | 指定要提取的文件类型 |
+| `-c 配置文件` | 使用自定义配置文件 |
+| `-v` | 详细模式 |
+| `-q` | 快速模式 |
+| `-Q` | 安静模式 |
+| `-a` | 写入所有文件头 |
 
 
-## <font style="color:rgb(15, 17, 21);">常用示例</font>
-### <font style="color:rgb(15, 17, 21);">1. 基本使用</font>
-<font style="color:rgb(15, 17, 21);">bash</font>
+## 常用示例
+### 1. 基本使用
+bash
 
 ```plain
 # 从磁盘镜像中提取所有支持的文件类型
@@ -38,8 +38,8 @@ foremost -i disk.img -o output_dir
 foremost -i suspicious.jpg -o extracted_files
 ```
 
-### <font style="color:rgb(15, 17, 21);">2. 指定特定文件类型</font>
-<font style="color:rgb(15, 17, 21);">bash</font>
+### 2. 指定特定文件类型
+bash
 
 ```plain
 # 只提取JPEG和PDF文件
@@ -49,24 +49,24 @@ foremost -t jpg,pdf -i 输入文件 -o 输出目录
 foremost -t jpg,gif,png -i 文件 -o 输出
 ```
 
-### <font style="color:rgb(15, 17, 21);">3. 查看支持的文件类型</font>
-<font style="color:rgb(15, 17, 21);">bash</font>
+### 3. 查看支持的文件类型
+bash
 
 ```plain
 # 查看foremost支持提取的所有文件类型
 foremost -h
 ```
 
-<font style="color:rgb(15, 17, 21);">支持的类型包括：jpg, gif, png, bmp, avi, exe, mpg, wav, riff, wmv, mov, pdf, ole, doc, zip, rar, html, cpp 等。</font>
+支持的类型包括：jpg, gif, png, bmp, avi, exe, mpg, wav, riff, wmv, mov, pdf, ole, doc, zip, rar, html, cpp 等。
 
-### <font style="color:rgb(15, 17, 21);">4. 使用自定义配置文件</font>
-<font style="color:rgb(15, 17, 21);">bash</font>
+### 4. 使用自定义配置文件
+bash
 
-<font style="color:rgb(15, 17, 21);">foremost -c /etc/foremost.conf -i 输入文件 -o 输出目录</font>
+foremost -c /etc/foremost.conf -i 输入文件 -o 输出目录
 
-## <font style="color:rgb(15, 17, 21);">实际案例演示</font>
-### <font style="color:rgb(15, 17, 21);">案例1：从图片中提取隐藏文件</font>
-<font style="color:rgb(15, 17, 21);">bash</font>
+## 实际案例演示
+### 案例1：从图片中提取隐藏文件
+bash
 
 ```plain
 # 分析可疑图片文件
@@ -78,16 +78,16 @@ ls -la extracted_content/
 cat extracted_contents/audit.txt  # 查看处理日志
 ```
 
-### <font style="color:rgb(15, 17, 21);">案例2：从内存转储中提取文件</font>
-<font style="color:rgb(15, 17, 21);">bash</font>
+### 案例2：从内存转储中提取文件
+bash
 
 ```plain
 # 从内存转储中提取可执行文件和文档
 foremost -t exe,doc,pdf -i memory.dmp -o memory_extracted
 ```
 
-### <font style="color:rgb(15, 17, 21);">案例3：完整分析磁盘镜像</font>
-<font style="color:rgb(15, 17, 21);">bash</font>
+### 案例3：完整分析磁盘镜像
+bash
 
 ```plain
 # 提取磁盘镜像中的所有可能文件
@@ -97,10 +97,10 @@ foremost -i suspect_disk.img -o forensic_output
 foremost -t doc,pdf,jpg,png -i suspect_disk.img -o docs_and_images
 ```
 
-## <font style="color:rgb(15, 17, 21);">输出结构</font>
-<font style="color:rgb(15, 17, 21);">运行后，输出目录通常包含：</font>
+## 输出结构
+运行后，输出目录通常包含：
 
-<font style="color:rgb(15, 17, 21);">text</font>
+text
 
 ```plain
 输出目录/
@@ -111,11 +111,11 @@ foremost -t doc,pdf,jpg,png -i suspect_disk.img -o docs_and_images
 └── ...            # 其他文件类型目录
 ```
 
-## <font style="color:rgb(15, 17, 21);">高级用法</font>
-### <font style="color:rgb(15, 17, 21);">创建自定义文件类型</font>
-<font style="color:rgb(15, 17, 21);">编辑</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">/etc/foremost.conf</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">或创建自定义配置文件：</font>
+## 高级用法
+### 创建自定义文件类型
+编辑 `/etc/foremost.conf` 或创建自定义配置文件：
 
-<font style="color:rgb(15, 17, 21);">bash</font>
+bash
 
 ```plain
 # 自定义文件类型配置
@@ -123,22 +123,22 @@ myfile  y   200000  \x47\x49\x46\x38  \x00\x3b
         扩展名  最大大小   文件头签名       文件尾签名
 ```
 
-### <font style="color:rgb(15, 17, 21);">递归提取</font>
-<font style="color:rgb(15, 17, 21);">bash</font>
+### 递归提取
+bash
 
 ```plain
 # 如果需要递归处理，可以结合find使用
 find . -type f -exec foremost -i {} -o extracted_{} \;
 ```
 
-## <font style="color:rgb(15, 17, 21);">注意事项</font>
-1. **<font style="color:rgb(15, 17, 21);">文件权限</font>**<font style="color:rgb(15, 17, 21);">：需要读写权限来创建输出目录</font>
-2. **<font style="color:rgb(15, 17, 21);">磁盘空间</font>**<font style="color:rgb(15, 17, 21);">：确保有足够的磁盘空间存放提取的文件</font>
-3. **<font style="color:rgb(15, 17, 21);">时间消耗</font>**<font style="color:rgb(15, 17, 21);">：大文件处理可能需要较长时间</font>
-4. **<font style="color:rgb(15, 17, 21);">误报</font>**<font style="color:rgb(15, 17, 21);">：可能会提取出一些损坏或不完整的文件</font>
+## 注意事项
+1. **文件权限**：需要读写权限来创建输出目录
+2. **磁盘空间**：确保有足够的磁盘空间存放提取的文件
+3. **时间消耗**：大文件处理可能需要较长时间
+4. **误报**：可能会提取出一些损坏或不完整的文件
 
-## <font style="color:rgb(15, 17, 21);">与其他工具配合</font>
-<font style="color:rgb(15, 17, 21);">bash</font>
+## 与其他工具配合
+bash
 
 ```plain
 # 先用binwalk分析，再用foremost提取
@@ -146,5 +146,5 @@ binwalk -e 可疑文件
 foremost -i 可疑文件 -o foremost_output
 ```
 
-`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">foremost</font>`<font style="color:rgb(15, 17, 21);"> 是数字取证和CTF比赛中非常实用的工具，特别擅长从各种容器文件中恢复已知格式的文件。</font>
+`foremost` 是数字取证和CTF比赛中非常实用的工具，特别擅长从各种容器文件中恢复已知格式的文件。
 

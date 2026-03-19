@@ -17,30 +17,30 @@ categories:
 
 解答：
 
-+ <font style="color:rgb(15, 17, 21);">访问方式：</font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">http://47.94.87.199:33001/</font>`
++ 访问方式：`http://47.94.87.199:33001/`
 
-![](1759220834289-c72b440e-11bb-461a-8216-faef3dd20a63.png)![](1759220921957-ad0d353a-8b54-4e4c-bae5-3c89a0716018.png)<font style="color:rgb(15, 17, 21);">html</font>
+![](1759220834289-c72b440e-11bb-461a-8216-faef3dd20a63.png)![](1759220921957-ad0d353a-8b54-4e4c-bae5-3c89a0716018.png)html
 
 ```plain
 <!-- 你还是找到了......这片黑暗的秘密 -->
 <!-- s3kret.php -->
 ```
 
-<font style="color:rgb(15, 17, 21);">这说明存在一个隐藏文件：</font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">s3kret.php</font>`<font style="color:rgb(15, 17, 21);">。</font>
+这说明存在一个隐藏文件：`s3kret.php`。
 
 访问：http://47.94.87.199:33001/s3kret.php
 
 ![](1759221397995-79068d44-7fd5-4195-82d1-e848569b381b.png)
 
-### <font style="color:rgb(0, 0, 0);">分析代码逻辑</font>
-<font style="color:rgb(0, 0, 0);">代码首先包含了</font><font style="color:rgb(0, 0, 0);"> </font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">flag.php</font>`<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">文件（里面应该存放着我们需要的</font><font style="color:rgb(0, 0, 0);"> </font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">flag</font>`<font style="color:rgb(0, 0, 0);">），然后判断是否通过</font><font style="color:rgb(0, 0, 0);"> </font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">POST</font>`<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">方法提交了名为</font><font style="color:rgb(0, 0, 0);"> </font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">newstar2025</font>`<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">的参数。如果提交了，就将该参数的值赋给</font><font style="color:rgb(0, 0, 0);"> </font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">$answer</font>`<font style="color:rgb(0, 0, 0);">，接着进行关键判断：</font>
+### 分析代码逻辑
+代码首先包含了 `flag.php` 文件（里面应该存放着我们需要的 `flag`），然后判断是否通过 `POST` 方法提交了名为 `newstar2025` 的参数。如果提交了，就将该参数的值赋给 `$answer`，接着进行关键判断：
 
-+ `<font style="color:rgb(0, 0, 0);">intval($answer) != 47</font>`<font style="color:rgb(0, 0, 0);">：要求</font><font style="color:rgb(0, 0, 0);"> </font>`<font style="color:rgb(0, 0, 0);">$answer</font>`<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">转换为整数后不等于 47。</font>
-+ `<font style="color:rgb(0, 0, 0);">intval($answer, 0) == 47</font>`<font style="color:rgb(0, 0, 0);">：</font>`<font style="color:rgb(0, 0, 0);">intval</font>`<font style="color:rgb(0, 0, 0);"> 函数第二个参数为 </font>`<font style="color:rgb(0, 0, 0);">0</font>`<font style="color:rgb(0, 0, 0);"> 时，会根据字符串的格式自动判断进制。这里要求 </font>`<font style="color:rgb(0, 0, 0);">$answer</font>`<font style="color:rgb(0, 0, 0);"> 转换为整数后等于 47。</font>
++ `intval($answer) != 47`：要求 `$answer` 转换为整数后不等于 47。
++ `intval($answer, 0) == 47`：`intval` 函数第二个参数为 `0` 时，会根据字符串的格式自动判断进制。这里要求 `$answer` 转换为整数后等于 47。
 
-<font style="color:rgb(0, 0, 0);">执行：</font>
+执行：
 
-+ <font style="color:rgb(0, 0, 0);">curl -X POST </font>[http://47.94.87.199:33001/s3kret.php](http://47.94.87.199:33001/s3kret.php)<font style="color:rgb(0, 0, 0);"> -d "newstar2025=057"</font>
++ curl -X POST [http://47.94.87.199:33001/s3kret.php](http://47.94.87.199:33001/s3kret.php) -d "newstar2025=057"
 
 得到flag{a64a70f1-1435-4e2d-832b-c1d7e678d4e7}
 
@@ -48,55 +48,55 @@ categories:
 
 接下来解释绕过原理：
 
-## <font style="color:rgb(15, 17, 21);">1. PHP</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">intval()</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">函数的行为</font>
-`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">intval($var, $base)</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">的第二个参数是</font>**<font style="color:rgb(15, 17, 21);">进制基数</font>**<font style="color:rgb(15, 17, 21);">：</font>
+## 1. PHP `intval()` 函数的行为
+`intval($var, $base)` 的第二个参数是**进制基数**：
 
-+ `<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">intval($answer)</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">默认</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">$base = 10</font>`<font style="color:rgb(15, 17, 21);">（十进制）</font>
-+ `<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">intval($answer, 0)</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">中</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">$base = 0</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">表示</font>**<font style="color:rgb(15, 17, 21);">自动检测进制</font>**
-
----
-
-## <font style="color:rgb(15, 17, 21);">2. 自动检测进制规则（base=0）</font>
-+ <font style="color:rgb(15, 17, 21);">如果字符串以</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">0x</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">或</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">0X</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">开头 → 当作</font>**<font style="color:rgb(15, 17, 21);">十六进制</font>**
-+ <font style="color:rgb(15, 17, 21);">如果字符串以</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">0</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">开头 → 当作</font>**<font style="color:rgb(15, 17, 21);">八进制</font>**
-+ <font style="color:rgb(15, 17, 21);">否则 → 当作</font>**<font style="color:rgb(15, 17, 21);">十进制</font>**
++ `intval($answer)` 默认 `$base = 10`（十进制）
++ `intval($answer, 0)` 中 `$base = 0` 表示**自动检测进制**
 
 ---
 
-## <font style="color:rgb(15, 17, 21);">3. 我们的绕过 payload：</font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">057</font>`
-### <font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">intval("057", 0)</font>`<font style="color:rgb(15, 17, 21);">（自动检测进制）</font>
-+ <font style="color:rgb(15, 17, 21);">字符串以</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">0</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">开头 → 按</font>**<font style="color:rgb(15, 17, 21);">八进制</font>**<font style="color:rgb(15, 17, 21);">解析</font>
-+ <font style="color:rgb(15, 17, 21);">八进制</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">057</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">=</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">5*8 + 7 = 40 + 7 = 47</font>`
-+ **<font style="color:rgb(15, 17, 21);">所以</font>****<font style="color:rgb(15, 17, 21);"> </font>**`**<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">intval("057", 0) = 47</font>**`
-
-`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">47 == 47</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">✅</font><font style="color:rgb(15, 17, 21);"> 成立</font>
+## 2. 自动检测进制规则（base=0）
++ 如果字符串以 `0x` 或 `0X` 开头 → 当作**十六进制**
++ 如果字符串以 `0` 开头 → 当作**八进制**
++ 否则 → 当作**十进制**
 
 ---
 
-## <font style="color:rgb(15, 17, 21);">4. 条件满足</font>
-<font style="color:rgb(15, 17, 21);">php</font>
+## 3. 我们的绕过 payload：`057`
+###  `intval("057", 0)`（自动检测进制）
++ 字符串以 `0` 开头 → 按**八进制**解析
++ 八进制 `057` = `5*8 + 7 = 40 + 7 = 47`
++ **所以**** **`**intval("057", 0) = 47**`
 
-<font style="color:rgb(15, 17, 21);">if(intval($answer) != 47 && intval($answer, 0) == 47)</font>
-
-<font style="color:rgb(15, 17, 21);">代入</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">$answer = "057"</font>`<font style="color:rgb(15, 17, 21);">：</font>
-
-+ `<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">intval("057") = 57</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">→</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">57 != 47</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">✅</font><font style="color:rgb(15, 17, 21);"> true</font>
-+ `<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">intval("057", 0) = 47</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">→</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">47 == 47</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">✅</font><font style="color:rgb(15, 17, 21);"> true</font>
-+ `<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">true && true</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">→ 条件成立，输出 flag</font>
+`47 == 47` ✅ 成立
 
 ---
 
-## <font style="color:rgb(15, 17, 21);">5. 另一个 payload：</font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">0x2f</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">的原理</font>
-+ `<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">intval("0x2f")</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">十进制解析，遇到</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">0</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">后遇到</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">x</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">不是数字，停止 → 返回</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">0</font>`
-+ `<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">0 != 47</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">✅</font><font style="color:rgb(15, 17, 21);"> true</font>
-+ `<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">intval("0x2f", 0)</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">十六进制解析 →</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">0x2f = 47</font>`
-+ `<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">47 == 47</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">✅</font><font style="color:rgb(15, 17, 21);"> true</font>
+## 4. 条件满足
+php
+
+if(intval($answer) != 47 && intval($answer, 0) == 47)
+
+代入 `$answer = "057"`：
+
++ `intval("057") = 57` → `57 != 47` ✅ true
++ `intval("057", 0) = 47` → `47 == 47` ✅ true
++ `true && true` → 条件成立，输出 flag
 
 ---
 
-## <font style="color:rgb(15, 17, 21);">总结</font>
-<font style="color:rgb(15, 17, 21);">这个漏洞利用的是</font>**<u><font style="color:#01B2BC;"> PHP 在不同进制下对同一字符串解析结果不同</font></u>**<font style="color:rgb(15, 17, 21);"> 的特性，通过八进制/十六进制与十进制的转换差异来满足矛盾条件。</font>
+## 5. 另一个 payload：`0x2f` 的原理
++ `intval("0x2f")` 十进制解析，遇到 `0` 后遇到 `x` 不是数字，停止 → 返回 `0`
++ `0 != 47` ✅ true
++ `intval("0x2f", 0)` 十六进制解析 → `0x2f = 47`
++ `47 == 47` ✅ true
 
-<font style="color:rgb(15, 17, 21);">这就是 CTF 中常见的 </font>**<u><font style="color:#DF2A3F;">PHP 类型混淆/进制混淆 漏洞</font></u>**<font style="color:rgb(15, 17, 21);">。</font>
+---
+
+## 总结
+这个漏洞利用的是**<u> PHP 在不同进制下对同一字符串解析结果不同</u>** 的特性，通过八进制/十六进制与十进制的转换差异来满足矛盾条件。
+
+这就是 CTF 中常见的 **<u>PHP 类型混淆/进制混淆 漏洞</u>**。
 
 

@@ -49,7 +49,7 @@ c = 1744596247481362955969358774906111278264812073802335459168153217312391852320
 """
 ```
 
-解密：<font style="color:rgb(15, 17, 21);">实际上，因为 </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">p</font>`<font style="color:rgb(15, 17, 21);"> 和 </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">q</font>`<font style="color:rgb(15, 17, 21);"> 很接近，直接 Fermat 分解可能更快：</font>
+解密：实际上，因为 `p` 和 `q` 很接近，直接 Fermat 分解可能更快：
 
 ```python
 from math import isqrt

@@ -46,7 +46,7 @@ gift2 = 813647954244754782328604051906638615010361618102919515524481745626651973
 
 解密：
 
-<font style="color:rgb(0, 0, 0);">通过中国剩余定理（CRT），从给定的素数 p、q 以及模平方根值还原出原始 flag：</font>
+通过中国剩余定理（CRT），从给定的素数 p、q 以及模平方根值还原出原始 flag：
 
 ```python
 from Crypto.Util.number import long_to_bytes

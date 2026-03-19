@@ -19,11 +19,11 @@ if ($id=="wllmNB"&&$json['x']=="wllm")
   ?>
 ```
 
-<font style="color:#000000;background-color:rgba(255, 255, 255, 0);">要让程序输出 </font>`<font style="color:#000000;background-color:rgba(255, 255, 255, 0);">$flag</font>`<font style="color:#000000;background-color:rgba(255, 255, 255, 0);">，必须同时满足：</font>
+要让程序输出 `$flag`，必须同时满足：
 
-1. **<font style="color:#000000;background-color:rgba(255, 255, 255, 0);">POST 参数</font>****<font style="color:#000000;background-color:rgba(255, 255, 255, 0);"> </font>**`**<font style="color:#000000;background-color:rgba(255, 255, 255, 0);">id</font>**`**<font style="color:#000000;background-color:rgba(255, 255, 255, 0);"> </font>****<font style="color:#000000;background-color:rgba(255, 255, 255, 0);">的值为</font>****<font style="color:#000000;background-color:rgba(255, 255, 255, 0);"> </font>**`**<font style="color:#000000;background-color:rgba(255, 255, 255, 0);">"wllmNB"</font>**`
-2. **<font style="color:#000000;background-color:rgba(255, 255, 255, 0);">GET 参数 </font>**`**<font style="color:#000000;background-color:rgba(255, 255, 255, 0);">json</font>**`**<font style="color:#000000;background-color:rgba(255, 255, 255, 0);"> 是一个合法的 JSON 字符串，且解析后是一个数组，其中键 </font>**`**<font style="color:#000000;background-color:rgba(255, 255, 255, 0);">'x'</font>**`**<font style="color:#000000;background-color:rgba(255, 255, 255, 0);"> 的值为 </font>**`**<font style="color:#000000;background-color:rgba(255, 255, 255, 0);">"wllm"</font>**`
-3. **<font style="color:#000000;background-color:rgba(255, 255, 255, 0);">使用 URL 编码，避免任何歧义</font>**
+1. **POST 参数**** **`**id**`** ****的值为**** **`**"wllmNB"**`
+2. **GET 参数 **`**json**`** 是一个合法的 JSON 字符串，且解析后是一个数组，其中键 **`**'x'**`** 的值为 **`**"wllm"**`
+3. **使用 URL 编码，避免任何歧义**
 
 ```php
 curl -X POST "http://node7.anna.nssctf.cn:27541/index.php?json=%7B%22x%22%3A%22wllm%22%7D" -d "id=wllmNB"

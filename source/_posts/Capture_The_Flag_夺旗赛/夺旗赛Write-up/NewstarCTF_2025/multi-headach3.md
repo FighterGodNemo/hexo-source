@@ -15,32 +15,32 @@ categories:
 
 解答：
 
-<font style="color:rgb(15, 17, 21);">这提示我们查看 </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">/robots.txt</font>`<font style="color:rgb(15, 17, 21);"> 文件，这是网站用来与搜索引擎爬虫（机器人）通信的标准文件。</font>
+这提示我们查看 `/robots.txt` 文件，这是网站用来与搜索引擎爬虫（机器人）通信的标准文件。
 
 ![](1759219481688-ddd5dcb1-c914-456a-8dae-2ded5e809037.png)
 
-<font style="color:rgb(15, 17, 21);">这明确告诉我们有一个隐藏页面：</font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">/hidden.php</font>`<font style="color:rgb(15, 17, 21);">。</font>
+这明确告诉我们有一个隐藏页面：`/hidden.php`。
 
-<font style="color:rgb(15, 17, 21);">网页说：</font>**<font style="color:rgb(15, 17, 21);">But... Why my head is so painful???!!!</font>**
+网页说：**But... Why my head is so painful???!!!**
 
-<font style="color:rgb(15, 17, 21);">“头” = HTTP 头（Headers），</font>
+“头” = HTTP 头（Headers），
 
-+ <font style="color:rgb(15, 17, 21);">可能要求修改 </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">User-Agent</font>`<font style="color:rgb(15, 17, 21);">、</font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">Referer</font>`<font style="color:rgb(15, 17, 21);">、</font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">X-Forwarded-For</font>`<font style="color:rgb(15, 17, 21);"> 等请求头</font>
-+ <font style="color:rgb(15, 17, 21);">先尝试直接访问</font><font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">/hidden.php</font><font style="color:rgb(15, 17, 21);">  
-</font>![](1759219801150-53673b8b-8330-479f-938a-ac84928d5719.png)
++ 可能要求修改 `User-Agent`、`Referer`、`X-Forwarded-For` 等请求头
++ 先尝试直接访问/hidden.php  
+![](1759219801150-53673b8b-8330-479f-938a-ac84928d5719.png)
 + 没那么简单。。。意味着单一条件可能不够，需要组合多个头部，正如题目的multi所提示
 
-### <font style="color:rgb(15, 17, 21);">组合头部</font>
-<font style="color:rgb(15, 17, 21);">常见需要组合的头部：</font>
+### 组合头部
+常见需要组合的头部：
 
-+ `<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">User-Agent: Robot</font>`<font style="color:rgb(15, 17, 21);">（伪装成机器人）</font>
-+ `<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">Referer: <目标网站></font>`<font style="color:rgb(15, 17, 21);">（表明来源）</font>
-+ `<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">X-Forwarded-For: 127.0.0.1</font>`<font style="color:rgb(15, 17, 21);">（伪装成本地访问）</font>
-+ <font style="color:rgb(15, 17, 21);">可能还需要 </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">X-CTF: true</font>`<font style="color:rgb(15, 17, 21);"> 等自定义头</font>
++ `User-Agent: Robot`（伪装成机器人）
++ `Referer: <目标网站>`（表明来源）
++ `X-Forwarded-For: 127.0.0.1`（伪装成本地访问）
++ 可能还需要 `X-CTF: true` 等自定义头
 
-### <font style="color:rgb(15, 17, 21);"></font><font style="color:rgb(15, 17, 21);">使用 HEAD 方法</font>
-+ <font style="color:rgb(15, 17, 21);">“头很痛”可能暗示使用</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">HEAD</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">请求</font>
-+ <font style="color:rgb(15, 17, 21);">响应头里可能包含 flag</font>
+### 使用 HEAD 方法
++ “头很痛”可能暗示使用 `HEAD` 请求
++ 响应头里可能包含 flag
 
 ```python
 import requests
@@ -92,10 +92,10 @@ except Exception as e:
 
 flag{e6c421da-4941-447c-a22a-6f09984bdd21}
 
-## <font style="color:rgb(15, 17, 21);">解题成功的关键</font>
-1. **<font style="color:rgb(15, 17, 21);">使用 HEAD 方法</font>**<font style="color:rgb(15, 17, 21);">而不是 GET</font>
-2. **<font style="color:rgb(15, 17, 21);">正确的 HTTP 头部组合</font>**<font style="color:rgb(15, 17, 21);">：User-Agent + Referer + X-Forwarded-For</font>
-    - `<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">User-Agent: Robot</font>`
-    - `<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">Referer: https://eci-2zeiz5c9arq9crpj8d1x.cloudeci1.ichunqiu.com</font>`
-    - `<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">X-Forwarded-For: 127.0.0.1</font>`
+## 解题成功的关键
+1. **使用 HEAD 方法**而不是 GET
+2. **正确的 HTTP 头部组合**：User-Agent + Referer + X-Forwarded-For
+    - `User-Agent: Robot`
+    - `Referer: https://eci-2zeiz5c9arq9crpj8d1x.cloudeci1.ichunqiu.com`
+    - `X-Forwarded-For: 127.0.0.1`
 

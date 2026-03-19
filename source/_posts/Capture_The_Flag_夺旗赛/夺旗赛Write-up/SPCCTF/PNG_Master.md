@@ -34,9 +34,9 @@ hint是零宽隐写，提示secret与文件名异或
 
 得到flag3:61733765725f696e5f504e477d
 
-<font style="color:#000000;">三段值十六进制解码得到最终flag</font>
+三段值十六进制解码得到最终flag
 
-<font style="color:#000000;">LILCTF{Y0u_4r3_Mas7er_in_PNG}</font>
+LILCTF{Y0u_4r3_Mas7er_in_PNG}
 
 
 

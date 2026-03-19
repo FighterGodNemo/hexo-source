@@ -44,7 +44,7 @@ flag="".join(i for i in f )
 print(flag)
 ```
 
-解答：<font style="color:rgb(15, 17, 21);">这是一个群论计算题，需要计算几个群的阶（order）然后解密。</font>
+解答：这是一个群论计算题，需要计算几个群的阶（order）然后解密。
 
 用sagemath运行：
 

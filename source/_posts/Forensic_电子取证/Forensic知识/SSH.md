@@ -8,50 +8,50 @@ created: 2026-03-15T16:49
 updated: 2026-03-18T09:42
 ---
 
-### <font style="color:rgb(15, 17, 21);">一、核心概念：什么是 SSH？</font>
-**<font style="color:rgb(15, 17, 21);">SSH</font>**<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">的全称是</font><font style="color:rgb(15, 17, 21);"> </font>**<font style="color:rgb(15, 17, 21);">Secure Shell</font>**<font style="color:rgb(15, 17, 21);">（安全外壳协议）。</font>
+### 一、核心概念：什么是 SSH？
+**SSH** 的全称是 **Secure Shell**（安全外壳协议）。
 
-<font style="color:rgb(15, 17, 21);">你可以把它想象成一个</font>**<font style="color:rgb(15, 17, 21);">高度安全的“快递员”</font>**<font style="color:rgb(15, 17, 21);">，专门负责在两台计算机之间建立一条</font>**<font style="color:rgb(15, 17, 21);">加密的通信隧道</font>**<font style="color:rgb(15, 17, 21);">。</font>
+你可以把它想象成一个**高度安全的“快递员”**，专门负责在两台计算机之间建立一条**加密的通信隧道**。
 
-+ **<font style="color:rgb(15, 17, 21);">传统工具（如 Telnet）</font>**<font style="color:rgb(15, 17, 21);">：像明信片，传输的内容（包括你的密码）都是明文，谁都能看到。</font>
-+ **<font style="color:rgb(15, 17, 21);">SSH</font>**<font style="color:rgb(15, 17, 21);">：像武装押运的保险箱，所有内容（命令、密码、文件）在传输前都被加密，即使被截获，对方也看不懂。</font>
++ **传统工具（如 Telnet）**：像明信片，传输的内容（包括你的密码）都是明文，谁都能看到。
++ **SSH**：像武装押运的保险箱，所有内容（命令、密码、文件）在传输前都被加密，即使被截获，对方也看不懂。
 
-**<font style="color:rgb(15, 17, 21);">简单来说：SSH 是一种网络协议，用于通过一个不安全的网络（如互联网），安全地远程登录和管理另一台计算机（通常是 Linux/Unix 服务器，也包括现代 Windows）。</font>**
-
----
-
-### <font style="color:rgb(15, 17, 21);">二、SSH 的组成部分与工作流程</font>
-<font style="color:rgb(15, 17, 21);">一次典型的 SSH 连接包含三个角色和两个阶段：</font>
-
-#### <font style="color:rgb(15, 17, 21);">角色</font>
-1. **<font style="color:rgb(15, 17, 21);">SSH 客户端</font>**<font style="color:rgb(15, 17, 21);">：你正在使用的、发起连接请求的电脑。</font>
-2. **<font style="color:rgb(15, 17, 21);">SSH 服务端</font>**<font style="color:rgb(15, 17, 21);">：你想要远程登录和控制的那台目标电脑。</font>
-3. **<font style="color:rgb(15, 17, 21);">网络</font>**<font style="color:rgb(15, 17, 21);">：连接客户端和服务端的通道（通常是互联网或局域网）。</font>
-
-#### <font style="color:rgb(15, 17, 21);">连接建立过程</font>
-1. **<font style="color:rgb(15, 17, 21);">TCP 连接</font>**<font style="color:rgb(15, 17, 21);">：客户端向服务端的</font><font style="color:rgb(15, 17, 21);"> </font>**<font style="color:rgb(15, 17, 21);">22 号端口</font>**<font style="color:rgb(15, 17, 21);">（默认端口）发起连接。</font>
-2. **<font style="color:rgb(15, 17, 21);">协议版本协商</font>**<font style="color:rgb(15, 17, 21);">：双方确认使用哪个版本的 SSH 协议。</font>
-3. **<font style="color:rgb(15, 17, 21);">密钥交换</font>**<font style="color:rgb(15, 17, 21);">：</font>
-    - <font style="color:rgb(15, 17, 21);">服务端将自己的公钥发送给客户端，证明自己的身份（类似于服务器出示它的“数字身份证”）。</font>
-    - <font style="color:rgb(15, 17, 21);">客户端第一次连接时会看到这个公钥的指纹，并选择是否信任它。一旦信任，客户端就会把这个公钥保存起来（在</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">~/.ssh/known_hosts</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">文件中）。</font>
-    - <font style="color:rgb(15, 17, 21);">双方会基于这个公钥，协商生成一个唯一的、一次性的</font>**<font style="color:rgb(15, 17, 21);">会话密钥</font>**<font style="color:rgb(15, 17, 21);">。</font>
-4. **<font style="color:rgb(15, 17, 21);">用户认证</font>**<font style="color:rgb(15, 17, 21);">：</font>
-    - <font style="color:rgb(15, 17, 21);">客户端使用会话密钥加密自己的身份信息（如用户名）发送给服务端。</font>
-    - <font style="color:rgb(15, 17, 21);">服务端挑战客户端，要求证明身份。最常见的两种方式是：</font>
-        * **<font style="color:rgb(15, 17, 21);">密码认证</font>**<font style="color:rgb(15, 17, 21);">：你输入服务器上的用户密码。</font>
-        * **<font style="color:rgb(15, 17, 21);">密钥对认证</font>**<font style="color:rgb(15, 17, 21);">（更安全）：你使用自己本地生成的</font>**<font style="color:rgb(15, 17, 21);">私钥</font>**<font style="color:rgb(15, 17, 21);">来证明身份，服务器用之前存储的你的</font>**<font style="color:rgb(15, 17, 21);">公钥</font>**<font style="color:rgb(15, 17, 21);">来验证。</font>
-5. **<font style="color:rgb(15, 17, 21);">加密通信</font>**<font style="color:rgb(15, 17, 21);">：</font>
-    - <font style="color:rgb(15, 17, 21);">认证成功后，双方所有的通信内容（你输入的命令，服务器返回的结果）都会使用会话密钥进行加密和解密。</font>
+**简单来说：SSH 是一种网络协议，用于通过一个不安全的网络（如互联网），安全地远程登录和管理另一台计算机（通常是 Linux/Unix 服务器，也包括现代 Windows）。**
 
 ---
 
-### <font style="color:rgb(15, 17, 21);">三、SSH 的主要用途</font>
-<font style="color:rgb(15, 17, 21);">SSH 远不止是“远程登录”那么简单，它就像一个安全通信的“瑞士军刀”：</font>
+### 二、SSH 的组成部分与工作流程
+一次典型的 SSH 连接包含三个角色和两个阶段：
 
-**<font style="color:rgb(15, 17, 21);">远程命令行登录</font>**<font style="color:rgb(15, 17, 21);">  
-</font><font style="color:rgb(15, 17, 21);">这是最经典的用法。你可以从你的笔记本电脑，完全像在现场一样操作远在数据中心的服务器。</font>
+#### 角色
+1. **SSH 客户端**：你正在使用的、发起连接请求的电脑。
+2. **SSH 服务端**：你想要远程登录和控制的那台目标电脑。
+3. **网络**：连接客户端和服务端的通道（通常是互联网或局域网）。
 
-1. <font style="color:rgb(15, 17, 21);">bash</font>
+#### 连接建立过程
+1. **TCP 连接**：客户端向服务端的 **22 号端口**（默认端口）发起连接。
+2. **协议版本协商**：双方确认使用哪个版本的 SSH 协议。
+3. **密钥交换**：
+    - 服务端将自己的公钥发送给客户端，证明自己的身份（类似于服务器出示它的“数字身份证”）。
+    - 客户端第一次连接时会看到这个公钥的指纹，并选择是否信任它。一旦信任，客户端就会把这个公钥保存起来（在 `~/.ssh/known_hosts` 文件中）。
+    - 双方会基于这个公钥，协商生成一个唯一的、一次性的**会话密钥**。
+4. **用户认证**：
+    - 客户端使用会话密钥加密自己的身份信息（如用户名）发送给服务端。
+    - 服务端挑战客户端，要求证明身份。最常见的两种方式是：
+        * **密码认证**：你输入服务器上的用户密码。
+        * **密钥对认证**（更安全）：你使用自己本地生成的**私钥**来证明身份，服务器用之前存储的你的**公钥**来验证。
+5. **加密通信**：
+    - 认证成功后，双方所有的通信内容（你输入的命令，服务器返回的结果）都会使用会话密钥进行加密和解密。
+
+---
+
+### 三、SSH 的主要用途
+SSH 远不止是“远程登录”那么简单，它就像一个安全通信的“瑞士军刀”：
+
+**远程命令行登录**  
+这是最经典的用法。你可以从你的笔记本电脑，完全像在现场一样操作远在数据中心的服务器。
+
+1. bash
 
 ```plain
 ssh username@server_ip_address
@@ -59,45 +59,45 @@ ssh username@server_ip_address
 ssh root@192.168.1.100
 ```
 
-**<font style="color:rgb(15, 17, 21);">安全执行远程命令</font>**<font style="color:rgb(15, 17, 21);">  
-</font><font style="color:rgb(15, 17, 21);">不需要完全登录，可以单次执行一个命令并返回结果。</font>
+**安全执行远程命令**  
+不需要完全登录，可以单次执行一个命令并返回结果。
 
-2. <font style="color:rgb(15, 17, 21);">bash</font><font style="color:rgb(15, 17, 21);">ssh username@server_ip_address "ls -l /home"</font>
-3. **<font style="color:rgb(15, 17, 21);">端口转发 / 隧道</font>**<font style="color:rgb(15, 17, 21);">  
-</font><font style="color:rgb(15, 17, 21);">这是 SSH 一个极其强大的功能。它能为其他不安全的协议创建一个安全的“隧道”。</font>
-    - **<font style="color:rgb(15, 17, 21);">本地转发</font>**<font style="color:rgb(15, 17, 21);">：让你通过安全的 SSH 连接来访问远程服务器内部的某个服务（如数据库、Web 管理界面）。</font>
-    - **<font style="color:rgb(15, 17, 21);">远程转发</font>**<font style="color:rgb(15, 17, 21);">：让远程服务器能够访问你本地网络中的某个服务。</font>
-4. **<font style="color:rgb(15, 17, 21);">安全文件传输</font>**<font style="color:rgb(15, 17, 21);">  
-</font><font style="color:rgb(15, 17, 21);">基于 SSH 的文件传输工具：</font>
+2. bashssh username@server_ip_address "ls -l /home"
+3. **端口转发 / 隧道**  
+这是 SSH 一个极其强大的功能。它能为其他不安全的协议创建一个安全的“隧道”。
+    - **本地转发**：让你通过安全的 SSH 连接来访问远程服务器内部的某个服务（如数据库、Web 管理界面）。
+    - **远程转发**：让远程服务器能够访问你本地网络中的某个服务。
+4. **安全文件传输**  
+基于 SSH 的文件传输工具：
 
-**<font style="color:rgb(15, 17, 21);">SCP</font>**<font style="color:rgb(15, 17, 21);">：在命令行中安全地复制文件。</font>
+**SCP**：在命令行中安全地复制文件。
 
-    - <font style="color:rgb(15, 17, 21);">bash</font><font style="color:rgb(15, 17, 21);">scp myfile.txt username@server_ip_address:/remote/directory/</font>
-    - **<font style="color:rgb(15, 17, 21);">SFTP</font>**<font style="color:rgb(15, 17, 21);">：一个交互式的文件传输程序，功能类似于 FTP，但是安全的。</font>
-
----
-
-### <font style="color:rgb(15, 17, 21);">四、SSH 在取证中的应用场景</font>
-<font style="color:rgb(15, 17, 21);">在你提到的取证背景下，SSH 至关重要：</font>
-
-1. **<font style="color:rgb(15, 17, 21);">远程访问取证服务器</font>**<font style="color:rgb(15, 17, 21);">：你的取证工作站可能性能很强，放在机房。你可以在自己的办公电脑上通过 SSH 远程连接它，运行 Binwalk、Autopsy 等耗资源的工具。</font>
-2. **<font style="color:rgb(15, 17, 21);">从远程设备安全获取数据</font>**<font style="color:rgb(15, 17, 21);">：如果证据源是一台开启 SSH 服务的 Linux 服务器，你可以通过 SSH 连接上去，安全地执行命令来收集内存信息、系统日志、文件列表等，并通过 SCP 将证据文件传输到本地。</font>
-3. **<font style="color:rgb(15, 17, 21);">创建分析隧道</font>**<font style="color:rgb(15, 17, 21);">：如果你需要分析的目标服务（如一个 Web 应用日志）只在内部网络可访问，你可以通过 SSH 隧道将其“映射”到你的本地分析机器上。</font>
+    - bashscp myfile.txt username@server_ip_address:/remote/directory/
+    - **SFTP**：一个交互式的文件传输程序，功能类似于 FTP，但是安全的。
 
 ---
 
-### <font style="color:rgb(15, 17, 21);">五、简单示例：第一次 SSH 连接</font>
-<font style="color:rgb(15, 17, 21);">假设你想连接一台 IP 为</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">192.168.1.50</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">的 Ubuntu 服务器，上面有一个用户叫</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">investigator</font>`<font style="color:rgb(15, 17, 21);">。</font>
+### 四、SSH 在取证中的应用场景
+在你提到的取证背景下，SSH 至关重要：
 
-1. <font style="color:rgb(15, 17, 21);">打开你的终端（在 Linux/macOS 上）或 PowerShell/CMD（在 Windows 上，建议使用 WSL）。</font>
+1. **远程访问取证服务器**：你的取证工作站可能性能很强，放在机房。你可以在自己的办公电脑上通过 SSH 远程连接它，运行 Binwalk、Autopsy 等耗资源的工具。
+2. **从远程设备安全获取数据**：如果证据源是一台开启 SSH 服务的 Linux 服务器，你可以通过 SSH 连接上去，安全地执行命令来收集内存信息、系统日志、文件列表等，并通过 SCP 将证据文件传输到本地。
+3. **创建分析隧道**：如果你需要分析的目标服务（如一个 Web 应用日志）只在内部网络可访问，你可以通过 SSH 隧道将其“映射”到你的本地分析机器上。
 
-<font style="color:rgb(15, 17, 21);">输入命令：</font>
+---
 
-2. <font style="color:rgb(15, 17, 21);">bash</font><font style="color:rgb(15, 17, 21);">ssh investigator@192.168.1.50</font>
+### 五、简单示例：第一次 SSH 连接
+假设你想连接一台 IP 为 `192.168.1.50` 的 Ubuntu 服务器，上面有一个用户叫 `investigator`。
 
-<font style="color:rgb(15, 17, 21);">如果是第一次连接，你会看到类似下面的信息，询问你是否信任服务器的公钥：</font>
+1. 打开你的终端（在 Linux/macOS 上）或 PowerShell/CMD（在 Windows 上，建议使用 WSL）。
 
-3. <font style="color:rgb(15, 17, 21);">text</font>
+输入命令：
+
+2. bashssh investigator@192.168.1.50
+
+如果是第一次连接，你会看到类似下面的信息，询问你是否信任服务器的公钥：
+
+3. text
 
 ```plain
 The authenticity of host '192.168.1.50 (192.168.1.50)' can't be established.
@@ -105,11 +105,11 @@ ECDSA key fingerprint is SHA256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
 Are you sure you want to continue connecting (yes/no/[fingerprint])?
 ```
 
-<font style="color:rgb(15, 17, 21);">输入</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">yes</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">并回车。</font>
+输入 `yes` 并回车。
 
-4. <font style="color:rgb(15, 17, 21);">系统会提示你输入用户</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">investigator</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">在服务器上的登录密码。</font>
-5. <font style="color:rgb(15, 17, 21);">密码正确后，你就会看到服务器的命令行提示符，例如</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">investigator@ubuntu-server:~$</font>`<font style="color:rgb(15, 17, 21);">。现在，你已经在远程服务器上工作了！</font>
+4. 系统会提示你输入用户 `investigator` 在服务器上的登录密码。
+5. 密码正确后，你就会看到服务器的命令行提示符，例如 `investigator@ubuntu-server:~$`。现在，你已经在远程服务器上工作了！
 
-### <font style="color:rgb(15, 17, 21);">总结</font>
-**<font style="color:rgb(15, 17, 21);">SSH 就是互联网时代的“安全远程控制”，是任何与服务器、运维、开发、乃至取证工作相关的技术人员都必须掌握的核心技能。</font>**<font style="color:rgb(15, 17, 21);"> 它通过加密技术，确保了远程管理的机密性和完整性。</font>
+### 总结
+**SSH 就是互联网时代的“安全远程控制”，是任何与服务器、运维、开发、乃至取证工作相关的技术人员都必须掌握的核心技能。** 它通过加密技术，确保了远程管理的机密性和完整性。
 

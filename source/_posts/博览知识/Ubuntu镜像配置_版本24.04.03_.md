@@ -7,8 +7,8 @@ created: 2026-03-15T16:49
 updated: 2026-03-18T09:35
 ---
 
-### <font style="color:rgb(15, 17, 21);">认识 Ubuntu 24.04 的源配置</font>
-<font style="color:rgb(15, 17, 21);">Ubuntu 24.04 引入了一个新的</font>**<font style="color:rgb(15, 17, 21);">DEB822格式</font>**<font style="color:rgb(15, 17, 21);">的源配置文件，默认路径是 </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">/etc/apt/sources.list.d/ubuntu.sources</font>`<font style="color:rgb(15, 17, 21);">。当然，你依然可以继续使用传统的 </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">sources.list</font>`<font style="color:rgb(15, 17, 21);"> 文件格式</font>
+### 认识 Ubuntu 24.04 的源配置
+Ubuntu 24.04 引入了一个新的**DEB822格式**的源配置文件，默认路径是 `/etc/apt/sources.list.d/ubuntu.sources`。当然，你依然可以继续使用传统的 `sources.list` 文件格式
 
 **sudo nano /etc/apt/sources.list**
 

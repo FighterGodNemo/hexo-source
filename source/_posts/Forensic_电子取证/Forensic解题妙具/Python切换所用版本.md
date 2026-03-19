@@ -6,7 +6,7 @@ categories:
 - Forensic解题妙具
 ---
 
-## <font style="color:#000000;">1. 使用 pyenv（推荐）</font>
+## 1. 使用 pyenv（推荐）
 ```bash
 # Windows (通过 WSL 或 git bash)
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
@@ -60,7 +60,7 @@ pip list
 deactivate
 ```
 
-## <font style="color:#000000;">2. 使用 conda（适合数据科学）</font>
+## 2. 使用 conda（适合数据科学）
 ```bash
 # 创建新环境并指定Python版本
 conda create -n myenv python=3.8
@@ -75,7 +75,7 @@ conda env list
 conda install python=3.9
 ```
 
-## <font style="color:#000000;">3. 使用 venv（Python内置）</font>
+## 3. 使用 venv（Python内置）
 ```bash
 # 创建虚拟环境（使用系统默认Python）
 python -m venv myenv

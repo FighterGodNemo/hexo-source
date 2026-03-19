@@ -44,16 +44,16 @@ c= 42481263623445394280231262620086584153533063717448365833463226221868120488285
 '''
 ```
 
-<font style="color:rgb(0, 0, 0);">要解出这个 RSA 问题的 flag，我们可以按照以下步骤进行：</font>
+要解出这个 RSA 问题的 flag，我们可以按照以下步骤进行：
 
-1. <font style="color:rgb(0, 0, 0);">已知 KEY 的 MD5 哈希值，可反推出 key（6 字节）</font>
-2. <font style="color:rgb(0, 0, 0);">利用 P 和 key 求出素数 p</font>
-3. <font style="color:rgb(0, 0, 0);">从 n 分解出 q</font>
-4. <font style="color:rgb(0, 0, 0);">计算私钥解密得到 flag</font>
+1. 已知 KEY 的 MD5 哈希值，可反推出 key（6 字节）
+2. 利用 P 和 key 求出素数 p
+3. 从 n 分解出 q
+4. 计算私钥解密得到 flag
 
-<font style="color:rgb(15, 17, 21);">这是一个更简单高效的代码，使用</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">itertools</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">快速爆破：</font>
+这是一个更简单高效的代码，使用 `itertools` 快速爆破：
 
-<font style="color:rgb(15, 17, 21);">python</font>
+python
 
 ```python
 from Crypto.Util.number import *
@@ -91,14 +91,14 @@ for key_bytes in itertools.product(range(256), repeat=6):
                 exit(0)
 ```
 
-<font style="color:rgb(0, 0, 0);"></font>
 
-<font style="color:rgb(0, 0, 0);"></font>
 
-<font style="color:rgb(0, 0, 0);">解题思路说明：</font>
 
-1. **<font style="color:rgb(0, 0, 0) !important;">获取 key</font>**<font style="color:rgb(0, 0, 0);">：通过已知的 MD5 哈希值</font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">5ae9b7f211e23aac3df5f2b8f3b8eada</font>`<font style="color:rgb(0, 0, 0);">，可以爆破出 6 字节的 key </font>
-2. **<font style="color:rgb(0, 0, 0) !important;">计算 p</font>**<font style="color:rgb(0, 0, 0);">：根据代码中的</font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">P = p ^ bytes_to_long(key)</font>`<font style="color:rgb(0, 0, 0);">，利用异或的可逆性，得到</font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">p = P ^ bytes_to_long(key)</font>`
-3. **<font style="color:rgb(0, 0, 0) !important;">分解 n</font>**<font style="color:rgb(0, 0, 0);">：已知</font>`<font style="color:rgba(0, 0, 0, 0.85) !important;">n = p^3 * q^2</font>`<font style="color:rgb(0, 0, 0);">，有了 p 之后可以很容易计算出 q</font>
-4. **<font style="color:rgb(0, 0, 0) !important;">解密过程</font>**<font style="color:rgb(0, 0, 0);">：计算欧拉函数 φ(n) = (p³-p²)(q²-q)，然后求 e 的逆元 d，最后用私钥 d 解密得到 flag</font>
+
+解题思路说明：
+
+1. **获取 key**：通过已知的 MD5 哈希值`5ae9b7f211e23aac3df5f2b8f3b8eada`，可以爆破出 6 字节的 key 
+2. **计算 p**：根据代码中的`P = p ^ bytes_to_long(key)`，利用异或的可逆性，得到`p = P ^ bytes_to_long(key)`
+3. **分解 n**：已知`n = p^3 * q^2`，有了 p 之后可以很容易计算出 q
+4. **解密过程**：计算欧拉函数 φ(n) = (p³-p²)(q²-q)，然后求 e 的逆元 d，最后用私钥 d 解密得到 flag
 

@@ -9,7 +9,7 @@ categories:
 
 附件：easy.exe
 
-<font style="color:#000000;background-color:rgba(255, 255, 255, 0);">无壳程序，直接分析即可</font>
+无壳程序，直接分析即可
 
 ![](1764376074357-a72e1ff9-0c41-4016-be34-61cd090b7979.png)
 

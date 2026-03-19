@@ -30,19 +30,19 @@ flag{62d0cbb2c69133b52f386701726f29c1}
 
 这里SRK一把梭
 
-<font style="color:#000000;">flag{b9768a37b47beb2d88e2db</font><font style="color:#DF2A3F;">o</font><font style="color:#000000;">e76a39bb3}</font>
+flag{b9768a37b47beb2d88e2dboe76a39bb3}
 
-<font style="color:#000000;">然而答案不对。</font>
+然而答案不对。
 
-<font style="color:#000000;">继续处理b9768a37b47beb2d88e2db</font><font style="color:#DF2A3F;">o</font><font style="color:#000000;">e76a39bb3</font>
+继续处理b9768a37b47beb2d88e2dboe76a39bb3
 
-<font style="color:rgb(15, 17, 21);">这看起来像一个 </font>**<font style="color:rgb(15, 17, 21);">MD5 哈希</font>**<font style="color:rgb(15, 17, 21);">（32 位十六进制数），但 MD5 哈希字符范围是 </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">0-9a-f</font>`<font style="color:rgb(15, 17, 21);">，而这里有一个字符 </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">o</font>`<font style="color:rgb(15, 17, 21);">不符合 MD5 格式。</font>
+这看起来像一个 **MD5 哈希**（32 位十六进制数），但 MD5 哈希字符范围是 `0-9a-f`，而这里有一个字符 `o`不符合 MD5 格式。
 
-<font style="color:rgb(15, 17, 21);">其实不要想复杂，把o改成0，答案正确：</font>
+其实不要想复杂，把o改成0，答案正确：
 
-<font style="color:#000000;">flag{b9768a37b47beb2d88e2db0e76a39bb3}</font>
+flag{b9768a37b47beb2d88e2db0e76a39bb3}
 
-## <font style="color:#000000;">第四关</font>
+## 第四关
 ![](1762218714504-f072b215-64b9-443e-9e60-9edfff9131ef.png)
 
 先猜一波：011010111110101000000100000100100010111100，没啥用
@@ -66,7 +66,7 @@ flag{62d0cbb2c69133b52f386701726f29c1}
 ## 第五关
 ![](1762220597577-605e877c-9167-41c6-bd70-6bc22dc57f5c.png)
 
-![](1762220781675-0a3fd684-94b2-4a7a-ad66-fac2288dbc72.png)<font style="color:rgb(77, 77, 77);">大概率是文本</font>[<font style="color:rgb(77, 77, 77);">隐写术加密</font>](https://tool.bfw.wiki/tool/1695021695027599.html)![](1762220951755-6b01be38-2984-4923-8e6f-a7b0d2421fac.png)
+![](1762220781675-0a3fd684-94b2-4a7a-ad66-fac2288dbc72.png)大概率是文本[隐写术加密](https://tool.bfw.wiki/tool/1695021695027599.html)![](1762220951755-6b01be38-2984-4923-8e6f-a7b0d2421fac.png)
 
 零宽隐写
 
@@ -77,11 +77,11 @@ flag{6af971a42782115a594ba2318c0417ad}
 
 ![](1762221932234-1fbd4140-90a4-46bf-92bc-538ccf026a3f.png)
 
-<font style="color:rgb(51, 51, 51);background-color:rgba(0, 0, 0, 0.075);">iodj{7115i261eig7i42d5fg7412fh86ded7h}</font>
+iodj{7115i261eig7i42d5fg7412fh86ded7h}
 
-<font style="color:rgb(51, 51, 51);background-color:rgba(0, 0, 0, 0.075);">明显凯撒密码</font>
+明显凯撒密码
 
-<font style="color:rgb(51, 51, 51);background-color:rgba(0, 0, 0, 0.075);">flag偏移3位</font>![](1762222347049-2fab7f98-ec6c-4978-b40c-e8fca8ba2ce3.png)
+flag偏移3位![](1762222347049-2fab7f98-ec6c-4978-b40c-e8fca8ba2ce3.png)
 
 或者随波逐流：
 

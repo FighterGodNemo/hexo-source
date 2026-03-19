@@ -14,8 +14,8 @@ updated: 2026-03-18T09:42
 
 想要pip install
 
-以后每次使用前运行：**<u><font style="color:#DF2A3F;">source ~/pwn-env/bin/activate</font></u>**
+以后每次使用前运行：**<u>source ~/pwn-env/bin/activate</u>**
 
-1. <font style="color:rgb(0, 0, 0);">给文件添加可执行权限：</font>`<font style="color:rgb(0, 0, 0);">chmod +x 文件</font>`
-2. <font style="color:rgb(0, 0, 0);">运行程序：</font>`<font style="color:rgb(0, 0, 0);">./文件</font>`
+1. 给文件添加可执行权限：`chmod +x 文件`
+2. 运行程序：`./文件`
 

@@ -9,67 +9,67 @@ created: 2026-03-15T16:49
 updated: 2026-03-18T09:42
 ---
 
-<font style="color:rgb(15, 17, 21);">XOR的特性（A XOR B XOR B = A），我们可以用加密的密钥解密。由于XOR操作是可逆的，我们只需要按相反的顺序和相同的密钥进行XOR就能解密。</font>
+XOR的特性（A XOR B XOR B = A），我们可以用加密的密钥解密。由于XOR操作是可逆的，我们只需要按相反的顺序和相同的密钥进行XOR就能解密。
 
-<font style="color:rgb(15, 17, 21);"></font>
 
-<font style="color:rgb(15, 17, 21);">100</font>
 
-<font style="color:rgb(15, 17, 21);">010</font>
+100
 
-<font style="color:rgb(15, 17, 21);">110</font>
+010
 
-<font style="color:rgb(15, 17, 21);"></font>
+110
 
-<font style="color:rgb(15, 17, 21);">110</font>
 
-<font style="color:rgb(15, 17, 21);">010</font>
 
-<font style="color:rgb(15, 17, 21);">100</font>
+110
 
-### <font style="color:rgb(15, 17, 21);">核心定义：什么是异或？</font>
-**<font style="color:rgb(15, 17, 21);">异或</font>**<font style="color:rgb(15, 17, 21);">，英文为</font><font style="color:rgb(15, 17, 21);"> </font>**<font style="color:rgb(15, 17, 21);">XOR</font>**<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">或</font><font style="color:rgb(15, 17, 21);"> </font>**<font style="color:rgb(15, 17, 21);">Exclusive OR</font>**<font style="color:rgb(15, 17, 21);">，中文全称是“</font>**<font style="color:rgb(15, 17, 21);">异或逻辑运算</font>**<font style="color:rgb(15, 17, 21);">”。它是一种基本的二进制位运算。</font>
+010
 
-<font style="color:rgb(15, 17, 21);">它的核心逻辑是：</font>**<font style="color:rgb(15, 17, 21);">“相异为真，相同为假”</font>**<font style="color:rgb(15, 17, 21);">。</font>
+100
 
-<font style="color:rgb(15, 17, 21);">也就是说，当比较的两个位（bit）</font>**<font style="color:rgb(15, 17, 21);">不相同</font>**<font style="color:rgb(15, 17, 21);">时，结果为</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">1</font>`<font style="color:rgb(15, 17, 21);">（真）；当两个位</font>**<font style="color:rgb(15, 17, 21);">相同</font>**<font style="color:rgb(15, 17, 21);">时，结果为</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">0</font>`<font style="color:rgb(15, 17, 21);">（假）。</font>
+### 核心定义：什么是异或？
+**异或**，英文为 **XOR** 或 **Exclusive OR**，中文全称是“**异或逻辑运算**”。它是一种基本的二进制位运算。
 
-### <font style="color:rgb(15, 17, 21);">真值表</font>
-<font style="color:rgb(15, 17, 21);">我们可以用一个真值表来清晰地展示它的规则。假设有两个输入 A 和 B，一个输出 Y。</font>
+它的核心逻辑是：**“相异为真，相同为假”**。
 
-| <font style="color:rgb(15, 17, 21);">A</font> | <font style="color:rgb(15, 17, 21);">B</font> | <font style="color:rgb(15, 17, 21);">Y (A XOR B)</font> |
+也就是说，当比较的两个位（bit）**不相同**时，结果为 `1`（真）；当两个位**相同**时，结果为 `0`（假）。
+
+### 真值表
+我们可以用一个真值表来清晰地展示它的规则。假设有两个输入 A 和 B，一个输出 Y。
+
+| A | B | Y (A XOR B) |
 | --- | --- | --- |
-| <font style="color:rgb(15, 17, 21);">0</font> | <font style="color:rgb(15, 17, 21);">0</font> | **<font style="color:rgb(15, 17, 21);">0</font>** |
-| <font style="color:rgb(15, 17, 21);">0</font> | <font style="color:rgb(15, 17, 21);">1</font> | **<font style="color:rgb(15, 17, 21);">1</font>** |
-| <font style="color:rgb(15, 17, 21);">1</font> | <font style="color:rgb(15, 17, 21);">0</font> | **<font style="color:rgb(15, 17, 21);">1</font>** |
-| <font style="color:rgb(15, 17, 21);">1</font> | <font style="color:rgb(15, 17, 21);">1</font> | **<font style="color:rgb(15, 17, 21);">0</font>** |
+| 0 | 0 | **0** |
+| 0 | 1 | **1** |
+| 1 | 0 | **1** |
+| 1 | 1 | **0** |
 
 
-<font style="color:rgb(15, 17, 21);">从表中可以一目了然地看到：</font>
+从表中可以一目了然地看到：
 
-+ <font style="color:rgb(15, 17, 21);">当 A 和 B 都是 0（相同）时，结果是 0。</font>
-+ <font style="color:rgb(15, 17, 21);">当 A 和 B 一个是 0，一个是 1（相异）时，结果是 1。</font>
-+ <font style="color:rgb(15, 17, 21);">当 A 和 B 都是 1（相同）时，结果是 0。</font>
++ 当 A 和 B 都是 0（相同）时，结果是 0。
++ 当 A 和 B 一个是 0，一个是 1（相异）时，结果是 1。
++ 当 A 和 B 都是 1（相同）时，结果是 0。
 
-### <font style="color:rgb(15, 17, 21);">常见的符号表示</font>
-<font style="color:rgb(15, 17, 21);">在不同的领域，异或有不同的表示符号：</font>
+### 常见的符号表示
+在不同的领域，异或有不同的表示符号：
 
-+ **<font style="color:rgb(15, 17, 21);">编程语言</font>**<font style="color:rgb(15, 17, 21);">中常用：</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">^</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">（脱字符号）</font>
-+ **<font style="color:rgb(15, 17, 21);">数学/逻辑学</font>**<font style="color:rgb(15, 17, 21);">中常用：</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">⊕</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">（圆圈加号）</font>
-+ **<font style="color:rgb(15, 17, 21);">电子工程</font>**<font style="color:rgb(15, 17, 21);">中常用：</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">XOR</font>`
++ **编程语言**中常用： `^` （脱字符号）
++ **数学/逻辑学**中常用： `⊕` （圆圈加号）
++ **电子工程**中常用： `XOR`
 
-### <font style="color:rgb(15, 17, 21);">一个简单的例子</font>
-<font style="color:rgb(15, 17, 21);">让我们用十进制数来演示一下异或运算（实际是在二进制位上操作的）：</font>
+### 一个简单的例子
+让我们用十进制数来演示一下异或运算（实际是在二进制位上操作的）：
 
-<font style="color:rgb(15, 17, 21);">计算</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">5 ^ 3</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">（</font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">^</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">是编程中的异或符号）</font>
+计算 `5 ^ 3` （`^` 是编程中的异或符号）
 
-1. **<font style="color:rgb(15, 17, 21);">转换为二进制</font>**<font style="color:rgb(15, 17, 21);">：</font>
-    - <font style="color:rgb(15, 17, 21);">5 的二进制是</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">101</font>`
-    - <font style="color:rgb(15, 17, 21);">3 的二进制是</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">011</font>`
+1. **转换为二进制**：
+    - 5 的二进制是 `101`
+    - 3 的二进制是 `011`
 
-**<font style="color:rgb(15, 17, 21);">按位进行异或运算</font>**<font style="color:rgb(15, 17, 21);">（对齐，一位一位地比较）：</font>
+**按位进行异或运算**（对齐，一位一位地比较）：
 
-2. <font style="color:rgb(15, 17, 21);">text</font>
+2. text
 
 ```plain
 1 0 1   (5)
@@ -78,34 +78,34 @@ XOR 0 1 1   (3)
     1 1 0   (6)
 ```
 
-    - <font style="color:rgb(15, 17, 21);">最右边：</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">1</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">XOR</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">1</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">=</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">0</font>`
-    - <font style="color:rgb(15, 17, 21);">中间：</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">0</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">XOR</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">1</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">=</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">1</font>`
-    - <font style="color:rgb(15, 17, 21);">最左边：</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">1</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">XOR</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">0</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">=</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">1</font>`
-3. **<font style="color:rgb(15, 17, 21);">将结果转换回十进制</font>**<font style="color:rgb(15, 17, 21);">：二进制</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">110</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">等于十进制</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">6</font>`<font style="color:rgb(15, 17, 21);">。</font>
+    - 最右边： `1` XOR `1` = `0`
+    - 中间： `0` XOR `1` = `1`
+    - 最左边： `1` XOR `0` = `1`
+3. **将结果转换回十进制**：二进制 `110` 等于十进制 `6`。
 
-<font style="color:rgb(15, 17, 21);">所以，</font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">5 ^ 3</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">的结果是</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">6</font>`<font style="color:rgb(15, 17, 21);">。</font>
-
----
-
-### <font style="color:rgb(15, 17, 21);">异或运算的重要特性</font>
-<font style="color:rgb(15, 17, 21);">异或有一些非常独特且有用的数学特性，这些特性是它在各种算法中得以应用的基础。</font>
-
-1. **<font style="color:rgb(15, 17, 21);">交换律</font>**<font style="color:rgb(15, 17, 21);">:</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">A ^ B = B ^ A</font>`
-2. **<font style="color:rgb(15, 17, 21);">结合律</font>**<font style="color:rgb(15, 17, 21);">:</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">(A ^ B) ^ C = A ^ (B ^ C)</font>`
-3. **<font style="color:rgb(15, 17, 21);">与自身的运算</font>**<font style="color:rgb(15, 17, 21);">:</font><font style="color:rgb(15, 17, 21);"> </font>`**<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">A ^ A = 0</font>**`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">（任何数与自己异或，结果为0）</font>
-4. **<font style="color:rgb(15, 17, 21);">与 0 的运算</font>**<font style="color:rgb(15, 17, 21);">:</font><font style="color:rgb(15, 17, 21);"> </font>`**<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">A ^ 0 = A</font>**`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">（任何数与 0 异或，结果还是自己）</font>
-5. **<font style="color:rgb(15, 17, 21);">自反性</font>**<font style="color:rgb(15, 17, 21);">: 如果</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">A ^ B = C</font>`<font style="color:rgb(15, 17, 21);">，那么</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">C ^ B = A</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">且</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">C ^ A = B</font>`<font style="color:rgb(15, 17, 21);">。</font>
-    - <font style="color:rgb(15, 17, 21);">这个特性是</font>**<font style="color:rgb(15, 17, 21);">加密和解密</font>**<font style="color:rgb(15, 17, 21);">、</font>**<font style="color:rgb(15, 17, 21);">交换两个变量</font>**<font style="color:rgb(15, 17, 21);">等功能的核心。</font>
+所以，`5 ^ 3` 的结果是 `6`。
 
 ---
 
-### <font style="color:rgb(15, 17, 21);">异或的常见应用</font>
-<font style="color:rgb(15, 17, 21);">凭借上述特性，异或在计算机科学中有着广泛的应用。</font>
+### 异或运算的重要特性
+异或有一些非常独特且有用的数学特性，这些特性是它在各种算法中得以应用的基础。
 
-#### <font style="color:rgb(15, 17, 21);">1. 交换两个变量的值（不使用临时变量）</font>
-<font style="color:rgb(15, 17, 21);">这是一个经典的面试题。利用异或的自反性，可以不需要第三个临时变量就交换两个数。</font>
+1. **交换律**: `A ^ B = B ^ A`
+2. **结合律**: `(A ^ B) ^ C = A ^ (B ^ C)`
+3. **与自身的运算**: `**A ^ A = 0**` （任何数与自己异或，结果为0）
+4. **与 0 的运算**: `**A ^ 0 = A**` （任何数与 0 异或，结果还是自己）
+5. **自反性**: 如果 `A ^ B = C`，那么 `C ^ B = A` 且 `C ^ A = B`。
+    - 这个特性是**加密和解密**、**交换两个变量**等功能的核心。
 
-<font style="color:rgb(15, 17, 21);">python</font>
+---
+
+### 异或的常见应用
+凭借上述特性，异或在计算机科学中有着广泛的应用。
+
+#### 1. 交换两个变量的值（不使用临时变量）
+这是一个经典的面试题。利用异或的自反性，可以不需要第三个临时变量就交换两个数。
+
+python
 
 ```plain
 a = 5
@@ -120,22 +120,22 @@ a = a ^ b  # a = (5 ^ 10) ^ 5 = (5 ^ 5) ^ 10 = 0 ^ 10 = 10
 print(f"交换后: a = {a}, b = {b}")
 ```
 
-<font style="color:rgb(15, 17, 21);">输出：</font>
+输出：
 
-<font style="color:rgb(15, 17, 21);">text</font>
+text
 
 ```plain
 交换前: a = 5, b = 10
 交换后: a = 10, b = 5
 ```
 
-#### <font style="color:rgb(15, 17, 21);">2. 简单的加密和解密</font>
-<font style="color:rgb(15, 17, 21);">利用自反性，可以使用同一个密钥对数据进行加密和解密。</font>
+#### 2. 简单的加密和解密
+利用自反性，可以使用同一个密钥对数据进行加密和解密。
 
-+ **<font style="color:rgb(15, 17, 21);">加密</font>**<font style="color:rgb(15, 17, 21);">：</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">密文 = 明文 ^ 密钥</font>`
-+ **<font style="color:rgb(15, 17, 21);">解密</font>**<font style="color:rgb(15, 17, 21);">：</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">明文 = 密文 ^ 密钥</font>`
++ **加密**： `密文 = 明文 ^ 密钥`
++ **解密**： `明文 = 密文 ^ 密钥`
 
-<font style="color:rgb(15, 17, 21);">python</font>
+python
 
 ```plain
 plain_text = 42        # 原始数据
@@ -150,14 +150,14 @@ decrypted_text = cipher_text ^ key
 print(f"解密后的明文: {decrypted_text}") # 输出 42
 ```
 
-#### <font style="color:rgb(15, 17, 21);">3. 在算法题中的应用：找出“落单”的数字</font>
-<font style="color:rgb(15, 17, 21);">这是一个非常著名的算法题：</font>
+#### 3. 在算法题中的应用：找出“落单”的数字
+这是一个非常著名的算法题：
 
-<font style="color:rgb(15, 17, 21);">一个非空整数数组中，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。</font>
+一个非空整数数组中，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。
 
-**<font style="color:rgb(15, 17, 21);">解决方案</font>**<font style="color:rgb(15, 17, 21);">：利用</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">A ^ A = 0</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">和</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">A ^ 0 = A</font>`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">的特性，将所有数字一起进行异或运算，成对出现的数字会变成 0，最后剩下的就是那个“落单”的数字。</font>
+**解决方案**：利用 `A ^ A = 0` 和 `A ^ 0 = A` 的特性，将所有数字一起进行异或运算，成对出现的数字会变成 0，最后剩下的就是那个“落单”的数字。
 
-<font style="color:rgb(15, 17, 21);">python</font>
+python
 
 ```plain
 def single_number(nums):
@@ -171,15 +171,15 @@ arr = [4, 1, 2, 1, 2]
 print(single_number(arr))  # 输出：4
 ```
 
-**<font style="color:rgb(15, 17, 21);">计算过程</font>**<font style="color:rgb(15, 17, 21);">：</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">0 ^ 4 ^ 1 ^ 2 ^ 1 ^ 2 = (1^1) ^ (2^2) ^ 4 = 0 ^ 0 ^ 4 = 4</font>`
+**计算过程**： `0 ^ 4 ^ 1 ^ 2 ^ 1 ^ 2 = (1^1) ^ (2^2) ^ 4 = 0 ^ 0 ^ 4 = 4`
 
-#### <font style="color:rgb(15, 17, 21);">4. 图形学中的“异或”模式</font>
-<font style="color:rgb(15, 17, 21);">在一些古老的绘图软件或硬件中，有一种“异或”绘图模式。当你在同一个位置用同一种颜色画两次时，第二次绘制会擦除第一次的痕迹，因为</font><font style="color:rgb(15, 17, 21);"> </font>`<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">颜色 ^ 颜色 = 0</font>`<font style="color:rgb(15, 17, 21);">（背景色），从而实现了一种“橡皮擦”效果。</font>
+#### 4. 图形学中的“异或”模式
+在一些古老的绘图软件或硬件中，有一种“异或”绘图模式。当你在同一个位置用同一种颜色画两次时，第二次绘制会擦除第一次的痕迹，因为 `颜色 ^ 颜色 = 0`（背景色），从而实现了一种“橡皮擦”效果。
 
-### <font style="color:rgb(15, 17, 21);">总结</font>
-+ **<font style="color:rgb(15, 17, 21);">异或（XOR）</font>**<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">是一种“</font>**<font style="color:rgb(15, 17, 21);">相异为1，相同为0</font>**<font style="color:rgb(15, 17, 21);">”的二进制逻辑运算。</font>
-+ <font style="color:rgb(15, 17, 21);">它的关键特性是</font><font style="color:rgb(15, 17, 21);"> </font>`**<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">A ^ A = 0</font>**`<font style="color:rgb(15, 17, 21);"> </font><font style="color:rgb(15, 17, 21);">和</font><font style="color:rgb(15, 17, 21);"> </font>`**<font style="color:rgb(15, 17, 21);background-color:rgb(235, 238, 242);">A ^ 0 = A</font>**`<font style="color:rgb(15, 17, 21);">，以及强大的</font>**<font style="color:rgb(15, 17, 21);">自反性</font>**<font style="color:rgb(15, 17, 21);">。</font>
-+ <font style="color:rgb(15, 17, 21);">这些特性使其在</font>**<font style="color:rgb(15, 17, 21);">变量交换</font>**<font style="color:rgb(15, 17, 21);">、</font>**<font style="color:rgb(15, 17, 21);">简单加密</font>**<font style="color:rgb(15, 17, 21);">、</font>**<font style="color:rgb(15, 17, 21);">算法优化</font>**<font style="color:rgb(15, 17, 21);">（如找落单数）和</font>**<font style="color:rgb(15, 17, 21);">底层计算</font>**<font style="color:rgb(15, 17, 21);">等领域非常有用。</font>
+### 总结
++ **异或（XOR）** 是一种“**相异为1，相同为0**”的二进制逻辑运算。
++ 它的关键特性是 `**A ^ A = 0**` 和 `**A ^ 0 = A**`，以及强大的**自反性**。
++ 这些特性使其在**变量交换**、**简单加密**、**算法优化**（如找落单数）和**底层计算**等领域非常有用。
 
-<font style="color:rgb(15, 17, 21);"></font>
+
 
