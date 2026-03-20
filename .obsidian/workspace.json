@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/Forensic_电子取证/取证write-up/美亚杯/25美亚杯资格赛.md",
+                "file": "source/_posts/Forensic_电子取证/取证write-up/美亚杯/22美亚杯团队赛.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "25美亚杯资格赛"
+              "title": "22美亚杯团队赛"
             }
           }
         ]
@@ -157,13 +157,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/Forensic_电子取证/取证write-up/美亚杯/25美亚杯资格赛.md",
+                "file": "source/_posts/Forensic_电子取证/取证write-up/美亚杯/22美亚杯团队赛.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "25美亚杯资格赛 的大纲"
+              "title": "22美亚杯团队赛 的大纲"
             }
           },
           {
@@ -197,12 +197,13 @@
   },
   "active": "88f5990868674ef3",
   "lastOpenFiles": [
+    "source/_posts/Forensic_电子取证/取证write-up/美亚杯/25美亚杯资格赛.md",
+    "source/_posts/Forensic_电子取证/取证write-up/美亚杯/25美亚杯资格赛/file-20260319195659114.png",
     "source/_posts/Forensic_电子取证/取证write-up/美亚杯/25美亚杯资格赛/file-20260319181709523.png",
     "source/_posts/Forensic_电子取证/取证write-up/美亚杯/25美亚杯资格赛/file-20260319181552145.png",
     "source/_posts/Forensic_电子取证/取证write-up/美亚杯/25美亚杯资格赛/file-20260319181522908.png",
     "source/_posts/Forensic_电子取证/取证write-up/美亚杯/25美亚杯资格赛/file-20260319181450822.png",
     "source/_posts/Forensic_电子取证/取证write-up/美亚杯/25美亚杯团体赛.md",
-    "source/_posts/Forensic_电子取证/取证write-up/美亚杯/25美亚杯资格赛.md",
     "source/_posts/Forensic_电子取证/取证write-up/美亚杯/25美亚杯资格赛/file-20260319170725374.png",
     "source/_posts/Forensic_电子取证/取证write-up/美亚杯/25美亚杯资格赛/file-20260319170207644.png",
     "source/_posts/Forensic_电子取证/取证write-up/美亚杯/25美亚杯资格赛/file-20260319165851514.png",
@@ -222,9 +223,7 @@
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Web.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Pwn_40.md",
     "source/_posts/Forensic_电子取证/Forensic解题妙具/foremost使用指南.md",
-    "public/2026/03/19/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Web/file-20260319151723327.png",
     "public/2026/03/19/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Web/index.html",
-    "public/2026/03/19/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Web/file-20260319151609084.png",
     "public/2026/03/19/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Pwn/index.html",
     "public/2026/03/19/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Web",
     "public/2026/03/19/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Pwn",
