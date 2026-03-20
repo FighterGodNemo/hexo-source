@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/博览知识/《C程序设计（第五版）》.md",
+                "file": "source/_posts/博览知识/常见编码及加解密.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "《C程序设计（第五版）》"
+              "title": "常见编码及加解密"
             }
           }
         ]
@@ -157,13 +157,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/博览知识/《C程序设计（第五版）》.md",
+                "file": "source/_posts/博览知识/常见编码及加解密.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "《C程序设计（第五版）》 的大纲"
+              "title": "常见编码及加解密 的大纲"
             }
           },
           {
@@ -197,6 +197,7 @@
   },
   "active": "88f5990868674ef3",
   "lastOpenFiles": [
+    "source/_posts/博览知识/《C程序设计（第五版）》.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/看雪论坛/Game通关.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Web应用安全与防护.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Web.md",
@@ -242,7 +243,6 @@
     "public/2026/03/15/Forensic_电子取证/取证write-up/数证杯/25数证杯决赛团体/index.html",
     "source/_posts/Forensic_电子取证/Forensic知识/取证工作流建议.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/25警铮杯.md",
-    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Pwn35.md",
     "未命名.canvas",
     "未命名 1.canvas"
   ]
