@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/博览知识/僵尸网络.md",
+                "file": "source/_posts/博览知识/蜜罐、蜜网与蜜场.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "僵尸网络"
+              "title": "蜜罐、蜜网与蜜场"
             }
           }
         ]
@@ -157,13 +157,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/博览知识/僵尸网络.md",
+                "file": "source/_posts/博览知识/蜜罐、蜜网与蜜场.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "僵尸网络 的大纲"
+              "title": "蜜罐、蜜网与蜜场 的大纲"
             }
           },
           {
@@ -197,8 +197,10 @@
   },
   "active": "88f5990868674ef3",
   "lastOpenFiles": [
-    "source/_posts/博览知识/哈希值.md",
     "source/_posts/博览知识/常见编码及加解密.md",
+    "source/_posts/博览知识/蜜罐、蜜网与蜜场.md",
+    "source/_posts/博览知识/哈希值.md",
+    "source/_posts/博览知识/僵尸网络.md",
     "source/_posts/博览知识/《C程序设计（第五版）》.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/看雪论坛/Game通关.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Web应用安全与防护.md",
@@ -232,8 +234,6 @@
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/五题积累.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/古剑山.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Web应用安全与防护",
-    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Pwn_40.md",
-    "source/_posts/Forensic_电子取证/Forensic解题妙具/foremost使用指南.md",
     "public/2026/03/19/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Web/index.html",
     "public/2026/03/19/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Pwn/index.html",
     "public/2026/03/19/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Web",
