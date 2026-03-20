@@ -197,6 +197,10 @@
   },
   "active": "88f5990868674ef3",
   "lastOpenFiles": [
+    "_logs/ocr_preview/蜜罐_part3.png",
+    "_logs/ocr_preview/蜜罐_part2.png",
+    "_logs/ocr_preview/蜜罐_part1.png",
+    "_logs/ocr_preview",
     "source/_posts/博览知识/《C程序设计（第五版）》.md",
     "source/_posts/博览知识/闰年定义（公历）.md",
     "source/_posts/博览知识/常见编码及加解密.md",
@@ -225,14 +229,11 @@
     "source/_posts/Forensic_电子取证/取证write-up/美亚杯/25美亚杯资格赛/file-20260319170725374.png",
     "source/_posts/Forensic_电子取证/取证write-up/美亚杯/25美亚杯资格赛/file-20260319170207644.png",
     "source/_posts/Forensic_电子取证/取证write-up/美亚杯/25美亚杯资格赛/file-20260319165851514.png",
-    "source/_posts/Forensic_电子取证/取证write-up/美亚杯/25美亚杯资格赛/file-20260319165423124.png",
-    "source/_posts/Forensic_电子取证/取证write-up/美亚杯/25美亚杯资格赛/file-20260319162652779.png",
     "source/_posts/Capture_The_Flag_夺旗赛/CTF解题妙具/MySQL.md",
     "source/_posts/Capture_The_Flag_夺旗赛/CTF解题妙具/GIF时间帧.md",
     "source/_posts/Capture_The_Flag_夺旗赛/CTF解题妙具/bkcrack.md",
     "source/_posts/Capture_The_Flag_夺旗赛/CTF解题妙具/Binwalk.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/山河.md",
-    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/五题积累.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Web应用安全与防护",
     "public/2026/03/19/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Web/index.html",
     "public/2026/03/19/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Pwn/index.html",
@@ -242,7 +243,6 @@
     "public/2026/03/19/Capture_The_Flag_夺旗赛/夺旗赛Write-up",
     "public/2026/03/15/Forensic_电子取证/取证write-up/美亚杯/22美亚杯团队赛/index.html",
     "public/2026/03/15/Forensic_电子取证/取证write-up/美亚杯/22美亚杯团队赛",
-    "public/2026/03/15/Forensic_电子取证/取证write-up/数证杯/25数证杯决赛团体/index.html",
     "未命名.canvas",
     "未命名 1.canvas"
   ]
