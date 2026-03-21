@@ -195,8 +195,9 @@
       "bases:新建数据库": false
     }
   },
-  "active": "88f5990868674ef3",
+  "active": "6ee123e5035b92d7",
   "lastOpenFiles": [
+    "_logs/ocr_temp.ps1",
     "source/_posts/博览知识/溢出漏洞.md",
     "source/_posts/博览知识/提问的智慧.md",
     "source/_posts/博览知识/DoS拒绝服务攻击.md",
@@ -242,7 +243,6 @@
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/NewstarCTF_2025/NewstarCTF 2025.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/MoeCTF_2025/ez_square.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/MoeCTF_2025/baby_next.md",
-    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/MoeCTF_2025/Augustine's_Way.md",
     "未命名.canvas",
     "未命名 1.canvas"
   ]
