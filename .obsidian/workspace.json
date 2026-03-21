@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/博览知识/Ubuntu镜像配置_版本24.04.03_.md",
+                "file": "source/_posts/博览知识/linux下载pwntools.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Ubuntu镜像配置_版本24.04.03_"
+              "title": "linux下载pwntools"
             }
           }
         ]
@@ -157,13 +157,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/博览知识/Ubuntu镜像配置_版本24.04.03_.md",
+                "file": "source/_posts/博览知识/linux下载pwntools.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Ubuntu镜像配置_版本24.04.03_ 的大纲"
+              "title": "linux下载pwntools 的大纲"
             }
           },
           {
@@ -197,6 +197,7 @@
   },
   "active": "88f5990868674ef3",
   "lastOpenFiles": [
+    "source/_posts/博览知识/Ubuntu镜像配置_版本24.04.03_.md",
     "source/_posts/博览知识/linux下载pwntools.md",
     "source/_posts/博览知识/Python虚拟环境路径问题_Could_not_find_platform_independent_libraries__prefix__.md",
     "source/_posts/博览知识/kali镜像配置.md",
@@ -233,7 +234,6 @@
     "source/_posts/Hello World！我的第一篇hexo博客.md",
     "source/_posts/Forensic_电子取证/Forensic解题妙具.md",
     "source/_posts/Forensic_电子取证/取证write-up/獬豸杯/25獬豸杯.md",
-    "source/_posts/Forensic_电子取证/取证write-up/平航杯/2025平航杯.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Web应用安全与防护",
     "public/2026/03/19/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Web/index.html",
     "public/2026/03/19/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Pwn/index.html",
