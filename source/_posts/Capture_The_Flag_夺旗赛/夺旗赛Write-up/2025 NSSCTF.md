@@ -6,7 +6,7 @@ categories:
   - 夺旗赛Write-up
   - NSSCTF_2025
 created: 2026-03-15T16:49
-updated: 2026-03-21T11:09
+updated: 2026-03-21T14:49
 ---
 ## [BJDCTF_2020]Easy
 
@@ -14,11 +14,11 @@ updated: 2026-03-21T11:09
 
 无壳程序，直接分析即可
 
-![](NSSCTF_2025/1764376074357-a72e1ff9-0c41-4016-be34-61cd090b7979.png)
+![](2025%20NSSCTF/file-20260321144940208.png)
 
 ## [CryptoCTF_2020]One_Line_Crypto
 
-![](NSSCTF_2025/1764504585637-11c20f10-9d53-47ce-aeca-67e864e06781.png)
+![](2025%20NSSCTF/file-20260321144940191.png)
 
 ```python
 from Crypto.Util.number import *
@@ -38,7 +38,7 @@ enc文件：14608474132952352328897080717325464308438322623319847428447933943202
 ##### 题目描述：在一次网络安全的挑战中，你截获了一段神秘的冰蝎流量。据说这段流量中隐藏着重要的信息。你能解开这个谜团，找出隐藏在流量中的秘密吗？
 解答：
 
-![](NSSCTF_2025/1765800826238-b2cc78b4-b850-49ca-a008-fa0eb58cf87c.png)
+![](2025%20NSSCTF/file-20260321144940203.png)
 
 流量包损坏。需要修复
 
@@ -79,7 +79,7 @@ print(str)
 ```
 
 NSSCTF{youhaveknowcaesar}
-![](NSSCTF_2025/1765803938928-56ddeac8-e009-4099-ba34-f8f2c9a89191.png)
+![](2025%20NSSCTF/file-20260321144940169.png)
 
 ## [SWPUCTF_2021_新生赛]jicao
 
@@ -106,18 +106,18 @@ curl -X POST "http://node7.anna.nssctf.cn:27541/index.php?json=%7B%22x%22%3A%22w
 ```
 
 NSSCTF{5e3b5793-b1f6-488a-bac4-53e9c4889ed7}
-![](NSSCTF_2025/1764333513217-cc6c2ca7-1019-43f2-a84c-85f381ef214e.png)
+![](2025%20NSSCTF/file-20260321144940222.png)
 
 ## [陇剑杯_2021]jwt（问1）
 
 追踪http流
 
-![](NSSCTF_2025/1765805613511-c6b85ccc-50fb-418c-8d53-1f4a9a3e842e.png)
+![](2025%20NSSCTF/file-20260321144940177.png)
 
 > token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAwODYsIk1hcENsYWltcyI6eyJhdWQiOiJhZG1pbiIsInVzZXJuYW1lIjoiYWRtaW4ifX0.dJArtwXjas3_Cg9a3tr8COXF7DRsuX8UjmbC1nKf8fc
 >
 
-![](NSSCTF_2025/1765805655897-5d492fa8-3126-42ef-a7b6-3f112253d390.png)
+![](2025%20NSSCTF/file-20260321144940155.png)
 
 NSSCTF{jwt}
 
@@ -132,7 +132,7 @@ NSSCTF{jwt}
 > 此时正在进行的可能是__________协议的网络攻击。（如有字母请全部使用小写，填写样例：http、dns、ftp）。得到的flag请使用NSSCTF{}格式提交。
 >
 
-![](NSSCTF_2025/1764337668240-bdeeb5d0-b59a-412d-9d88-9f2f690ecd8c.png)
+![](2025%20NSSCTF/file-20260321144940229.png)
 
 NSSCTF{http}
 
@@ -141,15 +141,15 @@ NSSCTF{http}
 ZmxhZ3tHYXFZN0t0RXRyVklYMVE1b1A1aUVCUkNZWEVBeThyVH0=
 
 flag{GaqY7KtEtrVIX1Q5oP5iEBRCYXEAy8rT}
-![](NSSCTF_2025/1765803604072-9eb60e79-6ed3-4a41-bc7b-e836f813d0ca.png)
+![](2025%20NSSCTF/file-20260321144940184.png)
 
 ## [强网拟态2021]BlueWhale
 
 附件：
-![](NSSCTF_2025/1764461291358-9fc44604-8a90-43e5-913e-9d21ad1a2fc9.png)
+![](2025%20NSSCTF/file-20260321144940217.png)
 
 先分析外层流量包，追踪TCP流
-![](NSSCTF_2025/1764461505246-140d7750-34ba-4df1-a7fe-351b0fe0713c.png)
+![](2025%20NSSCTF/file-20260321144940198.png)
 
 获取密码：**th1sIsThEpassw0rD**
 
@@ -167,7 +167,7 @@ flag{GaqY7KtEtrVIX1Q5oP5iEBRCYXEAy8rT}
 法一：ciphey一把梭
 
 NSSCTF{68bedd7e6ab3ba1fe965b54d9c7c3d94}
-![](NSSCTF_2025/1764243205726-7ec2ea0a-3b23-4d44-81a0-c81e0d8373b1.png)
+![](2025%20NSSCTF/file-20260321144940265.png)
 
 法二：脑筋急转弯
 
@@ -176,8 +176,8 @@ NSSCTF{68bedd7e6ab3ba1fe965b54d9c7c3d94}
 + rot13和base32解密即可
 
 NSSCTF{68bedd7e6ab3ba1fe965b54d9c7c3d94}
-![](NSSCTF_2025/1764244277303-42c389c7-3556-44dc-94d9-08b5e82d372c.png)
-![](NSSCTF_2025/1764244316469-d73663e1-047d-4027-92ec-3737a8739465.png)
+![](2025%20NSSCTF/file-20260321144940254.png)
+![](2025%20NSSCTF/file-20260321144940235.png)
 
 ## Do_you_know_http
 
@@ -408,18 +408,18 @@ NSSCTF{0bbd067c-24bd-454c-9111-6cd1b67b6da4}
 
 ## gift_F12
 
-![](NSSCTF_2025/1758601386749-9051544d-b78a-4fdb-8028-f8bd2c8a7eb7.png)
-![](NSSCTF_2025/1758601407481-89419c8a-660c-4fff-92ed-57d8b5b6dd04.png)
+![](2025%20NSSCTF/file-20260321144940277.png)
+![](2025%20NSSCTF/file-20260321144940260.png)
 
 + Ctrl+U查看网页源代码
 + Ctrl+F查找flag
 + 获得flag
-![](NSSCTF_2025/1758601524946-e80c1510-7e1b-4fa3-81a0-e34ecf01fae8.png)
+![](2025%20NSSCTF/file-20260321144940271.png)
 
 ## 无标题文档
 
-![](NSSCTF_2025/1764245481564-9d1e69e9-58cd-4180-ba00-cfe6ecbdcd94.png)
-![](NSSCTF_2025/1764246084777-8bb004a0-4a0f-4396-99ae-0c7a8f861cb4.png)
+![](2025%20NSSCTF/file-20260321144940248.png)
+![](2025%20NSSCTF/file-20260321144940242.png)
 
 ## 喜欢我的压缩包么__初级_
 
@@ -443,7 +443,7 @@ NSSCTF{0bbd067c-24bd-454c-9111-6cd1b67b6da4}
 
 
 2. 使用Advanced Archive Password Recovery暴力破解。
-![](NSSCTF_2025/1758345884291-91f0d842-55c9-42df-8c68-5f3d9c3c66ad.jpeg)
+![](2025%20NSSCTF/file-20260321144940332.jpeg)
 
 得到口令114514，解出压缩包中的flag。
 
@@ -452,8 +452,8 @@ NSSCTF{0bbd067c-24bd-454c-9111-6cd1b67b6da4}
 题目：所以下半身是什么呢（ww
 
 + 解压得可爱的小草神.png
-![](NSSCTF_2025/1758346105799-9cc01e51-3120-4632-b6b1-69b1a025ce2d.png)
+![](2025%20NSSCTF/file-20260321144940315.png)
 + 题目提示图片缺少下半部分，故使用[随波逐流]CTF编码工具修复高宽
 + 拖入得羽毛球-修复高宽.png，得到flag。
-![](NSSCTF_2025/1758346226687-c5742520-e620-4796-8f7a-26b40d02fe36.png)
+![](2025%20NSSCTF/file-20260321144940322.png)
 
