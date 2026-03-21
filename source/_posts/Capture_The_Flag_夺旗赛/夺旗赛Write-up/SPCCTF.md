@@ -6,7 +6,7 @@ categories:
   - 夺旗赛Write-up
   - SPCCTF
 created: 2026-03-15T16:49
-updated: 2026-03-21T09:55
+updated: 2026-03-21T10:00
 ---
 ## 哈基米南北绿豆
 
@@ -32,7 +32,7 @@ updated: 2026-03-21T09:55
 
 ![](SPCCTF/1763111415836-1405fe68-a3af-41cd-a263-cd1023bf7e26.png)
 
-![](SPCCTF/1763111436191-8998ea99-c21f-43d3-bf80-0bac6bc6fc8c.png)、
+![](SPCCTF/1763111436191-8998ea99-c21f-43d3-bf80-0bac6bc6fc8c.png)
 
 猜测是和汉信和DM有关。
 
@@ -53,10 +53,11 @@ updated: 2026-03-21T09:55
 
 ![](SPCCTF/1759984412230-e09c3f65-41f0-4ed9-92bb-4c07e59aa6e5.png)
 
-+ ![](SPCCTF/1759984428186-c373ba4c-053b-4860-be65-2cd9a18b924d.png)
+
 + 用**foremost**提取得到压缩包（Foremost 是一款常用于文件提取和数据恢复的工具，尤其在Misc（杂项）、Forensics（取证）和Steganography（隐写术）类题目中经常使用。它的核心功能是从磁盘镜像、二进制文件或存储设备中提取隐藏或删除的文件，基于文件的头部（Header）和尾部（Footer）签名进行识别。）
 + 根据提示，内层压缩包xixi.zip的密码是XYCTF2025
-+ 外层的图片和内层压缩包的图片一样，怀疑是双图盲水印，使用**<u>随波逐流双图盲水印解密</u>**即可![](SPCCTF/1759854575260-69e7e491-bcd5-4ba9-91c3-cc3093481380.jpeg)
++ 外层的图片和内层压缩包的图片一样，怀疑是双图盲水印，使用**<u>随波逐流双图盲水印解密</u>**即可
+![](SPCCTF/1759854575260-69e7e491-bcd5-4ba9-91c3-cc3093481380.jpeg)
 
 得到flag。
 
@@ -64,7 +65,7 @@ updated: 2026-03-21T09:55
 
 ![](SPCCTF/1760751211534-30c439aa-a8ca-4e5c-a138-75252c3bacce.png)
 
-## ![](SPCCTF/1760751432837-a9521519-ef91-4905-be14-5646ea58507a.png)
+
 chmod +x arknights
 
 ./arknights
@@ -184,7 +185,8 @@ apache cve
 
 题目：好像总共6位。看到密码的第三个是字母a
 
-解答：使用Advanced Archive Password Recovery掩码破解压缩包密码：![](SPCCTF/1759976948254-36f282b5-c02c-45a6-a97a-6bcda3753872.png)
+解答：使用Advanced Archive Password Recovery掩码破解压缩包密码：
+![](SPCCTF/1759976948254-36f282b5-c02c-45a6-a97a-6bcda3753872.png)
 
 ![](SPCCTF/1759977009504-3c094d20-235f-43a2-8bef-a680e9620aaf.png)
 
@@ -265,9 +267,10 @@ enc 文件 通常表示 加密文件（Encrypted File），并没有统一的标
 
 + 尝试用winhex打开，选择工具—磁盘工具—通过文件类型恢复，勾选Archive，显示未成功识别文件。
 + 将幽清晨拖入CyberChef，用Magic尝试自动识别加密/编码方式，输出了乱码
-+ ![](SPCCTF/1759017557412-73136f68-7349-4426-beeb-690228ca8a76.png)
 
-**Entropy: 8.00** → 熵值很高![](SPCCTF/1759030781379-583f22ec-83c9-4e7b-9942-46f1f11a4d2f.png)
+
+**Entropy: 8.00** → 熵值很高
+![](SPCCTF/1759030781379-583f22ec-83c9-4e7b-9942-46f1f11a4d2f.png)
 
 **<u>如果熵值 ≈ 7.8~8.0，基本确定是加密数据。</u>**
 
@@ -299,7 +302,8 @@ enc 文件 通常表示 加密文件（Encrypted File），并没有统一的标
 + 或者已知 ZIP 文件头在原文件中的偏移量（比如加密后 `PK` 出现在偏移 2753 处），但这里我们是要找密钥，所以 offset 应设为 0。
 
   
- 得：![](SPCCTF/1759030474317-8996c64f-b8eb-4206-bf03-535202031a13.png)
+ 得：
+![](SPCCTF/1759030474317-8996c64f-b8eb-4206-bf03-535202031a13.png)
 
 <u>真正有效的密钥是那些解密后 </u>`<u>PK</u>`<u> 以正常大写字母形式出现的</u>
 
@@ -363,7 +367,7 @@ enc 文件 通常表示 加密文件（Encrypted File），并没有统一的标
 先压缩再加密，我应当先解密再解压。
 
 没招了，超详细问ai  
-![](SPCCTF/1759922825414-de8421cb-978f-4871-814d-014084ba7929.png)  
+![](SPCCTF/1759922825414-de8421cb-978f-4871-814d-014084ba7929.png)
  
 
   
@@ -375,9 +379,11 @@ bkcrack解明文更好
 
 题目：所以下半身是什么呢（ww
 
-+ 解压得可爱的小草神.png![](SPCCTF/1758346105799-9cc01e51-3120-4632-b6b1-69b1a025ce2d.png)
++ 解压得可爱的小草神.png
+![](SPCCTF/1758346105799-9cc01e51-3120-4632-b6b1-69b1a025ce2d.png)
 + 题目提示图片缺少下半部分，故使用[随波逐流]CTF编码工具修复高宽
-+ 拖入得羽毛球-修复高宽.png，得到flag。![](SPCCTF/1758346226687-c5742520-e620-4796-8f7a-26b40d02fe36.png)
++ 拖入得羽毛球-修复高宽.png，得到flag。
+![](SPCCTF/1758346226687-c5742520-e620-4796-8f7a-26b40d02fe36.png)
 
 ## "baby_eval"
 
@@ -578,7 +584,7 @@ for x_p in x_p_candidates:
             continue
 ```
 
-### ![](SPCCTF/1759666881358-222c08b1-5a06-4e94-af32-cf3bbd548426.png)
+
 
 ![](SPCCTF/1759666917113-0768ddba-9591-4229-9d88-91c122a70a89.png)
 
@@ -588,13 +594,15 @@ for x_p in x_p_candidates:
 
 基础，答案用utflag{}包裹[binary.txt](basics/1763080711015-a6595b2e-cc67-4734-8140-49a1cfd054c7.txt)
 
-排除零宽隐写![](SPCCTF/1763080767375-42282028-a6b2-45fe-9366-f65a3c5fef96.png)
+排除零宽隐写
+![](SPCCTF/1763080767375-42282028-a6b2-45fe-9366-f65a3c5fef96.png)
 
 ![](SPCCTF/1763080734705-0226acc4-abe1-4db0-8e9c-286c84ab4579.png)
 
 只有 A-Z, a-z, 0-9, 以及 `/` 和 `+` 出现
 
-猜测base64编码方式![](SPCCTF/1763080946586-4898fc2b-2747-45c8-ab1a-65ace6f742a5.png)
+猜测base64编码方式
+![](SPCCTF/1763080946586-4898fc2b-2747-45c8-ab1a-65ace6f742a5.png)
 
 罗马人。明显是凯撒密码
 
@@ -620,22 +628,26 @@ utflag{n0w_th4ts_wh4t_i_c4ll_crypt0}
 
 ![](SPCCTF/1759762688769-155fd969-eaa0-4613-acc7-3c2d0652fee3.png)
 
-![](SPCCTF/1759762674422-6a56f6ff-1450-4820-8066-5f26d7d39837.png)直接
+直接
+![](SPCCTF/1759762674422-6a56f6ff-1450-4820-8066-5f26d7d39837.png)
 
 **Ctrl+Shift+C** 打开元素选择器
 
-**Ctrl+Shift+J** 打开控制台![](SPCCTF/1759762752843-5d114e2b-8e49-41e0-9dc9-36df43deca80.png)
+**Ctrl+Shift+J** 打开控制台
+![](SPCCTF/1759762752843-5d114e2b-8e49-41e0-9dc9-36df43deca80.png)
 
 ## "ida使用"
 
-![](SPCCTF/1759661627227-bf60fbf7-4794-4548-826f-175c956cad28.png)NSSCTF{IDA_1s_4_VeRy_ImporTant_t0ol_iN_rever5e_en8ine3ring}
+NSSCTF{IDA_1s_4_VeRy_ImporTant_t0ol_iN_rever5e_en8ine3ring}
+![](SPCCTF/1759661627227-bf60fbf7-4794-4548-826f-175c956cad28.png)
 
 ## PNG_Master
 
 ![](SPCCTF/1760702192665-801e8676-05a6-453e-9d00-c84bf19d3600.png)
 
 + 让你难过的事情，有一天，你一定会笑着说出来flag1:4c494c4354467b
-+ 第二段，LSB隐写，RGB最低位,打开Stegsolve：![](SPCCTF/1760702239912-e2bdc76a-9e16-4d15-af06-69ed8298c083.png)
++ 第二段，LSB隐写，RGB最低位,打开Stegsolve：
+![](SPCCTF/1760702239912-e2bdc76a-9e16-4d15-af06-69ed8298c083.png)
 
 放入SRK，使用magic
 
@@ -830,17 +842,20 @@ SPCCTF{3z_C0mm0n_M0du1u5_4774ck}
 
 ## "word-3"
 
-文件是个伪加密。![](SPCCTF/1760084226213-1ff7d670-e122-4932-b369-202f3506d6a5.png)
+文件是个伪加密。
+![](SPCCTF/1760084226213-1ff7d670-e122-4932-b369-202f3506d6a5.png)
 
 将09 00改成00 00（奇数是伪加密）
 
 解压得到word.docx
 
-+ ![](SPCCTF/1759664739178-2829ef41-a8ac-467f-8cc7-ad98e331dff8.png)
 
-![](SPCCTF/1759664684456-23b009af-a9c9-4776-9eea-4db0036fecea.png)放入ctf随波逐流工具得文件内含zip标志
 
-+ 更改后缀解压：![](SPCCTF/1759665193710-9f4c4d30-919f-43ca-885f-8df5a9cb4412.png)
+放入ctf随波逐流工具得文件内含zip标志
+![](SPCCTF/1759664684456-23b009af-a9c9-4776-9eea-4db0036fecea.png)
+
++ 更改后缀解压：
+![](SPCCTF/1759665193710-9f4c4d30-919f-43ca-885f-8df5a9cb4412.png)
 
 ![](SPCCTF/1759665178191-5c59f106-128b-45a1-bc3c-2e388901bce8.png)
 
@@ -852,7 +867,8 @@ SPCCTF{3z_C0mm0n_M0du1u5_4774ck}
 
 解答：
 
-● 用IDA打开：![](SPCCTF/1759660720436-89fd346e-1c12-44e7-ab60-a4092030887d.png)
+● 用IDA打开：
+![](SPCCTF/1759660720436-89fd346e-1c12-44e7-ab60-a4092030887d.png)
 
 + 按F5反编译成c语言代码：
 
