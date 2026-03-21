@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF.md",
+                "file": "source/_posts/Forensic_电子取证/应急响应.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "SPCCTF"
+              "title": "应急响应"
             }
           }
         ]
@@ -157,13 +157,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF.md",
+                "file": "source/_posts/Forensic_电子取证/应急响应.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "SPCCTF 的大纲"
+              "title": "应急响应 的大纲"
             }
           },
           {
@@ -197,9 +197,10 @@
   },
   "active": "442aef2f94da008e",
   "lastOpenFiles": [
-    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/NewstarCTF_2025.md",
-    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF.md",
     "source/_posts/Forensic_电子取证/取证write-up/美亚杯/25美亚杯资格赛.md",
+    "source/_posts/Forensic_电子取证/取证write-up/美亚杯/25美亚杯资格赛/file-20260321100347052.png",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF.md",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/NewstarCTF_2025.md",
     "source/_posts/Forensic_电子取证/取证write-up/美亚杯/25美亚杯资格赛/file-20260321095704969.png",
     "source/_posts/Forensic_电子取证/取证write-up/美亚杯/25美亚杯资格赛/file-20260321095645105.png",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/NewstarCTF_2025/别笑，你也过不了第二关.md",
@@ -210,7 +211,6 @@
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/幽清晨成员大头照解密/1759030781379-583f22ec-83c9-4e7b-9942-46f1f11a4d2f.png",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/这羽毛球怎么只有一半啊（恼_）/1758346105799-9cc01e51-3120-4632-b6b1-69b1a025ce2d.png",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/basics/1763080946586-4898fc2b-2747-45c8-ab1a-65ace6f742a5.png",
-    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/CTF决赛/1766485481781-ff8d5178-7321-4d90-bee4-abc2ee401930.png",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/明日方舟寻访模拟器.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/baby_eval.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/ida使用.md",
@@ -242,7 +242,6 @@
     "_archive/SPCCTF_split_20260321_093040/PNG_Master.md",
     "_archive/SPCCTF_split_20260321_093040/ida使用.md",
     "_archive/SPCCTF_split_20260321_093040/F12_.md",
-    "_archive/SPCCTF_split_20260321_093040/CTF决赛.md",
     "未命名.canvas",
     "未命名 1.canvas"
   ]
