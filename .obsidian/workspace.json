@@ -11,14 +11,12 @@
             "id": "442aef2f94da008e",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "source/_posts/Forensic_电子取证/取证write-up/美亚杯/22美亚杯团队赛.md",
-                "mode": "source",
-                "source": false
+                "file": "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/哈基米南北绿豆/1762230853755-64de3d01-b6a7-4dcd-8993-4e5f239376b9.png"
               },
-              "icon": "lucide-file",
-              "title": "22美亚杯团队赛"
+              "icon": "lucide-image",
+              "title": "1762230853755-64de3d01-b6a7-4dcd-8993-4e5f239376b9"
             }
           }
         ]
@@ -157,13 +155,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/Forensic_电子取证/取证write-up/美亚杯/22美亚杯团队赛.md",
+                "file": "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/哈基米南北绿豆/1762230853755-64de3d01-b6a7-4dcd-8993-4e5f239376b9.png",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "22美亚杯团队赛 的大纲"
+              "title": "1762230853755-64de3d01-b6a7-4dcd-8993-4e5f239376b9 的大纲"
             }
           },
           {
@@ -197,19 +195,25 @@
   },
   "active": "442aef2f94da008e",
   "lastOpenFiles": [
-    "source/_posts/Capture_The_Flag_夺旗赛.md",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/掩码爆破/1759976948254-36f282b5-c02c-45a6-a97a-6bcda3753872.png",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/幽清晨成员大头照解密/1759030781379-583f22ec-83c9-4e7b-9942-46f1f11a4d2f.png",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/这羽毛球怎么只有一半啊（恼_）/1758346105799-9cc01e51-3120-4632-b6b1-69b1a025ce2d.png",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/basics/1763080946586-4898fc2b-2747-45c8-ab1a-65ace6f742a5.png",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/CTF决赛/1766485481781-ff8d5178-7321-4d90-bee4-abc2ee401930.png",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/F12_/1759762688769-155fd969-eaa0-4613-acc7-3c2d0652fee3.png",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/ida使用/1759661627227-bf60fbf7-4794-4548-826f-175c956cad28.png",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/PNG_Master/1760702369582-54274288-cd0f-41d7-bfa4-43424a40c7a2.png",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/word-3/1759665178191-5c59f106-128b-45a1-bc3c-2e388901bce8.png",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/word-3/1759664684456-23b009af-a9c9-4776-9eea-4db0036fecea.png",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/1759013922480-ec05e8c8-1adc-41d1-9e34-719404fab01e.png",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF.md",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/明日方舟寻访模拟器.md",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/baby_eval.md",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/ida使用.md",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/word-3.md",
+    "source/_posts/Forensic_电子取证/取证write-up/美亚杯/22美亚杯团队赛.md",
+    "source/_posts/Capture_The_Flag_夺旗赛.md",
     "_logs/spcctf_flatten.ps1",
-    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/1758346226687-c5742520-e620-4796-8f7a-26b40d02fe36.png",
-    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/1758346105799-9cc01e51-3120-4632-b6b1-69b1a025ce2d.png",
-    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/1759984428186-c373ba4c-053b-4860-be65-2cd9a18b924d.png",
-    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/1759984412230-e09c3f65-41f0-4ed9-92bb-4c07e59aa6e5.png",
-    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/1759854663568-f7a05ae4-0233-44ef-9c86-dd44aab2a3f1.png",
-    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/1759977009504-3c094d20-235f-43a2-8bef-a680e9620aaf.png",
-    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/1759976948254-36f282b5-c02c-45a6-a97a-6bcda3753872.png",
-    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/1759922825414-de8421cb-978f-4871-814d-014084ba7929.png",
-    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/1759030781379-583f22ec-83c9-4e7b-9942-46f1f11a4d2f.png",
-    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/1759030474317-8996c64f-b8eb-4206-bf03-535202031a13.png",
     "_archive/SPCCTF_assets_backup_20260321_094230",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/NewstarCTF_2025.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/NSSCTF_2025.md",
@@ -237,12 +241,6 @@
     "_archive/SPCCTF_split_20260321_093040/F12_.md",
     "_archive/SPCCTF_split_20260321_093040/CTF决赛.md",
     "_archive/SPCCTF_split_20260321_093040/Basic_Number_theory.md",
-    "_archive/SPCCTF_split_20260321_093040/basics.md",
-    "_archive/SPCCTF_split_20260321_093040/baby_eval.md",
-    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/MoeCTF_2025.md",
-    "source/_posts/博览知识/溢出漏洞.md",
-    "source/_posts/博览知识/特洛伊木马.md",
-    "source/_posts/博览知识/蜜罐、蜜网与蜜场.md",
     "未命名.canvas",
     "未命名 1.canvas"
   ]
