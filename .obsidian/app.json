@@ -5,5 +5,7 @@
   "newLinkFormat": "relative",
   "newFileLocation": "folder",
   "newFileFolderPath": "source/_posts",
-  "promptDelete": false
+  "promptDelete": true,
+  "trashOption": "local",
+  "deleteUnlinkedAttachments": "always"
 }
