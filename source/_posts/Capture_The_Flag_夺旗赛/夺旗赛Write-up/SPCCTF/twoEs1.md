@@ -1,10 +1,12 @@
 ---
-title: "twoEs1"
+title: twoEs1
 date: 2026-03-15 13:28:16
 categories:
-- Capture_The_Flag_夺旗赛
-- 夺旗赛Write-up
-- SPCCTF
+  - Capture_The_Flag_夺旗赛
+  - 夺旗赛Write-up
+  - SPCCTF
+created: 2026-03-15T16:49
+updated: 2026-03-21T08:21
 ---
 
 two Es, too Ez! 用SPCCTF{}包裹

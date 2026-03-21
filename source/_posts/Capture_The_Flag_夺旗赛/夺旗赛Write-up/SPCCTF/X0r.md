@@ -1,10 +1,12 @@
 ---
-title: "X0r"
+title: X0r
 date: 2026-03-15 13:28:16
 categories:
-- Capture_The_Flag_夺旗赛
-- 夺旗赛Write-up
-- SPCCTF
+  - Capture_The_Flag_夺旗赛
+  - 夺旗赛Write-up
+  - SPCCTF
+created: 2026-03-15T16:49
+updated: 2026-03-21T08:20
 ---
 
 题目内容：

@@ -1,10 +1,12 @@
 ---
-title: "twoEs2"
+title: twoEs2
 date: 2026-03-15 13:28:18
 categories:
-- Capture_The_Flag_夺旗赛
-- 夺旗赛Write-up
-- SPCCTF
+  - Capture_The_Flag_夺旗赛
+  - 夺旗赛Write-up
+  - SPCCTF
+created: 2026-03-15T16:49
+updated: 2026-03-21T08:21
 ---
 
 好像。。比刚刚twoEs1难一点？答案用SPCCTF{}包裹

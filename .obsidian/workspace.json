@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/NewstarCTF_2025/X0r.md",
+                "file": "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/F12_.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "X0r"
+              "title": "F12_"
             }
           }
         ]
@@ -157,13 +157,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/NewstarCTF_2025/X0r.md",
+                "file": "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/F12_.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "X0r 的大纲"
+              "title": "F12_ 的大纲"
             }
           },
           {
@@ -197,6 +197,12 @@
   },
   "active": "88f5990868674ef3",
   "lastOpenFiles": [
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/PNG_Master.md",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/twoEs1.md",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/twoEs2.md",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/X0r.md",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/明日方舟寻访模拟器.md",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/NewstarCTF_2025/X0r.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/NewstarCTF_2025/NewstarCTF 2025.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/MoeCTF_2025/MoeCTF 2025.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/MoeCTF_2025/ez_square.md",
@@ -218,12 +224,6 @@
     "source/_posts/博览知识/《C程序设计（第五版）》.md",
     "source/_posts/博览知识/kali镜像配置.md",
     "source/_posts/博览知识/Ubuntu镜像配置_版本24.04.03_.md",
-    "source/_posts/博览知识/linux下载pwntools.md",
-    "source/_posts/博览知识/Python虚拟环境路径问题_Could_not_find_platform_independent_libraries__prefix__.md",
-    "source/_posts/博览知识/exp是什么.md",
-    "source/_posts/博览知识/DoS拒绝服务攻击.md",
-    "source/_posts/博览知识/溢出漏洞.md",
-    "source/_posts/博览知识/提问的智慧.md",
     "_logs/ocr_preview/mifeng_3_part3.png",
     "_logs/ocr_preview/mifeng_3_part2.png",
     "_logs/ocr_preview/mifeng_3_part1.png",
