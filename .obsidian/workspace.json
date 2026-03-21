@@ -11,12 +11,14 @@
             "id": "442aef2f94da008e",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/哈基米南北绿豆/1762230853755-64de3d01-b6a7-4dcd-8993-4e5f239376b9.png"
+                "file": "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/NewstarCTF_2025.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "1762230853755-64de3d01-b6a7-4dcd-8993-4e5f239376b9"
+              "icon": "lucide-file",
+              "title": "NewstarCTF_2025"
             }
           }
         ]
@@ -155,13 +157,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/哈基米南北绿豆/1762230853755-64de3d01-b6a7-4dcd-8993-4e5f239376b9.png",
+                "file": "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/NewstarCTF_2025.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "1762230853755-64de3d01-b6a7-4dcd-8993-4e5f239376b9 的大纲"
+              "title": "NewstarCTF_2025 的大纲"
             }
           },
           {
@@ -195,6 +197,11 @@
   },
   "active": "442aef2f94da008e",
   "lastOpenFiles": [
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/NewstarCTF_2025/别笑，你也过不了第二关.md",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/NewstarCTF_2025.md",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/哈基米南北绿豆/1762172618349-92b0a47f-2621-47d9-a025-21218f1fb777.png",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/哈基米南北绿豆/1762230252066-3b9cd65d-68f5-4c0b-a5d5-4133a089dc5b.png",
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/哈基米南北绿豆/1762230853755-64de3d01-b6a7-4dcd-8993-4e5f239376b9.png",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/掩码爆破/1759976948254-36f282b5-c02c-45a6-a97a-6bcda3753872.png",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/幽清晨成员大头照解密/1759030781379-583f22ec-83c9-4e7b-9942-46f1f11a4d2f.png",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/这羽毛球怎么只有一半啊（恼_）/1758346105799-9cc01e51-3120-4632-b6b1-69b1a025ce2d.png",
@@ -202,10 +209,6 @@
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/CTF决赛/1766485481781-ff8d5178-7321-4d90-bee4-abc2ee401930.png",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/F12_/1759762688769-155fd969-eaa0-4613-acc7-3c2d0652fee3.png",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/ida使用/1759661627227-bf60fbf7-4794-4548-826f-175c956cad28.png",
-    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/PNG_Master/1760702369582-54274288-cd0f-41d7-bfa4-43424a40c7a2.png",
-    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/word-3/1759665178191-5c59f106-128b-45a1-bc3c-2e388901bce8.png",
-    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/word-3/1759664684456-23b009af-a9c9-4776-9eea-4db0036fecea.png",
-    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/1759013922480-ec05e8c8-1adc-41d1-9e34-719404fab01e.png",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/明日方舟寻访模拟器.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/baby_eval.md",
@@ -215,7 +218,6 @@
     "source/_posts/Capture_The_Flag_夺旗赛.md",
     "_logs/spcctf_flatten.ps1",
     "_archive/SPCCTF_assets_backup_20260321_094230",
-    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/NewstarCTF_2025.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/NSSCTF_2025.md",
     "_archive/SPCCTF_split_20260321_093040/basics/1763080711015-a6595b2e-cc67-4734-8140-49a1cfd054c7.txt",
     "_archive/SPCCTF_split_20260321_093040/这羽毛球怎么只有一半啊（恼_）.md",
