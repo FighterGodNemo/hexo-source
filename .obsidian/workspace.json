@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/Forensic_电子取证/Forensic解题妙具.md",
+                "file": "source/_posts/Forensic_电子取证/取证write-up/美亚杯/2025美亚杯资格赛.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Forensic解题妙具"
+              "title": "2025美亚杯资格赛"
             }
           }
         ]
@@ -157,13 +157,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/Forensic_电子取证/Forensic解题妙具.md",
+                "file": "source/_posts/Forensic_电子取证/取证write-up/美亚杯/2025美亚杯资格赛.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Forensic解题妙具 的大纲"
+              "title": "2025美亚杯资格赛 的大纲"
             }
           },
           {
@@ -197,6 +197,8 @@
   },
   "active": "442aef2f94da008e",
   "lastOpenFiles": [
+    "source/_posts/Forensic_电子取证/取证write-up/美亚杯/2025美亚杯团体赛.md",
+    "source/_posts/Forensic_电子取证/Forensic解题妙具.md",
     "source/_posts/Capture_The_Flag_夺旗赛.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/2025警铮杯.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/2025警铮杯",
@@ -214,7 +216,6 @@
     "source/_posts/Forensic_电子取证/取证write-up/美亚杯/2025美亚杯资格赛.md",
     "source/_posts/Forensic_电子取证/取证write-up/美亚杯/2025美亚杯资格赛",
     "source/_posts/Forensic_电子取证/取证write-up/美亚杯/2025美亚杯团体赛",
-    "source/_posts/Forensic_电子取证/取证write-up/美亚杯/2025美亚杯团体赛.md",
     "source/_posts/Forensic_电子取证/取证write-up/美亚杯/2022美亚杯团队赛.md",
     "source/_posts/Forensic_电子取证/取证write-up/美亚杯/2025美亚杯资格赛/file-20260321144810786.png",
     "source/_posts/Forensic_电子取证/取证write-up/美亚杯/2025美亚杯资格赛/file-20260321144810798.png",
@@ -242,7 +243,6 @@
     "_archive/SPCCTF_split_20260321_093040/幽清晨成员大头照解密.md",
     "_archive/SPCCTF_split_20260321_093040/哈基米南北绿豆.md",
     "_archive/SPCCTF_split_20260321_093040/X0r.md",
-    "_archive/SPCCTF_split_20260321_093040/twoEs2.md",
     "未命名.canvas",
     "未命名 1.canvas"
   ]
