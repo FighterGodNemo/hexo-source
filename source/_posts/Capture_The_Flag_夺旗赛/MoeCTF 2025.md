@@ -6,10 +6,10 @@ categories:
   - 夺旗赛Write-up
   - MoeCTF_2025
 created: 2026-03-15T16:49
-updated: 2026-03-21T08:49
+updated: 2026-03-21T08:55
 ---
 + 解压得2048_master.exe
-+ 运行后显示：![](moectf/1758343712710-babaf592-cb6c-4d2d-9a47-bb7cc086e8fa.png)
++ 运行后显示：![](夺旗赛Write-up/MoeCTF%202025/1758343712710-babaf592-cb6c-4d2d-9a47-bb7cc086e8fa.png)
 + 退出，发现layout.dat，内含程序数据
 + 用010editor分别打开2048_master.exe和layout.dat得到：
 + ![](moectf/1758343862688-51627706-1681-4ad2-b082-91b9f7fee666.png)
@@ -66,10 +66,10 @@ flag 形式以moectf{}包裹提交，忽略大小写。
 
 题目：这是一张普通的图片，但是一个个像素看过去似乎有些蹊跷？
 
-+ 解压得xidian.png![](moectf/1758345088844-6d6d99ec-b3ad-494c-8d36-7c6101934102.png)
++ 解压得xidian.png![](夺旗赛Write-up/MoeCTF%202025/1758345088844-6d6d99ec-b3ad-494c-8d36-7c6101934102.png)
 + 题目提示和LSB有关，故选用Stegsolve工具
-+ Analyse选择Data Extract![](moectf/1758345448276-badf7ca7-9bc6-4b2b-b760-e6162911e957.png)
-+ 选择LSB First，尝试多种组合得到flag。![](moectf/1758345577814-83425235-3c5a-41ae-bc38-dfa5b2b30792.png)
++ Analyse选择Data Extract![](夺旗赛Write-up/MoeCTF%202025/1758345448276-badf7ca7-9bc6-4b2b-b760-e6162911e957.png)
++ 选择LSB First，尝试多种组合得到flag。![](夺旗赛Write-up/MoeCTF%202025/1758345577814-83425235-3c5a-41ae-bc38-dfa5b2b30792.png)
 
 
 
