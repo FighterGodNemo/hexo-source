@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/MoeCTF_2025.md",
+                "file": "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "MoeCTF_2025"
+              "title": "SPCCTF"
             }
           }
         ]
@@ -157,13 +157,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/MoeCTF_2025.md",
+                "file": "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "MoeCTF_2025 的大纲"
+              "title": "SPCCTF 的大纲"
             }
           },
           {
@@ -197,6 +197,7 @@
   },
   "active": "442aef2f94da008e",
   "lastOpenFiles": [
+    "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/MoeCTF_2025.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/NewstarCTF_2025.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/NSSCTF_2025.md",
@@ -242,7 +243,6 @@
     "_archive/SPCCTF_split_20260321_093040/twoEs1.md",
     "_archive/SPCCTF_split_20260321_093040/PNG_Master.md",
     "_archive/SPCCTF_split_20260321_093040/ida使用.md",
-    "_archive/SPCCTF_split_20260321_093040/F12_.md",
     "未命名.canvas",
     "未命名 1.canvas"
   ]
