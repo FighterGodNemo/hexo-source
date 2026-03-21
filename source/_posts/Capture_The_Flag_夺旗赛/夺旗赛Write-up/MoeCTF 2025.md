@@ -6,16 +6,16 @@ categories:
   - 夺旗赛Write-up
   - MoeCTF_2025
 created: 2026-03-15T16:49
-updated: 2026-03-21T09:01
+updated: 2026-03-21T09:09
 ---
 + 解压得2048_master.exe
-+ 运行后显示：![](MoeCTF 2025/1758343712710-babaf592-cb6c-4d2d-9a47-bb7cc086e8fa.png)
++ 运行后显示：![](<MoeCTF 2025/1758343712710-babaf592-cb6c-4d2d-9a47-bb7cc086e8fa.png>)
 + 退出，发现layout.dat，内含程序数据
 + 用010editor分别打开2048_master.exe和layout.dat得到：
-+ ![](MoeCTF 2025/1758343862688-51627706-1681-4ad2-b082-91b9f7fee666.png)
-+ ![](MoeCTF 2025/1758343892513-bc22f244-aadd-4c6a-9e6e-01d361ac95e9.png)
-+ 修改layout数据如下：![](MoeCTF 2025/1758343978405-31807aa8-47f4-46a1-a6fc-2d4a318bd462.png)
-+ 运行得flag：![](MoeCTF 2025/1758344041411-03726efa-6a25-44b5-970d-aa133eb5dbf6.png)
++ ![](<MoeCTF 2025/1758343862688-51627706-1681-4ad2-b082-91b9f7fee666.png>)
++ ![](<MoeCTF 2025/1758343892513-bc22f244-aadd-4c6a-9e6e-01d361ac95e9.png>)
++ 修改layout数据如下：![](<MoeCTF 2025/1758343978405-31807aa8-47f4-46a1-a6fc-2d4a318bd462.png>)
++ 运行得flag：![](<MoeCTF 2025/1758344041411-03726efa-6a25-44b5-970d-aa133eb5dbf6.png>)
 
 
 
@@ -25,8 +25,8 @@ updated: 2026-03-21T09:01
 
 上述文案纯属看图说话，玩个梗，无恶意
 
-+ 解压得rush.gif![](MoeCTF 2025/1758344811679-c3be4a70-f86b-4107-8a15-f507e1d4043b.png)
-+ 截取二维码，在画图3D中打开，用![](MoeCTF 2025/1758345172134-a5f62051-7aed-40f5-9b87-127055485bf4.png)补齐左上角定位点，扫描得flag。
++ 解压得rush.gif![](<MoeCTF 2025/1758344811679-c3be4a70-f86b-4107-8a15-f507e1d4043b.png>)
++ 截取二维码，在画图3D中打开，用![](<MoeCTF 2025/1758345172134-a5f62051-7aed-40f5-9b87-127055485bf4.png>)补齐左上角定位点，扫描得flag。
 
 
 
@@ -38,9 +38,9 @@ updated: 2026-03-21T09:01
 
 什么，你说你看不见 FLAG？注意 CRC！
 
-+ 解压得![](MoeCTF 2025/1758424351381-7e297ddc-d390-4f48-a9f6-155b5f1912a0.png)
++ 解压得![](<MoeCTF 2025/1758424351381-7e297ddc-d390-4f48-a9f6-155b5f1912a0.png>)
 + 使用[随波逐流]CTF编码工具试试修复高宽，意外获得flag。
-+ ![](MoeCTF 2025/1758424524737-76218b65-a464-4f64-ae00-95fe07c9d602.png)
++ ![](<MoeCTF 2025/1758424524737-76218b65-a464-4f64-ae00-95fe07c9d602.png>)
 
 
 
@@ -51,25 +51,25 @@ flag 形式以moectf{}包裹提交，忽略大小写。
 + 解压得 粒子艺术.wav
 + 用Audacity打开
 
-![](MoeCTF 2025/1758425215489-4b781ca7-e6b9-408e-b93a-024ba8699b79.png)
+![](<MoeCTF 2025/1758425215489-4b781ca7-e6b9-408e-b93a-024ba8699b79.png>)
 
 + 发现一个声道是摩斯密码
-+ 分离声道![](MoeCTF 2025/1758425284265-f74172d3-2c69-4b19-9e68-9fcabacef9d7.png)
++ 分离声道![](<MoeCTF 2025/1758425284265-f74172d3-2c69-4b19-9e68-9fcabacef9d7.png>)
 + 保留密码声道并导出。
 + 将导出的MP3文件放入摩尔斯电码音频解码器
 
 [https://morsecodemagic.com/zh/%E6%91%A9%E5%B0%94%E6%96%AF%E7%94%B5%E7%A0%81%E9%9F%B3%E9%A2%91%E8%A7%A3%E7%A0%81%E5%99%A8/](https://morsecodemagic.com/zh/%E6%91%A9%E5%B0%94%E6%96%AF%E7%94%B5%E7%A0%81%E9%9F%B3%E9%A2%91%E8%A7%A3%E7%A0%81%E5%99%A8/)
 
-+ 解得flag。![](MoeCTF 2025/1758425603328-0f78eeff-715e-4dc2-8032-ed65252489bc.png)
++ 解得flag。![](<MoeCTF 2025/1758425603328-0f78eeff-715e-4dc2-8032-ed65252489bc.png>)
 
 
 
 题目：这是一张普通的图片，但是一个个像素看过去似乎有些蹊跷？
 
-+ 解压得xidian.png![](MoeCTF 2025/1758345088844-6d6d99ec-b3ad-494c-8d36-7c6101934102.png)
++ 解压得xidian.png![](<MoeCTF 2025/1758345088844-6d6d99ec-b3ad-494c-8d36-7c6101934102.png>)
 + 题目提示和LSB有关，故选用Stegsolve工具
-+ Analyse选择Data Extract![](MoeCTF 2025/1758345448276-badf7ca7-9bc6-4b2b-b760-e6162911e957.png)
-+ 选择LSB First，尝试多种组合得到flag。![](MoeCTF 2025/1758345577814-83425235-3c5a-41ae-bc38-dfa5b2b30792.png)
++ Analyse选择Data Extract![](<MoeCTF 2025/1758345448276-badf7ca7-9bc6-4b2b-b760-e6162911e957.png>)
++ 选择LSB First，尝试多种组合得到flag。![](<MoeCTF 2025/1758345577814-83425235-3c5a-41ae-bc38-dfa5b2b30792.png>)
 
 
 

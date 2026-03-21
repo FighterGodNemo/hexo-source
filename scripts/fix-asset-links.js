@@ -6,12 +6,18 @@ function escapeRegExp(str) {
 
 function stripPostPrefixInMarkdown(content, postName) {
   if (!content) return content;
-  const escaped = escapeRegExp(postName);
-  const mdLinkRe = new RegExp(`\\]\\(${escaped}\\/([^\)]+)\\)`, 'g');
-  let out = content.replace(mdLinkRe, ']($1)');
+  const names = Array.from(new Set([postName, encodeURIComponent(postName)]));
+  let out = content;
 
-  const htmlImgRe = new RegExp(`(<img[^>]+src=["'])${escaped}\\/([^"']+)(["'])`, 'gi');
-  out = out.replace(htmlImgRe, '$1$2$3');
+  for (const name of names) {
+    const escaped = escapeRegExp(name);
+    // Support optional angle brackets around destinations: ](<postName/xxx>)
+    const mdLinkRe = new RegExp(`\\]\\(<?${escaped}\\/([^\\)]+?)>?\\)`, 'g');
+    out = out.replace(mdLinkRe, ']($1)');
+
+    const htmlImgRe = new RegExp(`(<img[^>]+src=["'])${escaped}\\/([^"']+)(["'])`, 'gi');
+    out = out.replace(htmlImgRe, '$1$2$3');
+  }
 
   return out;
 }
