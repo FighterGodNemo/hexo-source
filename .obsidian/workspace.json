@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/博览知识/计算机三级网络技术学习笔记.md",
+                "file": "source/_posts/博览知识/全国计算机等级考试三级网络技术学习笔记.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "计算机三级网络技术学习笔记"
+              "title": "全国计算机等级考试三级网络技术学习笔记"
             }
           }
         ]
@@ -157,13 +157,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/博览知识/计算机三级网络技术学习笔记.md",
+                "file": "source/_posts/博览知识/全国计算机等级考试三级网络技术学习笔记.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "计算机三级网络技术学习笔记 的大纲"
+              "title": "全国计算机等级考试三级网络技术学习笔记 的大纲"
             }
           },
           {
@@ -197,8 +197,11 @@
   },
   "active": "442aef2f94da008e",
   "lastOpenFiles": [
+    "source/_posts/博览知识/全国计算机等级考试三级网络技术学习笔记",
+    "source/_posts/博览知识/全国计算机等级考试三级网络技术学习笔记/file-20260325130519233.png",
+    "source/_posts/博览知识/计算机三级网络技术学习笔记",
     "source/_posts/Forensic_电子取证/取证write-up/美亚杯/2025美亚杯资格赛.md",
-    "source/_posts/博览知识/计算机三级网络技术学习笔记.md",
+    "source/_posts/博览知识/全国计算机等级考试三级网络技术学习笔记.md",
     "source/_posts/Forensic_电子取证/取证write-up/美亚杯/2025美亚杯资格赛/file-20260324181638991.png",
     "source/_posts/Forensic_电子取证/取证write-up/美亚杯/2025美亚杯资格赛/file-20260323191409910.png",
     "source/_posts/Forensic_电子取证/取证write-up/美亚杯/2025美亚杯资格赛/file-20260323191315438.png",
@@ -208,7 +211,6 @@
     "source/_posts/Forensic_电子取证/取证write-up/美亚杯/2025美亚杯资格赛/file-20260323191051538.png",
     "source/_posts/Forensic_电子取证/取证write-up/美亚杯/2025美亚杯资格赛/file-20260323190913441.png",
     "source/_posts/Forensic_电子取证/取证write-up/美亚杯/2025美亚杯资格赛/file-20260323185930090.png",
-    "source/_posts/Forensic_电子取证/取证write-up/美亚杯/2025美亚杯资格赛/file-20260323185754687.png",
     "source/_posts/Forensic_电子取证/取证write-up/美亚杯/2025美亚杯团体赛.md",
     "source/_posts/Forensic_电子取证/Forensic解题妙具.md",
     "source/_posts/Capture_The_Flag_夺旗赛.md",
@@ -235,14 +237,12 @@
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/ida使用.md",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/SPCCTF/word-3.md",
     "_logs/spcctf_flatten.ps1",
-    "_archive/SPCCTF_assets_backup_20260321_094230",
     "_archive/SPCCTF_split_20260321_093040/这羽毛球怎么只有一半啊（恼_）.md",
     "_archive/SPCCTF_split_20260321_093040/曼波曼波曼波.md",
     "_archive/SPCCTF_split_20260321_093040/明日方舟寻访模拟器.md",
     "_archive/SPCCTF_split_20260321_093040/无标题文档.md",
     "_archive/SPCCTF_split_20260321_093040/掩码爆破.md",
     "_archive/SPCCTF_split_20260321_093040/幽清晨成员大头照解密.md",
-    "_archive/SPCCTF_split_20260321_093040/哈基米南北绿豆.md",
     "未命名.canvas",
     "未命名 1.canvas"
   ]
