@@ -7,14 +7,6 @@
       "key": "G"
     }
   ],
-  "editor:toggle-highlight": [
-    {
-      "modifiers": [
-        "Mod"
-      ],
-      "key": "A"
-    }
-  ],
   "editor:set-heading-2": [
     {
       "modifiers": [
@@ -93,7 +85,7 @@
       "modifiers": [
         "Mod"
       ],
-      "key": "Q"
+      "key": "A"
     }
   ],
   "editor:table-col-align-center": [
@@ -160,6 +152,14 @@
         "Mod"
       ],
       "key": "1"
+    }
+  ],
+  "editor:toggle-highlight": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "Q"
     }
   ]
 }
