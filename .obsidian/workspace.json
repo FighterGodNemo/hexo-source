@@ -40,7 +40,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "moe",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -74,12 +74,12 @@
               "title": "文件列表"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 212.50198364257812
+    "width": 212.50198364257812,
+    "collapsed": true
   },
   "right": {
     "id": "d8696752f51946da",
