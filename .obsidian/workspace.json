@@ -74,7 +74,8 @@
               "title": "文件列表"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -194,7 +195,7 @@
       "bases:新建数据库": false
     }
   },
-  "active": "442aef2f94da008e",
+  "active": "6ee123e5035b92d7",
   "lastOpenFiles": [
     "db.json",
     "public/music/背景二/CORSAK胡梦周,马吟吟 - 溯 (Reverse) 01.mp3",
