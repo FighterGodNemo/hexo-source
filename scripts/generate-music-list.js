@@ -74,7 +74,7 @@ function compareByOrder(a, b) {
   return a.localeCompare(b, 'zh-Hans-CN');
 }
 
-function toTrack(filePath, publicPath) {
+function toTrack(filePath, publicPath, coverPath) {
   const baseName = path.parse(filePath).name;
   const cleanedBase = stripOrderToken(baseName) || baseName;
   let artist = 'FighterGodNemo';
@@ -93,8 +93,41 @@ function toTrack(filePath, publicPath) {
     name,
     artist,
     url: publicPath,
-    cover: '/img/index-bg.jpg'
+    cover: coverPath || '/img/index-bg.jpg'
   };
+}
+
+function getBgCoverMap(bgDir) {
+  const byKey = {};
+  let defaultCover = '/img/index-bg.jpg';
+  if (!fs.existsSync(bgDir)) {
+    return { byKey, defaultCover };
+  }
+
+  const items = fs.readdirSync(bgDir)
+    .filter(isImage)
+    .map((file) => {
+      const parsed = normalizeGroupName(file);
+      return {
+        file,
+        key: parsed.key,
+        displayName: parsed.displayName || parsed.key,
+        order: parsed.order,
+        isPostVariant: parsed.isPostVariant
+      };
+    })
+    .filter((item) => item.key && !item.isPostVariant)
+    .sort(compareNamedEntries);
+
+  items.forEach((item, index) => {
+    const cover = '/img/bg/' + encodeURIComponent(item.file);
+    if (!byKey[item.key]) {
+      byKey[item.key] = cover;
+      if (index === 0) defaultCover = cover;
+    }
+  });
+
+  return { byKey, defaultCover };
 }
 
 function readAudioFiles(dir) {
@@ -113,6 +146,7 @@ hexo.extend.filter.register('before_generate', () => {
   const musicDir = path.join(baseDir, 'source', 'music');
   const bgDir = path.join(baseDir, 'source', 'img', 'bg');
   const warnings = [];
+  const bgCoverMap = getBgCoverMap(bgDir);
 
   if (!fs.existsSync(musicDir)) {
     fs.mkdirSync(musicDir, { recursive: true });
@@ -148,7 +182,7 @@ hexo.extend.filter.register('before_generate', () => {
 
   const rootList = rootFiles.map((file) => {
     const url = '/music/' + encodeURIComponent(file);
-    return toTrack(file, url);
+    return toTrack(file, url, bgCoverMap.defaultCover);
   });
   if (rootList.length) {
     map.folders.default = rootList;
@@ -167,7 +201,7 @@ hexo.extend.filter.register('before_generate', () => {
     const abs = path.join(musicDir, folder.sourceName);
     const items = readAudioFiles(abs).map(({ file }) => {
       const url = '/music/' + encodeURIComponent(folder.sourceName) + '/' + encodeURIComponent(file);
-      return toTrack(file, url);
+      return toTrack(file, url, bgCoverMap.byKey[folder.key] || bgCoverMap.defaultCover);
     });
     if (!items.length) return;
 

@@ -36,6 +36,44 @@ function createFallbackBgItems(list) {
   });
 }
 
+function buildPreloadCssRule(selector, bg) {
+  if (!selector) return '';
+  if (!bg) return selector + '{background:none transparent!important;background-image:none!important;}';
+  if (/^(#|rgb|hsl|linear-gradient|radial-gradient)/i.test(bg)) {
+    return selector + '{background:' + bg + '!important;background-image:none!important;}';
+  }
+  return selector + '{background-color:transparent!important;background-image:url("' + bg + '")!important;background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important;}';
+}
+
+function buildBgPreloadScript(defaultBg, items) {
+  const postMap = {};
+  (items || []).forEach((item) => {
+    if (!item || !item.main || !item.post) return;
+    postMap[item.main] = item.post;
+  });
+
+  return `(function(){
+  try {
+    var defaultBg = ${JSON.stringify(defaultBg || '')};
+    var postBgMap = ${JSON.stringify(postMap)};
+    var bg = localStorage.getItem('bgUrl') || defaultBg || '';
+    if (!bg) return;
+    var postBg = postBgMap[bg] || bg;
+    var css = '';
+    css += ${JSON.stringify(buildPreloadCssRule('#web_bg', '__BG__'))}.replace('__BG__', bg);
+    css += '#page-header{--mark-bg:transparent!important;}';
+    css += '#page-header.full_page,#page-header.not-home-page{background:none transparent!important;background-image:none!important;}';
+    css += '#page-header.full_page::before,#page-header.full_page::after,#page-header.not-home-page::before,#page-header.not-home-page::after{background:transparent!important;background-image:none!important;opacity:0!important;}';
+    css += ${JSON.stringify(buildPreloadCssRule('#page-header.post-bg[data-has-custom-post-top-img="0"]', '__POST_BG__'))}.replace('__POST_BG__', postBg);
+    css += '#page-header.post-bg[data-has-custom-post-top-img="0"]::before,#page-header.post-bg[data-has-custom-post-top-img="0"]::after{background:transparent!important;background-image:none!important;opacity:0!important;}';
+    var style = document.createElement('style');
+    style.id = 'bg-preload-style';
+    style.textContent = css;
+    document.head.appendChild(style);
+  } catch (e) {}
+})();\n`;
+}
+
 hexo.extend.filter.register('before_generate', () => {
   const baseDir = hexo.base_dir;
   const bgDir = path.join(baseDir, 'source', 'img', 'bg');
@@ -131,6 +169,11 @@ hexo.extend.filter.register('before_generate', () => {
 
   const mapPath = path.join(baseDir, 'source', 'bg-map.json');
   fs.writeFileSync(mapPath, JSON.stringify(bgMap, null, 2));
+
+  const defaultBg = items[0] && items[0].main ? items[0].main : (list[0] || '/img/index-bg.jpg');
+  const preloadPath = path.join(baseDir, 'source', 'js', 'bg-preload.js');
+  fs.mkdirSync(path.dirname(preloadPath), { recursive: true });
+  fs.writeFileSync(preloadPath, buildBgPreloadScript(defaultBg, items));
 
   warnings.forEach((warning) => hexo.log.warn(warning));
 });
