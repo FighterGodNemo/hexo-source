@@ -169,7 +169,8 @@ subtitle:
   # 3 - jinrishici.com
   source: false
   # If you close the typewriter effect, the subtitle will only show the first line of sub
-  sub: No System Is Safe
+  sub:
+    - No System Is Safe
 
 # Article layout on the homepage
 # 1: Cover on the left, info on the right
@@ -1069,7 +1070,7 @@ inject:
     - <script src="/js/bg-preload.js?v=20260319-3"></script>
     - <link rel="stylesheet" href="/css/custom.css?v=20260319-3">
   bottom:
-    - <script src="/js/custom.js?v=20260319-3"></script>
+    - <script src="/js/custom.js?v=20260330-1"></script>
 
 # CDN Settings
 # Don't modify the following settings unless you know how they work
@@ -1138,7 +1139,7 @@ CDN:
     # snackbar_css:
     # translate:
     # twikoo:
-    # typed:
+    typed: https://cdn.staticfile.org/typed.js/2.1.0/typed.umd.js
     # utils:
     # valine:
     # waline_css:

@@ -75,6 +75,27 @@ body,
   background-image: none !important;
 }
 
+#page-header.post-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+#page-header.post-bg > #nav,
+#page-header.post-bg > #post-info,
+#page-header.post-bg > #page-site-info,
+#page-header.post-bg > #site-info {
+  position: relative;
+  z-index: 2;
+}
+
+#page-header .post-top-bg-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, background-image 0.25s ease, background-color 0.25s ease;
+}
+
 #page-header.post-bg::before,
 #page-header.post-bg::after,
 #page-header.not-home-page::before,

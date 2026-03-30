@@ -34,6 +34,105 @@
     header.setAttribute('data-bg-lock', '1');
   }
 
+  function setElementBackground(el, bg) {
+    if (!el) return;
+    var next = String(bg || '');
+    var current = el.getAttribute('data-bg-source') || '';
+    if (normalizeBgValue(current) === normalizeBgValue(next)) return;
+
+    el.removeAttribute('style');
+    if (!next) {
+      el.setAttribute('data-bg-source', '');
+      return;
+    }
+
+    if (isColorValue(next)) {
+      el.style.setProperty('background-image', 'none', 'important');
+      el.style.setProperty('background-color', next, 'important');
+    } else {
+      el.style.setProperty('background-color', 'transparent', 'important');
+      el.style.setProperty('background-image', 'url(' + next + ')', 'important');
+      el.style.setProperty('background-size', 'cover', 'important');
+      el.style.setProperty('background-position', 'center', 'important');
+      el.style.setProperty('background-repeat', 'no-repeat', 'important');
+    }
+    el.setAttribute('data-bg-source', next);
+  }
+
+  function ensurePostHeaderLayer(header) {
+    if (!header) return null;
+    var layer = header.querySelector('.post-top-bg-layer');
+    if (layer) return layer;
+    layer = document.createElement('div');
+    layer.className = 'post-top-bg-layer';
+    header.insertBefore(layer, header.firstChild);
+    return layer;
+  }
+
+  function clearPostHeaderLayer(header) {
+    var target = header || document.getElementById('page-header');
+    if (!target) return;
+    var layer = target.querySelector('.post-top-bg-layer');
+    if (layer && layer.parentNode) {
+      layer.parentNode.removeChild(layer);
+    }
+  }
+
+  function getHeaderDeclaredBackground(header) {
+    if (!header) return '';
+    var bgImage = header.style.backgroundImage || '';
+    if (bgImage && bgImage !== 'none') {
+      var imageMatch = bgImage.match(/^url\((['"]?)(.*?)\1\)$/i);
+      return imageMatch ? imageMatch[2] : bgImage;
+    }
+    var bg = header.style.background || '';
+    if (bg && bg !== 'none') return bg;
+    var bgColor = header.style.backgroundColor || '';
+    if (bgColor && bgColor !== 'rgba(0, 0, 0, 0)' && bgColor !== 'transparent') {
+      return bgColor;
+    }
+    return '';
+  }
+
+  function getCustomPostHeaderSource(header) {
+    if (!header || header.getAttribute('data-has-custom-post-top-img') !== '1') return '';
+    var cached = header.getAttribute('data-custom-post-top-source') || '';
+    if (cached) return cached;
+    var source = getHeaderDeclaredBackground(header);
+    if (source) header.setAttribute('data-custom-post-top-source', source);
+    return source;
+  }
+
+  function resolveCurrentPostHeaderBackground() {
+    var header = document.getElementById('page-header');
+    if (!header || !header.classList.contains('post-bg')) return '';
+
+    var custom = getCustomPostHeaderSource(header);
+    if (custom) return custom;
+
+    var entry = getCurrentBgEntry();
+    if (!entry) return '';
+    return entry.post || entry.main || '';
+  }
+
+  function updatePostHeaderBackground() {
+    var header = document.getElementById('page-header');
+    if (!header) return;
+    if (!header.classList.contains('post-bg')) {
+      clearPostHeaderLayer(header);
+      return;
+    }
+
+    var source = resolveCurrentPostHeaderBackground();
+    if (!source) {
+      clearPostHeaderLayer(header);
+      return;
+    }
+
+    var layer = ensurePostHeaderLayer(header);
+    setElementBackground(layer, source);
+  }
+
   function applyBackground(bg) {
     var webBg = document.getElementById('web_bg');
     if (!webBg) {
@@ -42,7 +141,11 @@
       webBg.className = 'bg-animation';
       document.body.insertBefore(webBg, document.body.firstChild);
     }
-    if (!bg) return;
+    updatePostHeaderBackground();
+    if (!bg) {
+      lockHeaderBackground();
+      return;
+    }
     var preloadStyle = document.getElementById('bg-preload-style');
     if (preloadStyle && preloadStyle.parentNode) {
       preloadStyle.parentNode.removeChild(preloadStyle);
@@ -69,6 +172,7 @@
       }
     }
     lockHeaderBackground();
+    updatePostHeaderBackground();
     updateBgmCover();
     updateVideoBackground(bg);
 
@@ -103,19 +207,93 @@
     return String(name || '').replace(/\s+/g, ' ').trim();
   }
 
+  function normalizeMatchKey(name) {
+    return normalizeFileName(String(name || ''));
+  }
+
+  function createFallbackBgMap(list) {
+    var items = [];
+    for (var i = 0; i < (list || []).length; i++) {
+      var url = list[i];
+      var baseName = getBasenameFromUrl(url);
+      var key = normalizeMatchKey(baseName) || ('fallback-' + i);
+      items.push({
+        key: key,
+        name: baseName || ('背景' + (i + 1)),
+        order: i,
+        main: url,
+        post: ''
+      });
+    }
+    return {
+      order: items.map(function (item) { return item.key; }),
+      items: items,
+      byKey: items.reduce(function (acc, item) {
+        acc[item.key] = item;
+        return acc;
+      }, {})
+    };
+  }
+
+  function setBgMap(map, fallbackList) {
+    var sourceItems = map && Array.isArray(map.items) && map.items.length
+      ? map.items
+      : createFallbackBgMap(fallbackList || []).items;
+    var items = [];
+    var byUrl = {};
+    var byKey = {};
+
+    for (var i = 0; i < sourceItems.length; i++) {
+      var item = sourceItems[i];
+      if (!item || !item.main) continue;
+      var key = normalizeMatchKey(item.key || item.name || getBasenameFromUrl(item.main));
+      var name = normalizeFileName(item.name || item.displayName || key || getBasenameFromUrl(item.main));
+      var normalized = {
+        key: key,
+        name: name || key,
+        order: typeof item.order === 'number' ? item.order : i,
+        main: item.main,
+        post: item.post || ''
+      };
+      items.push(normalized);
+      byUrl[normalizeFileName(normalized.main)] = normalized;
+      byKey[normalizeMatchKey(normalized.key)] = normalized;
+    }
+
+    bgState.map = {
+      order: items.map(function (entry) { return entry.key; }),
+      items: items,
+      byKey: byKey
+    };
+    bgState.items = items;
+    bgState.list = items.map(function (entry) { return entry.main; });
+    bgState.byUrl = byUrl;
+    bgState.byKey = byKey;
+  }
+
+  function getBgEntryByUrl(url) {
+    return bgState.byUrl[normalizeFileName(url)] || null;
+  }
+
+  function getBgEntryByKey(key) {
+    return bgState.byKey[normalizeMatchKey(key)] || null;
+  }
+
+  function getCurrentBgEntry() {
+    return getBgEntryByUrl(bgState.current || '');
+  }
+
+  function normalizeTrackUrl(url) {
+    return normalizeFileName(String(url || ''));
+  }
+
   function stripAudioExt(name) {
     return String(name || '').replace(/\.(mp3|m4a|aac|ogg|wav|flac)$/i, '');
   }
 
   function getBgUrlByName(name) {
-    if (!name || !bgState.list || !bgState.list.length) return '';
-    var target = normalizeFileName(name);
-    for (var i = 0; i < bgState.list.length; i++) {
-      var url = bgState.list[i];
-      var base = normalizeFileName(getBasenameFromUrl(url));
-      if (base === target) return url;
-    }
-    return '';
+    var entry = getBgEntryByKey(name);
+    return entry ? (entry.main || '') : '';
   }
 
   function setBgmCover(bg) {
@@ -180,7 +358,8 @@
   }
 
   var videoBgConfig = {
-    enabled: true,
+    // Enable this only after adding matching /img/bg/<name>.mp4 files.
+    enabled: false,
     basePath: '/img/bg/',
     poster: '/img/index-bg.jpg',
     fallback: ''
@@ -327,7 +506,11 @@
   var bgState = {
     list: [],
     index: 0,
-    current: ''
+    current: '',
+    map: null,
+    items: [],
+    byUrl: {},
+    byKey: {}
   };
 
   var builtInDefaultMap = {
@@ -361,10 +544,13 @@
     ready: false,
     lists: [],
     listKey: '__bg__',
+    followKey: '',
     listIndex: 0,
     labelEl: null,
     switchBtn: null,
-    defaultBtn: null
+    defaultBtn: null,
+    badTracks: {},
+    handlingError: false
   };
 
   function getSavedBgIndex(list) {
@@ -417,9 +603,19 @@
     localStorage.setItem('bgmDefaultMap', JSON.stringify(map));
   }
 
+  function getMusicLabelByKey(key) {
+    if (!key) return '';
+    if (musicState.map && musicState.map.labels && musicState.map.labels[key]) {
+      return musicState.map.labels[key];
+    }
+    if (key === 'default') return '默认歌单';
+    return key;
+  }
+
   function buildMusicLists(map) {
     var lists = [];
     var seen = {};
+    var labels = map && map.labels ? map.labels : {};
     if (map && (map.all && map.all.length || (map.folders && Object.keys(map.folders).length))) {
       lists.push({ key: '__bg__', name: '跟随背景' });
     }
@@ -434,7 +630,7 @@
         if (seen[k]) return;
         var items = map.folders[k];
         if (Array.isArray(items) && items.length) {
-          lists.push({ key: k, name: k });
+          lists.push({ key: k, name: labels[k] || k });
           seen[k] = true;
         }
       });
@@ -443,8 +639,90 @@
     return lists;
   }
 
+  function getFirstPlayableManualListState() {
+    if (!musicState.map || !musicState.map.folders) {
+      return { key: '', items: [] };
+    }
+    var order = Array.isArray(musicState.map.order) ? musicState.map.order.slice() : Object.keys(musicState.map.folders);
+    for (var i = 0; i < order.length; i++) {
+      var key = order[i];
+      var items = filterPlayableTracks(musicState.map.folders[key]);
+      if (items.length) {
+        return {
+          key: key,
+          items: items
+        };
+      }
+    }
+    return { key: '', items: [] };
+  }
+
+  function resolveFollowListState() {
+    var currentBg = getCurrentBgEntry();
+    var bgName = getBgListName();
+    if (currentBg && currentBg.key && musicState.map && musicState.map.folders) {
+      var mapped = filterPlayableTracks(musicState.map.folders[currentBg.key]);
+      if (mapped.length) {
+        musicState.followKey = currentBg.key;
+        return {
+          key: currentBg.key,
+          items: mapped,
+          bgName: bgName,
+          reuse: false
+        };
+      }
+    }
+
+    var reuseKey = musicState.followKey;
+    var reuseItems = reuseKey && musicState.map && musicState.map.folders
+      ? filterPlayableTracks(musicState.map.folders[reuseKey])
+      : [];
+    if (!reuseItems.length) {
+      var first = getFirstPlayableManualListState();
+      reuseKey = first.key;
+      reuseItems = first.items;
+    }
+
+    if (reuseKey && reuseItems.length) {
+      musicState.followKey = reuseKey;
+      return {
+        key: reuseKey,
+        items: reuseItems,
+        bgName: bgName,
+        reuse: !!currentBg && currentBg.key !== reuseKey
+      };
+    }
+
+    return {
+      key: '',
+      items: [],
+      bgName: bgName,
+      reuse: false
+    };
+  }
+
+  function isBrokenTrack(item) {
+    if (!item || !item.url) return false;
+    return !!musicState.badTracks[normalizeTrackUrl(item.url)];
+  }
+
+  function filterPlayableTracks(list) {
+    if (!Array.isArray(list) || !list.length) return [];
+    var out = [];
+    var seen = {};
+    for (var i = 0; i < list.length; i++) {
+      var item = list[i];
+      if (!item || !item.url) continue;
+      var key = normalizeTrackUrl(item.url);
+      if (!key || seen[key] || musicState.badTracks[key]) continue;
+      seen[key] = true;
+      out.push(item);
+    }
+    return out;
+  }
+
   function getListItemsByKey(key) {
-    if (key === '__bg__') return pickMusicListForBg(bgState.current || '');
+    if (key === '__bg__') return resolveFollowListState().items;
     if (key === '__all__') return musicState.map && musicState.map.all ? musicState.map.all : [];
     if (musicState.map && musicState.map.folders && musicState.map.folders[key]) {
       return musicState.map.folders[key];
@@ -452,21 +730,32 @@
     return [];
   }
 
+  function getPlayableListItemsByKey(key) {
+    return filterPlayableTracks(getListItemsByKey(key));
+  }
+
   function getBgListName() {
-    return getBasenameFromUrl(bgState.current || '');
+    var entry = getCurrentBgEntry();
+    return entry ? (entry.name || entry.key) : getBasenameFromUrl(bgState.current || '');
   }
 
   function getBgKey() {
-    return getBgListName() || '';
+    var entry = getCurrentBgEntry();
+    return entry ? (entry.key || '') : normalizeMatchKey(getBasenameFromUrl(bgState.current || ''));
   }
 
   function getMusicListDisplayName(key) {
     if (key === '__bg__') {
-      var bgName = getBgListName();
-      return bgName ? ('跟随背景：' + bgName) : '跟随背景';
+      var follow = resolveFollowListState();
+      var bgName = follow.bgName || getBgListName();
+      if (!bgName) return '跟随背景';
+      if (follow.reuse && follow.key) {
+        return '跟随背景：' + bgName + '（沿用 ' + getMusicLabelByKey(follow.key) + '）';
+      }
+      return '跟随背景：' + bgName;
     }
     if (key === '__all__') return '全部';
-    return key || '歌单';
+    return getMusicLabelByKey(key) || key || '歌单';
   }
 
   function updateMusicListLabel() {
@@ -544,10 +833,16 @@
   }
 
   function applyMusicListByKey(key, save) {
-    var items = getListItemsByKey(key);
+    var resolved = key === '__bg__'
+      ? resolveFollowListState()
+      : { key: key, items: getPlayableListItemsByKey(key), reuse: false };
+    var items = resolved.items;
     if (!Array.isArray(items) || !items.length) return false;
-    applyPlaylist(musicState.ap, items);
+    if (!applyPlaylist(musicState.ap, items)) return false;
     musicState.listKey = key;
+    if (key === '__bg__' && resolved.key) {
+      musicState.followKey = resolved.key;
+    }
     if (save) setSavedMusicListKey(key);
     updateMusicListLabel();
     updateBgmCover();
@@ -573,20 +868,106 @@
   function pickMusicListForBg(bgUrl) {
     var map = musicState.map;
     if (!map || !map.folders) return [];
-    var key = getBasenameFromUrl(bgUrl);
+    var entry = getBgEntryByUrl(bgUrl);
+    var key = entry ? entry.key : normalizeMatchKey(getBasenameFromUrl(bgUrl));
     if (key && map.folders[key] && map.folders[key].length) {
       return map.folders[key];
     }
-    if (map.all && map.all.length) return map.all;
     return [];
   }
 
   function applyPlaylist(ap, list) {
-    if (!ap || !Array.isArray(list) || !list.length) return;
+    var nextList = filterPlayableTracks(list);
+    if (!ap || !nextList.length) return false;
     ap.list.clear();
-    ap.list.add(list);
+    ap.list.add(nextList);
     ap.list.switch(0);
     ap.pause();
+    return true;
+  }
+
+  function getCurrentAudioUrl() {
+    var current = getCurrentAudioItem();
+    return current ? normalizeTrackUrl(current.url) : '';
+  }
+
+  function getFallbackListState() {
+    var lists = musicState.lists || [];
+    var preferred = [];
+    if (musicState.listKey) preferred.push(musicState.listKey);
+    if (musicState.listKey !== '__bg__') preferred.push('__bg__');
+    if (musicState.listKey !== '__all__') preferred.push('__all__');
+
+    for (var i = 0; i < lists.length; i++) {
+      if (preferred.indexOf(lists[i].key) === -1) preferred.push(lists[i].key);
+    }
+
+    for (var j = 0; j < preferred.length; j++) {
+      var key = preferred[j];
+      var items = getPlayableListItemsByKey(key);
+      if (items.length) {
+        return {
+          key: key,
+          items: items
+        };
+      }
+    }
+
+    return {
+      key: musicState.listKey,
+      items: []
+    };
+  }
+
+  function bindAPlayerErrorRecovery(ap) {
+    if (!ap || !ap.audio || ap.audio.dataset.codexErrorBound === '1') return;
+    ap.audio.dataset.codexErrorBound = '1';
+
+    ap.audio.addEventListener('error', function () {
+      if (musicState.handlingError) return;
+
+      var brokenUrl = getCurrentAudioUrl();
+      if (brokenUrl) {
+        musicState.badTracks[brokenUrl] = true;
+      }
+
+      musicState.handlingError = true;
+
+      var fallback = getFallbackListState();
+      if (!fallback.items.length) {
+        if (typeof ap.notice === 'function') {
+          ap.notice('当前歌单暂时无法播放', 2200, 1);
+        }
+        musicState.handlingError = false;
+        return;
+      }
+
+      if (fallback.key !== musicState.listKey) {
+        musicState.listKey = fallback.key;
+        setSavedMusicListKey(fallback.key);
+        syncMusicListIndex();
+      }
+
+      if (!applyPlaylist(ap, fallback.items)) {
+        musicState.handlingError = false;
+        return;
+      }
+
+      updateMusicListLabel();
+      updateBgmCover();
+      updateDefaultBtnState();
+
+      if (typeof ap.notice === 'function') {
+        ap.notice('检测到异常音频，已自动切换下一首', 2200, 0);
+      }
+
+      setTimeout(function () {
+        try {
+          ap.play();
+        } catch (e) {}
+        musicState.handlingError = false;
+      }, 120);
+    });
   }
 
   async function initBgSwitcher() {
@@ -603,6 +984,9 @@
 
     var list = await loadJson('/bg-list.json', []);
     if (!Array.isArray(list)) list = [];
+    var map = await loadJson('/bg-map.json', null);
+    setBgMap(map, list);
+    list = bgState.list.slice();
 
     if (!list.length) {
       btn.style.display = 'none';
@@ -624,8 +1008,12 @@
       bgState.current = list[idx];
       applyBackground(bgState.current);
       if (musicState.ap && musicState.listKey === '__bg__') {
-        var nextList = pickMusicListForBg(bgState.current);
-        applyPlaylist(musicState.ap, nextList);
+        var previousFollowKey = musicState.followKey;
+        var follow = resolveFollowListState();
+        var hasList = musicState.ap.list && musicState.ap.list.audios && musicState.ap.list.audios.length;
+        if (follow.items.length && (!hasList || (follow.key && follow.key !== previousFollowKey))) {
+          applyPlaylist(musicState.ap, follow.items);
+        }
         updateMusicListLabel();
       }
       updateDefaultBtnState();
@@ -688,14 +1076,26 @@
     musicState.listKey = savedKey;
     syncMusicListIndex();
     updateBgmCover();
-    var list = getListItemsByKey(musicState.listKey);
+    var resolved = musicState.listKey === '__bg__'
+      ? resolveFollowListState()
+      : { key: musicState.listKey, items: getPlayableListItemsByKey(musicState.listKey) };
+    if (musicState.listKey === '__bg__' && resolved.key) {
+      musicState.followKey = resolved.key;
+    }
+    var list = resolved.items;
     if (!Array.isArray(list) || list.length === 0) {
       for (var i = 0; i < musicState.lists.length; i++) {
         var tryKey = musicState.lists[i].key;
-        var tryList = getListItemsByKey(tryKey);
+        var tryResolved = tryKey === '__bg__'
+          ? resolveFollowListState()
+          : { key: tryKey, items: getPlayableListItemsByKey(tryKey) };
+        var tryList = tryResolved.items;
         if (Array.isArray(tryList) && tryList.length) {
           list = tryList;
           musicState.listKey = tryKey;
+          if (tryKey === '__bg__' && tryResolved.key) {
+            musicState.followKey = tryResolved.key;
+          }
           musicState.listIndex = i;
           break;
         }
@@ -729,6 +1129,7 @@
     });
 
     musicState.ap = ap;
+    bindAPlayerErrorRecovery(ap);
     // Prevent theme pjax handler from destroying our persistent player
     try {
       ap.options.fixed = true;
