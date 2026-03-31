@@ -1,17 +1,17 @@
 ---
 created: 2026-03-19T15:06
-updated: 2026-03-19T15:52
+updated: 2026-03-31T13:03
 tags:
 ---
 ## Pwn 1
-![359](Pwn/file-20260319151010893.png)
+![359](../../../Capture%20The%20Flag%20夺旗赛/file-20260331130229601.png)
 nc连接即可。
-![](Pwn/file-20260319151010901.png)
+![](../../../Capture%20The%20Flag%20夺旗赛/file-20260331130229584.png)
 ## pwn 2
 
-![379](Pwn/file-20260319151220402.png)
+![379](../../../Capture%20The%20Flag%20夺旗赛/file-20260331130229610.png)
 checksec一下，发现：
-![](Pwn/file-20260319151424704.png)
+![](../../../Capture%20The%20Flag%20夺旗赛/file-20260331130229592.png)
 ### Arch:i386-32-little
 说明程序的架构是 **32 位的小端** 架构。小端是指数据的低位字节存储在内存的低地址处
 ### RELRO:Partial RELRO

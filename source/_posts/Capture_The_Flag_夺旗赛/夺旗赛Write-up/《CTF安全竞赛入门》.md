@@ -5,7 +5,7 @@ categories:
   - Capture_The_Flag_夺旗赛
   - 夺旗赛Write-up
 created: 2026-03-15T16:49
-updated: 2026-03-21T08:59
+updated: 2026-03-31T13:03
 ---
 # Web
 ## 信息收集
@@ -13,7 +13,7 @@ updated: 2026-03-21T08:59
 ### 考察点：robots.txt文件
 附件："C:\Users\glj07\Desktop\题目2-2-Where is logo\index.html"
 
-![](1769499679184-2eebd148-0e9f-40c2-833b-ef9e6026d97a.png)
+![](../../Capture%20The%20Flag%20夺旗赛/file-20260331130228903.png)
 
 **第一步：搭建本地Web服务器**
 
@@ -33,7 +33,7 @@ updated: 2026-03-21T08:59
 
 `npx http-server -p 80`
 
-![](1769567977060-ad057bf3-ef00-4731-9000-48cf19527a81.png)
+![](../../Capture%20The%20Flag%20夺旗赛/file-20260331130228920.png)
 
 **第二步：服务器地址**
 
@@ -41,13 +41,13 @@ updated: 2026-03-21T08:59
 
 **第三步：使用御剑扫描**
 
-![](1769568021383-b66f2669-f81f-48f4-aabb-3b5bf19cc1ee.png)
+![](../../Capture%20The%20Flag%20夺旗赛/file-20260331130228929.png)
 
-![](1769568067408-3b56054a-b4bd-4cf8-91bd-9a2ea4ea9fc7.png)
+![](../../Capture%20The%20Flag%20夺旗赛/file-20260331130228912.png)
 
 发现下面还有内容。下滑缩放：
 
-![](1769568123798-859035aa-d460-4d36-bd4d-6d2b1c959bf0.png)
+![](../../Capture%20The%20Flag%20夺旗赛/file-20260331130228894.png)
 
 看到logo主要以@、#、+字符为主。
 
@@ -68,9 +68,9 @@ venusctf{haha_-_-}
 
 tips：
 
-![](1769581524341-b7e65e22-2bd6-4e3b-9653-b0ce477e3d05.png)
+![](../../Capture%20The%20Flag%20夺旗赛/file-20260331130228877.png)
 
-![](1769581573898-127a541a-a304-4753-9550-4807029cf1dd.png)
+![](../../Capture%20The%20Flag%20夺旗赛/file-20260331130228886.png)
 
 ### 题目2-4 Discuz 3.2
 ### 考察点：.git文件泄露
