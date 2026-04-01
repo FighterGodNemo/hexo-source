@@ -91,15 +91,15 @@ body,
   z-index: 3;
 }
 
-#page-header.post-bg > #post-info,
+#page-header.post-bg > #post-info {
+  z-index: 1;
+  bottom: clamp(88px, 12vh, 136px);
+}
+
 #page-header.post-bg > #page-site-info,
 #page-header.post-bg > #site-info {
   position: relative;
   z-index: 1;
-}
-
-#page-header.post-bg #post-info {
-  bottom: clamp(180px, 25vh, 250px);
 }
 
 #page-header.post-bg #scroll-down {
