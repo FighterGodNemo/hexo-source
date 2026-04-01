@@ -1,7 +1,13 @@
+# avatar 可省略，页面会默认使用对应站点的 favicon。
 - class_name: 友情链接
   class_desc: 友链整理中，欢迎互换
   link_list:
+    - name: 玫幽倩
+      link: https://mei-you-qian.github.io/
+      descr: 玫幽倩的小博客
+    - name: 落殷回
+      link: https://luoyinhui.github.io/
+      descr: 落殷回的博客
     - name: 临天牧风
       link: https://qian-mf.github.io/
-      avatar: /img/friend_avatar.png
       descr: 星川廬

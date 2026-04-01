@@ -67,12 +67,7 @@ function collectBgData(hexo) {
 
       const publicPath = '/img/bg/' + encodeURIComponent(file);
       if (parsed.isPostVariant) {
-        if (!item.post || shouldPreferImageCandidate(item.postSourceName, file)) {
-          item.post = publicPath;
-          item.postSourceName = file;
-        } else if (item.postSourceName !== file) {
-          warnings.push('[bg] ignored lower-priority post background for "' + parsed.key + '": ' + file);
-        }
+        return;
       } else if (!item.main || shouldPreferImageCandidate(item.mainSourceName, file)) {
         item.main = publicPath;
         item.mainSourceName = file;

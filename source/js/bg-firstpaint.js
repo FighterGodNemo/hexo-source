@@ -5,11 +5,11 @@
       "/img/bg/%E8%83%8C%E6%99%AF%E4%B8%80.png": "/img/bg/%E8%83%8C%E6%99%AF%E4%B8%80.webp",
       "/img/bg/%E8%83%8C%E6%99%AF%E4%BA%8C.png": "/img/bg/%E8%83%8C%E6%99%AF%E4%BA%8C.webp",
       "/img/bg/%E8%83%8C%E6%99%AF%E4%B8%89.png": "/img/bg/%E8%83%8C%E6%99%AF%E4%B8%89.webp",
-      "/img/bg/%E8%83%8C%E6%99%AF%E4%B8%89-%E5%89%AF%E5%9B%BE.jpg": "/img/bg/%E8%83%8C%E6%99%AF%E4%B8%89-%E5%89%AF%E5%9B%BE.webp",
+      "/img/bg/%E8%83%8C%E6%99%AF%E4%B8%89-%E5%89%AF%E5%9B%BE.jpg": "/img/bg/%E8%83%8C%E6%99%AF%E4%B8%89.webp",
+      "/img/bg/%E8%83%8C%E6%99%AF%E4%B8%89-%E5%89%AF%E5%9B%BE.webp": "/img/bg/%E8%83%8C%E6%99%AF%E4%B8%89.webp",
       "/img/bg/%E8%83%8C%E6%99%AF%E5%9B%9B.jpg": "/img/bg/%E8%83%8C%E6%99%AF%E5%9B%9B.webp",
       "/img/bg/%E8%83%8C%E6%99%AF%E4%BA%94.jpg": "/img/bg/%E8%83%8C%E6%99%AF%E4%BA%94.webp"
     };
-    var postBgMap = {"/img/bg/%E8%83%8C%E6%99%AF%E4%B8%89.webp":"/img/bg/%E8%83%8C%E6%99%AF%E4%B8%89-%E5%89%AF%E5%9B%BE.webp"};
     var bgColorMap = {
       "/img/bg/%E8%83%8C%E6%99%AF%E4%B8%80.webp": "#A6B6CD",
       "/img/bg/%E8%83%8C%E6%99%AF%E4%BA%8C.webp": "#775D5C",
@@ -27,9 +27,7 @@
     }
     if (!bg) return;
 
-    var postBg = postBgMap[bg] || bg;
     var bgColor = bgColorMap[bg] || "#1B2430";
-    var postBgColor = bgColorMap[postBg] || bgColor;
     var preloaded = {};
     var css = '';
 
@@ -38,7 +36,7 @@
     css += '#page-header{--mark-bg:transparent!important;}';
     css += '#page-header.full_page,#page-header.not-home-page{background:none transparent!important;background-image:none!important;}';
     css += '#page-header.full_page::before,#page-header.full_page::after,#page-header.not-home-page::before,#page-header.not-home-page::after{background:transparent!important;background-image:none!important;opacity:0!important;}';
-    css += "#page-header.post-bg[data-has-custom-post-top-img=\"0\"]{background-color:__POST_BG_COLOR__!important;}".replace('__POST_BG_COLOR__', postBgColor);
+    css += '#page-header.post-bg[data-has-custom-post-top-img="0"]{background:none transparent!important;background-image:none!important;}';
     css += '#page-header.post-bg[data-has-custom-post-top-img="0"]::before,#page-header.post-bg[data-has-custom-post-top-img="0"]::after{background:transparent!important;background-image:none!important;opacity:0!important;}';
 
     var style = document.createElement('style');
@@ -69,16 +67,10 @@
           bgStyle.textContent = "#web_bg{background-image:url(\"__BG__\")!important;background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important;}".replace('__BG__', bg);
           document.head.appendChild(bgStyle);
         }
-        if (url === postBg) {
-          var postBgStyle = document.createElement('style');
-          postBgStyle.textContent = "#page-header.post-bg[data-has-custom-post-top-img=\"0\"]{background-image:url(\"__POST_BG__\")!important;background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important;}".replace('__POST_BG__', postBg);
-          document.head.appendChild(postBgStyle);
-        }
       };
     }
 
     // 立即开始预加载
     preloadImage(bg);
-    preloadImage(postBg);
   } catch (e) {}
 })();

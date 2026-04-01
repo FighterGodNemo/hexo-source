@@ -83,14 +83,32 @@ body,
 #page-header.post-bg {
   position: relative;
   overflow: hidden;
+  height: clamp(420px, 72vh, 760px) !important;
 }
 
-#page-header.post-bg > #nav,
+#page-header.post-bg > #nav {
+  position: relative;
+  z-index: 3;
+}
+
 #page-header.post-bg > #post-info,
 #page-header.post-bg > #page-site-info,
 #page-header.post-bg > #site-info {
   position: relative;
-  z-index: 2;
+  z-index: 1;
+}
+
+#page-header.post-bg #post-info {
+  bottom: clamp(180px, 25vh, 250px);
+}
+
+#page-header.post-bg #scroll-down {
+  z-index: 3;
+}
+
+#page-header.post-bg #scroll-down .scroll-down-effects {
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
 }
 
 #page-header .post-top-bg-layer {
@@ -227,6 +245,71 @@ body,
   text-shadow: none !important;
 }
 
+/* Post footer cards: keep text navigation, remove cover blocks */
+#pagination.pagination-post,
+.relatedPosts .relatedPosts-list {
+  gap: 16px;
+}
+
+#pagination.pagination-post .pagination-related,
+.relatedPosts .pagination-related {
+  display: flex;
+  align-items: center;
+  min-height: 96px;
+  height: auto;
+  background: var(--card-bg) !important;
+  box-shadow: var(--card-box-shadow);
+}
+
+#pagination.pagination-post .pagination-related:hover,
+.relatedPosts .pagination-related:hover {
+  box-shadow: var(--card-hover-box-shadow);
+}
+
+#pagination.pagination-post .pagination-related .cover,
+.relatedPosts .pagination-related .cover {
+  display: none !important;
+}
+
+#pagination.pagination-post .pagination-related .info,
+.relatedPosts .pagination-related .info {
+  width: 100%;
+}
+
+#pagination.pagination-post .pagination-related .info .info-1,
+#pagination.pagination-post .pagination-related .info .info-2,
+.relatedPosts .pagination-related .info .info-1,
+.relatedPosts .pagination-related .info .info-2 {
+  position: static;
+  width: auto;
+  transform: none;
+  padding: 18px 22px;
+  color: var(--font-color);
+  opacity: 1;
+}
+
+#pagination.pagination-post .pagination-related .info .info-2,
+.relatedPosts .pagination-related .info .info-2 {
+  display: none !important;
+}
+
+#pagination.pagination-post .pagination-related .info .info-item-1,
+.relatedPosts .pagination-related .info .info-item-1 {
+  color: var(--font-color);
+  opacity: 0.7;
+}
+
+#pagination.pagination-post .pagination-related .info .info-item-2,
+.relatedPosts .pagination-related .info .info-item-2 {
+  color: var(--text-highlight-color);
+}
+
+#pagination.pagination-post .pagination-related:hover .info .info-1,
+.relatedPosts .pagination-related:hover .info .info-1 {
+  transform: none;
+  opacity: 1;
+}
+
 /* BGM player */
 #bgm-player {
   position: fixed;
@@ -361,6 +444,14 @@ body,
 }
 
 @media (max-width: 900px) {
+  #page-header.post-bg {
+    height: clamp(360px, 64vh, 560px) !important;
+  }
+
+  #page-header.post-bg #post-info {
+    bottom: 52px;
+  }
+
   #rightside {
     transform: translate(-48px, 0) !important;
   }

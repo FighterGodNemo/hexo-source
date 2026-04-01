@@ -2,13 +2,47 @@
   .flink
     - let { content, random, flink_url } = page
     - let pageContent = content
+    -
+      const errorFlinkImg = url_for(theme.error_img.flink)
+      const getFlinkIcon = item => {
+        const resolvedAvatar = get_flink_icon(item.link) || item.resolved_avatar || item.avatar
+        try {
+          const siteIcon = resolvedAvatar || new URL(item.link).origin + '/favicon.ico'
+          return {
+            src: siteIcon,
+            fallback: item.avatar && item.avatar !== siteIcon ? item.avatar : errorFlinkImg
+          }
+        } catch (error) {
+          return {
+            src: resolvedAvatar || errorFlinkImg,
+            fallback: errorFlinkImg
+          }
+        }
+      }
 
     if flink_url || random
       - const linkData = flink_url ? false : site.data.link || false
       script.
         (()=>{
+          const errorFlinkImg = "!{url_for(theme.error_img.flink)}"
+          const flinkIconMap = !{JSON.stringify(hexo._flinkIconMap || {})}
           const replaceSymbol = (str) => {
             return str.replace(/[\p{P}\p{S}]/gu, "-")
+          }
+          const getFlinkIcon = item => {
+            const resolvedAvatar = flinkIconMap[item.link] || item.resolved_avatar || item.avatar
+            try {
+              const siteIcon = resolvedAvatar || new URL(item.link).origin + "/favicon.ico"
+              return {
+                src: siteIcon,
+                fallback: item.avatar && item.avatar !== siteIcon ? item.avatar : errorFlinkImg
+              }
+            } catch (error) {
+              return {
+                src: resolvedAvatar || errorFlinkImg,
+                fallback: errorFlinkImg
+              }
+            }
           }
 
           let result = ""
@@ -24,11 +58,12 @@
                 lists.sort(() => Math.random() - 0.5)
               }
               for(let j = 0; j < lists.length; j++){
+                const { src, fallback } = getFlinkIcon(lists[j])
                 listResult += `
                   <div class="flink-list-item">
                     <a href="${lists[j].link}" title="${lists[j].name}" target="_blank">
                       <div class="flink-item-icon">
-                        <img class="no-lightbox" src="${lists[j].avatar}" onerror='this.onerror=null;this.src="!{url_for(theme.error_img.flink)}"' alt="${lists[j].name}" />
+                        <img class="no-lightbox" src="${src}" onerror='this.onerror=null;this.src=${JSON.stringify(fallback)}' alt="${lists[j].name}" />
                       </div>
                       <div class="flink-item-name">${lists[j].name}</div>
                       <div class="flink-item-desc" title="${lists[j].descr}">${lists[j].descr}</div>
@@ -64,11 +99,12 @@
 
           each j in i.link_list
             -
+              const { src, fallback } = getFlinkIcon(j)
               listResult += `
                 <div class="flink-list-item">
                   <a href="${j.link}" title="${j.name}" target="_blank">
                     <div class="flink-item-icon">
-                      <img class="no-lightbox" src="${j.avatar}" onerror='this.onerror=null;this.src="${url_for(theme.error_img.flink)}"' alt="${j.name}" />
+                      <img class="no-lightbox" src="${src}" onerror='this.onerror=null;this.src=${JSON.stringify(fallback)}' alt="${j.name}" />
                     </div>
                     <div class="flink-item-name">${j.name}</div>
                     <div class="flink-item-desc" title="${j.descr}">${j.descr}</div>

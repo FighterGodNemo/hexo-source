@@ -120,13 +120,7 @@
   function resolveCurrentPostHeaderBackground() {
     var header = document.getElementById('page-header');
     if (!header || !header.classList.contains('post-bg')) return '';
-
-    var custom = getCustomPostHeaderSource(header);
-    if (custom) return custom;
-
-    var entry = getCurrentBgEntry();
-    if (!entry) return '';
-    return entry.post || entry.main || '';
+    return getCustomPostHeaderSource(header);
   }
 
   function updatePostHeaderBackground() {
