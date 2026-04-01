@@ -18,10 +18,13 @@ nav:
   fixed: false
 
 menu:
-  # Home: / || fas fa-home
-  # List||fas fa-list:
-  #   Music: /music/ || fas fa-music
-  #   Movie: /movies/ || fas fa-video
+  搜索: /search/ || fas fa-search
+  主页: / || fas fa-home
+  分类: /categories/ || fas fa-folder-open
+  标签: /tags/ || fas fa-tags
+  归档: /archives/ || fas fa-archive
+  友链: /link/ || fas fa-link
+  留言板: /messageboard/ || fas fa-comment-dots
 
 # --------------------------------------
 # Code Blocks Settings
@@ -290,6 +293,16 @@ aside:
       icon: fab fa-github
       text: Follow Me
       link: https://github.com/xxxxxx
+    social:
+      - icon: fab fa-steam
+        link: https://steamcommunity.com/id/your-steam-id
+        text: Steam (1905706957)
+      - icon: fab fa-weixin
+        link: javascript:var div=document.createElement('div');div.style.position='fixed';div.style.top='50%';div.style.left='50%';div.style.transform='translate(-50%,-50%)';div.style.zIndex='9999';div.style.backgroundColor='white';div.style.padding='20px';div.style.borderRadius='10px';div.style.boxShadow='0 0 20px rgba(0,0,0,0.5)';div.innerHTML='<h3 style="text-align:center;margin-bottom:10px;">微信二维码</h3><p style="text-align:center;">请扫描二维码添加微信</p>';document.body.appendChild(div);div.onclick=function(){document.body.removeChild(div)};
+        text: 微信
+      - icon: fab fa-qq
+        link: javascript:var div=document.createElement('div');div.style.position='fixed';div.style.top='50%';div.style.left='50%';div.style.transform='translate(-50%,-50%)';div.style.zIndex='9999';div.style.backgroundColor='white';div.style.padding='20px';div.style.borderRadius='10px';div.style.boxShadow='0 0 20px rgba(0,0,0,0.5)';div.innerHTML='<h3 style="text-align:center;margin-bottom:10px;">QQ二维码</h3><p style="text-align:center;">请扫描二维码添加QQ</p>';document.body.appendChild(div);div.onclick=function(){document.body.removeChild(div)};
+        text: QQ
   card_announcement:
     enable: true
     content: This is my Blog

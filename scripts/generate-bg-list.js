@@ -3,7 +3,8 @@ const path = require('path');
 const {
   compareNamedEntries,
   isImage,
-  normalizeGroupName
+  normalizeGroupName,
+  shouldPreferImageCandidate
 } = require('./media-naming');
 
 function safeDecode(value) {
@@ -36,45 +37,7 @@ function createFallbackBgItems(list) {
   });
 }
 
-function buildPreloadCssRule(selector, bg) {
-  if (!selector) return '';
-  if (!bg) return selector + '{background:none transparent!important;background-image:none!important;}';
-  if (/^(#|rgb|hsl|linear-gradient|radial-gradient)/i.test(bg)) {
-    return selector + '{background:' + bg + '!important;background-image:none!important;}';
-  }
-  return selector + '{background-color:transparent!important;background-image:url("' + bg + '")!important;background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important;}';
-}
-
-function buildBgPreloadScript(defaultBg, items) {
-  const postMap = {};
-  (items || []).forEach((item) => {
-    if (!item || !item.main || !item.post) return;
-    postMap[item.main] = item.post;
-  });
-
-  return `(function(){
-  try {
-    var defaultBg = ${JSON.stringify(defaultBg || '')};
-    var postBgMap = ${JSON.stringify(postMap)};
-    var bg = localStorage.getItem('bgUrl') || defaultBg || '';
-    if (!bg) return;
-    var postBg = postBgMap[bg] || bg;
-    var css = '';
-    css += ${JSON.stringify(buildPreloadCssRule('#web_bg', '__BG__'))}.replace('__BG__', bg);
-    css += '#page-header{--mark-bg:transparent!important;}';
-    css += '#page-header.full_page,#page-header.not-home-page{background:none transparent!important;background-image:none!important;}';
-    css += '#page-header.full_page::before,#page-header.full_page::after,#page-header.not-home-page::before,#page-header.not-home-page::after{background:transparent!important;background-image:none!important;opacity:0!important;}';
-    css += ${JSON.stringify(buildPreloadCssRule('#page-header.post-bg[data-has-custom-post-top-img="0"]', '__POST_BG__'))}.replace('__POST_BG__', postBg);
-    css += '#page-header.post-bg[data-has-custom-post-top-img="0"]::before,#page-header.post-bg[data-has-custom-post-top-img="0"]::after{background:transparent!important;background-image:none!important;opacity:0!important;}';
-    var style = document.createElement('style');
-    style.id = 'bg-preload-style';
-    style.textContent = css;
-    document.head.appendChild(style);
-  } catch (e) {}
-})();\n`;
-}
-
-hexo.extend.filter.register('before_generate', () => {
+function collectBgData(hexo) {
   const baseDir = hexo.base_dir;
   const bgDir = path.join(baseDir, 'source', 'img', 'bg');
   const musicDir = path.join(baseDir, 'source', 'music');
@@ -97,20 +60,24 @@ hexo.extend.filter.register('before_generate', () => {
         name: parsed.displayName || parsed.key,
         order: parsed.order,
         main: '',
-        post: ''
+        post: '',
+        mainSourceName: '',
+        postSourceName: ''
       };
 
       const publicPath = '/img/bg/' + encodeURIComponent(file);
       if (parsed.isPostVariant) {
-        if (item.post) {
-          warnings.push('[bg] duplicate post background for "' + parsed.key + '": ' + file);
-        } else {
+        if (!item.post || shouldPreferImageCandidate(item.postSourceName, file)) {
           item.post = publicPath;
+          item.postSourceName = file;
+        } else if (item.postSourceName !== file) {
+          warnings.push('[bg] ignored lower-priority post background for "' + parsed.key + '": ' + file);
         }
-      } else if (item.main) {
-        warnings.push('[bg] duplicate main background for "' + parsed.key + '": ' + file);
-      } else {
+      } else if (!item.main || shouldPreferImageCandidate(item.mainSourceName, file)) {
         item.main = publicPath;
+        item.mainSourceName = file;
+      } else if (item.mainSourceName !== file) {
+        warnings.push('[bg] ignored lower-priority main background for "' + parsed.key + '": ' + file);
       }
 
       if (item.order == null && parsed.order != null) {
@@ -124,7 +91,13 @@ hexo.extend.filter.register('before_generate', () => {
         warnings.push('[bg] post background exists without main background: ' + item.key);
         return;
       }
-      items.push(item);
+      items.push({
+        key: item.key,
+        name: item.name,
+        order: item.order,
+        main: item.main,
+        post: item.post
+      });
     });
 
     items = items.sort(compareBgItems);
@@ -155,25 +128,31 @@ hexo.extend.filter.register('before_generate', () => {
     });
   }
 
-  const bgMap = {
-    order: items.map((item) => item.key),
-    items,
-    byKey: items.reduce((acc, item) => {
-      acc[item.key] = item;
-      return acc;
-    }, {})
+  return {
+    list,
+    bgMap: {
+      order: items.map((item) => item.key),
+      items,
+      byKey: items.reduce((acc, item) => {
+        acc[item.key] = item;
+        return acc;
+      }, {})
+    },
+    warnings
   };
+}
 
-  const listPath = path.join(baseDir, 'source', 'bg-list.json');
-  fs.writeFileSync(listPath, JSON.stringify(list, null, 2));
-
-  const mapPath = path.join(baseDir, 'source', 'bg-map.json');
-  fs.writeFileSync(mapPath, JSON.stringify(bgMap, null, 2));
-
-  const defaultBg = items[0] && items[0].main ? items[0].main : (list[0] || '/img/index-bg.jpg');
-  const preloadPath = path.join(baseDir, 'source', 'js', 'bg-preload.js');
-  fs.mkdirSync(path.dirname(preloadPath), { recursive: true });
-  fs.writeFileSync(preloadPath, buildBgPreloadScript(defaultBg, items));
-
+hexo.extend.generator.register('bg-data', function() {
+  const { list, bgMap, warnings } = collectBgData(hexo);
   warnings.forEach((warning) => hexo.log.warn(warning));
+  return [
+    {
+      path: 'bg-list.json',
+      data: JSON.stringify(list, null, 2)
+    },
+    {
+      path: 'bg-map.json',
+      data: JSON.stringify(bgMap, null, 2)
+    }
+  ];
 });

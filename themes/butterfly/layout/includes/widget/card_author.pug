@@ -21,6 +21,23 @@ if theme.aside.card_author.enable
         i(class=theme.aside.card_author.button.icon)
         span=theme.aside.card_author.button.text
 
-    if(theme.social)
+    if(theme.aside.card_author.social)
       .card-info-social-icons
-        !=partial('includes/header/social', {}, {cache: true})
+        each item in theme.aside.card_author.social
+          if item.qrCode
+            .qr-code-wrapper
+              a.social-icon(href=item.link, title=item.text)
+                i(class=item.icon)
+              .qr-code-popup
+                img(src=item.qrCode, alt=item.text + '二维码')
+          else if item.copyText
+            .copy-text-wrapper
+              a.social-icon(href=item.link, title=item.text, data-copy-text=item.copyText)
+                i(class=item.icon)
+              .copy-text-popup
+                h3 Steam好友代码
+                p= item.copyText
+                p.copy-hint 点击图标复制
+          else
+            a.social-icon(href=item.link, title=item.text, target='_blank')
+              i(class=item.icon)

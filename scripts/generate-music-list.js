@@ -6,6 +6,7 @@ const {
   isAudio,
   isImage,
   normalizeGroupName,
+  shouldPreferImageCandidate,
   stripPostSuffix
 } = require('./media-naming');
 
@@ -104,20 +105,24 @@ function getBgCoverMap(bgDir) {
     return { byKey, defaultCover };
   }
 
-  const items = fs.readdirSync(bgDir)
+  const buckets = new Map();
+  fs.readdirSync(bgDir)
     .filter(isImage)
-    .map((file) => {
+    .forEach((file) => {
       const parsed = normalizeGroupName(file);
-      return {
-        file,
-        key: parsed.key,
-        displayName: parsed.displayName || parsed.key,
-        order: parsed.order,
-        isPostVariant: parsed.isPostVariant
-      };
-    })
-    .filter((item) => item.key && !item.isPostVariant)
-    .sort(compareNamedEntries);
+      if (!parsed.key || parsed.isPostVariant) return;
+      const current = buckets.get(parsed.key);
+      if (!current || shouldPreferImageCandidate(current.file, file)) {
+        buckets.set(parsed.key, {
+          file,
+          key: parsed.key,
+          displayName: parsed.displayName || parsed.key,
+          order: parsed.order
+        });
+      }
+    });
+
+  const items = Array.from(buckets.values()).sort(compareNamedEntries);
 
   items.forEach((item, index) => {
     const cover = '/img/bg/' + encodeURIComponent(item.file);
@@ -141,7 +146,7 @@ function readAudioFiles(dir) {
     }));
 }
 
-hexo.extend.filter.register('before_generate', () => {
+function collectMusicData(hexo) {
   const baseDir = hexo.base_dir;
   const musicDir = path.join(baseDir, 'source', 'music');
   const bgDir = path.join(baseDir, 'source', 'img', 'bg');
@@ -222,11 +227,20 @@ hexo.extend.filter.register('before_generate', () => {
     }
   });
 
-  const listPath = path.join(baseDir, 'source', 'music-list.json');
-  fs.writeFileSync(listPath, JSON.stringify(map.all, null, 2));
+  return { map, warnings };
+}
 
-  const mapPath = path.join(baseDir, 'source', 'music-map.json');
-  fs.writeFileSync(mapPath, JSON.stringify(map, null, 2));
-
+hexo.extend.generator.register('music-data', function() {
+  const { map, warnings } = collectMusicData(hexo);
   warnings.forEach((warning) => hexo.log.warn(warning));
+  return [
+    {
+      path: 'music-list.json',
+      data: JSON.stringify(map.all, null, 2)
+    },
+    {
+      path: 'music-map.json',
+      data: JSON.stringify(map, null, 2)
+    }
+  ];
 });

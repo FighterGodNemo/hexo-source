@@ -59,6 +59,20 @@
     el.setAttribute('data-bg-source', next);
   }
 
+  function getVisibleBackgroundColor(el) {
+    if (!el || !window.getComputedStyle) return '';
+    var color = '';
+    try {
+      color = window.getComputedStyle(el).backgroundColor || '';
+    } catch (e) {
+      color = '';
+    }
+    if (!color || color === 'transparent' || color === 'rgba(0, 0, 0, 0)') {
+      return '';
+    }
+    return color;
+  }
+
   function ensurePostHeaderLayer(header) {
     if (!header) return null;
     var layer = header.querySelector('.post-top-bg-layer');
@@ -146,11 +160,12 @@
       lockHeaderBackground();
       return;
     }
+    var isColor = isColorValue(bg);
+    var fallbackBgColor = getVisibleBackgroundColor(webBg) || '#1B2430';
     var preloadStyle = document.getElementById('bg-preload-style');
     if (preloadStyle && preloadStyle.parentNode) {
       preloadStyle.parentNode.removeChild(preloadStyle);
     }
-    var isColor = isColorValue(bg);
     if (webBg) {
       var current = webBg.getAttribute('data-bg-url') || '';
       var same = normalizeBgValue(current) === normalizeBgValue(bg);
@@ -161,7 +176,8 @@
           webBg.style.setProperty('background-image', 'none', 'important');
           webBg.style.setProperty('background-color', bg, 'important');
         } else {
-          webBg.style.setProperty('background-color', 'transparent', 'important');
+          // Keep a visible fallback color until the image has fully painted.
+          webBg.style.setProperty('background-color', fallbackBgColor, 'important');
           webBg.style.setProperty('background-image', 'url(' + bg + ')', 'important');
           // Force correct aspect scaling for images.
           webBg.style.setProperty('background-size', 'cover', 'important');
@@ -552,6 +568,7 @@
     badTracks: {},
     handlingError: false
   };
+  var bgmInitScheduled = false;
 
   function getSavedBgIndex(list) {
     var idx = parseInt(localStorage.getItem('bgIndex') || '0', 10);
@@ -1020,10 +1037,10 @@
     });
   }
 
-  async function initBgmPlayer() {
+  function ensureBgmPlayerUi() {
     var rightside = document.getElementById('rightside-config-show') || document.getElementById('rightside');
     if (!rightside) {
-      return;
+      return null;
     }
 
     var btn = document.getElementById('bgm-btn');
@@ -1050,9 +1067,54 @@
       btn.addEventListener('click', function () {
         visible = !visible;
         wrap.classList.toggle('active', visible);
+        if (!musicState.ready && !musicState.initing) {
+          initBgmPlayer();
+        }
       });
       btn.dataset.bound = '1';
     }
+
+    return {
+      btn: btn,
+      wrap: wrap
+    };
+  }
+
+  function scheduleBgmPlayerInit() {
+    if (musicState.ready || musicState.initing || bgmInitScheduled) return;
+
+    var start = function () {
+      bgmInitScheduled = false;
+      initBgmPlayer();
+    };
+
+    var schedule = function () {
+      if (musicState.ready || musicState.initing) {
+        bgmInitScheduled = false;
+        return;
+      }
+      if (window.requestIdleCallback) {
+        window.requestIdleCallback(start, { timeout: 2500 });
+      } else {
+        window.setTimeout(start, 1400);
+      }
+    };
+
+    bgmInitScheduled = true;
+    if (document.readyState === 'complete') {
+      schedule();
+    } else {
+      window.addEventListener('load', schedule, { once: true });
+    }
+  }
+
+  async function initBgmPlayer() {
+    var ui = ensureBgmPlayerUi();
+    if (!ui) {
+      return;
+    }
+    var btn = ui.btn;
+    var wrap = ui.wrap;
 
     if (musicState.ready || musicState.initing) return;
     musicState.initing = true;
@@ -1169,13 +1231,43 @@
     bindBackgroundGuards();
     await initBgSwitcher();
     initVideoBackground();
-    await initBgmPlayer();
+    ensureBgmPlayerUi();
+    scheduleBgmPlayerInit();
+  }
+
+  function initCopyFunction() {
+    const copyIcons = document.querySelectorAll('.copy-text-wrapper .social-icon[data-copy-text]');
+    copyIcons.forEach(icon => {
+      icon.addEventListener('click', function(e) {
+        e.preventDefault();
+        const copyText = this.getAttribute('data-copy-text');
+        if (copyText) {
+          navigator.clipboard.writeText(copyText).then(() => {
+            const popup = this.parentElement.querySelector('.copy-text-popup');
+            const hint = popup.querySelector('.copy-hint');
+            if (popup && hint) {
+              const originalText = hint.textContent;
+              hint.textContent = '已复制！';
+              hint.style.color = '#07c160';
+              setTimeout(() => {
+                hint.textContent = originalText;
+                hint.style.color = '';
+              }, 2000);
+            }
+          }).catch(err => {
+            console.error('复制失败:', err);
+          });
+        }
+      });
+    });
   }
 
   onReady(function () {
     initAll();
+    initCopyFunction();
   });
   document.addEventListener('pjax:complete', function () {
     initAll();
+    initCopyFunction();
   });
 })();

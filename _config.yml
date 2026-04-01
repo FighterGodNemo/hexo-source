@@ -130,3 +130,9 @@ feed:
   type: atom
   path: atom.xml
   limit: 20
+
+# Busuanzi count for PV / UV in site
+busuanzi:
+  site_uv: true
+  site_pv: true
+  page_pv: true

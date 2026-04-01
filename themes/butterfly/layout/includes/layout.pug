@@ -36,6 +36,8 @@ html(lang=config.language data-theme=theme.display_mode class=htmlClassHideAside
             document.addEventListener('pjax:complete', setRandomBg)
             document.addEventListener('DOMContentLoaded', setRandomBg)
           })()
+    else
+      #web_bg.bg-animation
 
     !=partial('includes/sidebar', {}, {cache: true})
 

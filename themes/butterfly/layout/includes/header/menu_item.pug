@@ -2,12 +2,14 @@ if theme.menu
   .menus_items
     each value, label in theme.menu
       if typeof value !== 'object'
-        .menus_item
-          - const [link, icon] = value.split('||').map(part => trim(part))
-          a.site-page(href=url_for(link))
-            if icon
-              i.fa-fw(class=icon)
-            span= ' ' + label
+        - const [link, icon] = value.split('||').map(part => trim(part))
+        - const shouldHideSearchItem = theme.search.use && label === _p('search.title') && trim(link) === '/search/'
+        if !shouldHideSearchItem
+          .menus_item
+            a.site-page(href=url_for(link))
+              if icon
+                i.fa-fw(class=icon)
+              span= ' ' + label
       else
         .menus_item
           - const [groupLabel, groupIcon, groupClass] = label.split('||').map(part => trim(part))

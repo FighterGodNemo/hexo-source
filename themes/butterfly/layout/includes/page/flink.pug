@@ -20,7 +20,7 @@
 
               let listResult = ""
               const lists = str[i].link_list
-              if (!{random === true}) {
+              if (random !== true) {
                 lists.sort(() => Math.random() - 0.5)
               }
               for(let j = 0; j < lists.length; j++){

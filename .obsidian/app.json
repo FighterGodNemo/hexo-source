@@ -7,5 +7,6 @@
   "newFileFolderPath": "source/_posts",
   "promptDelete": false,
   "trashOption": "local",
-  "deleteUnlinkedAttachments": "always"
+  "deleteUnlinkedAttachments": "always",
+  "alwaysUpdateLinks": true
 }

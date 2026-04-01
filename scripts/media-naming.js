@@ -5,11 +5,35 @@ function normalizeText(value) {
 }
 
 function isImage(file) {
-  return /\.(png|jpe?g|webp|gif)$/i.test(file);
+  return /\.(png|jpe?g|webp|gif|avif)$/i.test(file);
 }
 
 function isAudio(file) {
   return /\.(mp3|m4a|aac|ogg|wav|flac)$/i.test(file);
+}
+
+function getImageFormatRank(file) {
+  switch (path.extname(String(file || '')).toLowerCase()) {
+    case '.avif':
+      return 5;
+    case '.webp':
+      return 4;
+    case '.jpg':
+    case '.jpeg':
+      return 3;
+    case '.png':
+      return 2;
+    case '.gif':
+      return 1;
+    default:
+      return 0;
+  }
+}
+
+function shouldPreferImageCandidate(currentFile, nextFile) {
+  if (!nextFile) return false;
+  if (!currentFile) return true;
+  return getImageFormatRank(nextFile) > getImageFormatRank(currentFile);
 }
 
 function cnDigitValue(ch) {
@@ -116,10 +140,12 @@ module.exports = {
   cnDigitValue,
   cnToNumber,
   extractLegacyOrder,
+  getImageFormatRank,
   isAudio,
   isImage,
   normalizeGroupName,
   normalizeText,
   splitOrderPrefix,
-  stripPostSuffix
+  stripPostSuffix,
+  shouldPreferImageCandidate
 };
