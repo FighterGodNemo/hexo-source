@@ -70,8 +70,20 @@ function processDirectory(dir) {
   return fixedCount;
 }
 
-console.log('🚀 开始修复博客文章图片链接...\n');
-const postsDir = path.join(__dirname, '..', 'source', '_posts');
-const totalFixed = processDirectory(postsDir);
+function main() {
+  console.log('🚀 开始修复博客文章图片链接...\n');
+  const postsDir = path.join(__dirname, '..', 'source', '_posts');
+  const totalFixed = processDirectory(postsDir);
 
-console.log(`\n✅ 修复完成！共修复了 ${totalFixed} 个文件。`);
+  console.log(`\n✅ 修复完成！共修复了 ${totalFixed} 个文件。`);
+}
+
+if (require.main === module) {
+  main();
+}
+
+module.exports = {
+  fixImageLinksInFile,
+  processDirectory,
+  main
+};
