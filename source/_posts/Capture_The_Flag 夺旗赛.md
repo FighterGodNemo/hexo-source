@@ -1,8 +1,8 @@
 ---
-title: Capture The Flag 夺旗赛
+title: Capture_The_Flag 夺旗赛
 date: 2026-03-15 13:28:22
 created: 2026-03-15T16:49
-updated: 2026-04-01T14:01
+updated: 2026-04-04T07:34
 ---
 
 **CTF 全称 Capture the Flag，译为「夺旗赛」，起源于1996 DEFCON全球黑客大会。比赛中，选手会得到一个题面（可能是一段话、一个压缩包、一张图片、一个网站、一个链接、一份源码、一个程序等），选手需要根据题面，通过各种手法找到或得到诸如 flag{xxx} 的内容，这便是此题的答案。**
