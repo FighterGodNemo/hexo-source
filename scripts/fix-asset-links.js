@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 let assetFolderMapCache = null;
+let sharedPostAssetsToCopy = new Map();
 
 function escapeRegExp(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -39,6 +40,28 @@ function buildPublicPath(baseDir, relativePath) {
     .map(part => encodeURIComponent(part));
 
   return `/${baseParts.concat(relParts).join('/')}`;
+}
+
+function getPostsSourceDirAbs() {
+  return path.resolve(hexo.source_dir, '_posts');
+}
+
+function resolveSharedPostAsset(absPath) {
+  const relativePath = normalizePosix(path.relative(getPostsSourceDirAbs(), absPath));
+  if (!relativePath || relativePath.startsWith('..')) return null;
+
+  return {
+    relativePath,
+    publicUrl: buildPublicPath('', relativePath)
+  };
+}
+
+function isFilePath(absPath) {
+  try {
+    return fs.statSync(absPath).isFile();
+  } catch (_) {
+    return false;
+  }
 }
 
 function stripPostPrefixInMarkdown(content, postName) {
@@ -106,7 +129,7 @@ function buildAssetFolderMap() {
 }
 
 function mapSourceAssetToPublicUrl(absPath) {
-  if (!absPath || !fs.existsSync(absPath)) return null;
+  if (!absPath || !isFilePath(absPath)) return null;
 
   const normalizedPath = path.normalize(absPath);
 
@@ -119,6 +142,12 @@ function mapSourceAssetToPublicUrl(absPath) {
       if (!relativePath || relativePath.startsWith('..')) return null;
       return buildPublicPath(entry.publicDir, relativePath);
     }
+  }
+
+  const sharedPostAsset = resolveSharedPostAsset(normalizedPath);
+  if (sharedPostAsset) {
+    sharedPostAssetsToCopy.set(normalizedPath, sharedPostAsset.relativePath);
+    return sharedPostAsset.publicUrl;
   }
 
   return null;
@@ -154,9 +183,12 @@ function rewriteAssetUrl(rawUrl, context) {
 
   const tryCurrentPostAsset = relativePath => {
     if (!relativePath) return null;
-    const candidate = path.join(context.currentAssetFolderAbs, relativePath);
+    const normalizedRelativePath = relativePath.replace(/^\.\//, '');
+    if (!normalizedRelativePath || /^\.\.\//.test(normalizedRelativePath)) return null;
+
+    const candidate = path.join(context.currentAssetFolderAbs, normalizedRelativePath);
     if (!fs.existsSync(candidate)) return null;
-    return buildPublicPath(context.currentPostDir, relativePath);
+    return buildPublicPath(context.currentPostDir, normalizedRelativePath);
   };
 
   const tryResolvedSourceAsset = relativePath => {
@@ -203,6 +235,7 @@ function rewriteHtmlAssetUrls(html, data) {
 
 hexo.extend.filter.register('before_generate', function () {
   assetFolderMapCache = null;
+  sharedPostAssetsToCopy = new Map();
 });
 
 hexo.extend.filter.register('before_post_render', function (data) {
@@ -220,4 +253,14 @@ hexo.extend.filter.register('after_post_render', function (data) {
 
   data.content = rewriteHtmlAssetUrls(data.content, data);
   return data;
+});
+
+hexo.extend.filter.register('after_generate', function () {
+  if (!sharedPostAssetsToCopy.size) return;
+
+  for (const [sourceAbs, relativePath] of sharedPostAssetsToCopy.entries()) {
+    const targetAbs = path.join(hexo.public_dir, ...normalizePosix(relativePath).split('/'));
+    fs.mkdirSync(path.dirname(targetAbs), { recursive: true });
+    fs.copyFileSync(sourceAbs, targetAbs);
+  }
 });
