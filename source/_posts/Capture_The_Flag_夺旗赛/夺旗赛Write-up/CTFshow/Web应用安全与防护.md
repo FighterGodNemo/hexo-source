@@ -9,6 +9,6 @@ created: 2026-03-15T16:49
 updated: 2026-04-04T07:34
 ---
 ## Base64编码隐藏
-![](../../../Capture%20The%20Flag_夺旗赛/file-20260404073353497.png)![](../../../Capture%20The%20Flag_夺旗赛/file-20260404073353487.png)![](../../../Capture%20The%20Flag_夺旗赛/file-20260404073353477.png)![](../../../Capture%20The%20Flag_夺旗赛/file-20260404073353466.png)CTF{easy_base64}
+![](../../../Capture%20The%20Flag%20夺旗赛/file-20260331130229528.png)![](../../../Capture%20The%20Flag%20夺旗赛/file-20260331130229538.png)![](../../../Capture%20The%20Flag%20夺旗赛/file-20260331130229549.png)![](../../../Capture%20The%20Flag%20夺旗赛/file-20260331130229558.png)CTF{easy_base64}
 ## HTTP头注入
 
