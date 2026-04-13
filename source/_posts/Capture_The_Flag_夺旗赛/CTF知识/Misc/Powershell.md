@@ -11,9 +11,9 @@ tags:
   - Misc
   - PowerShell
 created: 2026-03-15T16:49
-updated: 2026-04-13T19:35
+updated: 2026-04-13T20:08
 ---
 
-![](../../../file-20260331130231048.png)
+![](file-20260331130231048.png)
 
 
