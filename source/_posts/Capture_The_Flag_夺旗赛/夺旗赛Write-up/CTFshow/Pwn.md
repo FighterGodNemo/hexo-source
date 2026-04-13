@@ -1,6 +1,6 @@
 ---
-created: "2026-03-19T15:06"
-updated: "2026-04-04T07:34"
+created: 2026-03-19T15:06
+updated: 2026-04-13T19:35
 tags:
   - CTF
   - WriteUp
@@ -9,14 +9,14 @@ tags:
 ---
 
 ## Pwn 1
-![359](../../../Capture%20The%20Flag%20夺旗赛/file-20260331130229601.png)
+![359](../../../Capture_The_Flag_夺旗赛/file-20260331130229601.png)
 nc连接即可。
-![](../../../Capture%20The%20Flag%20夺旗赛/file-20260331130229584.png)
+![](../../../Capture_The_Flag_夺旗赛/file-20260331130229584.png)
 ## pwn 2
 
-![379](../../../Capture%20The%20Flag%20夺旗赛/file-20260331130229610.png)
+![379](../../../Capture_The_Flag_夺旗赛/file-20260331130229610.png)
 checksec一下，发现：
-![](../../../Capture%20The%20Flag%20夺旗赛/file-20260331130229592.png)
+![](../../../Capture_The_Flag_夺旗赛/file-20260331130229592.png)
 ### Arch:i386-32-little
 说明程序的架构是 **32 位的小端** 架构。小端是指数据的低位字节存储在内存的低地址处
 ### RELRO:Partial RELRO

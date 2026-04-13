@@ -1,6 +1,6 @@
 ---
 title: 《CTF安全竞赛入门》
-date: "2026-03-15 13:28:16"
+date: 2026-03-15 13:28:16
 categories:
   - Capture_The_Flag_夺旗赛
   - 夺旗赛Write-up
@@ -9,8 +9,8 @@ tags:
   - WriteUp
   - 读书笔记
   - CTF安全竞赛入门
-created: "2026-03-15T16:49"
-updated: "2026-04-04T07:34"
+created: 2026-03-15T16:49
+updated: 2026-04-13T19:35
 ---
 
 # Web
@@ -19,7 +19,7 @@ updated: "2026-04-04T07:34"
 ### 考察点：robots.txt文件
 附件："C:\Users\glj07\Desktop\题目2-2-Where is logo\index.html"
 
-![](../../Capture%20The%20Flag%20夺旗赛/file-20260331130228903.png)
+![](../../Capture_The_Flag_夺旗赛/file-20260331130228903.png)
 
 **第一步：搭建本地Web服务器**
 
@@ -39,7 +39,7 @@ updated: "2026-04-04T07:34"
 
 `npx http-server -p 80`
 
-![](../../Capture%20The%20Flag%20夺旗赛/file-20260331130228920.png)
+![](../../Capture_The_Flag_夺旗赛/file-20260331130228920.png)
 
 **第二步：服务器地址**
 
@@ -47,13 +47,13 @@ updated: "2026-04-04T07:34"
 
 **第三步：使用御剑扫描**
 
-![](../../Capture%20The%20Flag%20夺旗赛/file-20260331130228929.png)
+![](../../Capture_The_Flag_夺旗赛/file-20260331130228929.png)
 
-![](../../Capture%20The%20Flag%20夺旗赛/file-20260331130228912.png)
+![](../../Capture_The_Flag_夺旗赛/file-20260331130228912.png)
 
 发现下面还有内容。下滑缩放：
 
-![](../../Capture%20The%20Flag%20夺旗赛/file-20260331130228894.png)
+![](../../Capture_The_Flag_夺旗赛/file-20260331130228894.png)
 
 看到logo主要以@、#、+字符为主。
 
@@ -74,9 +74,9 @@ venusctf{haha_-_-}
 
 tips：
 
-![](../../Capture%20The%20Flag%20夺旗赛/file-20260331130228877.png)
+![](../../Capture_The_Flag_夺旗赛/file-20260331130228877.png)
 
-![](../../Capture%20The%20Flag%20夺旗赛/file-20260331130228886.png)
+![](../../Capture_The_Flag_夺旗赛/file-20260331130228886.png)
 
 ### 题目2-4 Discuz 3.2
 ### 考察点：.git文件泄露

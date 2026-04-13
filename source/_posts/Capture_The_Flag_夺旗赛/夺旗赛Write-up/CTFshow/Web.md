@@ -1,15 +1,15 @@
 ---
-created: "2026-03-19T15:15"
+created: 2026-03-19T15:15
 tags:
   - CTF
   - WriteUp
   - CTFshow
-updated: "2026-04-04T07:34"
+updated: 2026-04-13T19:35
 ---
 
 ## Web 1
-![](../../../Capture%20The%20Flag%20夺旗赛/file-20260331130229575.png)
-![](../../../Capture%20The%20Flag%20夺旗赛/file-20260331130229566.png)
+![](../../../Capture_The_Flag_夺旗赛/file-20260331130229575.png)
+![](../../../Capture_The_Flag_夺旗赛/file-20260331130229566.png)
 Ctrl+U 查看源代码
 ![](1765884045559-b8bf02c9-df16-4809-8be4-a41302a06020.png)
 base64解码
