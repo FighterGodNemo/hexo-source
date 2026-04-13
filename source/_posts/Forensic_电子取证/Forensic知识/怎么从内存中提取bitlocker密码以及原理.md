@@ -1,11 +1,15 @@
 ---
 title: 怎么从内存中提取bitlocker密码以及原理
-date: 2026-03-15 13:28:28
+date: "2026-03-15 13:28:28"
 categories:
   - Forensic_电子取证
   - Forensic知识
-created: 2026-03-15T16:49
-updated: 2026-03-18T09:45
+tags:
+  - 电子取证
+  - 取证知识
+  - BitLocker
+created: "2026-03-15T16:49"
+updated: "2026-03-18T09:45"
 ---
 
 从内存中提取 BitLocker 密码是基于 **内存取证** 的原理。以下是详细说明：

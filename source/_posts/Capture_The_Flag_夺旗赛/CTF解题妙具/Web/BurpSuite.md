@@ -1,10 +1,12 @@
 ---
-title: "BurpSuite"
-date: 2026-03-15 13:28:16
+title: BurpSuite
+date: "2026-03-15 13:28:16"
 categories:
-- Capture_The_Flag_夺旗赛
-- CTF解题妙具
-- Web
+tags:
+  - CTF
+  - CTF工具
+  - Web
+  - BurpSuite
 ---
 
 Web应用安全测试工具，支持代理、扫描、漏洞利用等功能。

@@ -1,13 +1,18 @@
 ---
 title: SPCCTF
-date: 2026-03-15 13:28:16
+date: "2026-03-15 13:28:16"
 categories:
   - Capture_The_Flag_夺旗赛
   - 夺旗赛Write-up
   - SPCCTF
-created: 2026-03-15T16:49
-updated: 2026-04-04T07:34
+tags:
+  - CTF
+  - WriteUp
+  - SPCCTF
+created: "2026-03-15T16:49"
+updated: "2026-04-04T07:34"
 ---
+
 ## 哈基米南北绿豆
 
 ![](../../Capture%20The%20Flag%20夺旗赛/file-20260331130229120.png)

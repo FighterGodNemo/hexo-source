@@ -1,8 +1,13 @@
 ---
-created: 2026-03-19T15:06
-updated: 2026-04-04T07:34
+created: "2026-03-19T15:06"
+updated: "2026-04-04T07:34"
 tags:
+  - CTF
+  - WriteUp
+  - CTFshow
+  - Pwn
 ---
+
 ## Pwn 1
 ![359](../../../Capture%20The%20Flag%20夺旗赛/file-20260331130229601.png)
 nc连接即可。

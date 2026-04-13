@@ -1,7 +1,12 @@
 ---
-created: 2026-03-19T15:15
-updated: 2026-04-04T07:34
+created: "2026-03-19T15:15"
+tags:
+  - CTF
+  - WriteUp
+  - CTFshow
+updated: "2026-04-04T07:34"
 ---
+
 ## Web 1
 ![](../../../Capture%20The%20Flag%20夺旗赛/file-20260331130229575.png)
 ![](../../../Capture%20The%20Flag%20夺旗赛/file-20260331130229566.png)

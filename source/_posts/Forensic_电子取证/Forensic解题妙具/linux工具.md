@@ -1,9 +1,11 @@
 ---
-title: "linux工具"
-date: 2026-03-15 13:28:28
+title: linux工具
+date: "2026-03-15 13:28:28"
 categories:
-- Forensic_电子取证
-- Forensic解题妙具
+tags:
+  - 电子取证
+  - 取证工具
+  - Linux
 ---
 
 | 工具名称 | 主要功能 | 简介 |

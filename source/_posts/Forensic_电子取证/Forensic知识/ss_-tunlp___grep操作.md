@@ -1,11 +1,15 @@
 ---
 title: ss_-tunlp___grep操作
-date: 2026-03-15 13:28:28
+date: "2026-03-15 13:28:28"
 categories:
   - Forensic_电子取证
   - Forensic知识
-created: 2026-03-15T16:49
-updated: 2026-03-18T09:46
+tags:
+  - 电子取证
+  - 取证知识
+  - grep
+created: "2026-03-15T16:49"
+updated: "2026-03-18T09:46"
 ---
 
 1. `**ss -tunlp**`

@@ -1,11 +1,15 @@
 ---
 title: Reverse
-date: 2026-03-15 13:28:16
+date: "2026-03-15 13:28:16"
 categories:
   - Capture_The_Flag_夺旗赛
   - CTF知识
-created: 2026-03-15T16:49
-updated: 2026-03-17T19:28
+tags:
+  - CTF
+  - CTF知识
+  - Reverse
+created: "2026-03-15T16:49"
+updated: "2026-03-17T19:28"
 ---
 
 逆向工程：**<u>对程序进行反向分析，还原其功能或找到隐藏信息</u>**。常见形式有对可执行文件（如 Windows 的 .exe、Linux 的 ELF、Android 的 APK 等）进行反编译、动态调试，分析算法逻辑、破解注册码、找到程序中的 flag 等，需要掌握汇编语言、调试工具（如 IDA、GDB）、加解密算法等知识。

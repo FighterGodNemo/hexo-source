@@ -1,12 +1,17 @@
 ---
 title: XOR异或
-date: 2026-03-15 13:28:16
+date: "2026-03-15 13:28:16"
 categories:
   - Capture_The_Flag_夺旗赛
   - CTF知识
   - Crypto
-created: 2026-03-15T16:49
-updated: 2026-03-18T09:42
+tags:
+  - CTF
+  - CTF知识
+  - Crypto
+  - XOR
+created: "2026-03-15T16:49"
+updated: "2026-03-18T09:42"
 ---
 
 XOR的特性（A XOR B XOR B = A），我们可以用加密的密钥解密。由于XOR操作是可逆的，我们只需要按相反的顺序和相同的密钥进行XOR就能解密。

@@ -1,12 +1,18 @@
 ---
 title: 《CTF安全竞赛入门》
-date: 2026-03-15 13:28:16
+date: "2026-03-15 13:28:16"
 categories:
   - Capture_The_Flag_夺旗赛
   - 夺旗赛Write-up
-created: 2026-03-15T16:49
-updated: 2026-04-04T07:34
+tags:
+  - CTF
+  - WriteUp
+  - 读书笔记
+  - CTF安全竞赛入门
+created: "2026-03-15T16:49"
+updated: "2026-04-04T07:34"
 ---
+
 # Web
 ## 信息收集
 ### 题目2-2 where is the logo

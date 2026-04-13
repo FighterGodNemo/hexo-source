@@ -1,9 +1,11 @@
 ---
-title: "Ollama"
-date: 2026-03-15 13:28:28
+title: Ollama
+date: "2026-03-15 13:28:28"
 categories:
-- Forensic_电子取证
-- Forensic解题妙具
+tags:
+  - 电子取证
+  - 取证工具
+  - Ollama
 ---
 
 ![](1761118786294-d746b81f-778c-485f-ba77-b1cd9da7fb96.png)

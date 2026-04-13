@@ -1,9 +1,12 @@
 ---
-title: "Dcode时间戳转换"
-date: 2026-03-15 13:28:28
+title: Dcode时间戳转换
+date: "2026-03-15 13:28:28"
 categories:
-- Forensic_电子取证
-- Forensic解题妙具
+tags:
+  - 电子取证
+  - 取证工具
+  - Dcode
+  - 时间戳
 ---
 
 ### 一、基础使用步骤

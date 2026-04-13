@@ -1,11 +1,15 @@
 ---
 title: Web
-date: 2026-03-15 13:28:16
+date: "2026-03-15 13:28:16"
 categories:
   - Capture_The_Flag_夺旗赛
   - CTF知识
-created: 2026-03-15T16:49
-updated: 2026-03-17T19:28
+tags:
+  - CTF
+  - CTF知识
+  - Web
+created: "2026-03-15T16:49"
+updated: "2026-03-17T19:28"
 ---
 
 Web数据流向：

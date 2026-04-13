@@ -1,10 +1,12 @@
 ---
-title: "png隐写"
-date: 2026-03-15 13:28:16
+title: png隐写
+date: "2026-03-15 13:28:16"
 categories:
-- Capture_The_Flag_夺旗赛
-- CTF知识
-- Misc
+tags:
+  - CTF
+  - CTF知识
+  - Misc
+  - 隐写
 ---
 
 png特点：是无损压缩，将图片源码通过zlib压缩编码后以IDAT块的形式组成的

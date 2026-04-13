@@ -1,11 +1,15 @@
 ---
 title: Ciphey
-date: 2026-03-15 13:28:16
+date: "2026-03-15 13:28:16"
 categories:
   - Capture_The_Flag_夺旗赛
   - CTF解题妙具
-created: 2026-03-15T16:49
-updated: 2026-03-18T09:41
+tags:
+  - CTF
+  - CTF工具
+  - Ciphey
+created: "2026-03-15T16:49"
+updated: "2026-03-18T09:41"
 ---
 
 [在Windows上 ciphey安装（详细版）-CSDN博客](https://blog.csdn.net/BG1230521/article/details/134127716)

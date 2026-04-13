@@ -1,13 +1,19 @@
 ---
 title: NSSCTF_2025
-date: 2026-03-15 13:28:20
+date: "2026-03-15 13:28:20"
 categories:
   - Capture_The_Flag_夺旗赛
   - 夺旗赛Write-up
   - NSSCTF_2025
-created: 2026-03-15T16:49
-updated: 2026-04-04T07:34
+tags:
+  - CTF
+  - WriteUp
+  - NSSCTF
+  - 2025
+created: "2026-03-15T16:49"
+updated: "2026-04-04T07:34"
 ---
+
 ## [BJDCTF_2020]Easy
 
 附件：easy.exe

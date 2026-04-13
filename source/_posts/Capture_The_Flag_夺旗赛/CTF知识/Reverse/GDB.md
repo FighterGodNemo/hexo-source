@@ -1,10 +1,12 @@
 ---
-title: "GDB"
-date: 2026-03-15 13:28:16
+title: GDB
+date: "2026-03-15 13:28:16"
 categories:
-- Capture_The_Flag_夺旗赛
-- CTF知识
-- Reverse
+tags:
+  - CTF
+  - CTF知识
+  - Reverse
+  - GDB
 ---
 
 GDB是Linux下非常好用且强大的调试工具。GDB可以调试C、C++、Go、java、 objective-c、PHP等语言。对于GDB调试器来说，不像VS编译器中那样的图形化界面形式，而是采用纯命令行的形式进行调试。

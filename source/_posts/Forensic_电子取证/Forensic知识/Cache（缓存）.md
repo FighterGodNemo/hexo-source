@@ -1,9 +1,11 @@
 ---
-title: "Cache（缓存）"
-date: 2026-03-15 13:28:28
+title: Cache（缓存）
+date: "2026-03-15 13:28:28"
 categories:
-- Forensic_电子取证
-- Forensic知识
+tags:
+  - 电子取证
+  - 取证知识
+  - Cache
 ---
 
 **Cache（缓存）是一个用于存储临时数据的高速存储层，其目的是为了更快地服务未来的请求。**
