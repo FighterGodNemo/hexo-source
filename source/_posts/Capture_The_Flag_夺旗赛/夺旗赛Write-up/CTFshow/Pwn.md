@@ -9,14 +9,14 @@ tags:
 ---
 
 ## Pwn 1
-![359](file-20260331130229601.png)
+![359](Pwn/file-20260331130229601.png)
 nc连接即可。
-![](file-20260331130229584.png)
+![](Pwn/file-20260331130229584.png)
 ## pwn 2
 
-![379](file-20260331130229610.png)
+![379](Pwn/file-20260331130229610.png)
 checksec一下，发现：
-![](file-20260331130229592.png)
+![](Pwn/file-20260331130229592.png)
 ### Arch:i386-32-little
 说明程序的架构是 **32 位的小端** 架构。小端是指数据的低位字节存储在内存的低地址处
 ### RELRO:Partial RELRO
@@ -78,11 +78,11 @@ checksec一下，发现：
 
 ## Pwn 35
 
-![](1762254414703-b94ad4ec-db20-4af3-9bdf-85c3eabc4436.png)
+![](Pwn/1762254414703-b94ad4ec-db20-4af3-9bdf-85c3eabc4436.png)
 
 主机cmder看：
 
-![](1762251197358-24bbc507-f26a-4f0e-8963-d0a51452572d.png)
+![](Pwn/1762251197358-24bbc507-f26a-4f0e-8963-d0a51452572d.png)
 
 或者把[pwn](https://so.csdn.net/so/search?q=pwn&spm=1001.2101.3001.7020)文件拖进虚拟机加上可执行权限，使用checksec命令查看文件的信息。
 
@@ -94,15 +94,16 @@ checksec一下，发现：
 
 4. pwn checksec pwn35
 
-![](1762250913998-61008fc8-2140-4663-920c-925c3a2760cd.png)
+![](Pwn/1762250913998-61008fc8-2140-4663-920c-925c3a2760cd.png)
 
 发现是32位的，并且RELRO 与 NX保护开启。
 
 放入ida-32位
 
-![](1762252237280-8802238e-5f75-44eb-95ad-4b2614ecd75c.png)
+![](Pwn/1762252237280-8802238e-5f75-44eb-95ad-4b2614ecd75c.png)
 
 ssh ctfshow@pwn.challenge.ctf.show -p28217
+
 
 
 

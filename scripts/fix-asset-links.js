@@ -238,6 +238,9 @@ hexo.extend.filter.register('before_generate', function () {
   sharedPostAssetsToCopy = new Map();
 });
 
+// Keep source markdown in the repo as "PostName/asset.ext" so Obsidian
+// and other source-level previews resolve locally. Strip the post-name
+// prefix only during Hexo rendering to match post_asset_folder semantics.
 hexo.extend.filter.register('before_post_render', function (data) {
   if (!data || !data.source || !data.content) return data;
 

@@ -8,4 +8,4 @@ tags:
 title: 帝国时代四 Age of Empires IV
 ---
 记录一下我的帝国时代四科研笔记。
-![](帝国时代四%20Age%20of%20Empires%20IV/file-20260413204210250.png)
+![](帝国时代四 Age of Empires IV/file-20260413204210250.png)

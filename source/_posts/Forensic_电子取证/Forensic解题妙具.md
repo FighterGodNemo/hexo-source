@@ -19,7 +19,7 @@ updated: "2026-03-19T14:47"
 
 
 
-![](1760084781057-ba18c4ee-b2b4-4833-a866-3e8f59e66772.png)![](1760084802071-93582465-6748-4dd8-95f7-54578e4f7945.png)（一）工具链接：[https://pan.baidu.com/s/1uNe-HxdRG_bKByYDJlX41g](https://pan.baidu.com/s/1uNe-HxdRG_bKByYDJlX41g)，提取码：0714；
+![](Forensic解题妙具/1760084781057-ba18c4ee-b2b4-4833-a866-3e8f59e66772.png)![](Forensic解题妙具/1760084802071-93582465-6748-4dd8-95f7-54578e4f7945.png)（一）工具链接：[https://pan.baidu.com/s/1uNe-HxdRG_bKByYDJlX41g](https://pan.baidu.com/s/1uNe-HxdRG_bKByYDJlX41g)，提取码：0714；
 
 （二）公开赛事检材：[https://kdocs.cn/l/ceK160ZwKrAe](https://kdocs.cn/l/ceK160ZwKrAe)；
 
@@ -140,5 +140,6 @@ updated: "2026-03-19T14:47"
 7. 用 **Virtual Forensic Computing** 仿真运行证据系统。
 
 这完全是一个专业数字 forensic 实验室的装备水平。
+
 
 

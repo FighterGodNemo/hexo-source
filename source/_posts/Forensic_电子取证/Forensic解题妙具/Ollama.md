@@ -8,7 +8,7 @@ tags:
   - Ollama
 ---
 
-![](1761118786294-d746b81f-778c-485f-ba77-b1cd9da7fb96.png)
+![](Ollama/1761118786294-d746b81f-778c-485f-ba77-b1cd9da7fb96.png)
 
     - **qwen2.5:3b**（通义千问3B版本）
         * **优势**：模型较小，推理速度快，内存占用低。对中文支持非常好（由阿里开发），适合处理中文任务。对于一般的问答、文本分析等任务，如果对质量要求不是极高，这个模型可以快速给出结果。
@@ -115,6 +115,7 @@ ollama run gemma2:9b "为这些证据创建一个调查时间线：[证据列表
 cd C:\Users\glj07\AppData\Local\Programs\Ollama
 
 ollama serve
+
 
 
 

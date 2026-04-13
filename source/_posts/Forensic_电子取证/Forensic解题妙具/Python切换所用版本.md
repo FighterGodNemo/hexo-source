@@ -14,7 +14,7 @@ tags:
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 ```
 
-![](1763552722428-d816be08-58c9-40e7-be6a-9b680db33e1d.png)
+![](Python切换所用版本/1763552722428-d816be08-58c9-40e7-be6a-9b680db33e1d.png)
 
 ```bash
 # 查看可安装的版本
@@ -36,7 +36,7 @@ pyenv local 3.11.2
 pyenv version
 ```
 
-安装经常超时。![](1763556229540-bfc8cc9e-bfae-454f-9f07-72a4c7d6cd14.png)
+安装经常超时。![](Python切换所用版本/1763556229540-bfc8cc9e-bfae-454f-9f07-72a4c7d6cd14.png)
 
 ```bash
 set PYTHON_BUILD_MIRROR_URL=https://mirrors.tuna.tsinghua.edu.cn/python/
@@ -89,5 +89,6 @@ myenv\Scripts\activate
 # 停用环境
 deactivate
 ```
+
 
 

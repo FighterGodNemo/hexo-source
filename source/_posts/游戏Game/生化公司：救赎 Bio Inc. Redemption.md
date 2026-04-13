@@ -7,13 +7,14 @@ tags:
   - 游戏
 ---
 生化公司：救赎 Bio Inc. Redemption 科研笔记
-![](file-20260413200841762.png)
+![](生化公司：救赎 Bio Inc. Redemption/file-20260413200841762.png)
 # 救赎
-![](file-20260413200738699.png)
+![](生化公司：救赎 Bio Inc. Redemption/file-20260413200738699.png)
 
 
 
 
 
 # 死亡
-![](file-20260413200916332.png)
+![](生化公司：救赎 Bio Inc. Redemption/file-20260413200916332.png)
+
