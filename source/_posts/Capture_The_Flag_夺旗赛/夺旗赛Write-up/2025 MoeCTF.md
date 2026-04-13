@@ -1,6 +1,6 @@
 ---
 title: ez_square
-date: "2026-03-15 13:28:16"
+date: 2026-03-15 13:28:16
 categories:
   - Capture_The_Flag_夺旗赛
   - 夺旗赛Write-up
@@ -9,9 +9,8 @@ tags:
   - CTF
   - WriteUp
   - MoeCTF
-  - "2025"
-created: "2026-03-15T16:49"
-updated: "2026-04-04T07:34"
+created: 2026-03-15T16:49
+updated: 2026-04-13T18:39
 ---
 
 + 解压得2048_master.exe
