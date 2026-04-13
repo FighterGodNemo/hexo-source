@@ -9,7 +9,7 @@ tags:
   - CTF
   - WriteUp
   - MoeCTF
-  - 2025
+  - "2025"
 created: "2026-03-15T16:49"
 updated: "2026-04-04T07:34"
 ---
