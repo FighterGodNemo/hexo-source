@@ -3,6 +3,9 @@ title: CSRF
 permalink: '/2026/03/15/Capture_The_Flag_夺旗赛/CTF知识/Reverse/CSRF/'
 date: "2026-03-15 13:28:16"
 categories:
+  - Capture_The_Flag_夺旗赛
+  - CTF知识
+  - Reverse
 tags:
   - CTF
   - CTF知识

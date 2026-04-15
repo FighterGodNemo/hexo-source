@@ -1,5 +1,5 @@
 ---
-title: ez_square
+title: MoeCTF_2025
 permalink: /2026/03/15/Capture_The_Flag_夺旗赛/夺旗赛Write-up/2025 MoeCTF/
 date: 2026-03-15 13:28:16
 categories:
@@ -311,5 +311,4 @@ S=p+q_S_=_p_+_q_
 S2=hint+kn_S_2=_hin__t_+_kn_S=hint+kn_S_=_hin__t_+_kn_
 
 我们检查 k_k_ 使得 hint+kn_hint_+_kn_ 为完全平方数，并且 S_S_ 为整数。
-
 
