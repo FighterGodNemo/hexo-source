@@ -11,17 +11,17 @@ tags:
   - WriteUp
   - MoeCTF
 created: 2026-03-15T16:49
-updated: 2026-04-15T13:54
+updated: 2026-04-15T14:05
 ---
 
 + 解压得2048_master.exe
-+ 运行后显示：![](2025 MoeCTF/file-20260331130230900.png)
++ 运行后显示：![](<2025 MoeCTF/file-20260331130230900.png>)
 + 退出，发现layout.dat，内含程序数据
 + 用010editor分别打开2048_master.exe和layout.dat得到：
-+ ![](2025 MoeCTF/file-20260331130230911.png)
-+ ![](2025 MoeCTF/file-20260331130230952.png)
-+ 修改layout数据如下：![](2025 MoeCTF/file-20260331130230962.png)
-+ 运行得flag：![](2025 MoeCTF/file-20260331130230987.png)
++ ![](<2025 MoeCTF/file-20260331130230911.png>)
++ ![](<2025 MoeCTF/file-20260331130230952.png>)
++ 修改layout数据如下：![](<2025 MoeCTF/file-20260331130230962.png>)
++ 运行得flag：![](<2025 MoeCTF/file-20260331130230987.png>)
 
 
 
@@ -31,8 +31,8 @@ updated: 2026-04-15T13:54
 
 上述文案纯属看图说话，玩个梗，无恶意
 
-+ 解压得rush.gif![](2025 MoeCTF/file-20260331130230971.png)
-+ 截取二维码，在画图3D中打开，用![](2025 MoeCTF/file-20260331130228844.png)补齐左上角定位点，扫描得flag。
++ 解压得rush.gif![](<2025 MoeCTF/file-20260331130230971.png>)
++ 截取二维码，在画图3D中打开，用![](<2025 MoeCTF/file-20260331130228844.png>)补齐左上角定位点，扫描得flag。
 
 
 
@@ -44,9 +44,9 @@ updated: 2026-04-15T13:54
 
 什么，你说你看不见 FLAG？注意 CRC！
 
-+ 解压得![](2025 MoeCTF/file-20260331130231018.png)
++ 解压得![](<2025 MoeCTF/file-20260331130231018.png>)
 + 使用[随波逐流]CTF编码工具试试修复高宽，意外获得flag。
-+ ![](2025 MoeCTF/file-20260331130231007.png)
++ ![](<2025 MoeCTF/file-20260331130231007.png>)
 
 
 
@@ -57,25 +57,25 @@ flag 形式以moectf{}包裹提交，忽略大小写。
 + 解压得 粒子艺术.wav
 + 用Audacity打开
 
-![](2025 MoeCTF/file-20260331130230997.png)
+![](<2025 MoeCTF/file-20260331130230997.png>)
 
 + 发现一个声道是摩斯密码
-+ 分离声道![](2025 MoeCTF/file-20260331130231028.png)
++ 分离声道![](<2025 MoeCTF/file-20260331130231028.png>)
 + 保留密码声道并导出。
 + 将导出的MP3文件放入摩尔斯电码音频解码器
 
 [https://morsecodemagic.com/zh/%E6%91%A9%E5%B0%94%E6%96%AF%E7%94%B5%E7%A0%81%E9%9F%B3%E9%A2%91%E8%A7%A3%E7%A0%81%E5%99%A8/](https://morsecodemagic.com/zh/%E6%91%A9%E5%B0%94%E6%96%AF%E7%94%B5%E7%A0%81%E9%9F%B3%E9%A2%91%E8%A7%A3%E7%A0%81%E5%99%A8/)
 
-+ 解得flag。![](2025 MoeCTF/file-20260331130231038.png)
++ 解得flag。![](<2025 MoeCTF/file-20260331130231038.png>)
 
 
 
 ## 这是一张普通的图片，但是一个个像素看过去似乎有些蹊跷？
 
-+ 解压得xidian.png![](2025 MoeCTF/file-20260331130230942.png)
++ 解压得xidian.png![](<2025 MoeCTF/file-20260331130230942.png>)
 + 题目提示和LSB有关，故选用Stegsolve工具
-+ Analyse选择Data Extract![](2025 MoeCTF/file-20260331130230931.png)
-+ 选择LSB First，尝试多种组合得到flag。![](2025 MoeCTF/file-20260331130230920.png)
++ Analyse选择Data Extract![](<2025 MoeCTF/file-20260331130230931.png>)
++ 选择LSB First，尝试多种组合得到flag。![](<2025 MoeCTF/file-20260331130230920.png>)
 
 
 

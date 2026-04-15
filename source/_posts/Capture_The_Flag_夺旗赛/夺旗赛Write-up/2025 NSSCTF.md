@@ -11,7 +11,7 @@ tags:
   - WriteUp
   - NSSCTF
 created: 2026-03-15T16:49
-updated: 2026-04-15T13:54
+updated: 2026-04-15T14:05
 ---
 
 ## [BJDCTF_2020]Easy
@@ -20,11 +20,11 @@ updated: 2026-04-15T13:54
 
 无壳程序，直接分析即可
 
-![](2025 NSSCTF/file-20260331130230842.png)
+![](<2025 NSSCTF/file-20260331130230842.png>)
 
 ## [CryptoCTF_2020]One_Line_Crypto
 
-![](2025 NSSCTF/file-20260331130230861.png)
+![](<2025 NSSCTF/file-20260331130230861.png>)
 
 ```python
 from Crypto.Util.number import *
@@ -44,7 +44,7 @@ enc文件：14608474132952352328897080717325464308438322623319847428447933943202
 ##### 题目描述：在一次网络安全的挑战中，你截获了一段神秘的冰蝎流量。据说这段流量中隐藏着重要的信息。你能解开这个谜团，找出隐藏在流量中的秘密吗？
 解答：
 
-![](2025 NSSCTF/file-20260331130230820.png)
+![](<2025 NSSCTF/file-20260331130230820.png>)
 
 流量包损坏。需要修复
 
@@ -85,7 +85,7 @@ print(str)
 ```
 
 NSSCTF{youhaveknowcaesar}
-![](2025 NSSCTF/file-20260331130230871.png)
+![](<2025 NSSCTF/file-20260331130230871.png>)
 
 ## [SWPUCTF_2021_新生赛]jicao
 
@@ -112,18 +112,18 @@ curl -X POST "http://node7.anna.nssctf.cn:27541/index.php?json=%7B%22x%22%3A%22w
 ```
 
 NSSCTF{5e3b5793-b1f6-488a-bac4-53e9c4889ed7}
-![](2025 NSSCTF/file-20260331130230800.png)
+![](<2025 NSSCTF/file-20260331130230800.png>)
 
 ## [陇剑杯_2021]jwt（问1）
 
 追踪http流
 
-![](2025 NSSCTF/file-20260331130230881.png)
+![](<2025 NSSCTF/file-20260331130230881.png>)
 
 > token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAwODYsIk1hcENsYWltcyI6eyJhdWQiOiJhZG1pbiIsInVzZXJuYW1lIjoiYWRtaW4ifX0.dJArtwXjas3_Cg9a3tr8COXF7DRsuX8UjmbC1nKf8fc
 >
 
-![](2025 NSSCTF/file-20260331130230890.png)
+![](<2025 NSSCTF/file-20260331130230890.png>)
 
 NSSCTF{jwt}
 
@@ -138,7 +138,7 @@ NSSCTF{jwt}
 > 此时正在进行的可能是__________协议的网络攻击。（如有字母请全部使用小写，填写样例：http、dns、ftp）。得到的flag请使用NSSCTF{}格式提交。
 >
 
-![](2025 NSSCTF/file-20260331130230769.png)
+![](<2025 NSSCTF/file-20260331130230769.png>)
 
 NSSCTF{http}
 
@@ -147,15 +147,15 @@ NSSCTF{http}
 ZmxhZ3tHYXFZN0t0RXRyVklYMVE1b1A1aUVCUkNZWEVBeThyVH0=
 
 flag{GaqY7KtEtrVIX1Q5oP5iEBRCYXEAy8rT}
-![](2025 NSSCTF/file-20260331130230831.png)
+![](<2025 NSSCTF/file-20260331130230831.png>)
 
 ## [强网拟态2021]BlueWhale
 
 附件：
-![](2025 NSSCTF/file-20260331130230810.png)
+![](<2025 NSSCTF/file-20260331130230810.png>)
 
 先分析外层流量包，追踪TCP流
-![](2025 NSSCTF/file-20260331130230852.png)
+![](<2025 NSSCTF/file-20260331130230852.png>)
 
 获取密码：**th1sIsThEpassw0rD**
 
@@ -173,7 +173,7 @@ flag{GaqY7KtEtrVIX1Q5oP5iEBRCYXEAy8rT}
 法一：ciphey一把梭
 
 NSSCTF{68bedd7e6ab3ba1fe965b54d9c7c3d94}
-![](2025 NSSCTF/file-20260331130230747.png)
+![](<2025 NSSCTF/file-20260331130230747.png>)
 
 法二：脑筋急转弯
 
@@ -182,8 +182,8 @@ NSSCTF{68bedd7e6ab3ba1fe965b54d9c7c3d94}
 + rot13和base32解密即可
 
 NSSCTF{68bedd7e6ab3ba1fe965b54d9c7c3d94}
-![](2025 NSSCTF/file-20260331130230779.png)
-![](2025 NSSCTF/file-20260331130230789.png)
+![](<2025 NSSCTF/file-20260331130230779.png>)
+![](<2025 NSSCTF/file-20260331130230789.png>)
 
 ## Do_you_know_http
 
@@ -414,18 +414,18 @@ NSSCTF{0bbd067c-24bd-454c-9111-6cd1b67b6da4}
 
 ## gift_F12
 
-![](2025 NSSCTF/file-20260331130230715.png)
-![](2025 NSSCTF/file-20260331130230702.png)
+![](<2025 NSSCTF/file-20260331130230715.png>)
+![](<2025 NSSCTF/file-20260331130230702.png>)
 
 + Ctrl+U查看网页源代码
 + Ctrl+F查找flag
 + 获得flag
-![](2025 NSSCTF/file-20260331130230690.png)
+![](<2025 NSSCTF/file-20260331130230690.png>)
 
 ## 无标题文档
 
-![](2025 NSSCTF/file-20260331130230758.png)
-![](2025 NSSCTF/file-20260331130230727.png)
+![](<2025 NSSCTF/file-20260331130230758.png>)
+![](<2025 NSSCTF/file-20260331130230727.png>)
 
 ## 喜欢我的压缩包么__初级_
 
@@ -449,7 +449,7 @@ NSSCTF{0bbd067c-24bd-454c-9111-6cd1b67b6da4}
 
 
 2. 使用Advanced Archive Password Recovery暴力破解。
-![](2025 NSSCTF/file-20260331130230628.jpeg)
+![](<2025 NSSCTF/file-20260331130230628.jpeg>)
 
 得到口令114514，解出压缩包中的flag。
 
@@ -458,8 +458,8 @@ NSSCTF{0bbd067c-24bd-454c-9111-6cd1b67b6da4}
 题目：所以下半身是什么呢（ww
 
 + 解压得可爱的小草神.png
-![](2025 NSSCTF/file-20260331130228827.png)
+![](<2025 NSSCTF/file-20260331130228827.png>)
 + 题目提示图片缺少下半部分，故使用[随波逐流]CTF编码工具修复高宽
 + 拖入得羽毛球-修复高宽.png，得到flag。
-![](2025 NSSCTF/file-20260331130228817.png)
+![](<2025 NSSCTF/file-20260331130228817.png>)
 
