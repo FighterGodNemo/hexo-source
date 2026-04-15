@@ -1,12 +1,16 @@
 ---
 title: linux工具
-permalink: '/2026/03/15/Forensic_电子取证/Forensic解题妙具/linux工具/'
-date: "2026-03-15 13:28:28"
+permalink: /2026/03/15/Forensic_电子取证/Forensic解题妙具/linux工具/
+date: 2026-03-15 13:28:28
 categories:
+  - Forensic_电子取证
+  - Forensic解题妙具
 tags:
   - 电子取证
   - 取证工具
   - Linux
+created: 2026-03-15T16:49
+updated: 2026-04-15T13:42
 ---
 
 | 工具名称 | 主要功能 | 简介 |

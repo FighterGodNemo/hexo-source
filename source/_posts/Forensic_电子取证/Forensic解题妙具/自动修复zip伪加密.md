@@ -1,12 +1,16 @@
 ---
 title: 自动修复zip伪加密
-permalink: '/2026/03/15/Forensic_电子取证/Forensic解题妙具/自动修复zip伪加密/'
-date: "2026-03-15 13:28:28"
+permalink: /2026/03/15/Forensic_电子取证/Forensic解题妙具/自动修复zip伪加密/
+date: 2026-03-15 13:28:28
 categories:
+  - Forensic_电子取证
+  - Forensic解题妙具
 tags:
   - 电子取证
   - 取证工具
   - ZIP伪加密
+created: 2026-03-15T16:49
+updated: 2026-04-15T13:42
 ---
 
 ZipCenOp.jar
