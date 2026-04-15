@@ -1,15 +1,15 @@
 ---
 title: Forensic解题妙具
-permalink: '/2026/03/15/Forensic_电子取证/Forensic解题妙具/'
-date: "2026-03-15 13:28:28"
+permalink: /2026/03/15/Forensic_电子取证/Forensic解题妙具/
+date: 2026-03-15 13:28:28
 categories:
   - Forensic_电子取证
 tags:
   - 电子取证
   - 取证工具
   - Forensic解题妙具
-created: "2026-03-15T16:49"
-updated: "2026-03-19T14:47"
+created: 2026-03-15T16:49
+updated: 2026-04-15T13:21
 ---
 
 弘连工具

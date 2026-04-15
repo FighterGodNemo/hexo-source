@@ -1,11 +1,11 @@
 ---
 created: 2026-03-19T15:15
-permalink: '/2026/03/19/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Web/'
+permalink: /2026/03/19/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Web/
 tags:
   - CTF
   - WriteUp
   - CTFshow
-updated: 2026-04-13T20:08
+updated: 2026-04-15T13:20
 ---
 
 ## Web 1

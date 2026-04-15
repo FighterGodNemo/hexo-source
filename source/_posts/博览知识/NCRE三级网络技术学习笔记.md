@@ -1,8 +1,8 @@
 ---
-created: "2026-03-25T12:52"
-updated: "2026-03-29T08:49"
+created: 2026-03-25T12:52
+updated: 2026-04-15T13:20
 title: NCRE三级网络技术学习笔记
-permalink: '/2026/03/25/博览知识/NCRE三级网络技术学习笔记/'
+permalink: /2026/03/25/博览知识/NCRE三级网络技术学习笔记/
 tags:
   - 博览知识
   - NCRE
