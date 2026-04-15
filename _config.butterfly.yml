@@ -557,8 +557,7 @@ comments:
   # Leave it empty if you don't need comments
   # Choose: Disqus/Disqusjs/Livere/Gitalk/Valine/Waline/Utterances/Facebook Comments/Twikoo/Giscus/Remark42/Artalk
   # Format of two comments system : Disqus,Waline
-  use:
-    - Gitalk
+  use: []
   # Display the comment name next to the button
   text: true
   # Lazyload: The comment system will be load when comment element enters the browser's viewport.
@@ -590,9 +589,11 @@ livere:
 
 # Gitalk
 # https://github.com/gitalk/gitalk
+# Do not use Gitalk on a static site: it requires a GitHub OAuth client secret,
+# which would be exposed to every visitor in the rendered HTML.
 gitalk:
-  client_id: Ov23lioEJsMp2XGrh99I
-  client_secret: 87f077348a1721d668dbd1b6ad217c3f0f20d538
+  client_id:
+  client_secret:
   repo: FighterGodNemo.github.io
   owner: FighterGodNemo
   admin: FighterGodNemo
@@ -623,7 +624,7 @@ waline:
 # Utterances
 # https://utteranc.es/
 utterances:
-  repo:
+  repo: FighterGodNemo/FighterGodNemo.github.io
   # Issue Mapping: pathname/url/title/og:title
   issue_term: pathname
   # Theme: github-light/github-dark/github-dark-orange/icy-dark/dark-blue/photon-dark

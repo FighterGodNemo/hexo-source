@@ -1,5 +1,6 @@
 ---
 created: 2026-03-19T15:06
+permalink: '/2026/03/19/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Pwn/'
 updated: 2026-04-13T20:08
 tags:
   - CTF

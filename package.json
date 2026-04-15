@@ -6,6 +6,9 @@
     "build": "hexo generate",
     "clean": "hexo clean",
     "deploy": "hexo deploy",
+    "permalink:check": "node tools/permalink-manager.js --check",
+    "permalink:sync": "node tools/permalink-manager.js --write",
+    "security:check": "node tools/security-audit.js",
     "server": "hexo server",
     "optimize:bg": "node scripts/optimize-bg-images.js"
   },

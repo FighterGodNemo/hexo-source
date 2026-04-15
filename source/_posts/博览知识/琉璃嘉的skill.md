@@ -2,6 +2,7 @@
 created: "2026-04-12T11:12"
 updated: "2026-04-12T11:23"
 title: 琉璃嘉的skill
+permalink: '/2026/04/12/博览知识/琉璃嘉的skill/'
 tags:
   - 博览知识
   - Codex技能

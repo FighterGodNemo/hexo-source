@@ -1,5 +1,6 @@
 ---
 title: 25FIC初赛
+permalink: '/2026/03/15/Forensic_电子取证/取证write-up/FIC/25FIC初赛/'
 date: 2026-03-15 13:28:26
 categories:
   - Forensic_电子取证

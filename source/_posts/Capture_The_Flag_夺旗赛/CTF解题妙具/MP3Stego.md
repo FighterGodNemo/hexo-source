@@ -1,5 +1,6 @@
 ---
 title: MP3Stego
+permalink: '/2026/03/15/Capture_The_Flag_夺旗赛/CTF解题妙具/MP3Stego/'
 date: "2026-03-15 13:28:16"
 categories:
   - Capture_The_Flag_夺旗赛

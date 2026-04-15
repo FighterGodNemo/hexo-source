@@ -1,5 +1,6 @@
 ---
 title: Capture_The_Flag 夺旗赛
+permalink: '/2026/03/15/Capture_The_Flag 夺旗赛/'
 date: "2026-03-15 13:28:22"
 tags:
   - CTF

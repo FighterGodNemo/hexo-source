@@ -27,7 +27,7 @@ mixin rightsideItem(array)
           button#chat-btn(type="button" title=_p("rightside.chat") style="display:none")
             i.fas.fa-message
       when 'comment'
-        if commentsJsLoad
+        if commentsJsLoad && theme.comments.use.length
           a#to_comment(href="#post-comment" title=_p("rightside.scroll_to_comment"))
             i.fas.fa-comments
 

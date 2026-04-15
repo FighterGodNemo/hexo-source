@@ -1,5 +1,6 @@
 ---
 title: 《CTF安全竞赛入门》
+permalink: '/2026/03/15/Capture_The_Flag_夺旗赛/夺旗赛Write-up/《CTF安全竞赛入门》/'
 date: 2026-03-15 13:28:16
 categories:
   - Capture_The_Flag_夺旗赛

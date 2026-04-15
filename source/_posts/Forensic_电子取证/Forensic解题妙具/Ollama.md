@@ -1,5 +1,6 @@
 ---
 title: Ollama
+permalink: '/2026/03/15/Forensic_电子取证/Forensic解题妙具/Ollama/'
 date: "2026-03-15 13:28:28"
 categories:
 tags:

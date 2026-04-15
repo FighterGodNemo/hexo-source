@@ -1,5 +1,6 @@
 ---
 title: DoS拒绝服务攻击
+permalink: '/2026/03/15/博览知识/DoS拒绝服务攻击/'
 date: "2026-03-15 13:28:22"
 categories:
   - 博览知识

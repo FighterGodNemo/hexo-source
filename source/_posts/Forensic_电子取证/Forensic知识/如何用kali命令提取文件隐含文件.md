@@ -1,5 +1,6 @@
 ---
 title: 如何用kali命令提取文件隐含文件
+permalink: '/2026/03/15/Forensic_电子取证/Forensic知识/如何用kali命令提取文件隐含文件/'
 date: "2026-03-15 13:28:28"
 categories:
   - Forensic_电子取证

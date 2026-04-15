@@ -1,5 +1,6 @@
 ---
 title: 怎么从内存中提取bitlocker密码以及原理
+permalink: '/2026/03/15/Forensic_电子取证/Forensic知识/怎么从内存中提取bitlocker密码以及原理/'
 date: "2026-03-15 13:28:28"
 categories:
   - Forensic_电子取证

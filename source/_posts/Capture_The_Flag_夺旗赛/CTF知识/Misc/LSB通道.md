@@ -1,5 +1,6 @@
 ---
 title: LSB通道
+permalink: '/2026/03/15/Capture_The_Flag_夺旗赛/CTF知识/Misc/LSB通道/'
 date: "2026-03-15 13:28:16"
 categories:
 tags:

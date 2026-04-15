@@ -1,5 +1,6 @@
 ---
 title: Game通关
+permalink: '/2026/03/15/Capture_The_Flag_夺旗赛/夺旗赛Write-up/看雪论坛/Game通关/'
 date: 2026-03-15 13:28:20
 categories:
   - Capture_The_Flag_夺旗赛

@@ -1,5 +1,6 @@
 ---
 title: XSS跨站攻击
+permalink: '/2026/03/15/Capture_The_Flag_夺旗赛/CTF知识/Web/XSS跨站攻击/'
 date: "2026-03-15 13:28:16"
 categories:
   - Capture_The_Flag_夺旗赛
