@@ -11,6 +11,8 @@ tags:
   - CTF知识
   - Reverse
   - GDB
+created: "2026-03-15T16:49"
+updated: "2026-04-15T13:49"
 ---
 
 GDB是Linux下非常好用且强大的调试工具。GDB可以调试C、C++、Go、java、 objective-c、PHP等语言。对于GDB调试器来说，不像VS编译器中那样的图形化界面形式，而是采用纯命令行的形式进行调试。

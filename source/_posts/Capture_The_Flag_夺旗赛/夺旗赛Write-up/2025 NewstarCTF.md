@@ -1,17 +1,17 @@
 ---
-title: NewstarCTF_2025
+title: 2025 NewstarCTF
 permalink: /2026/03/15/Capture_The_Flag_夺旗赛/夺旗赛Write-up/2025 NewstarCTF/
 date: 2026-03-15 13:28:20
 categories:
   - Capture_The_Flag_夺旗赛
   - 夺旗赛Write-up
-  - NewstarCTF_2025
+  - NewstarCTF
 tags:
   - CTF
   - WriteUp
   - NewstarCTF
 created: 2026-03-15T16:49
-updated: 2026-04-15T12:58
+updated: 2026-04-15T13:54
 ---
 
 ## F12_
@@ -1013,5 +1013,4 @@ if(intval($answer) != 47 && intval($answer, 0) == 47)
 这个漏洞利用的是**<u> PHP 在不同进制下对同一字符串解析结果不同</u>** 的特性，通过八进制/十六进制与十进制的转换差异来满足矛盾条件。
 
 这就是 CTF 中常见的 **<u>PHP 类型混淆/进制混淆 漏洞</u>**。
-
 

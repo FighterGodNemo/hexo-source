@@ -1,6 +1,9 @@
 ---
 created: 2026-04-01T12:36
-updated: 2026-04-13T20:42
+updated: "2026-04-15T13:49"
+date: "2026-04-01 12:36:00"
+categories:
+  - 游戏Game
 tags:
   - 帝国时代四
   - RTS即时战略

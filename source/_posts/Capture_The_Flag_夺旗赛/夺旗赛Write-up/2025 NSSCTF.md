@@ -1,17 +1,17 @@
 ---
-title: NSSCTF_2025
+title: 2025 NSSCTF
 permalink: /2026/03/15/Capture_The_Flag_夺旗赛/夺旗赛Write-up/2025 NSSCTF/
 date: 2026-03-15 13:28:20
 categories:
   - Capture_The_Flag_夺旗赛
   - 夺旗赛Write-up
-  - NSSCTF_2025
+  - NSSCTF
 tags:
   - CTF
   - WriteUp
   - NSSCTF
 created: 2026-03-15T16:49
-updated: 2026-04-15T12:58
+updated: 2026-04-15T13:54
 ---
 
 ## [BJDCTF_2020]Easy
@@ -462,5 +462,4 @@ NSSCTF{0bbd067c-24bd-454c-9111-6cd1b67b6da4}
 + 题目提示图片缺少下半部分，故使用[随波逐流]CTF编码工具修复高宽
 + 拖入得羽毛球-修复高宽.png，得到flag。
 ![](2025 NSSCTF/file-20260331130228817.png)
-
 

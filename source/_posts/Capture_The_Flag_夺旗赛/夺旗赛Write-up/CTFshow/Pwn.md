@@ -1,12 +1,13 @@
 ---
 title: CTFshow Pwn
 created: 2026-03-19T15:06
+date: "2026-03-19 15:06:00"
 permalink: /2026/03/19/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Pwn/
 categories:
   - Capture_The_Flag_夺旗赛
   - 夺旗赛Write-up
   - CTFshow
-updated: 2026-04-15T13:20
+updated: "2026-04-15T13:49"
 tags:
   - CTF
   - WriteUp
@@ -109,7 +110,6 @@ checksec一下，发现：
 ![](Pwn/1762252237280-8802238e-5f75-44eb-95ad-4b2614ecd75c.png)
 
 ssh ctfshow@pwn.challenge.ctf.show -p28217
-
 
 
 

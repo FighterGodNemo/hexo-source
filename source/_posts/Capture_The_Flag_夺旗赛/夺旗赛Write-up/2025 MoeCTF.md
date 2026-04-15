@@ -1,17 +1,17 @@
 ---
-title: MoeCTF_2025
+title: 2025 MoeCTF
 permalink: /2026/03/15/Capture_The_Flag_夺旗赛/夺旗赛Write-up/2025 MoeCTF/
 date: 2026-03-15 13:28:16
 categories:
   - Capture_The_Flag_夺旗赛
   - 夺旗赛Write-up
-  - MoeCTF_2025
+  - MoeCTF
 tags:
   - CTF
   - WriteUp
   - MoeCTF
 created: 2026-03-15T16:49
-updated: 2026-04-15T12:58
+updated: 2026-04-15T13:54
 ---
 
 + 解压得2048_master.exe
@@ -311,4 +311,3 @@ S=p+q_S_=_p_+_q_
 S2=hint+kn_S_2=_hin__t_+_kn_S=hint+kn_S_=_hin__t_+_kn_
 
 我们检查 k_k_ 使得 hint+kn_hint_+_kn_ 为完全平方数，并且 S_S_ 为整数。
-

@@ -1,5 +1,5 @@
 ---
-title: 25FIC初赛
+title: 2025 FIC初赛
 permalink: /2026/03/15/Forensic_电子取证/取证write-up/FIC/25FIC初赛/
 date: 2026-03-15 13:28:26
 categories:
@@ -12,7 +12,7 @@ tags:
   - FIC
   - 初赛
 created: 2026-03-15T16:49
-updated: 2026-04-15T12:59
+updated: 2026-04-15T13:54
 ---
 
 ## 前言
@@ -152,7 +152,6 @@ Stegsolve——Analyse——Image Combiner
 
 
 ## 
-
 
 
 

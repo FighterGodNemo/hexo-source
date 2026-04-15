@@ -1,6 +1,7 @@
 ---
 title: CTFshow Web
 created: 2026-03-19T15:15
+date: "2026-03-19 15:15:00"
 permalink: /2026/03/19/Capture_The_Flag_夺旗赛/夺旗赛Write-up/CTFshow/Web/
 categories:
   - Capture_The_Flag_夺旗赛
@@ -10,7 +11,7 @@ tags:
   - CTF
   - WriteUp
   - CTFshow
-updated: 2026-04-15T13:20
+updated: "2026-04-15T13:49"
 ---
 
 ## Web 1
@@ -21,4 +22,3 @@ Ctrl+U 查看源代码
 base64解码
 ![](Web/1765884078109-a4983cd4-5852-4e05-86f9-68a1f1bcb283.png)
 ## Web 2
-

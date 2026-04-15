@@ -1,7 +1,7 @@
 ---
-title: BurpSuite
-permalink: '/2026/03/15/Capture_The_Flag_夺旗赛/CTF解题妙具/Web/BurpSuite/'
-date: "2026-03-15 13:28:16"
+title: Burp Suite
+permalink: /2026/03/15/Capture_The_Flag_夺旗赛/CTF解题妙具/Web/BurpSuite/
+date: 2026-03-15 13:28:16
 categories:
   - Capture_The_Flag_夺旗赛
   - CTF解题妙具
@@ -11,6 +11,8 @@ tags:
   - CTF工具
   - Web
   - BurpSuite
+created: 2026-03-15T16:49
+updated: 2026-04-15T13:54
 ---
 
 Web应用安全测试工具，支持代理、扫描、漏洞利用等功能。

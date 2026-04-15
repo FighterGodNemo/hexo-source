@@ -1,7 +1,7 @@
 ---
-title: 《Kali_Linux高级渗透测试》
-permalink: '/2026/03/15/Capture_The_Flag_夺旗赛/夺旗赛Write-up/《Kali_Linux高级渗透测试》/'
-date: "2026-03-15 13:28:20"
+title: 《Kali Linux高级渗透测试》
+permalink: /2026/03/15/Capture_The_Flag_夺旗赛/夺旗赛Write-up/《Kali_Linux高级渗透测试》/
+date: 2026-03-15 13:28:20
 categories:
   - Capture_The_Flag_夺旗赛
   - 夺旗赛Write-up
@@ -12,8 +12,8 @@ tags:
   - Kali
   - Linux
   - 渗透测试
-created: "2026-03-15T16:49"
-updated: "2026-03-17T19:27"
+created: 2026-03-15T16:49
+updated: 2026-04-15T13:54
 ---
 
 # 第一章 基于目标的渗透测试
@@ -74,4 +74,3 @@ Shodan.io搜索引擎。
 1.暗网
 
 暗网（Dark Web）是Tor服务器及其客户端之间存在的加密网络，而深网
-
