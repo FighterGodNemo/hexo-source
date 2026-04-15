@@ -1,6 +1,6 @@
 ---
 title: NSSCTF_2025
-permalink: '/2026/03/15/Capture_The_Flag_夺旗赛/夺旗赛Write-up/2025 NSSCTF/'
+permalink: /2026/03/15/Capture_The_Flag_夺旗赛/夺旗赛Write-up/2025 NSSCTF/
 date: 2026-03-15 13:28:20
 categories:
   - Capture_The_Flag_夺旗赛
@@ -11,7 +11,7 @@ tags:
   - WriteUp
   - NSSCTF
 created: 2026-03-15T16:49
-updated: 2026-04-13T20:08
+updated: 2026-04-15T12:58
 ---
 
 ## [BJDCTF_2020]Easy

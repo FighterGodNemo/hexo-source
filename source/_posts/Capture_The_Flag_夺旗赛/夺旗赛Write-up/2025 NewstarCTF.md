@@ -1,6 +1,6 @@
 ---
 title: NewstarCTF_2025
-permalink: '/2026/03/15/Capture_The_Flag_夺旗赛/夺旗赛Write-up/2025 NewstarCTF/'
+permalink: /2026/03/15/Capture_The_Flag_夺旗赛/夺旗赛Write-up/2025 NewstarCTF/
 date: 2026-03-15 13:28:20
 categories:
   - Capture_The_Flag_夺旗赛
@@ -11,7 +11,7 @@ tags:
   - WriteUp
   - NewstarCTF
 created: 2026-03-15T16:49
-updated: 2026-04-13T20:08
+updated: 2026-04-15T12:58
 ---
 
 ## F12_
