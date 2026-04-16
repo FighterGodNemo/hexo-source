@@ -11,7 +11,7 @@ tags:
   - WriteUp
   - NSSCTF
 created: 2026-03-15T16:49
-updated: 2026-04-17T06:56
+updated: 2026-04-17T06:58
 ---
 
 # 2025 NSSCTF 积累之（一）
@@ -232,24 +232,6 @@ NSSCTF{Admin123!@#}
 **方法二：** 可以传递数组，如name[]=123,password[]=456，md5不能加密数组，故两个md5返回的都是null
 
 另：若遇到`===`这样的强类型比较，方法一就失效了，方法二仍然有效，或者还可以使用软件fastcoll进行md5碰撞，生成两个字符串使得他们的md5值相同
-
-### [SWPUCTF 2021 新生赛]Do_you_know_http
-#### #HTTP协议 #信息收集 #PHP
-法一：Hackbar
-
-![](<2025 NSSCTF/file-20260331130228378.png)
-
-![](<2025 NSSCTF/file-20260331130228370.png)
-
-修改User Agent为WLLM，EXECUTE
-
-![](<2025 NSSCTF/file-20260331130228361.png)
-
-先把URL改为a.php，再添加X-Forward-For为127.0.0.1
-
-![](<2025 NSSCTF/file-20260331130228351.png)
-
-NSSCTF{4732ec48-fa30-4e78-93c3-3fafe98452b8}
 
 ## 3.Misc
 
