@@ -11,7 +11,7 @@ tags:
   - WriteUp
   - NSSCTF
 created: 2026-03-15T16:49
-updated: 2026-04-17T06:53
+updated: 2026-04-17T06:56
 ---
 
 # 2025 NSSCTF 积累之（一）
@@ -43,8 +43,6 @@ enc文件：14608474132952352328897080717325464308438322623319847428447933943202
 ![](<2025 NSSCTF/file-20260331130228808.png)
 
 flag{IlUqU9O5guX6YiITsRNPiQmbhNRjGuTP}
-
-### 2.Web
 
 ### [BJDCTF 2020]base??
 #### #Base家族 #古典密码 #其他
@@ -235,8 +233,6 @@ NSSCTF{Admin123!@#}
 
 另：若遇到`===`这样的强类型比较，方法一就失效了，方法二仍然有效，或者还可以使用软件fastcoll进行md5碰撞，生成两个字符串使得他们的md5值相同
 
-### Misc
-
 ### [SWPUCTF 2021 新生赛]Do_you_know_http
 #### #HTTP协议 #信息收集 #PHP
 法一：Hackbar
@@ -277,8 +273,6 @@ NSSCTF{http}
 
 LitCTF{Fl4g_0fcourse!}
 
-### Crypto
-
 ### [SDCTF 2022]Susan Album Party
 #### #图片隐写 #图片分离 #结构隐写
  My friend Susan is having a photo album party, but she accidentally corrupted the SD card with all her photos on it! Can you save Susan's party by recovering her photos?
@@ -308,8 +302,6 @@ LitCTF{Fl4g_0fcourse!}
 这里很坑，明明写得像SOME结果说是S0ME。看来该leet还得leet。        
 
 sdctf{FFD8_th3n_S0ME_s7uff_FFD9}
-
-### Web
 
 ### [NSSRound#V Team]画出一个flag
 #### #LSB #MISC #图片隐写
@@ -438,8 +430,6 @@ Q3: 为什么偏移是 28（0x18+4）？
 
 总共 28 字节后，才是返回地址
 
-### 5.Reverse
-
 ## 5.Reverse
 
 ### [BJDCTF_2020]Easy
@@ -521,8 +511,6 @@ flag{iloveholmesandwllm}
 LitCTF{tai111coollaaa!}
 
 
-
-### Crypto
 
 ### [BJDCTF 2020]encode
 #### #Base64 #RC4 #XOR
@@ -1003,8 +991,6 @@ debu_debu_aqua
 
 
 
-### Misc
-
 ### [SWPUCTF 2021 新生赛]include
 #### #PHP伪协议 #PHP #文件包含
 ![](<2025 NSSCTF/file-20260331130228287.png)![](<2025 NSSCTF/file-20260331130228280.png)
@@ -1018,8 +1004,6 @@ PD9waHANCiRmbGFnPSdOU1NDVEZ7OTdiYWY3MmUtMDg0ZS00MGIwLWFmYzEtMWE2NzAxOWFkODA2fSc7
 ![](<2025 NSSCTF/file-20260331130228271.png)
 
 NSSCTF{97baf72e-084e-40b0-afc1-1a67019ad806}
-
-### Reverse
 
 ## 3.Misc
 
@@ -1069,8 +1053,6 @@ while True:
 ![](<2025 NSSCTF/file-20260331130228737.png)
 
 NSSCTF{25da50b7993c0db55867a5a51f32f35c}
-
-### 4.Pwn
 
 ### [西湖论剑 2022]mp3
 #### #Misc文件 #隐写音频 #隐写
@@ -1634,8 +1616,6 @@ NSSCTF{71963bd4-678f-4d99-96d5-4c9fba40ad5e}
 
 NSSCTF{zhi-yin-you-are-beautiful}
 
-### Misc
-
 ### [长城杯 2021 院校组]签到
 #### #编码分析 #字符编码ASCII
 > #### 5a6d78685a3374585a57786a6232316c5833527658324e6f5957356e5932686c626d64695a544639
@@ -1907,8 +1887,6 @@ NSSCTF{jwt}
 攻击者通过盲注技术获取了存储在数据库表 t 中的flag字段内容。
 
 flag{w1reshARK_ez_1sntit}
-
-### 3.Misc
 
 ### [ByteCTF 2019]BabyBlog
 #### #二次注入 #正则RCE #diable_function绕过
@@ -2201,8 +2179,6 @@ sqlmap -u "URL?param=1" --batch -D dbname -T tablename --dump
 ![](<2025 NSSCTF/file-20260331130228571.png)
 
 
-
-### Web
 
 ### [NISACTF 2022]huaji？
 #### #图片隐写 #压缩包分析 #图片分离
