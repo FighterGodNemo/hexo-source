@@ -11,7 +11,7 @@ tags:
   - WriteUp
   - NSSCTF
 created: 2026-03-15T16:49
-updated: 2026-04-18T10:07
+updated: 2026-04-18T10:09
 ---
 
 # 2025 NSSCTF 积累之（一）
@@ -66,7 +66,7 @@ NSSCTF{http}
 
 ## 4.Pwn
 
-###  [WUSTCTF 2020]getshell2 
+### [WUSTCTF 2020]getshell2 
 #### #栈溢出 #ret2syscall #栈
 附件：service
 
@@ -219,7 +219,7 @@ NSSCTF{youhaveknowcaesar}
 
 ## 4.Pwn
 
-###  [WUSTCTF 2020]getshell2 
+### [WUSTCTF 2020]getshell2 
 #### #栈溢出 #ret2syscall #栈
 附件：service
 
@@ -308,7 +308,7 @@ Q3: 为什么偏移是 28（0x18+4）？
 
 ## 5.Reverse
 
-###  [SEETF 2022]Magic 
+### [SEETF 2022]Magic 
 #### #反调试 #REVERSE
 题目描述：There might be a hidden gate to the magical land of flags...
 
@@ -497,7 +497,7 @@ NSSCTF{5e3b5793-b1f6-488a-bac4-53e9c4889ed7}
 
 ## 4.Pwn
 
-###  [WUSTCTF 2020]getshell2 
+### [WUSTCTF 2020]getshell2 
 #### #栈溢出 #ret2syscall #栈
 附件：service
 
@@ -750,7 +750,7 @@ NSSCTF{jwt}
 
 ## 4.Pwn
 
-###  [WUSTCTF 2020]getshell2 
+### [WUSTCTF 2020]getshell2 
 #### #栈溢出 #ret2syscall #栈
 附件：service
 
@@ -1149,7 +1149,7 @@ NSSCTF{0bbd067c-24bd-454c-9111-6cd1b67b6da4}
 
 ## 4.Pwn
 
-###  [WUSTCTF 2020]getshell2 
+### [WUSTCTF 2020]getshell2 
 #### #栈溢出 #ret2syscall #栈
 附件：service
 
@@ -1238,10 +1238,18 @@ Q3: 为什么偏移是 28（0x18+4）？
 
 ## 5.Reverse
 
+### [BJDCTF_2020]Easy
+
+附件：easy.exe
+
+无壳程序，直接分析即可
+
+![](<2025 NSSCTF/file-20260331130230842.png>)
+
 # 2025 NSSCTF 积累之（六）
 ## 1.Crypto
 
-###  [SWPU 2019]伟大的侦探
+### [SWPU 2019]伟大的侦探
 #### #跳舞的小人 #编码分析 #编码转换
  附件压缩包里一个txt文本，一个加密文件夹
 
@@ -1278,7 +1286,7 @@ flag{iloveholmesandwllm}
 
 ## 3.Misc
 
-###  [NSSRound#12 Basic]坏东西 
+### [NSSRound#12 Basic]坏东西 
 #### #PDF隐写#压缩包分析
 先尝试用文件名解压，发现确实是解压密码。
 
@@ -1313,7 +1321,7 @@ NSSCTF{25da50b7993c0db55867a5a51f32f35c}
 
 ## 4.Pwn
 
-###  [WUSTCTF 2020]getshell2 
+### [WUSTCTF 2020]getshell2 
 #### #栈溢出 #ret2syscall #栈
 附件：service
 
@@ -1402,10 +1410,151 @@ Q3: 为什么偏移是 28（0x18+4）？
 
 ## 5.Reverse
 
+### [SEETF 2022]Magic 
+#### #反调试 #REVERSE
+题目描述：There might be a hidden gate to the magical land of flags...
+
+![](<2025 NSSCTF/file-20260331130228709.png>)
+
+默认值：
+
+![](<2025 NSSCTF/file-20260331130228691.png>)
+
+```plain
+int __cdecl __noreturn main(int argc, const char **argv, const char **envp)
+{
+  _OWORD v3[2]; // [esp-C0h] [ebp-CCh] BYREF
+  __int64 v4; // [esp-A0h] [ebp-ACh]
+  int v5; // [esp-98h] [ebp-A4h]
+  char v6[3]; // [esp-94h] [ebp-A0h] BYREF
+  int v7; // [esp+4h] [ebp-8h]
+  int retaddr; // [esp+Ch] [ebp+0h]
+
+  v7 = retaddr;
+  v5 = 1725917800;
+  v3[0] = xmmword_403148;
+  strcpy(v6, "h6");
+  v3[1] = xmmword_403158;
+  v4 = 0x7CE4457476DB4268i64;
+  ((void (__thiscall __noreturn *)(_OWORD *))sub_401290)(v3);
+```
+
+重新用ida32打开magic.exe，进入`内核选项 kernel options`，**取消勾选** `进行"无返回"分析 perform no-return analysis`，这样分析`main` 函数内容会更完整。  ![](<2025 NSSCTF/file-20260331130228673.png>)
+
+操作后：
+
+```plain
+int __cdecl main(int argc, const char **argv, const char **envp)
+{
+  int v3; // ebp
+  char v4; // di
+  int v5; // ecx
+  FILE *v6; // eax
+  int i; // edi
+  DWORD TickCount; // eax
+  HKEY v10; // [esp-13Ch] [ebp-148h] BYREF
+  DWORD v11; // [esp-138h] [ebp-144h] BYREF
+  __int16 v12; // [esp-134h] [ebp-140h]
+  _OWORD v13[4]; // [esp-130h] [ebp-13Ch] BYREF
+  char v14[24]; // [esp-F0h] [ebp-FCh] BYREF
+  BYTE v15[24]; // [esp-D8h] [ebp-E4h] BYREF
+  _OWORD v16[2]; // [esp-C0h] [ebp-CCh] BYREF
+  __int64 v17; // [esp-A0h] [ebp-ACh]
+  int v18; // [esp-98h] [ebp-A4h]
+  char v19[3]; // [esp-94h] [ebp-A0h] BYREF
+  _OWORD v20[2]; // [esp-90h] [ebp-9Ch] BYREF
+  __int16 v21; // [esp-70h] [ebp-7Ch]
+  char v22; // [esp-6Eh] [ebp-7Ah]
+  _OWORD v23[2]; // [esp-54h] [ebp-60h] BYREF
+  __int16 v24; // [esp-34h] [ebp-40h]
+  __int128 v25; // [esp-30h] [ebp-3Ch] BYREF
+  int v26; // [esp-20h] [ebp-2Ch]
+  char v27; // [esp-1Ch] [ebp-28h]
+  char v28[12]; // [esp-18h] [ebp-24h] BYREF
+  int v29; // [esp-Ch] [ebp-18h] BYREF
+  __int16 v30; // [esp-8h] [ebp-14h]
+  int v31; // [esp+0h] [ebp-Ch]
+  int v32; // [esp+4h] [ebp-8h]
+  int retaddr; // [esp+Ch] [ebp+0h]
+
+  v31 = v3;
+  v32 = retaddr;
+  v18 = 1725917800;
+  v16[0] = xmmword_403148;
+  strcpy(v19, "h6");
+  v16[1] = xmmword_403158;
+  v17 = 0x7CE4457476DB4268i64;
+  sub_401290(v16);
+  RegOpenKeyExA(HKEY_LOCAL_MACHINE, (LPCSTR)v16, 0, 0x101u, &v10);
+  v29 = 1741189973;
+  v30 = 96;
+  sub_401290(&v29);
+  v11 = 21;
+  if ( RegQueryValueExA(v10, (LPCSTR)&v29, 0, 0, v15, &v11) )
+    return -1;
+  v12 = 20;
+  sub_401170(v14);
+  v26 = -405287383;
+  v25 = xmmword_4031F0;
+  v27 = 0;
+  if ( strncmp(v14, (const char *)&v25, 0x14u) )
+    return -1;
+  v13[0] = xmmword_4031B0;
+  v13[1] = xmmword_4031D0;
+  v13[2] = xmmword_4031C0;
+  v13[3] = xmmword_4031E0;
+  sub_4012F0(v13, v15, v5);
+  sub_4011D0("%s", (char)v13);
+  v6 = _acrt_iob_func(0);
+  fgets(v28, 9, v6);
+  if ( !atoi(v28) )
+  {
+    sub_4011D0("nope", v4);
+    return -1;
+  }
+  if ( sub_401360(v28) == -1339812568 )
+  {
+    if ( IsDebuggerPresent() )
+      goto LABEL_13;
+    v21 = 5692;
+    v20[0] = xmmword_40318C;
+    v22 = 0;
+    v20[1] = xmmword_40319C;
+    sub_401290(v20);
+    sub_4011D0("%s", (char)v20);
+    for ( i = 0; i < 8; ++i )
+    {
+      TickCount = GetTickCount();
+      v28[i] -= 10;
+      if ( GetTickCount() - TickCount > 0x5DC )
+        goto LABEL_13;
+    }
+    v23[0] = xmmword_403200;
+    v23[1] = xmmword_403210;
+    v24 = -10010;
+    sub_401170(v23);
+    if ( IsDebuggerPresent() )
+LABEL_13:
+      ExitProcess(0xFFFFFFFF);
+    sub_4011D0("%s", (char)v23);
+    return 0;
+  }
+  else
+  {
+    sub_4011D0("nope", v4);
+    return 0;
+  }
+}
+```
+
+原因：
+
+部分函数直接调用 `ExitProcess` 退出而不返回，以阻碍动调。ida识别后认为是结束点，就不分析 `main` 函数剩下的代码了。
+
 # 2025 NSSCTF 积累之（七）
 ## 1.Crypto
 
-###  [TCTF 2019]babyrsa 
+### [TCTF 2019]babyrsa 
 #### #AMM #Crypto #RSA
 RSA challs are always easy, right? Even if N is not a integer.
 
@@ -1445,7 +1594,7 @@ NSSCTF{zhi-yin-you-are-beautiful}
 
 ## 4.Pwn
 
-###  [WUSTCTF 2020]getshell2 
+### [WUSTCTF 2020]getshell2 
 #### #栈溢出 #ret2syscall #栈
 附件：service
 
@@ -1533,6 +1682,100 @@ Q3: 为什么偏移是 28（0x18+4）？
 总共 28 字节后，才是返回地址
 
 ## 5.Reverse
+
+### [MoeCTF 2021]midpython
+#### #Python #自定义逻辑 #REVERSE
+![](<2025 NSSCTF/file-20260331130228640.png>)
+
+[https://cn.bing.com/search?q=pyinstxtractor](https://cn.bing.com/search?q=pyinstxtractor)
+
+这个工具可以将PyInstaller编译的.exe文件反编译回源代码.py文件
+
+```plain
+python pyinstxtractor.py 文件名
+```
+
+![](<2025 NSSCTF/file-20260331130228597.png>)
+
+获得大量文件。寻找核心的Midpython.pyc，使用**pycdc**
+
+![](<2025 NSSCTF/file-20260331130228623.png>)
+
+![](<2025 NSSCTF/file-20260331130228615.png>)
+
+```python
+key = [
+    69,
+    70,
+    79,
+    72,
+    88,
+    75,
+    85,
+    127,
+    89,
+    85,
+    74,
+    19,
+    74,
+    122,
+    107,
+    103,
+    75,
+    77,
+    9,
+    73,
+    29,
+    28,
+    67] 
+xxor = lambda x, y: x ^ y ^ 11
+xoor = lambda x, y: xxor(x, y) ^ 45
+xorr = lambda x, y: xoor(x, y) ^ 14
+length = len(key)
+ipt = input('>>>input your flag:\n>>>')
+flag = 1
+if len(ipt) == length:
+    for i in range(length):
+        if xorr(ord(ipt[i]), i) != key[i]:
+            flag = 0
+flag = 0
+if flag == 1:
+    print('>>>Right!!')
+else:
+    print('>>>Wrong!!')
+```
+
+```plain
+xorr(x, y) = xoor(x, y) ^ 14 = ((x ^ y ^ 11) ^ 45) ^ 14
+```
+
+```python
+key = [69,70,79,72,88,75,85,127,89,85,74,19,74,122,107,103,75,77,9,73,29,28,67]
+#定义一个名为 key 的列表，包含23个整数，这些整数是加密后的密文数据
+xxor = lambda x, y: x ^ y ^ 11
+xoor = lambda x, y: xxor(x, y) ^ 45
+xorr = lambda x, y: xoor(x, y) ^ 14
+flag= [] #定义空列表 flag ，用于存储解密后的字符
+for i in range(len(key)): #外层循环：遍历 key 列表的每个元素， i 是当前元素的索引
+    for x in range(32, 127): #range() 函数左闭右开 # 内层循环：遍历ASCII码32到126的所有可打印字符
+        if xorr(x, i) == key[i]:#- 条件判断：如果将当前字符 x 和索引 i 传入 xorr 函数的结果等于 key[i]，即找到了解密当前位置字符的正确ASCII码
+            flag.append(chr(x))#如果条件成立，将ASCII码 x 转换为对应字符，添加到 flag 列表
+            break #跳出内层循环，继续处理 key 列表的下一个元素
+print(''.join(flag))
+```
+
+> 选择32~126的原因：
+>
+> ASCII（美国标准信息交换码）将字符分为几个主要范围：
+>
+> 0-31 ：控制字符（不可打印），如换行符（\n）、制表符（\t）、回车符（\r）等，这些字符在屏幕上无法正常显示为可见字符。
+>
+> 32 ：空格字符，是唯一可打印的控制字符。
+>
+> 33-126 ：可打印字符，包括所有常用字符：标点符号（如!、@、#、$等）、数字（0-9）、大写字母（A-Z）、小写字母（a-z）、其他符号（如=、+、-、*等）。
+>
+
+moectf{Pyth0n_M@st3r!!}
 
 # 2025 NSSCTF 积累之（八）
 ## 1.Crypto
@@ -1634,7 +1877,7 @@ BJD{D0_Y0u_kNoW_Th1s_b4se_map}
 
 ## 3.Misc
 
-###  [SWPUCTF 2021 新生赛]gif好像有点大 
+### [SWPUCTF 2021 新生赛]gif好像有点大 
 #### #GIF #提取二维码 #图片隐写
 纯找。
 
@@ -1642,7 +1885,7 @@ BJD{D0_Y0u_kNoW_Th1s_b4se_map}
 
 ## 4.Pwn
 
-###  [WUSTCTF 2020]getshell2 
+### [WUSTCTF 2020]getshell2 
 #### #栈溢出 #ret2syscall #栈
 附件：service
 
@@ -1730,6 +1973,59 @@ Q3: 为什么偏移是 28（0x18+4）？
 总共 28 字节后，才是返回地址
 
 ## 5.Reverse
+
+### [SWPUCTF 2021 新生赛]非常简单的逻辑题
+#### #Python #语言逆向 #逆向技术
+```python
+flag = 'xxxxxxxxxxxxxxxxxxxxx'
+s = 'wesyvbniazxchjko1973652048@$+-&*<>'#s是一个字符集，包含34个字符
+result = ''
+for i in range(len(flag)):#对于flag中的每个字符，执行以下操作
+    s1 = ord(flag[i])//17
+    s2 = ord(flag[i])%17
+    result += s[(s1+i)%34]+s[-(s2+i+1)%34]# 结果字符串result添加两个字符：
+print(result)
+# result = 'v0b9n1nkajz@j0c4jjo3oi1h1i937b395i5y5e0e$i'
+#给了个结果，让我们逆向原本的flag
+```
+
+```python
+# 已知的加密结果
+result = 'v0b9n1nkajz@j0c4jjo3oi1h1i937b395i5y5e0e$i'
+# 字符集
+s = 'wesyvbniazxchjko1973652048@$+-&*<>'
+# 逆向解密过程
+flag = ''
+# 遍历result中的每两个字符
+for i in range(0, len(result), 2):
+    # 获取当前两个字符
+    c1 = result[i]
+    c2 = result[i+1]
+    # 计算字符在s中的索引
+    idx1 = s.index(c1)
+    idx2 = s.index(c2)
+    # 计算实际的s1和s2
+    # 对于第一个字符：idx1 = (s1 + i//2) % 34
+    # 对于第二个字符：idx2 = (34 - (s2 + i//2 + 1) % 34) % 34
+    # 注意：第二个字符的索引计算是因为s[-(s2+i+1)%34]相当于s[(34 - (s2+i+1)%34) % 34]
+    pos = i // 2
+    # 计算s1的可能值
+    s1 = (idx1 - pos) % 34
+    # 计算s2的可能值
+    # 因为 idx2 = (34 - (s2 + pos + 1) % 34) % 34
+    # 所以 (s2 + pos + 1) % 34 = (34 - idx2) % 34
+    # 所以 s2 = (34 - idx2 - pos - 1) % 34
+    s2 = (34 - idx2 - pos - 1) % 34
+    # 计算原始字符的ASCII值
+    ascii_val = s1 * 17 + s2
+    # 将ASCII值转换为字符
+    flag_char = chr(ascii_val)
+    # 添加到flag中
+    flag += flag_char
+print(f"解密得到的flag: {flag}")
+```
+
+NSSCTF{Fake_RERE_QAQ}
 
 # 2025 NSSCTF 积累之（九）
 ## 1.Crypto
@@ -1980,7 +2276,7 @@ sdctf{FFD8_th3n_S0ME_s7uff_FFD9}
 
 ## 4.Pwn
 
-###  [WUSTCTF 2020]getshell2 
+### [WUSTCTF 2020]getshell2 
 #### #栈溢出 #ret2syscall #栈
 附件：service
 
@@ -2068,6 +2364,14 @@ Q3: 为什么偏移是 28（0x18+4）？
 总共 28 字节后，才是返回地址
 
 ## 5.Reverse
+
+### [BJDCTF_2020]Easy
+
+附件：easy.exe
+
+无壳程序，直接分析即可
+
+![](<2025 NSSCTF/file-20260331130230842.png>)
 
 # 2025 NSSCTF 积累之（十）
 ## 1.Crypto
@@ -2378,7 +2682,7 @@ EXECUTE
 
 ## 3.Misc
 
-###  [西湖论剑 2022]mp3
+### [西湖论剑 2022]mp3
 #### #Misc文件 #隐写音频 #隐写
 1. 把需要分析的mp3文件拖到MP3stego所在目录
 
@@ -2390,7 +2694,7 @@ EXECUTE
 
 ## 4.Pwn
 
-###  [WUSTCTF 2020]getshell2 
+### [WUSTCTF 2020]getshell2 
 #### #栈溢出 #ret2syscall #栈
 附件：service
 
@@ -2479,7 +2783,148 @@ Q3: 为什么偏移是 28（0x18+4）？
 
 ## 5.Reverse
 
-# 2025 NSSCTF 积累之（11）
+### [SEETF 2022]Magic 
+#### #反调试 #REVERSE
+题目描述：There might be a hidden gate to the magical land of flags...
+
+![](<2025 NSSCTF/file-20260331130228709.png>)
+
+默认值：
+
+![](<2025 NSSCTF/file-20260331130228691.png>)
+
+```plain
+int __cdecl __noreturn main(int argc, const char **argv, const char **envp)
+{
+  _OWORD v3[2]; // [esp-C0h] [ebp-CCh] BYREF
+  __int64 v4; // [esp-A0h] [ebp-ACh]
+  int v5; // [esp-98h] [ebp-A4h]
+  char v6[3]; // [esp-94h] [ebp-A0h] BYREF
+  int v7; // [esp+4h] [ebp-8h]
+  int retaddr; // [esp+Ch] [ebp+0h]
+
+  v7 = retaddr;
+  v5 = 1725917800;
+  v3[0] = xmmword_403148;
+  strcpy(v6, "h6");
+  v3[1] = xmmword_403158;
+  v4 = 0x7CE4457476DB4268i64;
+  ((void (__thiscall __noreturn *)(_OWORD *))sub_401290)(v3);
+```
+
+重新用ida32打开magic.exe，进入`内核选项 kernel options`，**取消勾选** `进行"无返回"分析 perform no-return analysis`，这样分析`main` 函数内容会更完整。  ![](<2025 NSSCTF/file-20260331130228673.png>)
+
+操作后：
+
+```plain
+int __cdecl main(int argc, const char **argv, const char **envp)
+{
+  int v3; // ebp
+  char v4; // di
+  int v5; // ecx
+  FILE *v6; // eax
+  int i; // edi
+  DWORD TickCount; // eax
+  HKEY v10; // [esp-13Ch] [ebp-148h] BYREF
+  DWORD v11; // [esp-138h] [ebp-144h] BYREF
+  __int16 v12; // [esp-134h] [ebp-140h]
+  _OWORD v13[4]; // [esp-130h] [ebp-13Ch] BYREF
+  char v14[24]; // [esp-F0h] [ebp-FCh] BYREF
+  BYTE v15[24]; // [esp-D8h] [ebp-E4h] BYREF
+  _OWORD v16[2]; // [esp-C0h] [ebp-CCh] BYREF
+  __int64 v17; // [esp-A0h] [ebp-ACh]
+  int v18; // [esp-98h] [ebp-A4h]
+  char v19[3]; // [esp-94h] [ebp-A0h] BYREF
+  _OWORD v20[2]; // [esp-90h] [ebp-9Ch] BYREF
+  __int16 v21; // [esp-70h] [ebp-7Ch]
+  char v22; // [esp-6Eh] [ebp-7Ah]
+  _OWORD v23[2]; // [esp-54h] [ebp-60h] BYREF
+  __int16 v24; // [esp-34h] [ebp-40h]
+  __int128 v25; // [esp-30h] [ebp-3Ch] BYREF
+  int v26; // [esp-20h] [ebp-2Ch]
+  char v27; // [esp-1Ch] [ebp-28h]
+  char v28[12]; // [esp-18h] [ebp-24h] BYREF
+  int v29; // [esp-Ch] [ebp-18h] BYREF
+  __int16 v30; // [esp-8h] [ebp-14h]
+  int v31; // [esp+0h] [ebp-Ch]
+  int v32; // [esp+4h] [ebp-8h]
+  int retaddr; // [esp+Ch] [ebp+0h]
+
+  v31 = v3;
+  v32 = retaddr;
+  v18 = 1725917800;
+  v16[0] = xmmword_403148;
+  strcpy(v19, "h6");
+  v16[1] = xmmword_403158;
+  v17 = 0x7CE4457476DB4268i64;
+  sub_401290(v16);
+  RegOpenKeyExA(HKEY_LOCAL_MACHINE, (LPCSTR)v16, 0, 0x101u, &v10);
+  v29 = 1741189973;
+  v30 = 96;
+  sub_401290(&v29);
+  v11 = 21;
+  if ( RegQueryValueExA(v10, (LPCSTR)&v29, 0, 0, v15, &v11) )
+    return -1;
+  v12 = 20;
+  sub_401170(v14);
+  v26 = -405287383;
+  v25 = xmmword_4031F0;
+  v27 = 0;
+  if ( strncmp(v14, (const char *)&v25, 0x14u) )
+    return -1;
+  v13[0] = xmmword_4031B0;
+  v13[1] = xmmword_4031D0;
+  v13[2] = xmmword_4031C0;
+  v13[3] = xmmword_4031E0;
+  sub_4012F0(v13, v15, v5);
+  sub_4011D0("%s", (char)v13);
+  v6 = _acrt_iob_func(0);
+  fgets(v28, 9, v6);
+  if ( !atoi(v28) )
+  {
+    sub_4011D0("nope", v4);
+    return -1;
+  }
+  if ( sub_401360(v28) == -1339812568 )
+  {
+    if ( IsDebuggerPresent() )
+      goto LABEL_13;
+    v21 = 5692;
+    v20[0] = xmmword_40318C;
+    v22 = 0;
+    v20[1] = xmmword_40319C;
+    sub_401290(v20);
+    sub_4011D0("%s", (char)v20);
+    for ( i = 0; i < 8; ++i )
+    {
+      TickCount = GetTickCount();
+      v28[i] -= 10;
+      if ( GetTickCount() - TickCount > 0x5DC )
+        goto LABEL_13;
+    }
+    v23[0] = xmmword_403200;
+    v23[1] = xmmword_403210;
+    v24 = -10010;
+    sub_401170(v23);
+    if ( IsDebuggerPresent() )
+LABEL_13:
+      ExitProcess(0xFFFFFFFF);
+    sub_4011D0("%s", (char)v23);
+    return 0;
+  }
+  else
+  {
+    sub_4011D0("nope", v4);
+    return 0;
+  }
+}
+```
+
+原因：
+
+部分函数直接调用 `ExitProcess` 退出而不返回，以阻碍动调。ida识别后认为是结束点，就不分析 `main` 函数剩下的代码了。
+
+# 2025 NSSCTF 积累之（十一）
 ## 1.Crypto
 
 ### [羊城杯 2020]Simple
@@ -2599,7 +3044,7 @@ flag{Welcome_to_changchengbe1}
 
 ## 4.Pwn
 
-###  [WUSTCTF 2020]getshell2 
+### [WUSTCTF 2020]getshell2 
 #### #栈溢出 #ret2syscall #栈
 附件：service
 
@@ -2688,7 +3133,101 @@ Q3: 为什么偏移是 28（0x18+4）？
 
 ## 5.Reverse
 
-# 2025 NSSCTF 积累之（12）
+### [MoeCTF 2021]midpython
+#### #Python #自定义逻辑 #REVERSE
+![](<2025 NSSCTF/file-20260331130228640.png>)
+
+[https://cn.bing.com/search?q=pyinstxtractor](https://cn.bing.com/search?q=pyinstxtractor)
+
+这个工具可以将PyInstaller编译的.exe文件反编译回源代码.py文件
+
+```plain
+python pyinstxtractor.py 文件名
+```
+
+![](<2025 NSSCTF/file-20260331130228597.png>)
+
+获得大量文件。寻找核心的Midpython.pyc，使用**pycdc**
+
+![](<2025 NSSCTF/file-20260331130228623.png>)
+
+![](<2025 NSSCTF/file-20260331130228615.png>)
+
+```python
+key = [
+    69,
+    70,
+    79,
+    72,
+    88,
+    75,
+    85,
+    127,
+    89,
+    85,
+    74,
+    19,
+    74,
+    122,
+    107,
+    103,
+    75,
+    77,
+    9,
+    73,
+    29,
+    28,
+    67] 
+xxor = lambda x, y: x ^ y ^ 11
+xoor = lambda x, y: xxor(x, y) ^ 45
+xorr = lambda x, y: xoor(x, y) ^ 14
+length = len(key)
+ipt = input('>>>input your flag:\n>>>')
+flag = 1
+if len(ipt) == length:
+    for i in range(length):
+        if xorr(ord(ipt[i]), i) != key[i]:
+            flag = 0
+flag = 0
+if flag == 1:
+    print('>>>Right!!')
+else:
+    print('>>>Wrong!!')
+```
+
+```plain
+xorr(x, y) = xoor(x, y) ^ 14 = ((x ^ y ^ 11) ^ 45) ^ 14
+```
+
+```python
+key = [69,70,79,72,88,75,85,127,89,85,74,19,74,122,107,103,75,77,9,73,29,28,67]
+#定义一个名为 key 的列表，包含23个整数，这些整数是加密后的密文数据
+xxor = lambda x, y: x ^ y ^ 11
+xoor = lambda x, y: xxor(x, y) ^ 45
+xorr = lambda x, y: xoor(x, y) ^ 14
+flag= [] #定义空列表 flag ，用于存储解密后的字符
+for i in range(len(key)): #外层循环：遍历 key 列表的每个元素， i 是当前元素的索引
+    for x in range(32, 127): #range() 函数左闭右开 # 内层循环：遍历ASCII码32到126的所有可打印字符
+        if xorr(x, i) == key[i]:#- 条件判断：如果将当前字符 x 和索引 i 传入 xorr 函数的结果等于 key[i]，即找到了解密当前位置字符的正确ASCII码
+            flag.append(chr(x))#如果条件成立，将ASCII码 x 转换为对应字符，添加到 flag 列表
+            break #跳出内层循环，继续处理 key 列表的下一个元素
+print(''.join(flag))
+```
+
+> 选择32~126的原因：
+>
+> ASCII（美国标准信息交换码）将字符分为几个主要范围：
+>
+> 0-31 ：控制字符（不可打印），如换行符（\n）、制表符（\t）、回车符（\r）等，这些字符在屏幕上无法正常显示为可见字符。
+>
+> 32 ：空格字符，是唯一可打印的控制字符。
+>
+> 33-126 ：可打印字符，包括所有常用字符：标点符号（如!、@、#、$等）、数字（0-9）、大写字母（A-Z）、小写字母（a-z）、其他符号（如=、+、-、*等）。
+>
+
+moectf{Pyth0n_M@st3r!!}
+
+# 2025 NSSCTF 积累之（十二）
 ## 1.Crypto
 
 ### [HGAME 2022 week1]Matryoshka
@@ -2804,7 +3343,7 @@ flag{Nls@_FumYEnnOjy}
 
 ## 4.Pwn
 
-###  [WUSTCTF 2020]getshell2 
+### [WUSTCTF 2020]getshell2 
 #### #栈溢出 #ret2syscall #栈
 附件：service
 
@@ -2893,7 +3432,60 @@ Q3: 为什么偏移是 28（0x18+4）？
 
 ## 5.Reverse
 
-# 2025 NSSCTF 积累之（13）
+### [SWPUCTF 2021 新生赛]非常简单的逻辑题
+#### #Python #语言逆向 #逆向技术
+```python
+flag = 'xxxxxxxxxxxxxxxxxxxxx'
+s = 'wesyvbniazxchjko1973652048@$+-&*<>'#s是一个字符集，包含34个字符
+result = ''
+for i in range(len(flag)):#对于flag中的每个字符，执行以下操作
+    s1 = ord(flag[i])//17
+    s2 = ord(flag[i])%17
+    result += s[(s1+i)%34]+s[-(s2+i+1)%34]# 结果字符串result添加两个字符：
+print(result)
+# result = 'v0b9n1nkajz@j0c4jjo3oi1h1i937b395i5y5e0e$i'
+#给了个结果，让我们逆向原本的flag
+```
+
+```python
+# 已知的加密结果
+result = 'v0b9n1nkajz@j0c4jjo3oi1h1i937b395i5y5e0e$i'
+# 字符集
+s = 'wesyvbniazxchjko1973652048@$+-&*<>'
+# 逆向解密过程
+flag = ''
+# 遍历result中的每两个字符
+for i in range(0, len(result), 2):
+    # 获取当前两个字符
+    c1 = result[i]
+    c2 = result[i+1]
+    # 计算字符在s中的索引
+    idx1 = s.index(c1)
+    idx2 = s.index(c2)
+    # 计算实际的s1和s2
+    # 对于第一个字符：idx1 = (s1 + i//2) % 34
+    # 对于第二个字符：idx2 = (34 - (s2 + i//2 + 1) % 34) % 34
+    # 注意：第二个字符的索引计算是因为s[-(s2+i+1)%34]相当于s[(34 - (s2+i+1)%34) % 34]
+    pos = i // 2
+    # 计算s1的可能值
+    s1 = (idx1 - pos) % 34
+    # 计算s2的可能值
+    # 因为 idx2 = (34 - (s2 + pos + 1) % 34) % 34
+    # 所以 (s2 + pos + 1) % 34 = (34 - idx2) % 34
+    # 所以 s2 = (34 - idx2 - pos - 1) % 34
+    s2 = (34 - idx2 - pos - 1) % 34
+    # 计算原始字符的ASCII值
+    ascii_val = s1 * 17 + s2
+    # 将ASCII值转换为字符
+    flag_char = chr(ascii_val)
+    # 添加到flag中
+    flag += flag_char
+print(f"解密得到的flag: {flag}")
+```
+
+NSSCTF{Fake_RERE_QAQ}
+
+# 2025 NSSCTF 积累之（十三）
 ## 1.Crypto
 
 ### [BJDCTF 2020]encode
@@ -3030,7 +3622,7 @@ NSSCTF{!!Draw_draw_A_flag!!}
 
 ## 4.Pwn
 
-###  [WUSTCTF 2020]getshell2 
+### [WUSTCTF 2020]getshell2 
 #### #栈溢出 #ret2syscall #栈
 附件：service
 
@@ -3119,12 +3711,36 @@ Q3: 为什么偏移是 28（0x18+4）？
 
 ## 5.Reverse
 
-# 2025 NSSCTF 积累之（14）
+### [BJDCTF_2020]Easy
+
+附件：easy.exe
+
+无壳程序，直接分析即可
+
+![](<2025 NSSCTF/file-20260331130230842.png>)
+
+# 2025 NSSCTF 积累之（十四）
 ## 1.Crypto
+
+### [CryptoCTF_2020]One_Line_Crypto
+
+![](<2025 NSSCTF/file-20260331130230861.png>)
+
+```python
+from Crypto.Util.number import *
+from secret import m, n, x, y, flag
+
+p, q = x**(m+1) - (x+1)**m, y**(n+1) - (y+1)**n
+assert isPrime(p) and isPrime(q) and p < q < p << 3 and len(bin(p*q)[2:]) == 2048
+enc = bytes_to_long(flag)
+print(pow(enc, 0x10001, p*q))
+```
+
+enc文件：14608474132952352328897080717325464308438322623319847428447933943202421270837793998477083014291941466731019653023483491235062655934244065705032549531016125948268383108879698723118735440224501070612559381488973867339949208410120554358243554988690125725017934324313420395669218392736333195595568629468510362825066512708008360268113724800748727389663826686526781051838485024304995256341660882888351454147057956887890382690983135114799585596506505555357140161761871724188274546128208872045878153092716215744912986603891814964771125466939491888724521626291403272010814738087901173244711311698792435222513388474103420001421
 
 ## 2.Web
 
-###  [第五空间 2021]WebFTP
+### [第五空间 2021]WebFTP
 #### #目录扫描 #信息收集 #.git泄露
 ![](<2025 NSSCTF/file-20260331130228045.png>)
 
@@ -3378,9 +3994,20 @@ sqlmap -u "URL?param=1" --batch -D dbname -T tablename --dump
 
 ## 3.Misc
 
+### [陇剑杯_2021]签到
+
+> 题目描述：
+>
+> 此时正在进行的可能是__________协议的网络攻击。（如有字母请全部使用小写，填写样例：http、dns、ftp）。得到的flag请使用NSSCTF{}格式提交。
+>
+
+![](<2025 NSSCTF/file-20260331130230769.png>)
+
+NSSCTF{http}
+
 ## 4.Pwn
 
-###  [WUSTCTF 2020]getshell2 
+### [WUSTCTF 2020]getshell2 
 #### #栈溢出 #ret2syscall #栈
 附件：service
 
@@ -3468,3 +4095,144 @@ Q3: 为什么偏移是 28（0x18+4）？
 总共 28 字节后，才是返回地址
 
 ## 5.Reverse
+
+### [SEETF 2022]Magic 
+#### #反调试 #REVERSE
+题目描述：There might be a hidden gate to the magical land of flags...
+
+![](<2025 NSSCTF/file-20260331130228709.png>)
+
+默认值：
+
+![](<2025 NSSCTF/file-20260331130228691.png>)
+
+```plain
+int __cdecl __noreturn main(int argc, const char **argv, const char **envp)
+{
+  _OWORD v3[2]; // [esp-C0h] [ebp-CCh] BYREF
+  __int64 v4; // [esp-A0h] [ebp-ACh]
+  int v5; // [esp-98h] [ebp-A4h]
+  char v6[3]; // [esp-94h] [ebp-A0h] BYREF
+  int v7; // [esp+4h] [ebp-8h]
+  int retaddr; // [esp+Ch] [ebp+0h]
+
+  v7 = retaddr;
+  v5 = 1725917800;
+  v3[0] = xmmword_403148;
+  strcpy(v6, "h6");
+  v3[1] = xmmword_403158;
+  v4 = 0x7CE4457476DB4268i64;
+  ((void (__thiscall __noreturn *)(_OWORD *))sub_401290)(v3);
+```
+
+重新用ida32打开magic.exe，进入`内核选项 kernel options`，**取消勾选** `进行"无返回"分析 perform no-return analysis`，这样分析`main` 函数内容会更完整。  ![](<2025 NSSCTF/file-20260331130228673.png>)
+
+操作后：
+
+```plain
+int __cdecl main(int argc, const char **argv, const char **envp)
+{
+  int v3; // ebp
+  char v4; // di
+  int v5; // ecx
+  FILE *v6; // eax
+  int i; // edi
+  DWORD TickCount; // eax
+  HKEY v10; // [esp-13Ch] [ebp-148h] BYREF
+  DWORD v11; // [esp-138h] [ebp-144h] BYREF
+  __int16 v12; // [esp-134h] [ebp-140h]
+  _OWORD v13[4]; // [esp-130h] [ebp-13Ch] BYREF
+  char v14[24]; // [esp-F0h] [ebp-FCh] BYREF
+  BYTE v15[24]; // [esp-D8h] [ebp-E4h] BYREF
+  _OWORD v16[2]; // [esp-C0h] [ebp-CCh] BYREF
+  __int64 v17; // [esp-A0h] [ebp-ACh]
+  int v18; // [esp-98h] [ebp-A4h]
+  char v19[3]; // [esp-94h] [ebp-A0h] BYREF
+  _OWORD v20[2]; // [esp-90h] [ebp-9Ch] BYREF
+  __int16 v21; // [esp-70h] [ebp-7Ch]
+  char v22; // [esp-6Eh] [ebp-7Ah]
+  _OWORD v23[2]; // [esp-54h] [ebp-60h] BYREF
+  __int16 v24; // [esp-34h] [ebp-40h]
+  __int128 v25; // [esp-30h] [ebp-3Ch] BYREF
+  int v26; // [esp-20h] [ebp-2Ch]
+  char v27; // [esp-1Ch] [ebp-28h]
+  char v28[12]; // [esp-18h] [ebp-24h] BYREF
+  int v29; // [esp-Ch] [ebp-18h] BYREF
+  __int16 v30; // [esp-8h] [ebp-14h]
+  int v31; // [esp+0h] [ebp-Ch]
+  int v32; // [esp+4h] [ebp-8h]
+  int retaddr; // [esp+Ch] [ebp+0h]
+
+  v31 = v3;
+  v32 = retaddr;
+  v18 = 1725917800;
+  v16[0] = xmmword_403148;
+  strcpy(v19, "h6");
+  v16[1] = xmmword_403158;
+  v17 = 0x7CE4457476DB4268i64;
+  sub_401290(v16);
+  RegOpenKeyExA(HKEY_LOCAL_MACHINE, (LPCSTR)v16, 0, 0x101u, &v10);
+  v29 = 1741189973;
+  v30 = 96;
+  sub_401290(&v29);
+  v11 = 21;
+  if ( RegQueryValueExA(v10, (LPCSTR)&v29, 0, 0, v15, &v11) )
+    return -1;
+  v12 = 20;
+  sub_401170(v14);
+  v26 = -405287383;
+  v25 = xmmword_4031F0;
+  v27 = 0;
+  if ( strncmp(v14, (const char *)&v25, 0x14u) )
+    return -1;
+  v13[0] = xmmword_4031B0;
+  v13[1] = xmmword_4031D0;
+  v13[2] = xmmword_4031C0;
+  v13[3] = xmmword_4031E0;
+  sub_4012F0(v13, v15, v5);
+  sub_4011D0("%s", (char)v13);
+  v6 = _acrt_iob_func(0);
+  fgets(v28, 9, v6);
+  if ( !atoi(v28) )
+  {
+    sub_4011D0("nope", v4);
+    return -1;
+  }
+  if ( sub_401360(v28) == -1339812568 )
+  {
+    if ( IsDebuggerPresent() )
+      goto LABEL_13;
+    v21 = 5692;
+    v20[0] = xmmword_40318C;
+    v22 = 0;
+    v20[1] = xmmword_40319C;
+    sub_401290(v20);
+    sub_4011D0("%s", (char)v20);
+    for ( i = 0; i < 8; ++i )
+    {
+      TickCount = GetTickCount();
+      v28[i] -= 10;
+      if ( GetTickCount() - TickCount > 0x5DC )
+        goto LABEL_13;
+    }
+    v23[0] = xmmword_403200;
+    v23[1] = xmmword_403210;
+    v24 = -10010;
+    sub_401170(v23);
+    if ( IsDebuggerPresent() )
+LABEL_13:
+      ExitProcess(0xFFFFFFFF);
+    sub_4011D0("%s", (char)v23);
+    return 0;
+  }
+  else
+  {
+    sub_4011D0("nope", v4);
+    return 0;
+  }
+}
+```
+
+原因：
+
+部分函数直接调用 `ExitProcess` 退出而不返回，以阻碍动调。ida识别后认为是结束点，就不分析 `main` 函数剩下的代码了。
