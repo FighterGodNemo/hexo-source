@@ -9,7 +9,7 @@ tags:
   - StableDiffusion
   - AI视频
 created: 2026-04-26T19:44
-updated: 2026-04-26T20:05
+updated: 2026-04-26T20:37
 ---
 
 ## 基础结论
@@ -264,6 +264,43 @@ subtle blinking
 
 并把 `denoising strength` 从 `0.24` 提到 `0.30`、`0.34` 逐步测试。
 
+### 为什么动作没有按要求做
+
+AnimateDiff 不是严格的动作引擎，更像是“让一张图在原构图附近动起来”。如果要求是大动作，例如：
+
+```text
+坐在沙发上 -> 起身 -> 离开
+```
+
+但首帧是近景坐姿、腿脚不完整、画面里没有可站立和离开的空间，模型就很难按要求生成完整动作。它通常会倾向于保留原构图，只做轻微漂动；如果强行提高重绘幅度，又容易出现身体变形、背景糊掉、后半段崩坏。
+
+参数上的矛盾是：
+
+```text
+denoising 低：人物稳定，但动作做不出来
+denoising 高：动作变大，但脸、身体、背景容易漂或糊
+```
+
+正确做法是先让首帧适合动作：
+
+```text
+全身或大半身
+坐在沙发边
+腿脚完整
+画面更远
+旁边有可以站起来和离开的空间
+```
+
+然后把动作拆成短段：
+
+```text
+第一段：身体前倾，准备起身
+第二段：从沙发上站起来
+第三段：离开沙发或走出画面
+```
+
+更稳的控制方式是使用关键帧或姿态控制，例如 ControlNet OpenPose、Prompt Travel、或者输入真人起身视频做 video-to-video。只靠一句提示词，很难精确控制复杂人体动作。
+
 ### 为什么画面会漂
 
 常见原因是重绘幅度太高、帧数太长、提示词过复杂，或者运动模型与底模不匹配。解决顺序：
@@ -324,6 +361,73 @@ Denoising strength: 0.24 - 0.33
 ```text
 Frame Interpolation: FILM
 Interp X: 3
+```
+
+## Stride 与 Overlap
+
+WebUI 中文界面里常见翻译：
+
+```text
+步幅 = Stride
+重叠 = Overlap
+```
+
+这两个是 AnimateDiff 的长视频上下文衔接参数，主要在 `Number of frames > Context batch size` 时才明显生效。短视频例如 `16 frames + Context batch size 16` 时，它们不是解决动作失败的主按钮。
+
+### Stride 步幅
+
+`Stride` 控制模型在长视频里隔多远的帧也要保持一致。
+
+```text
+Stride 小：更稳，动作更保守
+Stride 大：动作可能更自由，但更容易漂、糊、闪
+```
+
+推荐：
+
+```text
+普通人像、转头、微笑、起身：Stride = 1
+想尝试更大动作：Stride = 2
+不建议日常直接用 4 或更高
+```
+
+### Overlap 重叠
+
+`Overlap` 控制长视频分段生成时，相邻片段之间有多少帧重叠，用来让片段衔接更顺。
+
+```text
+Overlap 大：前后更连贯，但动作可能更黏、更慢，耗时增加
+Overlap 小：动作更自由，但更容易跳、闪、变脸
+```
+
+当 `Context batch size = 16` 时：
+
+```text
+Overlap = -1：自动，通常等于 batch size / 4，也就是 4
+Overlap = 4：推荐默认，稳定性和动作幅度平衡
+Overlap = 8：更稳，但动作更小
+Overlap = 2：动作可能更大，但片段更容易断裂
+```
+
+人像视频推荐先固定：
+
+```text
+Context batch size: 16
+Stride: 1
+Overlap: 4 或 -1
+```
+
+如果动作太小，可以试：
+
+```text
+Stride: 2
+Overlap: 2
+```
+
+但风险是脸漂、身体糊、后半段崩坏。实际调参优先级应是：
+
+```text
+首帧构图 > denoising strength > Number of frames > 动作是否拆段 > Stride / Overlap
 ```
 
 ## majicMIX realistic v7 与 majicFlus_v1 怎么选
