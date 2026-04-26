@@ -9,7 +9,7 @@ tags:
   - StableDiffusion
   - AI视频
 created: 2026-04-26T19:44
-updated: 2026-04-26T20:37
+updated: 2026-04-26T20:41
 ---
 
 ## 基础结论
@@ -300,6 +300,81 @@ denoising 高：动作变大，但脸、身体、背景容易漂或糊
 ```
 
 更稳的控制方式是使用关键帧或姿态控制，例如 ControlNet OpenPose、Prompt Travel、或者输入真人起身视频做 video-to-video。只靠一句提示词，很难精确控制复杂人体动作。
+
+### 分段短片怎么衔接
+
+如果一张图无法直接完成完整动作，就把短片拆成多个小动作段。衔接原则是：
+
+```text
+第一段视频 -> 提取最后一帧 -> 作为第二段图生视频的首图 -> 最后拼接视频
+```
+
+例如“坐着前倾 -> 起身”：
+
+```text
+坐姿首图
+  -> 第一段：身体前倾，准备起身
+  -> 提取第一段最后一帧
+  -> 第二段：从前倾姿势站起来
+  -> 两段视频拼接
+```
+
+在 WebUI 里主要仍然使用 `图生图 + AnimateDiff`。AnimateDiff 的 `Video source` / `Video path` 更偏 video-to-video 或帧序列控制，通常还需要配合 ControlNet，不是把两个成片智能衔接的按钮。
+
+第二段 prompt 开头要明确继承上一段状态：
+
+```text
+same girl, same room, same clothes, leaning forward from sofa, then slowly stands up
+```
+
+推荐分段参数：
+
+```text
+Segment 1:
+动作：身体前倾，准备起身
+Frames: 16
+FPS: 8
+Denoising: 0.35 - 0.42
+FILM: Off
+
+Segment 2:
+初始图：第一段最后一帧
+动作：从前倾姿势站起来
+Frames: 16
+FPS: 8
+Denoising: 0.38 - 0.46
+FILM: Off
+```
+
+等每一段动作都稳定后，再统一插帧到 24fps。不要一开始就开 FILM。
+
+### 保存 MP4 时还会不会有拆分帧
+
+如果 AnimateDiff 保存格式只选：
+
+```text
+MP4
+```
+
+通常只会得到成品视频，不一定保留单帧 PNG。做分段短片时，末帧很重要，因此推荐保存格式选：
+
+```text
+MP4 + PNG
+```
+
+或者：
+
+```text
+GIF + PNG
+```
+
+`PNG` 会把每一帧单独保存出来，方便拿最后一张作为下一段图生视频首图。常见路径：
+
+```text
+outputs\img2img-images\AnimateDiff\日期\编号\最后一张.png
+```
+
+如果已经只生成了 MP4，也可以用 ffmpeg 从 MP4 提取最后一帧，但它经过视频压缩，不如原始 PNG 稳。
 
 ### 为什么画面会漂
 
