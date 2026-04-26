@@ -1,15 +1,15 @@
 ---
 title: Stable Diffusion 生成手册
-date: "2026-04-26 19:44:05"
-permalink: '/2026/04/26/博览知识/Stable-Diffusion-生成手册/'
+date: 2026-04-26 19:44:05
+permalink: /2026/04/26/博览知识/Stable-Diffusion-生成手册/
 categories:
   - 博览知识
 tags:
   - 博览知识
-  - Stable Diffusion
+  - StableDiffusion
   - AI视频
-created: "2026-04-26T19:44"
-updated: "2026-04-26T19:44"
+created: 2026-04-26T19:44
+updated: 2026-04-26T19:45
 ---
 
 ## 基础结论
