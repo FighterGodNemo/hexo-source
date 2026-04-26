@@ -9,7 +9,7 @@ tags:
   - StableDiffusion
   - AI视频
 created: 2026-04-26T19:44
-updated: 2026-04-26T19:45
+updated: 2026-04-26T20:05
 ---
 
 ## 基础结论
@@ -275,6 +275,82 @@ subtle blinking
 简化提示词
 先做短视频草稿
 ```
+
+### 为什么视频没有画面，只有灰色
+
+如果导出的视频文件能被识别、有帧数、有时长，但播放时没有画面，要先判断是播放器问题还是帧本身异常。
+
+排查结论示例：
+
+```text
+文件不是空的
+视频有 118 帧
+分辨率 512x512
+但每一帧 RGB 都是 127,127,127
+```
+
+这说明不是播放器坏了，而是生成出来的帧本身就是纯灰图。
+
+常见原因是底模和 AnimateDiff 运动模型不匹配。例如：
+
+```text
+Checkpoint: 麦橘超然majicFlus_v1
+Motion model: v3_sd15_mm.ckpt
+```
+
+`v3_sd15_mm.ckpt` 是 SD1.5 AnimateDiff 运动模型，而 `麦橘超然majicFlus_v1` 是 Flux.1 D / 非 SD1.5 体系模型。两者结构不兼容，就可能输出全灰帧。
+
+解决方法：
+
+```text
+做 AnimateDiff 图生视频：切回 SD1.5 底模
+推荐底模：majicMIX realistic 麦橘写实_v7
+推荐运动模型：v3_sd15_mm.ckpt
+备用运动模型：mm_sd_v15_v2.ckpt
+```
+
+先关闭 FILM 插帧，生成短视频确认有画面：
+
+```text
+Number of frames: 16 或 24
+FPS: 8
+Frame Interpolation: Off
+Closed loop: N
+Denoising strength: 0.24 - 0.33
+```
+
+确认画面正常后，再打开：
+
+```text
+Frame Interpolation: FILM
+Interp X: 3
+```
+
+## majicMIX realistic v7 与 majicFlus_v1 怎么选
+
+这两个模型不是简单的“谁绝对更好”，而是适合不同工作流。
+
+```text
+majicMIX realistic 麦橘写实_v7:
+  体系：SD1.5
+  优势：兼容 A1111 / AnimateDiff，适合文生图、图生视频、人像短视频
+  推荐运动模型：v3_sd15_mm.ckpt
+  备用运动模型：mm_sd_v15_v2.ckpt
+
+麦橘超然majicFlus_v1:
+  体系：Flux.1 D / 非 SD1.5
+  优势：更适合高质量静态图、人像首帧
+  局限：当前 A1111 AnimateDiff 里没有可直接匹配的 SD1.5 运动模型
+```
+
+实践建议：
+
+```text
+想生成静态人像：可以优先试 麦橘超然majicFlus_v1
+想生成 AnimateDiff 视频：优先用 majicMIX realistic 麦橘写实_v7
+```
+
+如果想利用 `麦橘超然majicFlus_v1` 的画质做视频，可以先用它生成高质量首帧，再交给专门的图生视频模型或工具，而不是强行套 SD1.5 AnimateDiff 运动模型。
 
 ## 推荐默认模板
 
