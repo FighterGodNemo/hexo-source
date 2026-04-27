@@ -9,7 +9,7 @@ tags:
   - 电子取证
   - BitLocker
 created: 2026-04-27T16:36
-updated: 2026-04-27T16:53
+updated: 2026-04-27T16:56
 ---
 
 ## 技术经验总览
@@ -28,6 +28,29 @@ PCILeech 阶段只负责把目标机物理内存抓成 raw。EFDD 的 `Extract k
 ```
 
 合规前提仍然要放在最前面：只用于自有设备、明确授权维修、企业应急响应、司法取证或实验室学习。
+
+## 本次排查速查
+
+这次截图里最有价值的经验点不是某个按钮怎么点，而是每个界面代表的阶段不同：
+
+```text
+PCILeech 控制台显示 Dumping Memory
+=> 正在抓内存，不是在读硬盘。
+
+输出文件约 17.4G
+=> 更像内存 raw，大小接近目标机物理内存或可读内存范围。
+
+Arsenal Image Mounter 挂载 raw 后看不到正常 BitLocker 分区
+=> 大概率是把内存 raw 当磁盘镜像挂了，方向错了。
+
+EFDD Extract keys 出现 BitLocker Volume Master Key
+=> 已找到候选二进制密钥材料，不会显示成 48 位恢复密钥。
+
+EFDD Decrypt or mount disk 里只看到 Physical0
+=> 需要确认 Physical0 是分析机自己的盘还是目标盘；目标盘未接入或编号没识别时不会凭空出现。
+```
+
+经验判断顺序应是：先看文件类型，再看工具阶段，最后看结果语义。不要只看“有 raw 文件”就默认它是硬盘镜像，也不要看到 EFDD 没吐出 48 位数字就判断失败。
 
 ## 关键概念
 
@@ -121,6 +144,32 @@ Key data (hex): ...
 如果 EFDD 列出多条 BitLocker Volume Master Key，可能来自多个卷、历史残留或误匹配。经验上不要只看第一条，应逐条验证。
 
 如果 `Decrypt or mount disk` 里只看到 `Physical0`，要先确认那是不是分析机自己的系统盘。目标硬盘接入后可能显示为 `Physical1` 或更高编号。不要把 `memdump.raw` 当目标磁盘选进去。
+
+## 为什么提取不到
+
+提取不到 BitLocker 密钥时，优先从状态链路排查，而不是反复换工具：
+
+```text
+抓取时 BitLocker 卷未解锁
+=> 内存里可能没有可用 VMK/FVEK。
+
+目标机已经重启、关机或休眠
+=> 关键密钥材料可能已经从当前内存状态消失。
+
+只有 BIOS/UEFI 开机密码或 Windows 登录密码
+=> 这不等于 BitLocker 已解锁，也不等于内存里一定有密钥。
+
+Pages failed 比例高
+=> raw 文件大小可能正常，但关键页缺失，EFDD 扫不到或扫到不完整。
+
+导入 EFDD 的文件不是内存 raw
+=> Extract keys 阶段输入错，后续结果没有意义。
+
+没有目标 BitLocker 磁盘或镜像
+=> 即使提取到了候选 key，也没法验证挂载。
+```
+
+这里最容易误会的是“我设置了一个开机密码”。这个说法必须继续追问清楚：如果他说的是 Windows 登录密码，它只影响用户登录；如果是 BIOS/UEFI 密码，它只影响启动流程；如果是 BitLocker PIN，才直接关系到系统盘是否在启动前解锁。内存提取的关键点不是“有没有密码”，而是抓取那一刻目标 BitLocker 卷是否已经处于解锁状态。
 
 ## Mount 与 Decrypt 的选择
 
