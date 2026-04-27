@@ -1,15 +1,15 @@
 ---
 title: Cherry Studio Claude Code 格式报错与 MCP 兼容修复
-permalink: '/2026/04/27/博览知识/Cherry Studio Claude Code 格式报错与 MCP 兼容修复/'
-date: "2026-04-27 21:20:00"
+permalink: /2026/04/27/博览知识/Cherry Studio Claude Code 格式报错与 MCP 兼容修复/
+date: 2026-04-27 21:20:00
 categories:
   - 博览知识
 tags:
-  - Cherry Studio
+  - CherryStudio
   - MCP
-  - LM Studio
-created: "2026-04-27T21:20"
-updated: "2026-04-27T21:20"
+  - LMStudio
+created: 2026-04-27T21:20
+updated: 2026-04-27T21:38
 ---
 
 ## 问题现象
