@@ -11,7 +11,7 @@ tags:
   - WriteUp
   - NSSCTF
 created: 2026-03-15T16:49
-updated: 2026-04-18T18:52
+updated: 2026-04-29T07:50
 ---
 
 # 2025 NSSCTF 积累之（一）
@@ -4236,3 +4236,47 @@ LABEL_13:
 原因：
 
 部分函数直接调用 `ExitProcess` 退出而不返回，以阻碍动调。ida识别后认为是结束点，就不分析 `main` 函数剩下的代码了。
+
+
+# 2025 NSSCTF 积累之（十二）
+## 1.Web
+
+### [SUCTF 2019]EasySQL
+#### #SQL注入 #堆叠注入 #后端逻辑分析
+题目地址：http://node4.anna.nssctf.cn:27612/
+
+#### 题目分析
+这是一道经典的SQL注入题目，题目提示我们输入flag，它会告诉我们是否正确。
+
+首先，观察到页面只有一个输入框，我们可以输入数据，然后点击提交。
+
+#### 解题思路
+这道题的关键在于猜测后端的SQL逻辑。通过搜索这道题的背景信息，我们可以知道这道题的后端逻辑大致如下：
+
+```php
+$sql = "select " . $_POST['输入内容'] . " || flag from Flag";
+```
+
+这里的 `||` 在 MySQL 中是逻辑或运算符。当我们输入某些特定内容时，可以触发一些有趣的效果。
+
+#### 非预期解法（最简单）
+输入 payload: `*,1`
+
+原理：
+- 当我们输入 `*,1` 时，后端的SQL语句变成：`select *,1 || flag from Flag`
+- 由于 MySQL 解析的优先级，`*,1` 会被优先解析，变成：`select *,1 from Flag`
+- 这样就可以成功查询到 Flag 表的所有内容
+
+最终得到的 flag：
+`NSSCTF{e1f5b83a-7d3f-4493-9041-dd725742be32}`
+
+#### 另一种解法
+使用 payload: `1;set sql_mode=pipes_as_concat;select 1`
+
+原理：
+- 通过堆叠注入，我们设置 sql_mode 为 pipes_as_concat
+- 这样 || 符号就从逻辑或变成了字符串连接符
+- 然后再查询就可以得到 flag 了
+
+#### 关于使用 sqlmap
+本机 WSL 环境有 `/usr/local/bin/sqlmap` 可以使用。不过，对于这道题来说，直接使用手工 payload 更加高效快捷，因为它主要是依赖对后端逻辑的猜测，而不是常规的 SQL 注入流程。
