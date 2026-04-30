@@ -12,7 +12,7 @@ tags:
   - NSSCTF
   - 五题积累
 created: 2026-03-15T16:49
-updated: 2026-04-29T14:21
+updated: 2026-05-01T07:41
 ---
 
 # 第一轮
@@ -451,3 +451,4 @@ LABEL_13:
 
 部分函数直接调用 `ExitProcess` 退出而不返回，以阻碍动调。ida识别后认为是结束点，就不分析 `main` 函数剩下的代码了。
 
+[HXPCTF 2021]shitty blog
