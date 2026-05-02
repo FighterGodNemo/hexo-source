@@ -161,5 +161,14 @@
       ],
       "key": "Q"
     }
+  ],
+  "editor:clear-formatting": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "Q"
+    }
   ]
 }
