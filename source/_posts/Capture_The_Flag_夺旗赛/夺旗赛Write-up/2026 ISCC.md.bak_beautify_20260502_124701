@@ -1,0 +1,139 @@
+---
+created: 2026-05-01T07:34
+updated: 2026-05-02T09:09
+title: 2026 ISCC
+categories:
+  - Capture_The_Flag_夺旗赛
+tags:
+  - CTF
+  - 2026ISCC
+---
+
+# 校赛
+
+## Web
+
+### 消失的密钥 (The Vanishing Key)
+
+#### 题目信息
+- 题目名称：消失的密钥 (The Vanishing Key)
+- 题目类型：Web
+- 题目分值：50分
+- 题目地址：39.105.213.28:12601
+
+#### 题目描述
+实验室的防护系统似乎有些老旧，它对"Key"这个词异常敏感。如果你能证明你比它的过滤器更聪明，或许能看到隐藏在迷雾后的真相。
+
+#### 解题过程
+
+##### 阶段一：绕过过滤器
+通过测试发现：
+- 过滤器会删除所有小写的"key"子串
+- 大写的"Key"或"KEY"不会被删除，但会被验证逻辑拒绝
+- 我们需要输入一个字符串，经过过滤后得到"key"
+
+构造 payload：`kkeyey`
+
+原理：`kkeyey` 中包含 `key`（第2-4位），删除后剩下 `k` + `ey` = `key`
+
+成功！第一阶段通过！
+
+##### 阶段二：POST数据
+第一阶段成功后，页面提示需要POST数据结构'a'。
+
+通过测试发现：
+- 需要发送 `a[key]=1337` 作为 form-data（注意是字符串 "1337"）
+- 成功通过第二阶段！
+
+##### 阶段三：哈希碰撞
+第二阶段成功后，页面提示：
+```
+[SYS] Collision check pending. Collision pending. (Params 'a', 'b' required via GET.)
+```
+
+现在需要通过GET参数提供a和b，它们应该是哈希碰撞对！
+
+由于题目提示是老旧系统，我们尝试了PHP弱类型MD5碰撞：
+
+**原理：**
+如果两个字符串的MD5哈希值都是"0e"开头，PHP会把它们当作0处理，所以==比较结果为True。
+
+**构造 payload：**
+- a = `QNKCDZO`，MD5 = `0e830400451993494058024219903391`
+- b = `240610708`，MD5 = `0e462097431906509019562988736854`
+
+成功通过第三阶段！
+
+
+**2026ISCC 汇总 Writeup**
+
+**Web 题目**
+
+**消失的密钥 (The Vanishing Key)**
+
+**题目信息**来源：2026ISCC  
+分类：Web  
+题面：实验室的防护系统似乎有些老旧，它对“Key”这个词异常敏感。如果你能证明你比它的过滤器更聪明，或许能看到隐藏在迷雾后的真相。  
+靶机地址：http://39.105.213.28:12601  
+
+**解题思路**根据题面提示，这道题分为三个阶段，都是围绕关键词“Key”和哈希展开的。首先需要绕过过滤系统，然后构造正确的POST数据，最后找到合适的哈希碰撞对来获得最终flag。  
+
+**技术实施**阶段一：绕过过滤器
+
+输入key看一下。
+
+![](file:///C:\Users\glj07\AppData\Local\Temp\ksohtml30328\wps1.jpg)  
+首先需要输入一个经过过滤后能得到“key”的字符串。通过分析发现，过滤器会删除所有小写的“key”子串。构造字符串“kkeyey”，其中包含了“key”子串（从第2个字符开始的“kkeyey”包含“key”），删除后剩下前面的“k”和后面的“ey”，恰好组合成“key”，成功通过第一阶段。  
+![](file:///C:\Users\glj07\AppData\Local\Temp\ksohtml30328\wps2.jpg)
+
+阶段二：POST数据  
+第一阶段成功后，页面提示需要POST数据结构“a”。   
+
+a[key]
+
+ │  │
+
+ │  └─ 键名是 "key"
+
+ └─── 父结构是 "a"
+
+需要发送 a[key]=1337 作为表单数据，注意值是字符串类型“1337”，成功通过第二阶段。  
+![](file:///C:\Users\glj07\AppData\Local\Temp\ksohtml30328\wps3.jpg)
+
+![](file:///C:\Users\glj07\AppData\Local\Temp\ksohtml30328\wps4.jpg) 
+
+阶段三：哈希碰撞  
+第二阶段成功后，页面提示需要通过GET参数提供a和b作为哈希碰撞对。由于题目提示是老旧系统，考虑使用PHP弱类型MD5碰撞。原理是如果两个字符串的MD5哈希值都是“0e”开头，PHP会把它们都当作0处理，所以==比较结果为True。  
+构造的碰撞对为：  
+a = "QNKCDZO"，其MD5哈希值为 0e830400451993494058024219903391  
+b = "240610708"，其MD5哈希值为 0e462097431906509019562988736854  
+  
+将这两个值作为GET参数a和b发送，成功通过第三阶段，获得最终flag。  
+![](file:///C:\Users\glj07\AppData\Local\Temp\ksohtml30328\wps5.jpg)
+
+![](file:///C:\Users\glj07\AppData\Local\Temp\ksohtml30328\wps6.jpg) 
+
+也可以写一个解题脚本：  
+``
+import requests  
+url = "http://39.105.213.28:12601/"  
+params = {  
+    "step1": "kkeyey",  
+    "a": "QNKCDZO",  
+    "b": "240610708"  
+}  
+data = {"a[key]": "1337"}  
+r = requests.post(url, params=params, data=data, timeout=10)  
+print(r.text)  
+
+#### 最终 Flag
+`ISCC{QN-tGwW0yZD4!1fQ?TXJ0b0)bUag8i}`
+
+
+
+
+---
+
+# 区域赛
+
+# 总决赛
