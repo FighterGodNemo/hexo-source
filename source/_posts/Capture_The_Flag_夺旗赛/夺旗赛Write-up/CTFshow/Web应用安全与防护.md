@@ -13,7 +13,7 @@ tags:
   - Base64
   - 编码
 created: 2026-03-15T16:49
-updated: 2026-05-03T09:53
+updated: 2026-05-03T09:55
 ---
 
 ## Base64编码隐藏
@@ -26,7 +26,6 @@ CTF{easy_base64}
 ![](Web应用安全与防护/file-20260503085457877.png)
 ![](Web应用安全与防护/file-20260503095205581.png)![](Web应用安全与防护/file-20260503095232605.png)密码：CTF{easy_base64}
 ![](Web应用安全与防护/file-20260503095326907.png)
-
 修改UA为ctf-show-brower
 
 
