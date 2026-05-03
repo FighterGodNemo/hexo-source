@@ -1,6 +1,6 @@
 ---
 created: 2026-05-03T10:49
-updated: 2026-05-03T10:54
+updated: 2026-05-03T10:57
 title: OSINT专项练习
 tags:
   - OSINT
@@ -13,4 +13,4 @@ moectf{照片拍摄地市名区名路名} (字母均小写)
 https://github.com/XDSEC/MoeCTF_2022 
 得到的flag使用NSSCTF{}格式提交。
 ![](OSINT专项练习/file-20260503105156704.png)
-![](OSINT专项练习/file-20260503105211705.png)
+![](OSINT专项练习/file-20260503105211705.png)![](OSINT专项练习/file-20260503105714549.png)
