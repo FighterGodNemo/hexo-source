@@ -1,7 +1,7 @@
 ---
 title: Ciphey
-permalink: '/2026/03/15/Capture_The_Flag_夺旗赛/CTF解题妙具/Ciphey/'
-date: "2026-03-15 13:28:16"
+permalink: /2026/03/15/Capture_The_Flag_夺旗赛/CTF解题妙具/Ciphey/
+date: 2026-03-15 13:28:16
 categories:
   - Capture_The_Flag_夺旗赛
   - CTF解题妙具
@@ -9,15 +9,15 @@ tags:
   - CTF
   - CTF工具
   - Ciphey
-created: "2026-03-15T16:49"
-updated: "2026-03-18T09:41"
+created: 2026-03-15T16:49
+updated: 2026-05-03T10:09
 ---
 
 [在Windows上 ciphey安装（详细版）-CSDN博客](https://blog.csdn.net/BG1230521/article/details/134127716)
 
 **D：**
 
-**cd D:\Forensic\ForensicTool\Decrypt\Ciphey\Python38\test_venv\Scripts**
+cd D:\Forensic\ForensicTool\Decrypt\Ciphey\Python38\test_venv\Scripts
 
 **使用 Ciphey**
 
