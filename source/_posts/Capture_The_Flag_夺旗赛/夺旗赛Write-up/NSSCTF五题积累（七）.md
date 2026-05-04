@@ -12,7 +12,7 @@ tags:
   - NSSCTF
   - 五题积累
 created: 2026-03-15T16:49
-updated: 2026-05-04T11:06
+updated: 2026-05-04T11:08
 ---
 
 # 第一轮
@@ -828,7 +828,6 @@ $sql = "select " . $_POST['输入内容'] . " || flag from Flag";
 
 #### 关于使用 sqlmap
 本机 WSL 环境有 `/usr/local/bin/sqlmap` 可以使用。不过，对于这道题来说，直接使用手工 payload 更加高效快捷，因为它主要是依赖对后端逻辑的猜测，而不是常规的 SQL 注入流程。
-
 
 
 
