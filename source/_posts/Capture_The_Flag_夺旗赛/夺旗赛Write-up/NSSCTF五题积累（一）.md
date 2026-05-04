@@ -12,7 +12,7 @@ tags:
   - NSSCTF
   - 五题积累
 created: 2026-03-15T16:49
-updated: 2026-05-04T10:29
+updated: 2026-05-04T11:04
 ---
 
 # 第一轮
@@ -474,4 +474,17 @@ print(d)
 d=43476042047970113
 ![](NSSCTF五题积累（一）/file-20260504102921506.png)
 NSSCTF{08bb8fb628da85923e5734a75ac19ffe}
+
+[LitCTF 2023]只需要nc一下~ 
+![](NSSCTF五题积累（一）/file-20260504110255005.png)
+没有信息。cat一下dockerfile
+![](NSSCTF五题积累（一）/file-20260504110325583.png)
+这个是假flag。
+我们需要执行一些系统命令来获取更多信息：
+- `id`：查看当前用户的权限。
+- `whoami`：查看当前用户。**发现咱有root权限**
+- `ps aux` ：查看当前进程，确认是否有相关程序
+- `env` ：查看环境变量。
+![](NSSCTF五题积累（一）/file-20260504110430393.png)NSSCTF{ecf2ed91-f9ca-497b-addf-b1707a4ca59b}
+
 
