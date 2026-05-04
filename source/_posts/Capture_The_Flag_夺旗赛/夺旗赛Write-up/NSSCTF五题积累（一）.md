@@ -12,7 +12,7 @@ tags:
   - NSSCTF
   - 五题积累
 created: 2026-03-15T16:49
-updated: 2026-05-04T09:59
+updated: 2026-05-04T10:29
 ---
 
 # 第一轮
@@ -460,3 +460,18 @@ LABEL_13:
 ### [SWPUCTF 2021]新生赛 ez_rsa
 题目内容：
 `p = 1325465431 q = 152317153 e = 65537 计算出d,将d用MD5加密后包裹NSSCTF{}提交`
+
+具体代码：
+```
+import gmpy2
+p = 1325465431
+q = 152317153
+e = 65537
+phi=(p-1)*(q-1)
+d=gmpy2.invert(e,phi)
+print(d)
+```
+d=43476042047970113
+![](NSSCTF五题积累（一）/file-20260504102921506.png)
+NSSCTF{08bb8fb628da85923e5734a75ac19ffe}
+
