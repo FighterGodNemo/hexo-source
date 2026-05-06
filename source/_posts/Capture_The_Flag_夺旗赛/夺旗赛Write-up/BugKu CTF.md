@@ -1,11 +1,12 @@
 ---
 created: 2026-05-06T12:59
-updated: 2026-05-06T13:07
+updated: 2026-05-06T13:10
 title: BugKu CTF
 tags:
   - CTF
 ---
-## 你必须让他停下
+## Web
+### 你必须让他停下
 
 ![](<BugKu CTF/file-20260506130234077.png>)
 题目的网页不断刷新，停不下来。偶尔闪出一个包含CTF的页面。
@@ -14,3 +15,6 @@ tags:
 ![](<BugKu CTF/file-20260506130039690.png>)
 Ctrl+U 查看源代码即可
 ![](<BugKu CTF/file-20260506130118107.png>)
+### GET
+![](<BugKu CTF/file-20260506131040736.png>)
+参数是what
