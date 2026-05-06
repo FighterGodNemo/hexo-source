@@ -1,6 +1,6 @@
 ---
 created: 2026-05-06T12:59
-updated: 2026-05-06T14:09
+updated: 2026-05-06T18:28
 title: BugKu CTF
 tags:
   - CTF
@@ -37,3 +37,7 @@ python dirsearch.py -u http://171.80.2.169:16167/.git -e php,txt,bak
 ```
 ![](<BugKu CTF/file-20260506135810394.png>)
 
+
+
+
+![](<BugKu CTF/file-20260506182815050.png>)
