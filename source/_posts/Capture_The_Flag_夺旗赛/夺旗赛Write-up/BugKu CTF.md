@@ -1,6 +1,6 @@
 ---
 created: 2026-05-06T12:59
-updated: 2026-05-06T13:57
+updated: 2026-05-06T13:58
 title: BugKu CTF
 tags:
   - CTF
@@ -32,4 +32,8 @@ http://171.80.2.169:16167/.git/
 ![](<BugKu CTF/file-20260506132901938.png>)
 ![](<BugKu CTF/file-20260506132958899.png>)仅仅下载了两个文件，其中一个是假flag。
 试试看dirsearch：
-`python dirsearch.py -u http://171.80.2.169:16167/.git -e php,txt,bak`
+```
+python dirsearch.py -u http://171.80.2.169:16167/.git -e php,txt,bak
+```
+![](<BugKu CTF/file-20260506135810394.png>)
+
