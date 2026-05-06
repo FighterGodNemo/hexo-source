@@ -1,6 +1,6 @@
 ---
 created: 2026-05-06T12:59
-updated: 2026-05-06T20:59
+updated: 2026-05-06T21:02
 title: BugKu CTF
 tags:
   - CTF
@@ -43,6 +43,10 @@ python dirsearch.py -u http://171.80.2.169:16167/.git -e php,txt,bak
 ![](<BugKu CTF/file-20260506205914757.png>)
 显然可以使用burpsuite进行爆破。
 但是，实际上参数并不是这个。查看源码发现：
+![](<BugKu CTF/file-20260506210123020.png>)
+查看/check.php
+![](<BugKu CTF/file-20260506210242049.png>)
+code参数
 ## Crypto
 ### 把猪困在猪圈里
 文件内容base64解码并转图片
