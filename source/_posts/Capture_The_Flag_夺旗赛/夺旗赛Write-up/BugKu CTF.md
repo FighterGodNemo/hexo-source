@@ -1,11 +1,10 @@
 ---
 created: 2026-05-06T12:59
-updated: 2026-05-06T13:04
+updated: 2026-05-06T13:07
+title: BugKu CTF
+tags:
+  - CTF
 ---
-
-
-
-
 ## 你必须让他停下
 
 ![](<BugKu CTF/file-20260506130234077.png>)
