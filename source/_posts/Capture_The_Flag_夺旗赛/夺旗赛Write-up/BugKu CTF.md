@@ -1,6 +1,6 @@
 ---
 created: 2026-05-06T12:59
-updated: 2026-05-06T18:28
+updated: 2026-05-06T18:29
 title: BugKu CTF
 tags:
   - CTF
@@ -39,5 +39,8 @@ python dirsearch.py -u http://171.80.2.169:16167/.git -e php,txt,bak
 
 
 
-
+## Crypto
+### 把猪困在猪圈里
+文件内容base64解码并转图片
 ![](<BugKu CTF/file-20260506182815050.png>)
+猪圈密码。查看对照表：
