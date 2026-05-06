@@ -12,7 +12,7 @@ tags:
   - Web
   - BurpSuite
 created: 2026-03-15T16:49
-updated: 2026-04-15T13:54
+updated: 2026-05-06T20:45
 ---
 
 Web应用安全测试工具，支持代理、扫描、漏洞利用等功能。
