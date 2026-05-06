@@ -11,7 +11,7 @@ tags:
   - 工具索引
   - 本机环境
 created: 2026-05-05T09:20
-updated: 2026-05-05T09:20
+updated: 2026-05-06T13:53
 ---
 
 # 本机 CTF 工具索引
@@ -44,23 +44,23 @@ C:\Users\glj07\.codex\skills\ctf-memory-playbook\references\local-tool-index.md
 
 ## Windows 主工具
 
-| 工具 | 当前推荐路径 | 用法 | 适合场景 |
-| --- | --- | --- | --- |
-| 7-Zip 25.01 | `D:\CaptureTheFlag\CTFTool\7-Zip\7z.exe` | `7z l file.zip`、`7z x file.zip -oout` | 压缩包查看、解压、嵌套包、伪加密前置检查 |
-| CyberChef | `D:\CaptureTheFlag\CTFTool\CyberChef\CyberChef_v9.28.0.html` | 浏览器打开 HTML | 编码解码、异或、哈希、JWT、数据清洗 |
-| CaptfEncoder 3.1.2 | `D:\CaptureTheFlag\CTFTool\CaptfEncoder-win-x64-3.1.2.exe` | 直接启动 GUI | 常见 CTF 编码、古典密码、批量转换 |
-| HashCalc | `D:\CaptureTheFlag\CTFTool\HashCalc.exe` | 直接启动 GUI | 快速核对 MD5、SHA1、CRC 等 |
-| 010 Editor | `D:\CaptureTheFlag\CTFTool\010Editor\010Editor.exe` | `010Editor.exe file.bin` | 十六进制查看、文件头修复、结构模板分析 |
-| Notepad++ | `D:\CaptureTheFlag\CTFTool\Notepad++\notepad++.exe` | `notepad++.exe file.txt` | 多文件文本查看、日志和脚本轻编辑 |
-| bkcrack 1.7.1 | `D:\CaptureTheFlag\CTFTool\bkcrack-1.7.1-win64\bkcrack.exe` | `bkcrack -C enc.zip -c known.txt -P known.zip -p known.txt` | ZipCrypto 明文攻击，不适合 AES ZIP |
-| Wireshark 4.6.2 | `D:\CaptureTheFlag\CTFTool\Wireshark\Wireshark.exe` | 直接打开 pcap | 图形化协议分析、追踪流、导出对象 |
-| TShark 4.6.2 | `D:\CaptureTheFlag\CTFTool\Wireshark\tshark.exe` | `tshark -r a.pcapng -Y http` | 批量过滤、导出字段、脚本化流量分析 |
-| Burp Suite 2025.9.4 | `D:\CaptureTheFlag\CTFTool\BurpSuite V2025.9.4\` | 运行目录内启动脚本 | Web 抓包、重放、Intruder、Repeater |
-| SQLMap 1.9.12.3 dev | `D:\CaptureTheFlag\CTFTool\SQL注入工具包\SQL注入\sqlmap-master\sqlmap.py` | `python sqlmap.py -u "URL" --batch` | SQL 注入验证、库表枚举、dump |
-| dirsearch 0.4.3 | `D:\CaptureTheFlag\CTFTool\dirsearch-0.4.3\dirsearch.py` | `python dirsearch.py -u URL -e php,txt,bak` | Web 目录和敏感文件枚举 |
-| GitHack | `C:\Users\glj07\bin\githack.cmd` | `githack http://target/.git/` | `.git/index` 可访问时恢复源码 |
-| git-dumper 1.0.9 | `C:\Users\glj07\AppData\Roaming\Python\Python310\Scripts\git-dumper.exe` | `git-dumper URL/.git/ outdir` | `index` 不可访问但 refs/objects 可访问时恢复源码 |
-| 御剑目录扫描 | `D:\CaptureTheFlag\CTFTool\御剑WEB目录扫描优化版\御剑WEB目录扫描优化版.Patched.exe` | GUI 输入目标 | Windows GUI 扫后台、备份、敏感路径 |
+| 工具                  | 当前推荐路径                                                                   | 用法                                                          | 适合场景                                |
+| ------------------- | ------------------------------------------------------------------------ | ----------------------------------------------------------- | ----------------------------------- |
+| 7-Zip 25.01         | `D:\CaptureTheFlag\CTFTool\7-Zip\7z.exe`                                 | `7z l file.zip`、`7z x file.zip -oout`                       | 压缩包查看、解压、嵌套包、伪加密前置检查                |
+| CyberChef           | `D:\CaptureTheFlag\CTFTool\CyberChef\CyberChef_v9.28.0.html`             | 浏览器打开 HTML                                                  | 编码解码、异或、哈希、JWT、数据清洗                 |
+| CaptfEncoder 3.1.2  | `D:\CaptureTheFlag\CTFTool\CaptfEncoder-win-x64-3.1.2.exe`               | 直接启动 GUI                                                    | 常见 CTF 编码、古典密码、批量转换                 |
+| HashCalc            | `D:\CaptureTheFlag\CTFTool\HashCalc.exe`                                 | 直接启动 GUI                                                    | 快速核对 MD5、SHA1、CRC 等                 |
+| 010 Editor          | `D:\CaptureTheFlag\CTFTool\010Editor\010Editor.exe`                      | `010Editor.exe file.bin`                                    | 十六进制查看、文件头修复、结构模板分析                 |
+| Notepad++           | `D:\CaptureTheFlag\CTFTool\Notepad++\notepad++.exe`                      | `notepad++.exe file.txt`                                    | 多文件文本查看、日志和脚本轻编辑                    |
+| bkcrack 1.7.1       | `D:\CaptureTheFlag\CTFTool\bkcrack-1.7.1-win64\bkcrack.exe`              | `bkcrack -C enc.zip -c known.txt -P known.zip -p known.txt` | ZipCrypto 明文攻击，不适合 AES ZIP          |
+| Wireshark 4.6.2     | `D:\CaptureTheFlag\CTFTool\Wireshark\Wireshark.exe`                      | 直接打开 pcap                                                   | 图形化协议分析、追踪流、导出对象                    |
+| TShark 4.6.2        | `D:\CaptureTheFlag\CTFTool\Wireshark\tshark.exe`                         | `tshark -r a.pcapng -Y http`                                | 批量过滤、导出字段、脚本化流量分析                   |
+| Burp Suite 2025.9.4 | `D:\CaptureTheFlag\CTFTool\BurpSuite V2025.9.4\`                         | 运行目录内启动脚本                                                   | Web 抓包、重放、Intruder、Repeater         |
+| SQLMap 1.9.12.3 dev | `D:\CaptureTheFlag\CTFTool\SQL注入工具包\SQL注入\sqlmap-master\sqlmap.py`       | `python sqlmap.py -u "URL" --batch`                         | SQL 注入验证、库表枚举、dump                  |
+| dirsearch 0.4.3     | `D:\CaptureTheFlag\CTFTool\dirsearch-0.4.3\dirsearch.py`                 | `python dirsearch.py -u URL -e php,txt,bak`                 | Web 目录和敏感文件枚举                       |
+| GitHack             | `C:\Users\glj07\bin\githack.cmd`                                         | `githack http://target/.git/`                               | `.git/index` 可访问时恢复源码               |
+| git-dumper 1.0.9    | `C:\Users\glj07\AppData\Roaming\Python\Python310\Scripts\git-dumper.exe` | `git-dumper URL/.git/ outdir`                               | `index` 不可访问但 refs/objects 可访问时恢复源码 |
+| 御剑目录扫描              | `D:\CaptureTheFlag\CTFTool\御剑WEB目录扫描优化版\御剑WEB目录扫描优化版.Patched.exe`        | GUI 输入目标                                                    | Windows GUI 扫后台、备份、敏感路径             |
 
 ## Crypto
 
