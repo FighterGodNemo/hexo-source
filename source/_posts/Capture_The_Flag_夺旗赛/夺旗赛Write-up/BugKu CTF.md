@@ -1,6 +1,6 @@
 ---
 created: 2026-05-06T12:59
-updated: 2026-05-06T13:16
+updated: 2026-05-06T13:29
 title: BugKu CTF
 tags:
   - CTF
@@ -26,3 +26,8 @@ Ctrl+U 查看源代码即可
 ### source
 描述:我哥说渗透我只用linux环境
 ![](<BugKu CTF/file-20260506131651885.png>)
+http://171.80.2.169:16167/.git/
+发现.git泄露了。
+![](<BugKu CTF/file-20260506132810147.png>)这里直接使用githack：
+![](<BugKu CTF/file-20260506132901938.png>)
+![](<BugKu CTF/file-20260506132958899.png>)
