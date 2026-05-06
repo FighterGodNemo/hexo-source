@@ -1,6 +1,6 @@
 ---
 created: 2026-05-06T12:59
-updated: 2026-05-06T13:58
+updated: 2026-05-06T14:09
 title: BugKu CTF
 tags:
   - CTF
@@ -30,7 +30,7 @@ http://171.80.2.169:16167/.git/
 发现.git泄露了。
 ![](<BugKu CTF/file-20260506132810147.png>)这里直接使用githack：
 ![](<BugKu CTF/file-20260506132901938.png>)
-![](<BugKu CTF/file-20260506132958899.png>)仅仅下载了两个文件，其中一个是假flag。
+![](<BugKu CTF/file-20260506132958899.png>)仅仅下载了两个文件，其中一个是假flag。说明真东西大概率在 Git 历史、对象库、日志或被删文件里。
 试试看dirsearch：
 ```
 python dirsearch.py -u http://171.80.2.169:16167/.git -e php,txt,bak
