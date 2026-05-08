@@ -2,6 +2,7 @@
 created: 2026-05-03T10:49
 updated: 2026-05-03T10:57
 title: OSINT专项练习
+permalink: '/2026/05/03/Capture_The_Flag_夺旗赛/OSINT专项练习/'
 tags:
   - OSINT
 ---

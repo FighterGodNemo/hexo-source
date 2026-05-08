@@ -2,6 +2,7 @@
 created: 2026-05-06T12:59
 updated: 2026-05-06T21:02
 title: BugKu CTF
+permalink: '/2026/05/06/Capture_The_Flag_夺旗赛/夺旗赛Write-up/BugKu CTF/'
 tags:
   - CTF
 ---
