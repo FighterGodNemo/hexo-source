@@ -1,7 +1,7 @@
 ---
 title: VSCode编译C程序权限错误解决
 date: 2026-04-29
-permalink: /knowledge/vscode-c-compile-permission-error
+permalink: /knowledge/vscode-c-compile-permission-error/
 categories:
   - 博览知识
 tags:
@@ -9,7 +9,7 @@ tags:
   - C语言
   - 编译错误
 created: 2026-04-29
-updated: 2026-04-29
+updated: 2026-05-08T19:47
 ---
 
 ## 问题现象
