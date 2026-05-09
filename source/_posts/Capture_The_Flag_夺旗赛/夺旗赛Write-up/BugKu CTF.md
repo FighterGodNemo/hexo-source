@@ -1,6 +1,6 @@
 ---
 created: 2026-05-06T12:59
-updated: 2026-05-09T11:41
+updated: 2026-05-09T11:47
 title: BugKu CTF
 permalink: /2026/05/06/Capture_The_Flag_夺旗赛/夺旗赛Write-up/BugKu CTF/
 tags:
@@ -62,3 +62,8 @@ flag{thisispigpassword}
 
 ![](<BugKu CTF/file-20260509114031742.png>)解压密码：thisispolybius
 解压缩内容：一种5bit的编码 bugku里面的内容为小写 bugku{11111 11001 00011 00111 01001 11011 10110 11111 10000 01110 11011 10110 11111 01001 00001}
+![](<BugKu CTF/file-20260509114537740.png>)
+博多密码。
+![](<BugKu CTF/file-20260509114559855.png>)
+BAUD0TC0DE转小写baud0tc0de
+bugku{baud0tc0de}
