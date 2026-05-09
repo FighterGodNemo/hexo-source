@@ -1,6 +1,6 @@
 ---
 created: 2026-05-06T12:59
-updated: 2026-05-09T11:47
+updated: 2026-05-09T11:49
 title: BugKu CTF
 permalink: /2026/05/06/Capture_The_Flag_夺旗赛/夺旗赛Write-up/BugKu CTF/
 tags:
@@ -48,6 +48,32 @@ python dirsearch.py -u http://171.80.2.169:16167/.git -e php,txt,bak
 查看/check.php
 ![](<BugKu CTF/file-20260506210242049.png>)
 code参数
+
+### 本地管理员
+![](<BugKu CTF/file-20260509114850988.png>)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Crypto
 ### 把猪困在猪圈里
 文件内容base64解码并转图片
