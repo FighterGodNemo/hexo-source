@@ -1,8 +1,8 @@
 ---
 created: 2026-05-06T12:59
-updated: 2026-05-06T21:02
+updated: 2026-05-09T11:38
 title: BugKu CTF
-permalink: '/2026/05/06/Capture_The_Flag_夺旗赛/夺旗赛Write-up/BugKu CTF/'
+permalink: /2026/05/06/Capture_The_Flag_夺旗赛/夺旗赛Write-up/BugKu CTF/
 tags:
   - CTF
 ---
@@ -56,3 +56,6 @@ code参数
 ![](<BugKu CTF/file-20260506201847317.png>)
 flag{thisispigpassword}
 
+### 你喜欢下棋吗
+题目描述：
+你喜欢下棋吗？ 解压密码为小写 4423244324433534315412244543
