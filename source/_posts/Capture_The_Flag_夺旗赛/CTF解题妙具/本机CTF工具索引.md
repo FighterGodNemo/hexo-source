@@ -120,7 +120,7 @@ C:\Users\glj07\.codex\skills\ctf-memory-playbook\references\local-tool-index.md
 | ILDASM | `C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\ildasm.exe` | `ildasm /text app.exe > out.il` | .NET IL 文本输出 |
 | x64dbg/x32dbg | `D:\CaptureTheFlag\CTFTool\snapshot\release\x64\x64dbg.exe` | GUI 调试 | Windows 动态调试、patch、反调试绕过 |
 | Detect It Easy | `D:\CaptureTheFlag\CTFTool\DiE查壳工具` | GUI | 查壳、编译器、文件类型 |
-| UPX 5.0 | `D:\CaptureTheFlag\CTFTool\upx5.0加壳脱壳工具` | `upx -d file.exe` | UPX 脱壳、壳识别后第一步 |
+| UPX 5.0.2 | `D:\CaptureTheFlag\CTFTool\UPX\upx-5.0.2-win64\upx.exe` | `upx.exe -d file.exe -o unpacked.exe` | UPX 脱壳、壳识别后第一步 |
 | pyinstxtractor | `D:\CaptureTheFlag\CTFTool\pyinstxtractor-2023.12` | `python pyinstxtractor.py app.exe` | PyInstaller 打包程序提取 |
 
 优先策略：先 DiE/file/strings 判型，Windows GUI 程序用 IDA/x64dbg，APK 用 JADX/JEB，.NET 用 dnSpy/ILDASM。
