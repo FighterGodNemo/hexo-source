@@ -1,6 +1,6 @@
 ---
 created: 2026-05-06T12:59
-updated: 2026-05-09T11:49
+updated: 2026-05-09T11:51
 title: BugKu CTF
 permalink: /2026/05/06/Capture_The_Flag_夺旗赛/夺旗赛Write-up/BugKu CTF/
 tags:
@@ -51,10 +51,11 @@ code参数
 
 ### 本地管理员
 ![](<BugKu CTF/file-20260509114850988.png>)
-
-
-
-
+第一步查看源代码
+![](<BugKu CTF/file-20260509115020757.png>)
+发现末尾有个<!-- dGVzdDEyMw== -->
+![](<BugKu CTF/file-20260509115120161.png>)
+test123
 
 
 
