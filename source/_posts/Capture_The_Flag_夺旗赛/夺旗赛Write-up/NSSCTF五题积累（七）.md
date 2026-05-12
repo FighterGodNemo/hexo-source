@@ -12,7 +12,7 @@ tags:
   - NSSCTF
   - 五题积累
 created: 2026-03-15T16:49
-updated: 2026-05-12T13:37
+updated: 2026-05-12T13:40
 ---
 
 # 第一轮
@@ -831,5 +831,6 @@ $sql = "select " . $_POST['输入内容'] . " || flag from Flag";
 
 
 ### [LitCTF 2023]这是什么？SQL ！注一下 ！
-
+SQL注入  布尔盲注  时间盲注
+![](NSSCTF五题积累（七）/file-20260512134028249.png)
 
