@@ -1,6 +1,6 @@
 ---
 created: 2026-04-01T12:36
-updated: 2026-05-14T11:34
+updated: 2026-05-14T12:40
 date: 2026-04-01 12:36:00
 categories:
   - 游戏Game
@@ -15,10 +15,9 @@ permalink: /2026/04/01/游戏Game/帝国时代四 Age of Empires IV/
 ![](<帝国时代四 Age of Empires IV/file-20260413204210250.png>)
 
 
-<video controls preload="metadata" style="max-width:100%;" src="/video/爆破船突袭火炮.mp4"></video>
+<video controls preload="metadata" style="max-width:100%;" src="/video/爆破船突袭火炮-h264.mp4"></video>
 
 
-<video controls preload="metadata" style="max-width:100%;" src="/video/击沉运输船.mp4"></video>
-
+<video controls preload="metadata" style="max-width:100%;" src="/video/击沉运输船-h264.mp4"></video>
 
 
