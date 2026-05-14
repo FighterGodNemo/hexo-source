@@ -11,7 +11,7 @@ tags:
   - CTF
   - WriteUp
   - CTFshow
-updated: 2026-05-14T19:11
+updated: 2026-05-14T19:19
 ---
 
 ## Web 1
@@ -22,5 +22,4 @@ Ctrl+U 查看源代码
 base64解码
 ![](Web/1765884078109-a4983cd4-5852-4e05-86f9-68a1f1bcb283.png)
 ## Web 2
-![](Web/file-20260514191059705.png)
-![](Web/file-20260514191023899.png)
+
