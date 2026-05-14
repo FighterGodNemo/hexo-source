@@ -1,7 +1,7 @@
 ---
 title: SSH
-permalink: '/2026/03/15/Forensic_电子取证/Forensic知识/SSH/'
-date: "2026-03-15 13:28:28"
+permalink: /2026/03/15/Forensic_电子取证/Forensic知识/SSH/
+date: 2026-03-15 13:28:28
 categories:
   - Forensic_电子取证
   - Forensic知识
@@ -9,8 +9,8 @@ tags:
   - 电子取证
   - 取证知识
   - SSH
-created: "2026-03-15T16:49"
-updated: "2026-03-18T09:42"
+created: 2026-03-15T16:49
+updated: 2026-05-14T18:41
 ---
 
 ### 一、核心概念：什么是 SSH？
@@ -118,3 +118,5 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])?
 ### 总结
 **SSH 就是互联网时代的“安全远程控制”，是任何与服务器、运维、开发、乃至取证工作相关的技术人员都必须掌握的核心技能。** 它通过加密技术，确保了远程管理的机密性和完整性。
 
+SSHD
+别人连你。
