@@ -1,7 +1,7 @@
 ---
 title: XML与HTML
-permalink: '/2026/03/15/Forensic_电子取证/Forensic知识/XML与HTML/'
-date: "2026-03-15 13:28:28"
+permalink: /2026/03/15/Forensic_电子取证/Forensic知识/XML与HTML/
+date: 2026-03-15 13:28:28
 categories:
   - Forensic_电子取证
   - Forensic知识
@@ -10,8 +10,8 @@ tags:
   - 取证知识
   - XML
   - HTML
-created: "2026-03-15T16:49"
-updated: "2026-03-18T09:46"
+created: 2026-03-15T16:49
+updated: 2026-05-14T18:49
 ---
 
 | 特性 | XML（可扩展标记语言） | HTML（超文本标记语言） |
