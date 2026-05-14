@@ -1,15 +1,15 @@
 ---
 title: 取证write-up
-permalink: '/2026/03/15/Forensic_电子取证/Forensic知识/取证write-up/'
-date: "2026-03-15 13:28:28"
+permalink: /2026/03/15/Forensic_电子取证/Forensic知识/取证write-up/
+date: 2026-03-15 13:28:28
 categories:
   - Forensic_电子取证
 tags:
   - 电子取证
   - 取证知识
   - 取证writeup
-created: "2026-03-15T16:49"
-updated: "2026-03-18T09:47"
+created: 2026-03-15T16:49
+updated: 2026-05-14T19:16
 ---
 
 为方便回顾wp时更直观，我自创题目难度星级评分制：
