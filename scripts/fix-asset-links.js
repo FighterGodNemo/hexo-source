@@ -132,6 +132,27 @@ function mapSourceAssetToPublicUrl(absPath) {
   return null;
 }
 
+function mapSourceStaticToPublicUrl(absPath) {
+  if (!absPath || !isFilePath(absPath)) return null;
+
+  const sourceRoot = path.normalize(hexo.source_dir);
+  const normalizedPath = path.normalize(absPath);
+
+  if (
+    normalizedPath !== sourceRoot &&
+    !normalizedPath.startsWith(`${sourceRoot}${path.sep}`)
+  ) {
+    return null;
+  }
+
+  const relativePath = normalizePosix(path.relative(sourceRoot, normalizedPath));
+  if (!relativePath || relativePath.startsWith('..') || relativePath.startsWith('_posts/')) {
+    return null;
+  }
+
+  return buildPublicPath('', relativePath);
+}
+
 function fixHtmlAssetLinks(html, postName, postDir) {
   if (!html || !postDir) return html;
 
@@ -173,7 +194,7 @@ function rewriteAssetUrl(rawUrl, context) {
   const tryResolvedSourceAsset = relativePath => {
     if (!relativePath || !/^(?:\.\.\/|\.\/)/.test(relativePath)) return null;
     const candidate = path.resolve(context.currentSourceDirAbs, relativePath);
-    return mapSourceAssetToPublicUrl(candidate);
+    return mapSourceAssetToPublicUrl(candidate) || mapSourceStaticToPublicUrl(candidate);
   };
 
   let rewritten = null;
