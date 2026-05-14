@@ -11,6 +11,10 @@ function normalizePosix(str) {
   return String(str || '').replace(/\\/g, '/');
 }
 
+function normalizeDir(str) {
+  return path.normalize(String(str || '')).replace(/[\\/]+$/, '');
+}
+
 function trimSlashes(str) {
   return normalizePosix(str).replace(/^\/+|\/+$/g, '');
 }
@@ -135,7 +139,7 @@ function mapSourceAssetToPublicUrl(absPath) {
 function mapSourceStaticToPublicUrl(absPath) {
   if (!absPath || !isFilePath(absPath)) return null;
 
-  const sourceRoot = path.normalize(hexo.source_dir);
+  const sourceRoot = normalizeDir(hexo.source_dir);
   const normalizedPath = path.normalize(absPath);
 
   if (
