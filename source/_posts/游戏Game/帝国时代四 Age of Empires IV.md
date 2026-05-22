@@ -1,6 +1,6 @@
 ---
 created: 2026-04-01T12:36
-updated: 2026-05-22T19:00
+updated: 2026-05-22T19:05
 date: 2026-04-01 12:36:00
 categories:
   - 游戏Game
@@ -26,9 +26,11 @@ https://aoe4world.com/stats/rm_solo/matchups
 
 
 
+# 快捷键设置
 
 
 
+# 主要思路
 新手入门，先教侦查。
 再通过侦查去教学如何分析对手的战术思路和弱点。
 学会了分析对手，后期自然也会知道怎么赢了。
@@ -41,3 +43,4 @@ https://aoe4world.com/stats/rm_solo/matchups
 
 
 ## 朱熹遗产
+开局自带一个朝廷命官。由于狗官没办法监督城镇中心，因此吃羊前需要离开tc一段距离造一个磨坊，羊牵过去，命官监督。
