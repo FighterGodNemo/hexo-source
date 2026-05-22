@@ -41,7 +41,7 @@ C:\Users\glj07\.codex\skills\ctf-memory-playbook\references\local-tool-index.md
 | 密码恢复 | hashcat 7.1.2、john、Passware Kit、Elcomsoft | Office、压缩包、BitLocker、系统账户、哈希爆破 |
 | 文件修复与雕刻 | foremost、binwalk、PuzzleSolver、010 Editor、WinHex/X-Ways | 损坏图片、碎片文件、文件头错乱、拼接恢复 |
 | 逆向辅助 | IDA、JADX、AndroidKiller、OllyDbg、x64dbg、CFF Explorer | 恶意样本、APK、壳、配置提取、简单动态调试 |
-| 自动化与 AI 辅助 | Python、pa_script、DFIR 工具箱、DeepSeek-Coder GGUF | 批量解析、辅助脚本、代码阅读和规则生成 |
+| 自动化与 AI 辅助 | Python、pa_script、DFIR 工具箱、DeepSeek-Coder GGUF、maleme | 批量解析、辅助脚本、代码阅读、规则生成、本地对话历史统计 |
 
 ## 磁盘与文件系统
 
@@ -176,6 +176,14 @@ hashcat 默认注意显卡设备选择；本机清单记录 RTX 5090 常用 `-d 
 wsl -d Ubuntu-CTF -u glj07
 cd ~/CTF/Forensics
 ```
+
+## 本地对话与辅助分析
+
+| 工具 | 当前推荐路径 | 用法 | 适合场景 |
+| --- | --- | --- | --- |
+| maleme 0.1.17 | `C:\Users\glj07\bin\maleme.cmd` / `C:\Users\glj07\AppData\Roaming\npm\maleme.cmd` | `maleme` | 本地扫描 Codex、Claude Code、OpenCode 对话历史，统计用户输入中的 profanity 信号并生成 HTML 报告到 `Downloads` |
+
+注意：`maleme` 会读取本地对话历史，只在明确需要统计报告时运行，不作为普通取证题默认步骤。
 
 ## WP 记录要求
 
