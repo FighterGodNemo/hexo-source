@@ -10,14 +10,16 @@ tags:
   - CTF工具
   - Ciphey
 created: 2026-03-15T16:49
-updated: 2026-05-03T10:09
+updated: 2026-05-22T19:20
 ---
-
+在Windows上 ciphey安装看这篇文章：
 [在Windows上 ciphey安装（详细版）-CSDN博客](https://blog.csdn.net/BG1230521/article/details/134127716)
 
+```
 **D：**
 
 cd D:\Forensic\ForensicTool\Decrypt\Ciphey\Python38\test_venv\Scripts
+```
 
 **使用 Ciphey**
 
