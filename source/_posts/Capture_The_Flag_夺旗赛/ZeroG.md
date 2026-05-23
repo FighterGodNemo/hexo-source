@@ -1,6 +1,6 @@
 ---
 created: 2026-05-23T10:30
-updated: 2026-05-23T11:00
+updated: 2026-05-23T11:40
 title: ZeroG
 permalink: /2026/05/23/Capture_The_Flag_夺旗赛/ZeroG/
 categories:
@@ -493,6 +493,245 @@ flag{ZeroG_nebula_patch_antidebug}
 ```
 
 ## Misc
+
+### Misc_02.Moonlight Radio / 月光电台
+
+#### 题目信息
+
+| 项目 | 内容 |
+| --- | --- |
+| 比赛来源 | ZeroG |
+| 题目分类 | Misc |
+| 题目名称 | Misc_02.Moonlight Radio / 月光电台 |
+| 题面 | ZeroG 空间站在月背通信窗口中收到了一段短暂的无线电信号。Fen 说这段音频像是旧时代电话系统的声音；Hugo 在遥测数据里发现了一个加密帧；N1 认为这些声音并不是随机噪声；A 留下了一条推导公式；Gnaw 只说了一句话：“把数字重新变成字符，然后让月光打开遥测帧。” |
+| 附件 | `player_moonlight_radio.zip` |
+| Flag 格式 | `flag{...}` |
+| 附件 SHA256 | `2055D1D120C1580ED39A7B63EE1A9336E884CC395D37FAC4158EB6CB9C99C291` |
+
+#### 解题思路
+
+这题的第一层线索其实已经写在题面里了。`radio.wav` 不是摩斯码，而是“旧时代电话系统的声音”，因此最先想到的就是 DTMF 电话按键音。再结合提示里说的“把数字重新变成字符”，很自然就会猜到音频先还原数字，再按某种字符编码解释。
+
+附件解开后有 `radio.wav`、`telemetry.dat` 和 `README.txt`。其中 `README.txt` 已经直接给出了密钥派生公式：
+
+```text
+key = sha256("ZeroG::" + radio_password + "::www.pwnstars.online")
+```
+
+所以整道题的链路非常清楚：先从音频里提取 `radio_password`，再拿它去解 `telemetry.dat`，最后看明文里还藏了什么二次编码。
+
+#### 技术实施
+
+先分析 `radio.wav`。这段音频是 8 kHz 单声道 PCM，音符长度和间隔都比较规整，频谱上能明显看到 DTMF 的双频结构。对每个音符窗口做 FFT 后，分别在低频组 `697/770/852/941` 和高频组 `1209/1336/1477/1633` 中选出能量最强的两个频点，就能还原按键序列：
+
+```text
+108117110097114045049055048049
+```
+
+题面提示“每 3 位分组，尝试作为 ASCII 码解释”，于是把这串数字按三位切开：
+
+```text
+108 117 110 097 114 045 049 055 048 049
+```
+
+对应 ASCII 后得到：
+
+```text
+lunar-1701
+```
+
+这就是 `radio_password`。随后读取 `telemetry.dat`，前 16 字节可以拆成两部分：
+
+```text
+ZGTELv2\nZGRMOON2
+```
+
+前 8 字节 `ZGTELv2\n` 是格式标识，后 8 字节 `ZGRMOON2` 才是真正参与解密的 `nonce`。结合同赛事 `StarTrail` 的实现模式，可以确认这里复用了相同的自定义流加密：
+
+```text
+xorstream-sha256-ctr
+```
+
+其密钥流块生成方式为：
+
+```text
+sha256(key + nonce + counter.to_bytes(4, "big"))
+```
+
+将所有块拼接后，与 `telemetry.dat[16:]` 逐字节异或即可得到明文。解出的遥测正文中包含最终字段：
+
+```text
+FINAL=c3ludHtNcmViVF96YmJheXZ0dWdfZW5xdmJfcWd6c30=
+```
+
+这一步继续按常见组合处理。先做 Base64 解码，得到：
+
+```text
+synt{MrebT_zbbayvtug_enqvb_qgzs}
+```
+
+`synt` 很像 `flag` 的 ROT13 形式，因此整串再做一次 ROT13，最终恢复出正确 flag。
+
+关键输出如下：
+
+![](ZeroG/moonlight-radio-solve-output.png)
+
+#### 关键命令
+
+```powershell
+python "C:\Users\glj07\Desktop\Codex工作区\Writeup\CTF\零重力\Misc\Misc_02.Moonlight Radio\scripts\solve.py"
+```
+
+#### 完整关键代码
+
+```python
+import base64
+import codecs
+import hashlib
+import pathlib
+import wave
+
+import numpy as np
+
+
+ROOT = pathlib.Path(__file__).resolve().parents[1]
+BASE = ROOT / "outputs" / "moonlight_radio"
+
+
+DTMF_LOW = [697, 770, 852, 941]
+DTMF_HIGH = [1209, 1336, 1477, 1633]
+DTMF_KEYS = {
+    (697, 1209): "1",
+    (697, 1336): "2",
+    (697, 1477): "3",
+    (697, 1633): "A",
+    (770, 1209): "4",
+    (770, 1336): "5",
+    (770, 1477): "6",
+    (770, 1633): "B",
+    (852, 1209): "7",
+    (852, 1336): "8",
+    (852, 1477): "9",
+    (852, 1633): "C",
+    (941, 1209): "*",
+    (941, 1336): "0",
+    (941, 1477): "#",
+    (941, 1633): "D",
+}
+
+
+def detect_dtmf_digits(wav_path: pathlib.Path) -> str:
+    with wave.open(str(wav_path), "rb") as wav:
+        data = np.frombuffer(wav.readframes(wav.getnframes()), dtype=np.int16).astype(np.float32)
+        sample_rate = wav.getframerate()
+
+    start = 0.5
+    step = 0.24
+    tone_len = 0.18
+    digits = []
+
+    for index in range(40):
+        begin = int((start + index * step) * sample_rate)
+        end = int((start + index * step + tone_len) * sample_rate)
+        if end > len(data):
+            break
+
+        segment = data[begin:end]
+        if np.sqrt(np.mean(segment**2)) < 1000:
+            continue
+
+        window = np.hanning(len(segment))
+        spectrum = np.abs(np.fft.rfft(segment * window))
+        freqs = np.fft.rfftfreq(len(segment), 1 / sample_rate)
+
+        def pick(targets: list[int]) -> int:
+            best_freq = targets[0]
+            best_power = -1.0
+            for target in targets:
+                idx = int(np.argmin(np.abs(freqs - target)))
+                lo = max(0, idx - 2)
+                hi = min(len(spectrum), idx + 3)
+                local = lo + int(np.argmax(spectrum[lo:hi]))
+                power = spectrum[local]
+                if power > best_power:
+                    best_power = power
+                    best_freq = min(targets, key=lambda item: abs(item - freqs[local]))
+            return best_freq
+
+        low = pick(DTMF_LOW)
+        high = pick(DTMF_HIGH)
+        digits.append(DTMF_KEYS[(low, high)])
+
+    return "".join(digits)
+
+
+def xorstream_sha256_ctr(ciphertext: bytes, key: bytes, nonce: bytes) -> bytes:
+    output = bytearray()
+    counter = 0
+    offset = 0
+    while offset < len(ciphertext):
+        block = hashlib.sha256(key + nonce + counter.to_bytes(4, "big")).digest()
+        chunk = ciphertext[offset : offset + 32]
+        output.extend(bytes(a ^ b for a, b in zip(chunk, block)))
+        offset += len(chunk)
+        counter += 1
+    return bytes(output)
+
+
+def main() -> None:
+    digits = detect_dtmf_digits(BASE / "radio.wav")
+    password = "".join(chr(int(digits[i : i + 3])) for i in range(0, len(digits), 3))
+
+    telemetry = (BASE / "telemetry.dat").read_bytes()
+    nonce = telemetry[8:16]
+    ciphertext = telemetry[16:]
+
+    seed = f"ZeroG::{password}::www.pwnstars.online".encode()
+    key = hashlib.sha256(seed).digest()
+    plaintext = xorstream_sha256_ctr(ciphertext, key, nonce).decode("utf-8", errors="replace")
+
+    final_line = next(line for line in plaintext.splitlines() if line.startswith("FINAL="))
+    encoded = final_line.split("=", 1)[1]
+    rot13_text = base64.b64decode(encoded).decode()
+    flag = codecs.decode(rot13_text, "rot_13")
+
+    print(f"dtmf_digits = {digits}")
+    print(f"radio_password = {password}")
+    print(f"nonce = {nonce!r}")
+    print(plaintext)
+    print(flag)
+
+
+if __name__ == "__main__":
+    main()
+```
+
+#### 验证输出
+
+运行脚本后可以稳定得到以下关键结果：
+
+```text
+dtmf_digits = 108117110097114045049055048049
+radio_password = lunar-1701
+nonce = b'ZGRMOON2'
+flag{ZeroG_moonlight_radio_dtmf}
+```
+
+其中 `dtmf_digits`、`radio_password`、`nonce` 和最终 flag 能完整对应整条解题链路，说明音频识别、密钥派生、遥测解密和尾部编码转换都没有走偏。
+
+#### 知识点总结
+
+这题最关键的是把题面提示拆成两步执行，而不是一上来就直接硬啃 `telemetry.dat`。电话按键音对应 DTMF，这一步如果识别出来，后面的“数字重新变成字符”就会顺理成章地落到三位 ASCII 上。
+
+另一个值得记住的点是，题目虽然在 `README.txt` 里给了 KDF，但并没有明说 `telemetry.dat` 的头部结构。遇到这类自定义二进制帧时，先把明显的 magic 和可能的 nonce、version 拆出来，再结合同系列题目的实现习惯去验证，会比从密文盲猜省力很多。
+
+最后那层 `Base64 + ROT13` 其实不复杂，但很容易因为看到 `synt{...}` 半可读字符串就停住。只要意识到 `synt` 正好是 `flag` 的 ROT13，整个尾巴就能顺手收掉。
+
+#### 最终 flag
+
+```text
+flag{ZeroG_moonlight_radio_dtmf}
+```
 
 ### Misc_03.Blackbox Telemetry / 黑匣子遥测
 
