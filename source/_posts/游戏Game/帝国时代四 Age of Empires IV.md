@@ -1,6 +1,6 @@
 ---
 created: 2026-04-01T12:36
-updated: 2026-05-27T13:02
+updated: 2026-05-27T13:08
 date: 2026-04-01 12:36:00
 categories:
   - 游戏Game
@@ -16,7 +16,7 @@ permalink: /2026/04/01/游戏Game/帝国时代四 Age of Empires IV/
 
 ## 版本与资料入口
 
-这篇攻略按 2026-05-27 的资料整理。当前需要重点参考的是官方 16.1 系列更新、第 13 赛季与岳飞遗产 DLC。帝国时代四的平衡变化比较频繁，所以不要把本文当成永远不变的 build order，更适合当作“侦查、判断、转型”的训练清单。
+这篇攻略按 2026-05-27 的资料整理。当前需要重点参考的是官方 16.1 系列更新、第 13 赛季与岳飞遗产 DLC。
 
 - 官方最新补丁： [Age of Empires IV Minor Patch 16.1.10056](https://www.ageofempires.com/news/age-of-empires-iv-minor-patch-16-1-10056/)
 - 第 13 赛季与岳飞遗产： [Update 16.1.9737 and Yue Fei's Legacy](https://www.ageofempires.com/news/age-of-empires-iv-update-16-1-9737-and-yue-feis-legacy-dlc-release-preview/)
@@ -29,6 +29,9 @@ permalink: /2026/04/01/游戏Game/帝国时代四 Age of Empires IV/
 看胜率时不要只看“哪个文明最高”，要同时看版本、分段、地图和样本量。低分段常见的问题不是文明强度，而是侦查少、资源堆太多、TC 或兵营空转、被一波 timing 打穿。
 
 ## 先搭好快捷键
+
+可以参考【帝国时代4】Beasty的热键与小技巧教学-最终版（双语字幕）-哔哩哔哩 https://b23.tv/btOMKrC
+
 
 首先需要修改快捷键，因为默认并不是很合适操作。这边我分享我自己的快捷键设置，如果有更舒服的快捷键欢迎交流。我鼠标有两个侧键。
 
