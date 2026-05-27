@@ -100,11 +100,11 @@ permalink: /2026/04/01/游戏Game/帝国时代四 Age of Empires IV/
 
 爆破船突袭岸边军队：
 
-<video controls preload="metadata" playsinline style="max-width:100%;" src="/video/爆破船突袭火炮-web.mp4"></video>
+<video controls preload="metadata" playsinline style="max-width:100%;" src="../../video/爆破船突袭火炮-web.mp4"></video>
 
 优先击沉运输船：
 
-<video controls preload="metadata" playsinline style="max-width:100%;" src="/video/击沉运输船-web.mp4"></video>
+<video controls preload="metadata" playsinline style="max-width:100%;" src="../../video/击沉运输船-web.mp4"></video>
 
 这两个点本质上都是“优先级”问题：能打掉攻城器械就先打攻城器械，能打掉运输船就先打运输船。运输船沉了，船上的部队很可能还没发挥价值就直接消失，收益比单纯换战船更高。
 
