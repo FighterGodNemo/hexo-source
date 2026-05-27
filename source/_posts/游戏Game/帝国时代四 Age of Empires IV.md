@@ -1,6 +1,6 @@
 ---
 created: 2026-04-01T12:36
-updated: 2026-05-27T13:08
+updated: 2026-05-27T13:20
 date: 2026-04-01 12:36:00
 categories:
   - 游戏Game
@@ -24,7 +24,7 @@ permalink: /2026/04/01/游戏Game/帝国时代四 Age of Empires IV/
 - 各文明全分段胜率： [AoE4World matchups](https://aoe4world.com/stats/rm_solo/matchups)
 - 各文明单排统计： [AoE4World civilizations](https://aoe4world.com/stats/rm_solo/civilizations)
 - 构筑参考： [AoE4 Guides](https://aoe4guides.com/)
-- 职业赛事观察： [Red Bull Wololo](https://www.redbull.com/us-en/events/red-bull-wololo) 、[Homestead Cup](https://www.ageofempires.com/events/homestead-cup/)
+- 职业赛事观察： [Homestead Cup](https://www.ageofempires.com/events/homestead-cup/)
 
 看胜率时不要只看“哪个文明最高”，要同时看版本、分段、地图和样本量。低分段常见的问题不是文明强度，而是侦查少、资源堆太多、TC 或兵营空转、被一波 timing 打穿。
 
