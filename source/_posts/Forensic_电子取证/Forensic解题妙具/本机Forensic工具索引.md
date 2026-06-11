@@ -35,7 +35,7 @@ C:\Users\glj07\.codex\skills\ctf-memory-playbook\references\local-tool-index.md
 | 压缩包、套娃、伪加密 | 7-Zip、bkcrack、ZipCenOp、Python、foremost、binwalk | 先列目录和测试完整性，再判断伪加密、明文攻击或雕刻 |
 | 磁盘镜像、分区、文件系统 | X-Ways Forensics、DiskGenius、WinHex/X-Ways、FTK/DFIR 工具箱 | 镜像挂载、文件恢复、时间线、分区和文件系统结构 |
 | 内存镜像 | Volatility 3、strings、YARA、Elcomsoft Disk Decryptor | 进程、网络、命令行、文件扫描、BitLocker 密钥线索 |
-| 手机取证 | UFED、DataFindx、iBackup Viewer Pro、AndroidKiller、JADX、DB Browser/SQLite Expert | Android/iOS 备份、聊天记录、App 数据库、APK 逆向 |
+| 手机取证 | UFED、DataFindx、iBackup Viewer Pro、WeFlow、AndroidKiller、JADX、DB Browser/SQLite Expert | Android/iOS 备份、微信聊天记录、App 数据库、APK 逆向 |
 | 数据库和日志 | SQLite Expert、DB Browser for SQLite、Navicat Premium 17、NTFS Log Tracker | SQLite、SQLCipher、MySQL dump、NTFS `$LogFile`、应用日志 |
 | 网络流量 | Wireshark、TShark、Fiddler Everywhere、Scapy | pcap、HTTP/HTTPS、导出对象、DNS、TLS、移动 App 抓包 |
 | 密码恢复 | hashcat 7.1.2、john、Passware Kit、Elcomsoft | Office、压缩包、BitLocker、系统账户、哈希爆破 |
@@ -87,8 +87,10 @@ vol -f mem.raw windows.filescan
 | JADX 1.5.3 | `D:\Forensic\ForensicTool\Reverse\jadx-gui-1\jadx-gui-1.5.3.exe` | GUI 打开 APK | Android Java/Kotlin 代码阅读 |
 | plist Editor/iBackupBot | `D:\Forensic\ForensicTool\Mobile\plist Editor Pro\iBackupBot.app` | GUI | iOS plist、备份数据辅助查看 |
 | sqlite3 | `D:\CaptureTheFlag\CTFTool\platform-tools\sqlite3.exe` | `sqlite3 app.db ".tables"` | App SQLite 数据库快速查询 |
+| WeFlow 4.5.1 | `C:\Users\glj07\Desktop\Codex工作区\工具\WeFlow\downloads\WeFlow-4.5.1-x64-Setup.exe` | 安装后 GUI 启动；可在设置中启用本地 HTTP API | 微信 4.0+ 聊天记录查看、导出、朋友圈媒体预览/解密、群聊画像和统计报告 |
 
 优先策略：手机题先识别 Android/iOS 和备份类型，再找聊天、浏览器、定位、媒体、账号、数据库和时间戳。
+WeFlow 用于微信本机聊天记录取证时，WP 必须写清微信版本、导出格式、关键会话/群聊、关键截图、文本摘录和导出文件路径；不要只写“用 WeFlow 查看”。
 
 ## 数据库、日志与时间线
 
