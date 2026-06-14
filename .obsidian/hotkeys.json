@@ -80,14 +80,6 @@
       "key": "R"
     }
   ],
-  "editor:toggle-bold": [
-    {
-      "modifiers": [
-        "Mod"
-      ],
-      "key": "A"
-    }
-  ],
   "editor:table-col-align-center": [
     {
       "modifiers": [
@@ -169,6 +161,14 @@
         "Shift"
       ],
       "key": "Q"
+    }
+  ],
+  "editor:toggle-bold": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "Z"
     }
   ]
 }
