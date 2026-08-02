@@ -28,7 +28,7 @@
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/看雪论坛/Game通关.md": "936d85718b505ddbc750e0d37cdb331c0b3b4abdeeee048f11ea3833d160123b",
     "source/_posts/Forensic_电子取证/取证write-up/电子取证初学.md": "31a639aa9f7172c33c832bc1da1c4a05c5963cb8bd07a7aac422544156668159",
     "source/_posts/Forensic_电子取证/取证write-up/平航杯/2024平航杯.md": "0466410f691521547247eed739fb9d66074b2d13cae48678b84ae9fe3ba5be85",
-    "source/_posts/博览知识/琉璃嘉的skill.md": "f0e97d43f05cca2355760e5695d28e44aaf8eecc6398de03c10a1a9fe86aea02",
+    "source/_posts/博览知识/琉璃嘉的skill.md": "882cc727c55608ed2182df7f002a3d79e85e36e227c6c54b0fed2a7c0faf35ac",
     "source/_posts/Forensic_电子取证/取证write-up/平航杯/2026平航杯团队赛.md": "9b06fe8137f929c5738c257fcb8e4fbecd96ab34369fa84d6608b5ec80c1684a",
     "source/_posts/Capture_The_Flag_夺旗赛/CTF知识/Crypto/维吉尼亚密码.md": "45cafb58886ed60089a0423d8bce6b66d096fca6d9d3474f8062b46d382a1bfc",
     "source/_posts/Forensic_电子取证/取证write-up/獬豸杯/2025獬豸杯.md": "fec1d01049c03cdddf4455ff5a38bc9ff617f503a28478612b059b29bca403b7",
@@ -37,10 +37,9 @@
     "source/_posts/Forensic_电子取证/取证write-up/美亚杯/2025美亚杯资格赛.md": "e9f9681f5e65fb6a1cd3182918eeb69232bb1c0ebf791b390170afb60effbbda",
     "source/_posts/游戏Game/生化公司：救赎 Bio Inc. Redemption.md": "417dc945489af87cacf5f44f67469351b894942848ebd5f4c49f4d8d761b595d",
     "source/_posts/游戏Game/帝国时代四 Age of Empires IV.md": "af1284579ee8b41b8c7eed27893ea999c9e021740205ce4326b0ba11ab7e5d7e",
-    "source/_posts/Forensic_电子取证/取证write-up/FIC/25FIC初赛.md": "c86d99d85fca83d0d190c3c56062e0fe15a4d9d765ad7107b97157c748631862",
     "source/_posts/博览知识/NCRE三级网络技术学习笔记.md": "d1ea8b101d74907ec529382fcadd4f80d697086d0cb7711732305be69b6654fb",
     "source/_posts/博览知识/DoS拒绝服务攻击.md": "71b05a2bf142a084d0faa89fc1a595e891eac48abe1270e2d1b9dbcf13c97a15",
-    "source/_posts/博览知识/蜜罐、蜜网与蜜场.md": "2c7e9b1cbcc8386de16e55ee19b1fcff14d2f5bb634ed617bf1bc974c4b2a742",
+    "source/_posts/博览知识/蜜罐、蜜网与蜜场.md": "17ea31ae4d730c5cfd6fc269a5face27c36b56867ac24ea0245ee5d2565812f6",
     "source/_posts/Forensic_电子取证/Forensic知识/宝塔面板.md": "26b5a77891a215f2547585dfab2c5c537e6262472f04a1f9082ac17b8dc64c2b",
     "source/_posts/Forensic_电子取证/Forensic知识/如何用kali命令提取文件隐含文件.md": "fca6caa495eb33d3075a4d2f419c6c2a073de41d593431ad1f9fcbb3ab6098a4",
     "source/_posts/Forensic_电子取证/Forensic知识/Slowhttptest.md": "b5a24f3337d437cd8d42134ef8ec573a56e51464fce32a9f813c679c51ffe394",
@@ -67,7 +66,6 @@
     "source/_posts/Forensic_电子取证/取证write-up/数证杯/25数证杯初赛团体.md": "98bcd6de73ea84369ad267bef55d7ef6ad196c2c24a304c0ea82f505bc957a01",
     "source/_posts/Forensic_电子取证/取证write-up/龙信杯/25龙信杯个人.md": "95ad19f487ffca807e9c0d6585e23ed01cbdf7ecd859c0f46d9e82fc48109c98",
     "_archive/NSSCTF_2025_split_20260321_100602/[SWPUCTF_2021_新生赛]easy_sql.md": "bdcb1a01efc0f04dc1a2550710c32a631a9992dfb23184aa7e4dd5fe099f7bb3",
-    "source/_posts/Forensic_电子取证/取证write-up/FIC/2026FIC.md": "7d8cc873b3b4a7b6a267a7834f4940cafb38613c1eed64a29e04ceffe96b7f54",
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/2026 星芒杯.md": "78bdda1b08d0b4cd7ce6267baa6f19165fa7933e669d52e9c030dae7fc449631",
     "source/_posts/博览知识/Stable Diffusion 生成手册.md": "9f3d7573df30f3deb8b3a1ab7615ee548edef78633113734c8a63bcc052cbf0e",
     "source/_posts/博览知识/BitLocker 内存取证与 DMA 抓取排错笔记.md": "483c7a52b9166226985670a6499e645b8d7700ddb681695879921536de08771b",
@@ -100,6 +98,13 @@
     "source/_posts/Capture_The_Flag_夺旗赛/夺旗赛Write-up/零重力.md": "24cf80a7558748459caa374ef3774c1c7e6863454a248e04fa914e4443a23988",
     "source/_posts/Forensic_电子取证/取证write-up/獬豸杯/2025獬豸杯/2026獬豸杯.md": "1da90dcc73f12216834f92fb340510122b4a01f0d5ab404e0e65310a902c794e",
     "source/_posts/Forensic_电子取证/取证write-up/獬豸杯/2026獬豸杯.md": "5fe061e8b5476fe96efafe205ef37ebd3fbc03a1ba2d86f9dcc52a29e8884f30",
-    "source/_posts/博览知识/AI提示词焚诀.md": "25b18e338b8b8d53c814d74ea4ae9c587ae201d2f8b335329d3af1c4b8f4a7f4"
+    "source/_posts/博览知识/AI提示词焚诀.md": "25b18e338b8b8d53c814d74ea4ae9c587ae201d2f8b335329d3af1c4b8f4a7f4",
+    "source/_posts/博览知识/沉没成本不参与重大决策-深度调研.md": "251c164ac38d8919ae5d0472e5c286dd6a98632146b151118a400ececdf1bdb2",
+    "source/_posts/博览知识/从无到有到虚无-两段深夜哲学对话.md": "32df0f59d6b9b7c34d87c49a7b01983d2c1699f81004289851f212e54874c053",
+    "source/_posts/博览知识/溢出漏洞.md": "369b31835b72ae975864f5e113ccb3fea154094a758d4275069169e2a91f84c2",
+    "source/_posts/博览知识/重伤到战争-人类本能与意识的深度对话.md": "3142f09ee255a269eff212eed2c87baa2636ba1980868600ed97ddbf33dc114e",
+    "source/_posts/Forensic_电子取证/腾讯 Marvis 客户端“扫盘”与隐私风险取证分析.md": "eaeb8c441c4cd42dd7e42943eb41a5acc84dc6c268d8372c7e08a734363f7c49",
+    "source/_posts/Forensic_电子取证/取证write-up/FIC/2025 FIC初赛.md": "e25611d721547406c7e8881dd007caba2a8dd5a87795c0c71f85b449020abc68",
+    "source/_posts/Forensic_电子取证/取证write-up/FIC/2026 FIC初赛.md": "084dcc61719e148e82fbbe8f25bd26f0881d680ff04cb80b009766d567a32c25"
   }
 }

@@ -1,8 +1,8 @@
 ---
 title: 腾讯 Marvis 客户端“扫盘”与隐私风险取证分析
-permalink: '/2026/07/30/Forensic_电子取证/Tencent-Marvis-Privacy-Analysis/'
+permalink: /2026/07/30/Forensic_电子取证/Tencent-Marvis-Privacy-Analysis/
 date: 2026-07-30 15:30:00
-updated: 2026-07-30 17:20:00
+updated: 2026-08-02T22:37
 categories:
   - Forensic_电子取证
 tags:
@@ -15,6 +15,7 @@ tags:
 description: 基于 Windows 本机进程、服务、数字签名、网络连接、本地数据库结构与腾讯官方隐私政策，对 Marvis 文件访问、知识库索引和云端传输边界进行证据分级分析。
 keywords: Marvis, 腾讯, 扫盘, 隐私, 本地知识库, 文件索引, 网络取证, Windows取证
 cover: https://cdn.jsdelivr.net/gh/FighterGodNemo/CDN/img/forensic-analysis.jpg
+created: 2026-07-30T16:57
 ---
 
 # 腾讯 Marvis 客户端“扫盘”与隐私风险取证分析
@@ -30,8 +31,6 @@ cover: https://cdn.jsdelivr.net/gh/FighterGodNemo/CDN/img/forensic-analysis.jpg
 - **尚未证实**：例如是否无差别扫描全部磁盘、是否批量上传文件原文。
 
 > 本文取证快照时间为 **2026 年 7 月 30 日**，软件和隐私政策更新后，行为可能变化。
-
-<!-- more -->
 
 ## 一、先说结论
 
