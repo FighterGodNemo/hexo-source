@@ -3,14 +3,15 @@ title: Python切换所用版本
 permalink: /2026/03/15/Forensic_电子取证/Forensic解题妙具/Python切换所用版本/
 date: 2026-03-15 13:28:28
 categories:
-  - Forensic_电子取证
-  - Forensic解题妙具
+  - 工具进阶使用
+  - 环境与自动化
 tags:
   - 电子取证
   - 取证工具
   - Python切换所用版本
+  - 工具进阶
 created: 2026-03-15T16:49
-updated: 2026-04-15T13:42
+updated: 2026-08-02T23:40
 ---
 
 ## 1. 使用 pyenv（推荐）

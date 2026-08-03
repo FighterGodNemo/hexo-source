@@ -3,14 +3,15 @@ title: MT管理器替换APK数据
 permalink: /2026/03/15/Forensic_电子取证/Forensic解题妙具/MT管理器替换APK数据/
 date: 2026-03-15 13:28:28
 categories:
-  - Forensic_电子取证
-  - Forensic解题妙具
+  - 工具进阶使用
+  - 逆向与移动端
 tags:
   - 电子取证
   - 取证工具
   - MT管理器
+  - 工具进阶
 created: 2026-03-15T16:49
-updated: 2026-04-15T13:42
+updated: 2026-08-02T23:40
 ---
 
 在雷电模拟器中使用MT管理器对APK数据进行替换并仿真原应用的使用，需结合ADB工具、文件管理及模块化操作。以下是具体步骤：

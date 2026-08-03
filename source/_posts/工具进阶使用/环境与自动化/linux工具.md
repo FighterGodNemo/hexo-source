@@ -3,14 +3,15 @@ title: linux工具
 permalink: /2026/03/15/Forensic_电子取证/Forensic解题妙具/linux工具/
 date: 2026-03-15 13:28:28
 categories:
-  - Forensic_电子取证
-  - Forensic解题妙具
+  - 工具进阶使用
+  - 环境与自动化
 tags:
   - 电子取证
   - 取证工具
   - Linux
+  - 工具进阶
 created: 2026-03-15T16:49
-updated: 2026-04-15T13:42
+updated: 2026-08-02T23:40
 ---
 
 | 工具名称 | 主要功能 | 简介 |
@@ -85,5 +86,7 @@ updated: 2026-04-15T13:42
 | --- | --- | --- |
 | **ExifTool** | `sudo apt install libimage-exiftool-perl` | 读取、写入和编辑多种文件的元信息（如 JPEG 的 GPS 坐标）。 |
 | **Aftershot** / **GIMP** | `sudo apt install gimp` | 查看和分析图片文件。 |
+
+虚拟机隔离、Python 虚拟环境和基础执行命令见 [linux虚拟机](/2026/03/15/Capture_The_Flag_夺旗赛/CTF解题妙具/linux虚拟机/)。
 
 

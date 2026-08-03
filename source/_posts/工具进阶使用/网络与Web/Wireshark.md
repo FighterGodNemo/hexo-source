@@ -3,14 +3,15 @@ title: Wireshark
 permalink: '/2026/03/15/Capture_The_Flag_夺旗赛/CTF解题妙具/Wireshark/'
 date: "2026-03-15 13:28:16"
 categories:
-  - Capture_The_Flag_夺旗赛
-  - CTF解题妙具
+  - 工具进阶使用
+  - 网络与Web
 tags:
   - CTF
   - CTF工具
   - Wireshark
+  - 工具进阶
 created: "2026-03-15T16:49"
-updated: "2026-04-01T13:15"
+updated: "2026-08-02T23:40"
 ---
 
 网络协议分析工具，用于捕获和分析网络流量。网络流量分析是指捕捉网络中流动的数据包，并通过查看包内部数据以及进行相关的协议、流量分析、统计等来发现网络运行过程中出现的问题。
@@ -35,4 +36,3 @@ Wireshark的基本使用分为数据包筛选、数据包搜索、数据包还�
 
 #### 数据提取[¶](https://forensics.xidian.edu.cn/wiki/pac/#_4)
 Wireshark支持提取通过http传输（上传/下载）的文件内容，方法：选中http文件传输流量包，在分组详情中找到data或者Line-based text data:text/html层，鼠标右键点击 – 选中 导出分组字节流。
-

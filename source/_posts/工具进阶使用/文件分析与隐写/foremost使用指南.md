@@ -3,14 +3,15 @@ title: foremost使用指南
 permalink: '/2026/03/15/Forensic_电子取证/Forensic解题妙具/foremost使用指南/'
 date: "2026-03-15 13:28:28"
 categories:
-  - Forensic_电子取证
-  - Forensic解题妙具
+  - 工具进阶使用
+  - 文件分析与隐写
 tags:
   - 电子取证
   - 取证工具
   - Foremost
+  - 工具进阶
 created: "2026-03-15T16:49"
-updated: "2026-03-19T15:32"
+updated: "2026-08-02T23:40"
 ---
 
 `foremost` 是一个基于文件头、尾和内部数据结构的数据恢复工具，常用于从磁盘镜像或文件中提取隐藏/嵌入的文件。
@@ -154,4 +155,3 @@ foremost -i 可疑文件 -o foremost_output
 ```
 
 `foremost` 是数字取证和CTF比赛中非常实用的工具，特别擅长从各种容器文件中恢复已知格式的文件。
-

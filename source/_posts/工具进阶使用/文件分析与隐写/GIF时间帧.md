@@ -3,14 +3,15 @@ title: GIF时间帧
 permalink: '/2026/03/15/Capture_The_Flag_夺旗赛/CTF解题妙具/GIF时间帧/'
 date: "2026-03-15 13:28:16"
 categories:
-  - Capture_The_Flag_夺旗赛
-  - CTF解题妙具
+  - 工具进阶使用
+  - 文件分析与隐写
 tags:
   - CTF
   - CTF工具
   - GIF
+  - 工具进阶
 created: "2026-03-15T16:49"
-updated: "2026-03-19T15:57"
+updated: "2026-08-02T23:40"
 ---
 
 kali——identify -format "%s %T \n" 1.gif

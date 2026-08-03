@@ -3,14 +3,15 @@ title: Ciphey
 permalink: /2026/03/15/Capture_The_Flag_夺旗赛/CTF解题妙具/Ciphey/
 date: 2026-03-15 13:28:16
 categories:
-  - Capture_The_Flag_夺旗赛
-  - CTF解题妙具
+  - 工具进阶使用
+  - 密码与压缩
 tags:
   - CTF
   - CTF工具
   - Ciphey
+  - 工具进阶
 created: 2026-03-15T16:49
-updated: 2026-05-22T19:20
+updated: 2026-08-02T23:40
 ---
 在Windows上 ciphey安装看这篇文章：
 [在Windows上 ciphey安装（详细版）-CSDN博客](https://blog.csdn.net/BG1230521/article/details/134127716)
@@ -46,4 +47,3 @@ cd D:\Forensic\ForensicTool\Decrypt\Ciphey\Python38\test_venv\Scripts
 如果想要去除进度条、概率表和所有噪音，可以使用安静模式：
 
 ciphey -t "encrypted text here" -q
-

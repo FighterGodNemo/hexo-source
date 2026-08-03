@@ -3,18 +3,18 @@ title: IDA Pro
 permalink: /2026/03/15/Capture_The_Flag_夺旗赛/CTF解题妙具/IDA_Pro/
 date: 2026-03-15 13:28:16
 categories:
-  - Capture_The_Flag_夺旗赛
-  - CTF解题妙具
+  - 工具进阶使用
+  - 逆向与移动端
 tags:
   - CTF
   - CTF工具
   - IDAPro
+  - 工具进阶
 created: 2026-03-15T16:49
-updated: 2026-08-02T23:13
+updated: 2026-08-02T23:40
 ---
 
 商业反汇编和调试工具，用于分析恶意软件和逆向工程。
 
 IDA 的核心优势在于**二进制文件（如 ELF、PE）的反汇编与反编译**，其反编译器（Hex-Rays Decompiler）<u>对 C/C++ 等静态语言的支持更成熟</u>。而 Python 字节码（`.pyc`）是一种**中间表示形式**，其结构与二进制机器码差异较大，IDA 的反编译逻辑无法直接处理。
-
 

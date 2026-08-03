@@ -3,14 +3,15 @@ title: bkcrack
 permalink: '/2026/03/15/Capture_The_Flag_夺旗赛/CTF解题妙具/bkcrack/'
 date: "2026-03-15 13:28:16"
 categories:
-  - Capture_The_Flag_夺旗赛
-  - CTF解题妙具
+  - 工具进阶使用
+  - 密码与压缩
 tags:
   - CTF
   - CTF工具
   - bkcrack
+  - 工具进阶
 created: "2026-03-15T16:49"
-updated: "2026-03-19T15:57"
+updated: "2026-08-02T23:40"
 ---
 
 D:
@@ -210,4 +211,3 @@ Bash
 ```
 
 只要你有**一点点明文**，`bkcrack` 就能秒破传统 ZIP 加密！非常适合 CTF 中的 zip 破解题。
-

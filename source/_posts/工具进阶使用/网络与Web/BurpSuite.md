@@ -3,16 +3,16 @@ title: Burp Suite
 permalink: /2026/03/15/Capture_The_Flag_夺旗赛/CTF解题妙具/Web/BurpSuite/
 date: 2026-03-15 13:28:16
 categories:
-  - Capture_The_Flag_夺旗赛
-  - CTF解题妙具
-  - Web
+  - 工具进阶使用
+  - 网络与Web
 tags:
   - CTF
   - CTF工具
   - Web
   - BurpSuite
+  - 工具进阶
 created: 2026-03-15T16:49
-updated: 2026-05-06T20:45
+updated: 2026-08-02T23:40
 ---
 
 Web应用安全测试工具，支持代理、扫描、漏洞利用等功能。
@@ -34,4 +34,3 @@ Extension
 Logger
 
 Comparer
-
