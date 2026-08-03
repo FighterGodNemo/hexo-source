@@ -12,7 +12,7 @@ tags:
   - Web
   - SQL注入
 created: 2026-03-15T16:49
-updated: 2026-08-03T09:09
+updated: 2026-08-03T09:10
 ---
 
 SQL（Structured Query Language）结构化查询语言，是一种关系型数据库查询的标准编程语言，用于存取数据以及查询、更新、删除和管理关系型数据库（即SQL是一种数据库查询语言）
