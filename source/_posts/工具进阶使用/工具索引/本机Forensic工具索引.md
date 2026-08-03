@@ -12,7 +12,7 @@ tags:
   - 工具索引
   - 工具进阶
 created: 2026-05-05T09:20
-updated: 2026-08-02T23:40
+updated: 2026-08-03T08:13
 ---
 
 # 本机 Forensic 工具索引
@@ -215,7 +215,7 @@ SQL/代码/命令输出原文
 C:\Users\glj07\AppData\Roaming\Codex_Assistant\Usable_Tools_List.txt
 C:\Users\glj07\AppData\Roaming\Codex_Assistant\WSL_CTF工具清单.txt
 C:\Users\glj07\.codex\skills\ctf-memory-playbook\references\local-tool-index.md
-D:\TheBlogs\source\_posts\Forensic_电子取证\Forensic解题妙具\本机Forensic工具索引.md
+D:\TheBlogs\source\_posts\工具进阶使用\工具索引\本机Forensic工具索引.md
 ```
 
 如果某个工具同时用于 CTF 和 Forensic，例如 Wireshark、hashcat、Volatility、JADX，也要同步检查 CTF 工具索引是否需要更新。

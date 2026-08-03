@@ -12,7 +12,7 @@ tags:
   - 本机环境
   - 工具进阶
 created: 2026-05-05T09:20
-updated: 2026-08-02T23:40
+updated: 2026-08-03T08:13
 ---
 
 # 本机 CTF 工具索引
@@ -170,7 +170,7 @@ C:\Users\glj07\AppData\Roaming\Codex_Assistant\Usable_Tools_List.txt
 C:\Users\glj07\AppData\Roaming\Codex_Assistant\CTF_Tools_Complete_List.txt
 C:\Users\glj07\AppData\Roaming\Codex_Assistant\WSL_CTF工具清单.txt
 C:\Users\glj07\.codex\skills\ctf-memory-playbook\references\local-tool-index.md
-D:\TheBlogs\source\_posts\Capture_The_Flag_夺旗赛\CTF解题妙具\本机CTF工具索引.md
+D:\TheBlogs\source\_posts\工具进阶使用\工具索引\本机CTF工具索引.md
 ```
 
 写入时至少记录工具名、版本或目录版本、路径、调用方式、适用场景、Windows/WSL 位置和验证日期。
