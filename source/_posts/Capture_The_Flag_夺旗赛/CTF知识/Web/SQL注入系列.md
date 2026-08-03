@@ -12,7 +12,7 @@ tags:
   - Web
   - SQL注入
 created: 2026-03-15T16:49
-updated: 2026-08-03T09:01
+updated: 2026-08-03T09:03
 ---
 
 SQL（Structured Query Language）结构化查询语言，是一种关系型数据库查询的标准编程语言，用于存取数据以及查询、更新、删除和管理关系型数据库（即SQL是一种数据库查询语言）
@@ -24,3 +24,5 @@ SQL 注入（SQL Injection）是一种常见的 Web 攻击方式，攻击者通�
 SQLmap
 
 # 宽字节注入
+
+![](SQL注入系列/file-20260803090326370.png)
