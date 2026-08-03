@@ -1,7 +1,7 @@
 ---
-title: SQL注入
-permalink: '/2026/03/15/Capture_The_Flag_夺旗赛/CTF知识/Web/SQL注入/'
-date: "2026-03-15 13:28:16"
+title: SQL注入系列
+permalink: /2026/03/15/Capture_The_Flag_夺旗赛/CTF知识/Web/SQL注入/
+date: 2026-03-15 13:28:16
 categories:
   - Capture_The_Flag_夺旗赛
   - CTF知识
@@ -11,8 +11,8 @@ tags:
   - CTF知识
   - Web
   - SQL注入
-created: "2026-03-15T16:49"
-updated: "2026-03-18T09:42"
+created: 2026-03-15T16:49
+updated: 2026-08-03T09:01
 ---
 
 SQL（Structured Query Language）结构化查询语言，是一种关系型数据库查询的标准编程语言，用于存取数据以及查询、更新、删除和管理关系型数据库（即SQL是一种数据库查询语言）
@@ -23,3 +23,4 @@ SQL 注入（SQL Injection）是一种常见的 Web 攻击方式，攻击者通�
 
 SQLmap
 
+# 宽字节注入
