@@ -104,14 +104,6 @@
       "key": "1"
     }
   ],
-  "editor:toggle-highlight": [
-    {
-      "modifiers": [
-        "Mod"
-      ],
-      "key": "Q"
-    }
-  ],
   "editor:clear-formatting": [
     {
       "modifiers": [
@@ -122,6 +114,14 @@
     }
   ],
   "editor:toggle-bold": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "Q"
+    }
+  ],
+  "editor:toggle-highlight": [
     {
       "modifiers": [
         "Mod"
