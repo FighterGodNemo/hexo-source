@@ -13,7 +13,7 @@ tags:
   - Base64
   - 编码
 created: 2026-03-15T16:49
-updated: 2026-09-01T12:28
+updated: 2026-09-01T12:34
 ---
 ## Base64编码隐藏
 ![](Web应用安全与防护/file-20260331130229538.png)![](Web应用安全与防护/file-20260331130229549.png)![](Web应用安全与防护/file-20260331130229558.png)
@@ -38,9 +38,9 @@ CTF{user_agent_inject_success}
     const correctPassword = "SXpVR1F4TTFVe1JtdFNSazB3VTJ4U1UwNXFSWGRVV1ZrOWNWYzU=";
     function validatePassword(input){
 	    let encoded = btoa(input);
-	    encoded = btoa(encoded t 'xH7jK'). slice(3);
-	    encoded = btoa(encoded. split('').reverse(). join(''));
-	    encoded = btoa('aB3' t encoded t 'qW9'). substr(2);
+	    encoded = btoa(encoded + 'xH7jK').slice(3);
+	    encoded = btoa(encoded.split('').reverse(). join(''));
+	    encoded = btoa('aB3' + encoded + 'qW9'). substr(2);
 	    return btoa(encoded) === correctPassword;
     }
     const enteredPassword = document.getElementById('password').value;
