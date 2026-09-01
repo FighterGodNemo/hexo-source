@@ -11,7 +11,7 @@ tags:
   - CTF
   - WriteUp
   - CTFshow
-updated: 2026-09-01T13:00
+updated: 2026-09-01T13:36
 ---
 
 ## Web 1
@@ -29,3 +29,4 @@ base64解码
 ## WAF绕过
 想到用焚靖工具：
 ![](Web/file-20260901130056815.png)
+![](Web/file-20260901133558790.png)
