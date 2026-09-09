@@ -9,9 +9,8 @@ tags:
   - MCP
   - LMStudio
 created: 2026-04-27T21:20
-updated: 2026-04-27T21:38
+updated: 2026-09-09T19:15
 ---
-
 ## 问题现象
 
 Cherry Studio 在使用本地 LM Studio 模型时，Agent/Code 通道报错：
