@@ -11,7 +11,7 @@ tags:
   - Volatility3
   - 工具进阶
 created: 2026-03-15T16:49
-updated: 2026-08-02T23:40
+updated: 2026-09-09T19:02
 ---
 
 #### 1. **提取与 BitLocker 相关的进程信息**

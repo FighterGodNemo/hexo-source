@@ -11,7 +11,7 @@ tags:
   - ZIP伪加密
   - 工具进阶
 created: 2026-03-15T16:49
-updated: 2026-08-02T23:40
+updated: 2026-09-09T18:58
 ---
 
 ZipCenOp.jar
@@ -19,14 +19,7 @@ ZipCenOp.jar
 java -jar ZipCenOp.jar r lm.zip
 
 
-
-
-
-
-
 文件格式签名（File Signature 或 Magic Number）是文件开头的特定字节序列，用于标识文件的类型。以下是一些常见文件格式的签名（十六进制表示）：
-
-
 
 1. 压缩文件
 

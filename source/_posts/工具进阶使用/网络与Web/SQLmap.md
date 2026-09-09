@@ -1,7 +1,7 @@
 ---
 title: SQLmap
-permalink: '/2026/03/15/Capture_The_Flag_夺旗赛/CTF解题妙具/Web/SQLmap/'
-date: "2026-03-15 13:28:16"
+permalink: /2026/03/15/Capture_The_Flag_夺旗赛/CTF解题妙具/Web/SQLmap/
+date: 2026-03-15 13:28:16
 categories:
   - 工具进阶使用
   - 网络与Web
@@ -11,20 +11,14 @@ tags:
   - Web
   - SQLmap
   - 工具进阶
-created: "2026-03-15T16:49"
-updated: "2026-08-02T23:40"
+created: 2026-03-15T16:49
+updated: 2026-09-09T19:04
 ---
-
 ## 使用方法
 ```plain
 cd sqlmap
 使用命令
 ```
 
-
-
-
-
 ## 简介
 sqlmap是一个开源的渗透工具，可用来进行自动化检测，利用SQL漏洞注入获取数据库服务器的权限。它具有功能强大的检测引擎，有针对不同类型数据库进行渗透测试的功能选项，包括获取数据库中存储的数据、访问操作系统文件甚至可以通过外带数据的方式执行操作系统命令。
-
