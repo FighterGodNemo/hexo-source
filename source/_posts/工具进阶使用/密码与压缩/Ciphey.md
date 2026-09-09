@@ -11,13 +11,13 @@ tags:
   - Ciphey
   - 工具进阶
 created: 2026-03-15T16:49
-updated: 2026-08-02T23:40
+updated: 2026-09-09T19:07
 ---
 在Windows上 ciphey安装看这篇文章：
 [在Windows上 ciphey安装（详细版）-CSDN博客](https://blog.csdn.net/BG1230521/article/details/134127716)
 
 ```
-**D：**
+D：
 
 cd D:\Forensic\ForensicTool\Decrypt\Ciphey\Python38\test_venv\Scripts
 ```
