@@ -16,7 +16,7 @@ description: 从伪造驱动下载站 eweadndriver.com.cn 投毒的一次银狐(
 keywords: 银狐, Silver Fox, WDAC, App Control for Business, SiPolicy.p7b, 反杀软, 火绒, AM_Delta_Patch, 伪造驱动站, 应急响应, Windows取证, RAT
 cover: https://cdn.jsdelivr.net/gh/FighterGodNemo/CDN/img/forensic-analysis.jpg
 created: 2026-09-14T20:50
-updated: 2026-09-14T21:05
+updated: 2026-09-14T21:07
 ---
 
 > 一次真实的家用 Windows 11 感染事件复盘。用户在搜索某硬件驱动时误入仿冒站点，下载并运行了伪装成"驱动安装器"的样本，结果 PC 被强制重启、火绒安全软件被系统级策略封杀，弹出"你的组织使用适用于企业的应用控制阻止此应用"。经排查确认为**银狐(Silver Fox / WinOS)RAT**，本文记录从入口、杀伤链、持久化到清除处置的全过程，并给出可复用的 IOC 与检测/处置命令。
@@ -46,7 +46,7 @@ updated: 2026-09-14T21:05
 
 > `.cn` 与 `.com.cn` 是**两个独立可注册的命名空间**。真官方持有 `.cn` 不代表 `.com.cn` 被保护，攻击者花几十块就能把"看起来更像国际站"的 `.com.cn` 抢注下来做钓鱼。**认准官方主域、不要凭'看着像'下载驱动**是第一道防线。
 
-## 2. 投放器：微软签名外壳 + 29MB 附加载荷
+## 2. 投放器：嫁接微软证书的外壳（验签 HashMismatch）
 
 落地样本：
 
@@ -275,7 +275,7 @@ rnNc4x/Zjb9Rw/pdZ777/1T11K  -> Test-Path 全部 False（已隔离）
 ## 8. 防御与检测建议
 
 - **驱动/软件只从官方主域下载**，警惕 `官方名+关键词` 拼接的 `.com.cn`/`.top` 等抢注域名。
-- **数字签名 ≠ 安全**：签名合法但文件体积异常（远大于正版桩程序）、或 overlay 巨大，应高度怀疑 overlay 走私。
+- **"看着是微软签名" ≠ 安全，必须验签**：本样本证书主体确实是 `Microsoft Corporation`，但 `Get-AuthenticodeSignature` 直接返回 `HashMismatch`——证书被嫁接、文件哈希对不上。资源管理器双击并不校验签名有效性，右键属性→数字签名或 `Get-AuthenticodeSignature` 才会暴露。**放行依据永远是验签结果，不是证书里的名字。** 另外若签名有效但文件体积异常、或签名块之后还挂着巨大 overlay，同样要警惕 overlay 走私这类"签名仍有效"的更隐蔽变体。
 - 家用主机可开启 **Windows 攻击面削减(ASR)** 与 SmartScreen；企业侧对 WDAC 策略文件目录做**完整性监控**：`SiPolicy.p7b` 与 `CiPolicies\Active\*.cip` 的非预期变更即告警。
 - 出现"**你的组织使用适用于企业的应用控制阻止此应用**"却并无组织管控时，第一时间怀疑**恶意 WDAC 策略**，而非软件本身损坏。
 - 检测银狐常见特征：`C:\Users\Public\` 或 `Program Files (x86)` 下**随机名文件夹 + 随机名 EXE**、伪装成"腾讯/阿里/微软 Edge 更新"的 Run 项与计划任务、指向这些随机路径的多重冗余自启。
