@@ -12,11 +12,11 @@ tags:
   - WDAC
   - Windows安全
   - 恶意软件分析
-description: 从伪造驱动下载站 eweadndriver.com.cn 投毒的一次银狐(Silver Fox)RAT 感染完整复盘。攻击者滥用微软签名的 AM_Delta_Patch 外壳携带 29MB 加密载荷，落地四个后门并写入含 141 条拒绝规则的恶意 WDAC 策略(SiPolicy.p7b)封杀火绒等杀软，强制重启激活。文中给出完整杀伤链、IOC、逐步处置命令与验证日志。
+description: 从伪造驱动下载站 eweadndriver.com.cn 投毒的一次银狐(Silver Fox)RAT 感染完整复盘。攻击者把真微软代码签名证书嫁接到 29MB 恶意外壳(实测验签 HashMismatch)，落地四个后门并写入含 141 条拒绝规则的恶意 WDAC 策略(SiPolicy.p7b)封杀火绒等杀软，强制重启激活。文中给出完整杀伤链、IOC、逐步处置命令与验证日志。
 keywords: 银狐, Silver Fox, WDAC, App Control for Business, SiPolicy.p7b, 反杀软, 火绒, AM_Delta_Patch, 伪造驱动站, 应急响应, Windows取证, RAT
 cover: https://cdn.jsdelivr.net/gh/FighterGodNemo/CDN/img/forensic-analysis.jpg
 created: 2026-09-14T20:50
-updated: 2026-09-14T20:50
+updated: 2026-09-14T21:05
 ---
 
 > 一次真实的家用 Windows 11 感染事件复盘。用户在搜索某硬件驱动时误入仿冒站点，下载并运行了伪装成"驱动安装器"的样本，结果 PC 被强制重启、火绒安全软件被系统级策略封杀，弹出"你的组织使用适用于企业的应用控制阻止此应用"。经排查确认为**银狐(Silver Fox / WinOS)RAT**，本文记录从入口、杀伤链、持久化到清除处置的全过程，并给出可复用的 IOC 与检测/处置命令。
@@ -28,14 +28,14 @@ updated: 2026-09-14T20:50
 | 时间(2026-09-14) | 事件 |
 | --- | --- |
 | — | 用户搜索驱动，进入仿冒站 `eweadndriver.com.cn`（官方为 `eweadn.cn`） |
-| — | 下载 `install_s.8.13.exe`（伪装成微软 `AM_Delta_Patch`，带微软签名） |
+| — | 下载 `install_s.8.13.exe`（伪装成微软 `AM_Delta_Patch`，嫁接微软证书但验签 `HashMismatch`） |
 | 19:42–19:55 | 运行后落地 4 个后门 + 写入注册表 Run 项 + 4 个计划任务 |
 | 19:54:12 | 写入恶意 `C:\Windows\System32\CodeIntegrity\SiPolicy.p7b`（141 条拒绝规则） |
 | — | 样本**强制重启系统**以激活 WDAC 策略 |
 | 重启后 | 火绒 `HipsMain.exe` 被拦，报"适用于企业的应用控制阻止此应用"，杀软失效 |
 | 20:44 | 应急处置：结束进程、禁用恶意策略、清持久化、隔离载荷 |
 
-一句话结论：这是一次**"合法签名外壳 + 附加加密载荷 + WDAC 反杀软"**的现代化投毒，杀软在"看得见马"之前就已经被系统策略按死。
+一句话结论：这是一次**"嫁接微软证书的外壳（验签 HashMismatch）+ 加密载荷 + WDAC 反杀软"**的现代化投毒，杀软在"看得见马"之前就已经被系统策略按死。
 
 ## 1. 入口：仿冒驱动站与 `.com.cn` 抢注
 
@@ -54,22 +54,45 @@ updated: 2026-09-14T20:50
 | --- | --- |
 | 文件名 | `install_s.8.13.exe` |
 | 伪装身份 | `AM_Delta_Patch_1.435.743.0.exe`（Microsoft Malware Protection 定义更新桩） |
-| 数字签名 | Microsoft Corporation（**合法有效**） |
+| 数字签名 | 携带 `CN=Microsoft Corporation` 证书，但校验为 **`HashMismatch`（签名无效/对不上）** |
+| 证书颁发者 | `CN=Microsoft Windows Code Signing PCA 2024` |
+| 证书指纹 | `599822D3972D7E3DBF68B47959806C61A2436333` |
 | 大小 | 29,522,384 字节（~28MB） |
 | SHA256 | `74e3145d4d33dc1143046f0561324a6d6e02f3196c203d68bafa4e43ef8bffcb` |
 | MD5 | `e5d6d733c8c1a56014468f3ecc073cb4` |
 
-**关键手法——Authenticode overlay 走私**：
+**关键手法——证书嫁接（signature grafting），不是 overlay 走私**
 
-微软正版 Defender 定义更新桩 `AM_Delta_Patch.exe` 本体只有几百 KB。样本却有 28MB，多出来的 ~29MB 是**附加在 PE 尾部的 overlay 数据**（加密载荷）。
+很多人会以为这类"带微软签名的木马"用的是 overlay 走私（把载荷追加在签名块**之后**，因为 Authenticode 不哈希签名后面的数据，所以签名能保持有效）。但对本样本实测验签，结果是 **`HashMismatch`**——签名根本对不上。PE 结构分析给出了原因：
 
-Authenticode（PE 数字签名）**只覆盖到签名表指定的映像范围，不校验追加在文件末尾的 overlay**。因此攻击者可以：
+| 字段 | 值 |
+| --- | --- |
+| 文件总大小 | 29,522,384 |
+| 证书表(Security Directory)偏移 | 29,511,680 |
+| 证书表大小 | 10,704 字节 |
+| 证书表结束位置 | 29,522,384（= 文件末尾，占比 100%） |
+| 签名之后是否有追加数据 | **否**（overlay 未放在签名之后） |
 
-1. 拿一个真正被微软签名的合法 EXE；
-2. 在其尾部**追加**一大段加密的恶意载荷；
-3. 签名依旧显示"Microsoft Corporation，有效"——因为被篡改的部分不在签名覆盖区内。
+也就是说，那 10,704 字节的**真·微软签名块被贴在文件最末尾**，而 **~29MB 的恶意载荷全部落在证书表之前、即被 Authenticode 哈希覆盖的区域内**。于是：
 
-外壳运行后自解密 overlay，在内存里拉起真正的木马。这就是为什么"看数字签名是微软"完全不能作为放行依据。
+1. 攻击者从某个真正被微软签名的 EXE 上**扒下整个签名块**（证书 + PKCS#7）；
+2. 原样**嫁接到自己那 29MB 恶意文件的尾部**；
+3. 证书主体确实是 `Microsoft Corporation`、证书链是真微软 PCA 2024——**但文件实际哈希 ≠ 签名里签的哈希**，WinVerifyTrust 返回 `HashMismatch`。
+
+所以"微软签名"在这里只是**证书主体字样好看**：
+
+```powershell
+Get-AuthenticodeSignature .\install_s.8.13.exe
+# Status         : HashMismatch
+# StatusMessage  : 文件的哈希与签名中存储的哈希不匹配（文件内容可能被更改）
+# SignerCertificate.Subject : CN=Microsoft Corporation, O=Microsoft Corporation, ...
+```
+
+> **要害对比**：
+> - **overlay 走私**（载荷在签名之后）→ 签名仍**有效**，最难识别；
+> - **证书嫁接**（本样本，载荷在哈希区内）→ 签名 `HashMismatch`，**只要真去验签就能识破**。
+>
+> 本样本属于后者，是"看着像、验不过"的糙活。它能骗到用户，纯粹因为**资源管理器双击不校验签名有效性**——图标 + 版本信息"Microsoft Malware Protection"唬人，而不是签名真的通过。右键属性→数字签名，或 `Get-AuthenticodeSignature`，都会立刻暴露 `HashMismatch`。**"看着是微软签名"永远不能作为放行依据，必须看验签结果。**
 
 > 沙箱侧佐证：CAPE 报告评分 0.8，命中 PsExec 相关 Sigma 规则，但样本在沙箱内**未完全引爆**（检测到分析环境后蛰伏），这也是这类样本对抗动态分析的常见表现。
 
