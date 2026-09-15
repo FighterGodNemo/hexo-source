@@ -13,7 +13,7 @@ tags:
   - Base64
   - 编码
 created: 2026-03-15T16:49
-updated: 2026-09-01T12:34
+updated: 2026-09-15T19:27
 ---
 ## Base64编码隐藏
 ![](Web应用安全与防护/file-20260331130229538.png)![](Web应用安全与防护/file-20260331130229549.png)![](Web应用安全与防护/file-20260331130229558.png)
@@ -53,3 +53,4 @@ CTF{user_agent_inject_success}
     });
 
 ```
+考点是 JS 逆向
