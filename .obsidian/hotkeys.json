@@ -55,14 +55,6 @@
       "key": "D"
     }
   ],
-  "editor:toggle-numbered-list": [
-    {
-      "modifiers": [
-        "Mod"
-      ],
-      "key": "Y"
-    }
-  ],
   "editor:toggle-bullet-list": [
     {
       "modifiers": [

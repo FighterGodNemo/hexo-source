@@ -13,7 +13,7 @@ tags:
   - Base64
   - 编码
 created: 2026-03-15T16:49
-updated: 2026-09-16T17:07
+updated: 2026-09-16T17:15
 ---
 ## Base64编码隐藏
 ![](Web应用安全与防护/file-20260331130229538.png)![](Web应用安全与防护/file-20260331130229549.png)![](Web应用安全与防护/file-20260331130229558.png)
@@ -35,7 +35,7 @@ CTF{user_agent_inject_success}
 ![](Web应用安全与防护/file-20260901122739072.png)
 ```
     document. getElementById('loginForm').addEventListener('submit', function(e) {
-    const correctPassword = "SXpVR1F4TTFVe1JtdFNSazB3VTJ4U1UwNXFSWGRVV1ZrOWNWYzU=";
+    const correctPassword = "SXpVRlF4TTFVelJtdFNSazB3VTJ4U1UwNXFSWGRVVlZrOWNWYzU=";
     function validatePassword(input){
 	    let encoded = btoa(input);
 	    encoded = btoa(encoded + 'xH7jK').slice(3);
@@ -56,7 +56,6 @@ CTF{user_agent_inject_success}
 考点是 JS 逆向
 ![](Web应用安全与防护/file-20260915193257363.png)
 注意：这里指 **binary = 原始字节数据**，**ASCII = 编码后的可打印文本**
-首先：假如按照现有的密文SXpVR1F4TTFVe1JtdFNSazB3VTJ4U1UwNXFSWGRVV1ZrOWNWYzU=
 
 
 
