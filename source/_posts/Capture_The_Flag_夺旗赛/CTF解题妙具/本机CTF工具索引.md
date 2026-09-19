@@ -8,7 +8,7 @@ tags:
   - 工具索引
   - 速查手册
 created: 2026-09-19T01:01
-updated: 2026-09-19T08:35
+updated: 2026-09-19T09:48
 ---
 
 > 本页由 ctf-toolbook skill 自动生成于 2026-09-19。可交互版（搜索/按分类筛选/考点互跳/一键复制命令）请打开本机手册：`D:/CaptureTheFlag/CTFTool/工具速查手册.html`。
@@ -25,6 +25,9 @@ updated: 2026-09-19T08:35
 | 工具根目录 | `D:/CaptureTheFlag/CTFTool/` | Windows 侧 CTF 工具约 172 项；取证工具在 D:/Forensic/ForensicTool |
 | CTF 工作区 | `C:/Users/glj07/Desktop/Codex工作区/Writeup/CTF` | 解题过程目录 Writeup/CTF/来源/分类/题目名；WSL 内资源包 /opt/security-tools（SecLists、PayloadsAllTheThings、theHarvester） |
 | 网络与镜像 | `` | 默认无 VPN 国内直连；pip/apt/gem 已配清华源；GitHub 下载可试 mirror.ghproxy.com 前缀；比赛现场避免临时下载工具 |
+| IDA/JADX MCP | `记忆 ida-jadx-mcp` | AI 远程操控逆向 GUI：IDA 打开后 Ctrl+Alt+M 启动插件；JADX-GUI 需开着且 8650 端口插件在线；能查反编译/函数/字符串，不能执行脚本 |
+| NSSCTF Agent Arena | `skill: nssctf-agent-arena` | agent 自动领题/提交 flag 接口（nssctf-agent-arena skill，Token 在环境变量 NSSCTF_AGENT_TOKEN） |
+| LM Studio 本地模型 | `http://localhost:1234` | 离线大模型 27B q4_0，6 并发但每请求仅 13.3K 上下文，超长材料会 context_exceeded，长文本分析优先云端 |
 
 ## 工具清单（按分类）
 
@@ -63,6 +66,8 @@ updated: 2026-09-19T08:35
 | **GitHack** | 🪟 Win | Win: `C:/Users/glj07/bin/githack.cmd` | .git 目录泄露还原源码 | `githack.cmd <url>/.git/` |
 | **git-dumper** | 🪟 Win | Win: `C:/Users/glj07/AppData/Roaming/Python/Python310/Scripts/git-dumper.exe` | .git 泄露还原（GitHack 失败时用，支持 index 缺失） | `git-dumper <url>/.git/ outdir` |
 | **Xray** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/Xray_1` | 自动化 Web 漏洞扫描器 | `xray webscan --url <url> --html-out out.html` |
+| **DirBuster** |  | Win: `D:/CaptureTheFlag/CTFTool/DirBuster` | Java 目录爆破（自带字典，界面直观） | `java -jar DirBuster.jar -u <url> -l 目录字典` |
+| **scan4all** |  | Win: `D:/CaptureTheFlag/CTFTool/scan4all_2.9.1_windows_amd64.zip` | 集成 27 种漏洞扫描的一体化扫描器（补 nuclei 盲区） ⚠️压缩包，用时先解压 | `scan4all -t <target>` |
 
 ### 🔐 密码学
 
@@ -82,6 +87,8 @@ updated: 2026-09-19T08:35
 | **hashcat** | ✅ 双端 | Win: `D:/Forensic/ForensicTool/Decrypt/hashcat-7.1.2/` <br> WSL: `/usr/bin/hashcat` | GPU 口令破解；本机 RTX 5090 走 Windows 版才有 GPU 加速 ⚠️GPU 爆破用 Windows 版；WSL 版无 GPU 直通 | `hashcat -m 0 -a 0 hash.txt D:/CaptureTheFlag/CTFTool/Cryptodictionary/rockyou` <br> `hashcat -m 1000 nt.txt -a 3 ?u?d?d?d?d?d?d` |
 | **john** | 🐧 WSL | WSL: `/usr/sbin/john` | 经典口令破解（zip/ssh2john 转换链好用） | `zip2john flag.zip > hash; john hash --wordlist=/usr/share/wordlists/rockyou` |
 | **SageMath** | ❌ 未装 | — | 数论全功能（格/椭圆曲线/多项式环），本机未装（体积 2GB+） ⚠️未安装；格密码题建议在线 sagecell 或 Docker 镜像 sagemath/sagemath | `在线用 sagecell.sagemath.org；轻量场景用 sympy/gmpy2 替代` |
+| **HashCalc** |  | Win: `D:/CaptureTheFlag/CTFTool/HashCalc.exe` | 图形化哈希计算（MD5/SHA/CRC/base64 一键） | `拖入文件或粘贴文本选算法` |
+| **CTFReBox** |  | Win: `D:/CaptureTheFlag/CTFTool/CTFReBox_52` | CTF 编码/加密集成箱（键盘码/敲击码等冷门编码也有） | `GUI 按分类试` |
 
 ### 💥 二进制利用 Pwn
 
@@ -126,6 +133,9 @@ updated: 2026-09-19T08:35
 | **010 Editor** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/010Editor` | 十六进制编辑 + 文件模板解析（改宽高/修文件头神器） | `用模板解析 PNG/ZIP 结构直接改字节` |
 | **WinHex / X-Ways** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/Xways Winhex 19.8 Professional License` | 专业十六进制/磁盘编辑，NTFS 流与恢复 | `打开磁盘/文件做底层数据恢复` |
 | **wabt** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/wabt-1.0.35-windows.tar.gz` | WebAssembly 工具集（wasm2wat/wat2wasm） ⚠️压缩包，用时先解压 | `wasm2wat main.wasm -o main.wat` |
+| **dex-tools** |  | Win: `D:/CaptureTheFlag/CTFTool/dex-tools-v2.4` | dex2jar（APK dex 转 jar 再配 jd-gui） | `d2j-dex2jar.bat app.apk 再 jd-gui 打开 jar` |
+| **Resource Hacker** |  | Win: `D:/CaptureTheFlag/CTFTool/Resource Hacker-5.2.6425简体中文-色汉化版` | exe 资源提取/替换（图标/对话框/字符串表里藏 flag） | `打开 exe 展开 RC 数据/字符串表` |
+| **zipalign** |  | Win: `D:/CaptureTheFlag/CTFTool/zipalign.exe` | APK 对齐校验（Android 逆向配套） | `zipalign -c 4 app.apk` |
 
 ### 🕵️ 取证与流量
 
@@ -145,6 +155,13 @@ updated: 2026-09-19T08:35
 | **lads** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/lads.exe` | NTFS ADS 交换数据流检测 | `lads /s D:\` |
 | **LastActivityView** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/LastActivityView.exe` | Windows 主机活动痕迹一键查看 | `运行即出报告` |
 | **sqlcipher** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/sqlcipher-3.0.1` | 加密 SQLite 数据库读取 | `PRAGMA key='pass'; 后正常查询` |
+| **TrueCrypt** |  | Win: `D:/CaptureTheFlag/CTFTool/TrueCrypt Setup 7.1a.exe` | 老牌加密容器（挂载 tc 卷取证） | `Select File 选 .tc 输密码挂载` |
+| **WeFlow** |  | Win: `C:/Users/glj07/Desktop/Codex工作区/工具/WeFlow` | 微信 4.0+ 聊天记录本地查看/导出/朋友圈解密，含本地 HTTP API | `运行 exe 自动读取本地微信数据；导出记录写进取证报告` |
+| **SQLite Expert** |  | Win: `D:/Forensic/ForensicTool/Database/SQLite Expert Professional/` | SQLite 图形化浏览（Chrome历史/聊天库/取证库直接开） | `打开 .db/.sqlite 看表；损坏库试 Recover` |
+| **R-Studio** |  | Win: `D:/CaptureTheFlag/CTFTool/R-Studio` | 专业数据恢复（删除文件/RAID/签名扫描） | `打开磁盘/镜像 -> Scan -> 按签名恢复` |
+| **DiskGenius** |  | Win: `D:/CaptureTheFlag/CTFTool/diskgenius吾爱专业破解版 v5` | 磁盘分区/恢复/镜像挂载 | `打开磁盘恢复文件；镜像可挂载浏览` |
+| **Python-dsstore** |  | Win: `D:/CaptureTheFlag/CTFTool/Python-dsstore` | .DS_Store 文件解析（苹果目录泄露文件名） | `python main.py <.DS_Store> 列出隐藏文件名` |
+| **VBCABLE** |  | Win: `D:/CaptureTheFlag/CTFTool/VBCABLE_Driver_Pack43` | 虚拟声卡驱动（把音频环路录给 SSTV 等解码器） | `装驱动后播放设备设为 CABLE Input 再录制` |
 
 ### 🖼️ 隐写与杂项
 
@@ -176,6 +193,11 @@ updated: 2026-09-19T08:35
 | **ZipCenOp** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/ZipCenOp.jar` | zip 伪加密一键修复 | `java -jar ZipCenOp.jar r flag.zip` |
 | **PasswareKit Forensic** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/PasswareKitForensic_2022汉化破解版` | 全类型文件口令恢复套件 | `选文件类型→字典/GPU` |
 | **PDF批量解密** | ❌ 未装 | — | PDF 口令移除 ⚠️2026-09-19 目录审计未找到，已移除；用 WSL 的 qpdf --decrypt 替代 | `拖入 PDF` |
+| **MidiEditor** |  | Win: `D:/CaptureTheFlag/CTFTool/MidiEditor-3.3.0-Setup.exe` | MIDI 音轨编辑查看（音符/力度/通道隐写） | `打开 .mid 逐轨看音符排布规律` |
+| **RXSSTV** |  | Win: `D:/CaptureTheFlag/CTFTool/Setup_RXSSTV.exe` | SSTV 慢扫描电视音频解码成图片 | `播放音频给 RX 模式自动出图（Robot36/Martin1 常见）` |
+| **海龟画图** |  | Win: `D:/CaptureTheFlag/CTFTool/海龟画图` | Logo 海龟语言解释器（logo 指令画出 flag 图） | `粘贴 logo 代码运行看绘图` |
+| **速查资源图集** |  | Win: `D:/CaptureTheFlag/CTFTool/（摩斯密码表.png / 010editor文件头汇总.jpg / 二维码定位点.png / 各厂商网络通讯协议图.png）` | 摩斯码对照表/文件头魔数汇总/二维码定位角/协议图，解题直接对照 | `看图对照；文件头修复配 010 Editor` |
+| **隐形水印工具** |  | Win: `D:/CaptureTheFlag/CTFTool/隐形水印工具.exe 与 WaterMark.exe` | 图片空域隐形水印加解（盲水印题常见配套） | `GUI 提取水印图层` |
 
 ### 📚 字典与资源包
 
@@ -197,6 +219,7 @@ updated: 2026-09-19T08:35
 | **QtScrcpy / platform-tools** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/QtScrcpy-win-x64-v1.4.5` | 安卓投屏与 adb（Android 题配套） | `adb devices → scrcpy 投屏` |
 | **Docker** | 🪟 Win | Win: `docker CLI 29.2.1 (docker-desktop 发行版)` | 起靶场/漏洞环境镜像 | `docker run -d -p 80:80 vulhub/xxx` <br> `docker-desktop 平时停止状态，用时启动` |
 | **Notepad++** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/Notepad++` | 文本编辑（大文件/HEX 插件） | `HEX-Editor 插件看二进制` |
+| **Netcat-win32** |  | Win: `D:/CaptureTheFlag/CTFTool/Netcat-win32-1` | Windows 原生 nc（不想进 WSL 时快速连靶机） | `nc.exe <ip> <port>` |
 
 ## 考点速查：遇到什么题用什么工具
 
@@ -253,8 +276,61 @@ updated: 2026-09-19T08:35
 | Misc | **零宽字符/雪花文本** | 零宽隐写src | `文本贴入解码器` | 在线 zwsp 工具 |
 | Misc | **Brainfuck/Ook/Piet 编程语言** | bftools / Npiet | `bfdecode file；npiet img.png` | 在线解释器 |
 | Misc | ** OSINT 图片/域名情报** | subfinder/amass + theHarvester | `theHarvester -d domain -b bing；看 exiftool 定位信息` | 在线 OSINT 平台 |
+| Crypto | **RSA 低私钥指数 Wiener（d 很小）** | python3 手写连分数 | `对 e/n 做连分数展开求 k/d，验证 d < n^0.25/3` | RsaCtfTool --attack wiener |
+| Crypto | **RSA p q 相近（费马分解）** | python3 + gmpy2 | `a=gmpy2.iroot(n,2)[0]; 向上枚举检查 a^2-n 是否完全平方得 p,q` | yafu |
+| Crypto | **RSA Rabin（e=2）** | python3 手写 | `m^2=c mod n：mod p 与 mod q 各开平方，CRT 组合四种结果逐个试` | RsaCtfTool --attack rabin |
+| Crypto | **n 含小因子/素数试除** | python3 + sympy.factorint | `sympy.factorint(n, limit=10**7)；或先查 factordb.com` | yafu |
+| Crypto | **ECC 椭圆曲线（点乘/小阶离散对数）** | python3 手写/sagecell | `点加/倍点手写；小曲线 BSGS；sagecell 直接 EllipticCurve` | sympy discrete_log（有限域） |
+| Crypto | **仿射/希尔密码** | python3 手写解方程 | `两对明密文解 a,b（逆元 gmpy2.invert）；希尔矩阵求逆 mod 26` | 随波逐流 |
+| Crypto | **rot47/rotN 全旋转枚举** | CyberChef | `ROT13 Brute Force 看全部偏移；rot47 选 ROT47` | CaptfEncoder |
+| Crypto | **jsfuck/颜文字编码** | 浏览器控制台/Node | `粘贴到 console 回车 eval；WSL node -e 亦可` | CyberChef |
+| Crypto | **与佛论禅/熊曰/新佛曰** | 随波逐流 | `随波逐流 中文加密分类一键解；无 GUI 时在线与佛论禅` | CTFReBox |
+| Crypto | **键盘码/敲击码/九键** | CTFReBox + 人工 | `敲击码按行列对照；九键按 数字*次数 映射九宫格字母` | 随波逐流 |
+| Crypto | **A1Z26/当铺/拼音首字母** | 随波逐流 | `A1Z26 数字转字母序号；当铺按汉字出头笔画数对照` | CyberChef |
+| Crypto | **CRC32 校验/碰撞** | python3 zlib | `zlib.crc32(data)；伪造碰撞用 CRC 反算脚本` | HashCalc |
+| Crypto | **MD5 假盐/fake_salt 变体** | 本机 fake_salt 工具目录 | `D:/CaptureTheFlag/CTFTool/密码学fake_salt_md5 目录内脚本` | python3 手写 |
+| Pwn | **栈迁移 stack pivot（栈不够长）** | ROPgadget + pwntools | `找 leave;ret gadget，先写 bss 假栈再 pivot 执行第二段 ROP` | one_gadget 配合 |
+| Pwn | **SROP（rt_sigreturn）** | pwntools SigreturnFrame | `frame=SigreturnFrame(); frame.rax=59... 构造 execve('/bin/sh')` | 手写字节 |
+| Pwn | **ret2csu（64位 gadget 不足）** | objdump 找 __libc_csu_init | `objdump -d ./pwn \| grep -A20 csu_init；csu gadget 控制 rdi/rsi/rdx` | ropper --search pop |
+| Pwn | **ret2shellcode（栈/bss 可执行）** | pwntools shellcraft | `checksec 看 NX 关；shellcraft.amd64.linux.sh() 后跳转执行` | shellcraft.orw |
+| Pwn | **FSOP / _IO_FILE 劫持（glibc 2.35+）** | 手写伪造 FILE 结构 | `伪造 _IO_wfile_jump 链走 wide_data；exit 触发 _IO_flush_all` | house of apple 思路 |
+| Pwn | **canary 泄露绕过** | 格式化字符串/pwntools | `%N$p 泄漏 canary 尾字节，溢出时原样回填；fork 题可逐字节爆破` | GEF 泄漏 |
+| Pwn | **partial overwrite 部分覆盖** | pwntools | `只覆盖返回地址低 1-2 字节跳附近后门（爆破 4/12 bit）` | 堆 partial unlink |
+| Pwn | **tcache poisoning / off-by-null** | GEF heap 调试 | `gdb 里 heap bins 观察；改 fd 指向目标（2.34 前 __free_hook）` | house of botcake |
+| Reverse | **APK native 层（lib/*.so）** | IDA + jadx 配合 | `jadx 找 JNI 函数名，IDA 打开对应 .so F5 静态分析` | JEB 混合视图 |
+| Reverse | **Flutter 应用逆向** | IDA + snapshot 特征 | `libapp.so 是 Dart snapshot；字符串硬编码在 snapshot 里先 strings 试` | blutter（未装，GitHub） |
+| Reverse | **Go/Rust 二进制** | IDA + 符号恢复 | `Go: 加载 gopclntab 恢复函数名；Rust: strings 找 panic 路径定位逻辑` | Ghidra |
+| Reverse | **控制流平坦化（OLLVM）** | IDA 脚本 deflat | `识别 dispatcher 主循环；符号执行去平坦化` | Unicorn 模拟 |
+| Reverse | **VMP/Themida 重壳** | x64dbg 动态跟踪 | `DiE 确认壳类型，运行到 ODP（原始入口）后 dump 修复 IAT` | 沙箱行为观察 |
+| Reverse | **易语言程序** | IDA + E-code 分析 | `识别 krnln.fnr 引用；表结构用易语言专用解析器` | 字符串+窗口事件跟踪 |
+| Reverse | **NSIS/Inno/自解压打包** | 7z 直接解 | `7z x setup.exe 常直接出原始文件` | binwalk |
+| Web | **SSRF + gopher 打内网** | Burp 构造 | `gopher://127.0.0.1:6379/_*1... 打 redis/fastcgi；dict:// 探端口` | curl gopher |
+| Web | **XXE 注入** | Burp 改包 | `DOCTYPE 实体读 file:///etc/passwd；参数实体+php://filter 外带` | 外部 DTD |
+| Web | **LFI 文件包含 php://filter chain** | Burp/curl 构造 | `php://filter/convert.iconv... 长 chain 触发 RCE（在线生成器辅助）` | data:// 伪协议 |
+| Web | **日志包含/条件竞争** | Burp Intruder | `UA 写马后包含 access.log；竞争用 Intruder 20 线程 Null payload` | python 多线程 |
+| Web | **NodeJS 原型链污染** | 审计 JS 源码 | `__proto__ 污染后 merge/clone 触发；配 child_process/eval RCE` | ejs/handlebars gadget |
+| Web | **Shiro/Log4j 反序列化** | Burp + 特征检测 | `Shiro: rememberMe 弱密钥（默认 kPH+Ix1g...）；Log4j: ${jndi:ldap://dnslog} 试探` | JNDI 字典（Cryptodictionary/JNDI.txt） |
+| Web | **文件上传绕过（黑名单/魔术头）** | Burp 改包 | `.htaccess/.user.ini 绕过；GIF89a 头+.php；::$DATA/双写后缀` | 蚁剑连接 |
+| Web | **Tomcat/Nginx 解析漏洞** | Burp | `Tomcat PUT: OPTIONS 后 PUT /shell.jsp/；Nginx: 1.jpg/.php 配 fix_pathinfo` | IIS .asa 解析 |
+| Web | **XSS 打 Cookie/后台** | Burp 构造 | `img onerror 外带；后台存储型 XSS 偷管理员会话` | CSP 绕过 jsonp |
+| Forensics | **E01/RAW 磁盘镜像取证** | DiskGenius/R-Studio | `DiskGenius 增载镜像浏览分区；R-Studio 按签名恢复删除文件` | FTK Imager（未装） |
+| Forensics | **Windows 注册表取证** | regedit 导出 + python | `重点 NTUSER.dat/SYSTEM/SAM：Run 启动项、USBSTOR、MountPoints2、ShimCache` | regipy（WSL pip） |
+| Forensics | **evtx 事件日志分析** | WSL python-evtx | `pip install python-evtx 解析 Security.evtx 看 4624/4672 事件` | EventLogExplorer（未装） |
+| Forensics | **回收站 $I/$R 文件** | python 手写解析 | `$I 头：版本+64位 FILETIME+原路径；$R 是原内容` | R-Studio 图形化 |
+| Forensics | **浏览器历史/密码提取** | SQLite Expert + python | `History.db 查 urls/visits；Login Data 用 DPAPI 解密` | WeFlow（微信场景） |
+| Forensics | **微信/QQ 聊天记录取证** | WeFlow | `WeFlow 4.5.1 读本地微信 4.0+ 数据库导出 HTML/CSV` | SQLite Expert + 密钥解密 |
+| Forensics | **BitLocker/VeraCrypt/TC 加密卷** | PasswareKit | `选容器类型后字典/GPU 恢复口令；TC 卷用 TrueCrypt 7.1a 挂载` | hashcat 提取后爆破 |
+| Forensics | **WiFi 握手包破解** | WSL hashcat | `aircrack-ng 转 hc22000 后 hashcat -m 22000；GPU 用 Windows hashcat` | john --wordlist |
+| Forensics | **PDF 流对象/隐藏文字** | qpdf/mutool | `mutool show in.pdf objects；qpdf --qdf 拆流对象找 JS/隐藏内容` | pdftotext + 010 Editor |
+| Forensics | **Office 隐藏内容（docx/xlsx）** | 7z 解包 + grep | `docx 即 zip：unzip 后看 word/document.xml 的 vanish 隐藏文本` | 010 Editor 模板 |
+| Misc | **SSTV 音频还原图片** | RXSSTV | `播放 wav 给 RXSSTV（Robot36/Martin1 常见）；VBCABLE 虚拟声卡内录` | 在线 SSTV 解码 |
+| Misc | **DTMF 拨号音** | Audacity 频谱 | `频谱看双频组合对照 DTMF 表拼号码；或 python Goertzel 手写` | dtmf2num（未装） |
+| Misc | **汉信码/条形码/残缺码** | 随波逐流 + QR_Research | `随波逐流识别多码制；残缺二维码 PS 补三个定位角再识别` | ZXing 在线 |
+| Misc | **MIDI 音符隐写** | MidiEditor | `逐轨看音符：音高=A1Z26、力度/通道藏比特、音符拼写字母` | python mido（pip） |
+| Misc | **Logo 海龟画图指令** | 海龟画图工具 | `粘贴 logo 指令运行，轨迹画出 flag；可 python turtle 重放` | python turtle |
+| Misc | **二维码碎片拼接/反色** | PS + QR_Research | `碎片拼完整图（对齐定位角）后反色/补静区再识别` | python PIL 拼接 |
 
 ## 更新记录
 
 - 2026-09-19 手册升级：命令一键复制、考点↔工具双向互跳、URL 深链（#cat-x&q=y）、多词 AND 搜索+高亮、收藏置顶、打印导出、内嵌 JSON 数据。
-- 2026-09-19 首次生成：工具 125 项，考点映射 51 条；WSL 已补装 gdb-multiarch/strace/ltrace/patchelf/qemu-user/upx/tshark/tcpdump/steghide/outguess/fcrackzip/zip/qpdf/mutool/socat/ncat/hashid/masscan/musl-tools + seccomp-tools + z3 + one_gadget。
+- 2026-09-19 首次生成：工具 145 项，考点映射 104 条；WSL 已补装 gdb-multiarch/strace/ltrace/patchelf/qemu-user/upx/tshark/tcpdump/steghide/outguess/fcrackzip/zip/qpdf/mutool/socat/ncat/hashid/masscan/musl-tools + seccomp-tools + z3 + one_gadget。
