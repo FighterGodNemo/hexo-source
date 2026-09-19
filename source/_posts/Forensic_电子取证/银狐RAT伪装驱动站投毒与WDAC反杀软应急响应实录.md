@@ -12,11 +12,12 @@ tags:
   - WDAC
   - Windows安全
   - 恶意软件分析
-description: 从伪造驱动下载站 eweadndriver.com.cn 投毒的一次银狐(Silver Fox)RAT 感染完整复盘。攻击者把真微软代码签名证书嫁接到 29MB 恶意外壳(实测验签 HashMismatch)，落地四个后门并写入含 141 条拒绝规则的恶意 WDAC 策略(SiPolicy.p7b)封杀火绒等杀软，强制重启激活。文中给出完整杀伤链、IOC、逐步处置命令与验证日志。
-keywords: 银狐, Silver Fox, WDAC, App Control for Business, SiPolicy.p7b, 反杀软, 火绒, AM_Delta_Patch, 伪造驱动站, 应急响应, Windows取证, RAT
+  - CoinMiner
+description: 从伪造驱动下载站 eweadndriver.com.cn 投毒的一次银狐(Silver Fox)RAT 感染完整复盘。攻击者把真微软代码签名证书嫁接到 29MB 恶意外壳(实测验签 HashMismatch)，落地四个后门并写入含 141 条拒绝规则的恶意 WDAC 策略(SiPolicy.p7b)封杀火绒等杀软，强制重启激活。文中给出完整杀伤链、IOC、逐步处置命令与验证日志。续集(09-19)复盘同链挖矿模块借三个伪装名计划任务潜伏五天的"杀了又生"机制、火绒 SQLite 日志取证与家族级全量清除。
+keywords: 银狐, Silver Fox, WDAC, App Control for Business, SiPolicy.p7b, 反杀软, 火绒, AM_Delta_Patch, 伪造驱动站, 应急响应, Windows取证, RAT, CoinMiner, 计划任务持久化
 cover: https://cdn.jsdelivr.net/gh/FighterGodNemo/CDN/img/forensic-analysis.jpg
 created: 2026-09-14T20:50
-updated: 2026-09-14T21:07
+updated: 2026-09-19T03:00
 ---
 
 > 一次真实的家用 Windows 11 感染事件复盘。用户在搜索某硬件驱动时误入仿冒站点，下载并运行了伪装成"驱动安装器"的样本，结果 PC 被强制重启、火绒安全软件被系统级策略封杀，弹出"你的组织使用适用于企业的应用控制阻止此应用"。经排查确认为**银狐(Silver Fox / WinOS)RAT**，本文记录从入口、杀伤链、持久化到清除处置的全过程，并给出可复用的 IOC 与检测/处置命令。
@@ -279,6 +280,133 @@ rnNc4x/Zjb9Rw/pdZ777/1T11K  -> Test-Path 全部 False（已隔离）
 - 家用主机可开启 **Windows 攻击面削减(ASR)** 与 SmartScreen；企业侧对 WDAC 策略文件目录做**完整性监控**：`SiPolicy.p7b` 与 `CiPolicies\Active\*.cip` 的非预期变更即告警。
 - 出现"**你的组织使用适用于企业的应用控制阻止此应用**"却并无组织管控时，第一时间怀疑**恶意 WDAC 策略**，而非软件本身损坏。
 - 检测银狐常见特征：`C:\Users\Public\` 或 `Program Files (x86)` 下**随机名文件夹 + 随机名 EXE**、伪装成"腾讯/阿里/微软 Edge 更新"的 Run 项与计划任务、指向这些随机路径的多重冗余自启。
+
+## 9. 续集（2026-09-19）：挖矿模块的"五天潜伏与无限再生"
+
+> 原文处置当晚火绒恢复正常、全盘扫描 2258 个威胁全部清除，看似收尾完成。**五天后（9-19 凌晨），矿马回来了**——`G3SxoQwc.exe` 疯狂吃 CPU，火绒杀掉后立刻"再生"。本章复盘这个"查杀成功 ≠ 清除完整"的典型案例：同一条银狐投毒链里的**挖矿模块**，靠三个伪装名计划任务加一个 SYSTEM 看门狗，把"杀一个换一个名字"的循环玩了五天。
+
+### 9.1 五天时间线（火绒 SQLite 日志还原）
+
+| 时间 | 事件 |
+| --- | --- |
+| 09-14 19:55:22–28 | 挖矿链落地：`C:\ProgramData\h432BNRU\`（ReadOnly+Hidden+System 三属性）写入 `SZsqmE6X.exe/.dat/.png`——与 RAT 后门同一分钟 |
+| 09-14 21:05 | 第一次快速查杀命中 5 威胁（`i4Zs0P8b\9xwKUO6X.exe` CoinMiner、`C:\Windows\Temp\ranchserv.jpg`、投放器本体等），**但母体 `SZsqmE6X.exe` 未被判定**，计划任务全部漏网 |
+| 09-15 | 全盘扫描 2258 威胁（绝大多数为回收站残留与自有渗透工具误报），挖矿链依旧存活 |
+| 09-16~17 | 看门狗持续重投：矿马每被杀一次就换一个**随机目录+随机名**（`ZlLbRw0o\yHDc9ZDz.exe` → `Lji63SXj\G3SxoQwc.exe`），且同名文件两次哈希不同——每次重新打包 |
+| 09-18 18:58:52 | 系统重启。开机 25 秒内 Task Scheduler 按三个计划任务拉起 `2XHGmaur.exe`(ShellLoader)、`9xwKUO6X.exe`(矿马)、`SZsqmE6X.exe`(看门狗)，全部 SYSTEM 权限 |
+| 09-18 19:00 起 | 矿马持续吃 CPU（仅 `2XHGmaur.exe` 一个进程就累计 3741 秒 CPU 时间），看门狗同时与 C2 `cinskw.net` 保持心跳 |
+| 09-19 00:43 | 用户手动打开火绒——它并没有开机自启，这是潜伏五天的大前提 |
+| 09-19 00:46 / 01:05 | 实时防护分别拦截 `G3SxoQwc.exe`(CoinMiner) 与 `2XHGmaur.exe`(ShellLoader)，但用户看到的是"杀了又生" |
+
+### 9.2 关键取证数据源：杀软日志是 SQLite，直接解码
+
+火绒的查杀记录存放在 `C:\ProgramData\Huorong\Sysdiag\` 下的 SQLite 库里，GUI 只展示部分。直接 python sqlite3 读取，能还原完整攻击时间线：
+
+| 文件 → 表 | 内容 |
+| --- | --- |
+| `QuarantineEx.db` → `FilesV3_60` | 隔离区：原始落地路径 + SHA1 + 原文件大小/时间戳 |
+| `applog.db` → `AppRunInfoList_60` | 全机进程运行记录（路径 + FILETIME），可还原任意时刻"谁在跑" |
+| `log.db` → `HrLogV3_60` | 扫描/实时防护/网络检测事件：威胁名、父子进程、命令行、C2 域名 |
+
+```python
+import sqlite3, json
+con = sqlite3.connect("log.db")
+con.text_factory = lambda b: b.decode("utf-8", "replace")
+for id, fname, ts, detail in con.execute("select id, fname, ts, detail from HrLogV3_60"):
+    d = json.loads(detail).get("detail", {})
+    # filemon 事件里有 pathname/procname/p_procname/cmdline
+    # malsite 事件里有 url（C2）与 proc_sha1
+    print(fname, d.get("recname"), d.get("pathname"), d.get("url"))
+```
+
+决定性证据全部出自这里：`SZsqmE6X.exe` 的完整命令行、其父进程 `svchost.exe -k netsvcs -p -s Schedule`（→ 任务计划程序拉起）、以及它对 `cinskw.net` 的反复外联（`malsite` 事件，分类 spy）。
+
+> **教训：杀软 GUI 日志 ≠ 全部日志。** 遇到"杀了又生"，先把引擎数据库整个读出来，比反复翻界面高效得多。
+
+### 9.3 家族图谱与"再生"真相
+
+被杀后"重生"的矿马不是同一个文件复活，而是看门狗按需重投 + 每次随机化：
+
+```
+计划任务(开机) ──► SZsqmE6X.exe (SYSTEM 看门狗/投放器, ProgramData\h432BNRU)
+                     │  与 C2 cinskw.net 心跳
+                     ├─► 随机目录+随机名矿马 (Trojan/W64.CoinMiner.f, 679,424 B)
+                     │    i4Zs0P8b\9xwKUO6X.exe → ZlLbRw0o\yHDc9ZDz.exe → Lji63SXj\G3SxoQwc.exe
+                     └─► 2XHGmaur.exe (Trojan/ShellLoader.cv, 2.6 MB, ProgramData 根)
+                          └─ C:\Windows\Temp\ranchserv.jpg (伪装成图片的负载)
+```
+
+目录与文件名均为 8 位随机串，配 `ReadOnly,Hidden,System` 属性，资源管理器默认不可见；矿马同名文件两次哈希不同，意味着**按哈希黑名单追杀永远追不上轮换速度**。
+
+真正的再生源头是三个计划任务：
+
+```
+\Features Interface Track Prioritization          -> 2XHGmaur.exe
+\Implementation Analysis Outcome Achieve Stay     -> 9xwKUO6X.exe  (参数 1776)
+\Scheduling Software Governance Contingency Stay  -> SZsqmE6X.exe
+```
+
+两个反直觉的点：
+
+1. **任务名不是乱码，而是"正常英文短语"**。`aK6VA` 这种随机名一眼假（原文 9-14 的 RAT 任务就是这种），但 `Features Interface Track Prioritization` 混在 214 个系统任务里毫无违和感——家族已经从"随机名任务"进化到"正常语义名任务"，靠 `^[A-Za-z0-9]{8}$` 之类的名字正则筛**不出来**。
+2. **非提权枚举存在盲区**。以普通权限跑 `Schedule.Service` COM 枚举（含 hidden 参数）、`schtasks /query /v`，这三个任务一个都看不到，结论"自启项全干净"是**假的**；同理，普通权限查 SYSTEM 进程时 `ExecutablePath/CommandLine` 一律为空。**任何持久化排查结论，必须以提权复查为准。**
+
+### 9.4 处置（提权一次完成）
+
+顺序：**杀看门狗 → 立刻枚举任务（趁重注册者已死）→ 删任务 → 去属性删文件 → 封 C2 → 开审计**：
+
+```powershell
+# 1) 按名+路径双条件杀家族进程（SYSTEM 进程路径为空，必须按名兜底）
+$names = "SZsqmE6X","2XHGmaur","G3SxoQwc","9xwKUO6X","yHDc9ZDz"
+Get-CimInstance Win32_Process | ? { $n = $_.Name -replace '\.exe$','';
+    ($names -contains $n) -or ($_.ExecutablePath -match 'h432BNRU|2XHGmaur|Lji63SXj') } |
+  % { taskkill /F /PID $_.ProcessId }
+
+# 2) 提权枚举全部任务 XML，按内容命中（覆盖 ComHandler 型动作）
+$sch = New-Object -ComObject Schedule.Service; $sch.Connect()
+# 递归遍历所有文件夹；$t.Xml -match 'h432BNRU|SZsqmE6X|2XHGmaur|...' 命中即：
+#   先导出 $t.Xml 留证，再 folder.DeleteTask($name, 0)
+
+# 3) 去属性后删目录（否则 Hidden+System 直接删会失败）
+attrib -r -h -s "C:\ProgramData\h432BNRU"
+attrib -r -h -s "C:\ProgramData\h432BNRU\*" /s /d
+Remove-Item "C:\ProgramData\h432BNRU","C:\ProgramData\Lji63SXj" -Recurse -Force
+
+# 4) hosts 封 C2 + 开启任务审计（之后再有任务偷偷注册，事件查看器直接可见）
+Add-Content C:\Windows\System32\drivers\etc\hosts "`r`n0.0.0.0 cinskw.net"
+wevtutil sl Microsoft-Windows-TaskScheduler/Operational /e:true
+```
+
+处置后 0 秒 / 8 秒双时点复验：家族进程 0、恶意任务 0、落地目录 0。
+
+### 9.5 深度终验：把"应该没了"变成"确认没了"
+
+1. **杀软威胁库全量核对**：从 `log.db` 解出 2266 条唯一威胁路径，逐条做存在性检查——仍在盘上的 183 条**全部**是误报（自有渗透/取证工具：sqlmap、impacket、pypykatz、MITRE 攻防笔记、博客"一句话木马"文章等，其中还包括 9-14 晚被顺手隔离的用户取证文件）。**引擎报告要逐条核对，而不是看总数。**
+2. **漏网之鱼补刀**：`Program Files (x86)\{5tUMMt,Kj4fBT,yCocIg}\XPSPLOG.dll`——9-14 就落地的**另外三个随机目录**（当晚只处理了 `rnNc4x/Zjb9Rw/pdZ777/1T11K` 四个）。三目录内的 dropper（`pUXLap/uAo7Uo/eqtbxa.exe`）同哈希，且**大小 149,320 字节与原文后门 B 完全一致** → 同一银狐工具链的第二批投放。确认注册表与打印系统零引用后删除。
+3. **执行历史交叉验证**：`esentutl /y` 复制活体 `Amcache.hve` → `reg load` 离线挂载 → 按家族路径检索，执行记录为 0——确认没有"执行过就自删"的漏网组件。
+4. **孤儿文件甄别**：`C:\Windows\SunnyFilter64.dll`（未签名）+ `SunnyFilter2.sys`（有签名）为 9-17 23:17 落地（与用户当晚自装 Proxifier 同一窗口），**无服务注册、无宿主程序、全注册表 0 引用** → 判定为抓包工具遗留孤儿，移入证据区归档；`C:\Windows\installPrxer64.exe`（Proxifier 安装器）则早已自删。**甄别标准：有签名 + 有注册 + 有宿主 = 用户软件；三者缺一，就要顺着时间窗继续追。**
+
+### 9.6 续集 IOC 汇总
+
+| 类型 | 值 |
+| --- | --- |
+| C2 / 矿池域名 | `cinskw.net`（已 hosts 封禁 0.0.0.0） |
+| 看门狗/投放器 | `C:\ProgramData\h432BNRU\SZsqmE6X.exe`（486,832 B，SHA1 `E0D6B85E682863BBE40237830D1E39B082672F02`，伴生 .dat/.png） |
+| ShellLoader | `C:\ProgramData\2XHGmaur.exe`（2,660,352 B，SHA1 `C5F2A359FA79F39D12DA18EA249FA77A0F95715F`） |
+| 矿马（每次重编译，679,424 B） | SHA1：`03445BF75BAA30794A3A31C138DBF7A23B96A128`、`A04DC4C56AF2E99517BB34244AB0DA1E45818F4D`、`E3FA1F1764002215C8BC2CF2E51BBF45D854F6CC`、`71E408F1B781420063505FB75A2FF398A35135F7`、`E994172DC398E6AAA5C5D24FAE1BB3948E272F4D` |
+| 伪装图片负载 | `C:\Windows\Temp\ranchserv.jpg`（28,272 B，SHA1 `B2FB8FCADFE09C16CBF7F7A90FBA0AEF8020BDC0`） |
+| 第二批投放点 | `Program Files (x86)\{5tUMMt,Kj4fBT,yCocIg}\`，dropper SHA1 `C80ED6716E89D486F28EBBC150EC5AA362DB963`（149,320 B，与后门 B 同尺寸） |
+| 伪装名计划任务 | `Features Interface Track Prioritization` / `Implementation Analysis Outcome Achieve Stay` / `Scheduling Software Governance Contingency Stay` |
+| 火绒检测名 | `Trojan/W64.CoinMiner.f!crit`、`Trojan/ShellLoader.cv!crit`、malsite(spy) → `cinskw.net` |
+
+### 9.7 补充到防御清单的教训
+
+1. **"查杀成功" ≠ "清除完整"**：多模块家族（RAT + WDAC + 挖矿）要按**家族**清，而不是按**当次告警**清——当晚引擎没报的模块（母体、计划任务、第二批投放点），五天后全部还魂。
+2. **持久化排查必须提权**：非提权下计划任务枚举有 ACL 盲区、SYSTEM 进程路径/命令行为空。哪怕只是"复查一遍"，也要开管理员 PowerShell。
+3. **随机名危险，语义伪装名更危险**：任务审计应以**动作路径**为主（Execute/Arguments 指向 `ProgramData\随机目录`、Temp、Public），任务名只能当辅助线索。
+4. **把杀软数据库当取证数据源**：SQLite 直读隔离区、进程运行记录与网络检测，能完整还原攻击者每次"重生"的时间线——这是本次定案的决定性证据。
+5. **威胁列表逐条核对**而非看计数：2258 条里 2000+ 是回收站与自有工具误报，逐条做存在性检查才能确认真残留。
+6. **善后三件套**：hosts 封 C2、`wevtutil sl Microsoft-Windows-TaskScheduler/Operational /e:true` 开任务审计、杀软设为开机自启并保持运行——本次潜伏五天的大前提就是 9-14 晚杀软没在运行。
 
 ---
 
