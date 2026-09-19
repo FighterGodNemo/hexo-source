@@ -1,6 +1,5 @@
 ---
 title: 本机CTF工具索引
-permalink: /2026/09/19/Capture_The_Flag_夺旗赛/CTF解题妙具/本机CTF工具索引/
 date: 2026-09-19
 categories:
   - Capture_The_Flag_夺旗赛
@@ -9,11 +8,11 @@ tags:
   - 工具索引
   - 速查手册
 created: 2026-09-19T01:01
-updated: 2026-09-19T08:20
+updated: 2026-09-19T08:35
 ---
 
-> 本页由 ctf-toolbook skill 自动生成于 2026-09-19。可交互版（搜索/按分类筛选）请打开本机手册：`D:/CaptureTheFlag/CTFTool/工具速查手册.html`。
-> 有新工具时，对任意 AI 说「收录新工具 XXX」或「更新工具手册」即可自动重建本页。
+> 本页由 ctf-toolbook skill 自动生成于 2026-09-19。可交互版（搜索/按分类筛选/考点互跳/一键复制命令）请打开本机手册：`D:/CaptureTheFlag/CTFTool/工具速查手册.html`。
+> 手册支持 URL 深链（如 `工具速查手册.html#cat-crypto&q=RSA`），可直接引用；有新工具时对任意 AI 说「收录新工具 XXX」即可自动重建本页。
 
 ## 环境速览
 
@@ -257,4 +256,5 @@ updated: 2026-09-19T08:20
 
 ## 更新记录
 
+- 2026-09-19 手册升级：命令一键复制、考点↔工具双向互跳、URL 深链（#cat-x&q=y）、多词 AND 搜索+高亮、收藏置顶、打印导出、内嵌 JSON 数据。
 - 2026-09-19 首次生成：工具 125 项，考点映射 51 条；WSL 已补装 gdb-multiarch/strace/ltrace/patchelf/qemu-user/upx/tshark/tcpdump/steghide/outguess/fcrackzip/zip/qpdf/mutool/socat/ncat/hashid/masscan/musl-tools + seccomp-tools + z3 + one_gadget。
