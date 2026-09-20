@@ -13,7 +13,7 @@ tags:
   - Base64
   - 编码
 created: 2026-03-15T16:49
-updated: 2026-09-20T17:42
+updated: 2026-09-20T17:48
 ---
 ## Base64编码隐藏
 ![](Web应用安全与防护/file-20260331130229538.png)![](Web应用安全与防护/file-20260331130229549.png)![](Web应用安全与防护/file-20260331130229558.png)
@@ -84,3 +84,10 @@ return btoa(encoded) === correctPassword;       // 5. 最后再 base64 一次比
 开始解答：
 ![](Web应用安全与防护/file-20260920171805252.png)
 'IzUFQxM1UzRmtSRk0wU2xSU05qRXdUVVk9cVc5'
+
+
+
+
+
+
+密码：#A7316
