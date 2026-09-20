@@ -13,7 +13,7 @@ tags:
   - Base64
   - 编码
 created: 2026-03-15T16:49
-updated: 2026-09-20T17:04
+updated: 2026-09-20T17:08
 ---
 ## Base64编码隐藏
 ![](Web应用安全与防护/file-20260331130229538.png)![](Web应用安全与防护/file-20260331130229549.png)![](Web应用安全与防护/file-20260331130229558.png)
@@ -77,6 +77,6 @@ encoded = btoa(encoded.split('').reverse().join('')); // 3.split('')拆成单个
 encoded = btoa('aB3' + encoded + 'qW9').substr(2);    // 4. 加前后缀再 base64，砍掉前2字符
 return btoa(encoded) === correctPassword;       // 5. 最后再 base64 一次比较
 ```
+**substr和slice的区别：**
 
-
-
+![](Web应用安全与防护/file-20260920170800131.png)
