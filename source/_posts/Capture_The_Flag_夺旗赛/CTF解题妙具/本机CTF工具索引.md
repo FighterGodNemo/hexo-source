@@ -1,5 +1,6 @@
 ---
 title: 本机CTF工具索引
+permalink: '/2026/09/20/Capture_The_Flag_夺旗赛/CTF解题妙具/本机CTF工具索引/'
 date: 2026-09-20
 categories:
   - Capture_The_Flag_夺旗赛
