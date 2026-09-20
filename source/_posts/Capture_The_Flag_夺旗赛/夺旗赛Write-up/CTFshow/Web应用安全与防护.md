@@ -13,7 +13,7 @@ tags:
   - Base64
   - 编码
 created: 2026-03-15T16:49
-updated: 2026-09-20T16:33
+updated: 2026-09-20T16:41
 ---
 ## Base64编码隐藏
 ![](Web应用安全与防护/file-20260331130229538.png)![](Web应用安全与防护/file-20260331130229549.png)![](Web应用安全与防护/file-20260331130229558.png)
@@ -53,10 +53,17 @@ CTF{user_agent_inject_success}
     });
 
 ```
-考点是 JS 逆向
+考点是 JS 逆向。
 ![](Web应用安全与防护/file-20260915193257363.png)
 注意：这里指 **binary = 原始字节数据**，**ASCII = 编码后的可打印文本**
 解读题目代码：
+```
+encoded = btoa(input);                          // 1. 密码先 base64
+encoded = btoa(encoded + 'xH7jK').slice(3);     // 2. 拼盐再 base64，砍掉前3字符
+encoded = btoa(encoded.split('').reverse().join('')); // 3. 逆序后再 base64
+encoded = btoa('aB3' + encoded + 'qW9').substr(2);    // 4. 加前后缀再 base64，砍掉前2字符
+return btoa(encoded) === correctPassword;       // 5. 最后再 base64 一次比较
+```
 
 
 
