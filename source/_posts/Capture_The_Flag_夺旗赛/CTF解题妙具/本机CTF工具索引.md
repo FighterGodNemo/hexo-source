@@ -1,17 +1,15 @@
 ---
 title: 本机CTF工具索引
-date: 2026-09-19
+date: 2026-09-20
 categories:
   - Capture_The_Flag_夺旗赛
 tags:
   - CTF
   - 工具索引
   - 速查手册
-created: 2026-09-19T01:01
-updated: 2026-09-19T09:57
 ---
 
-> 本页由 ctf-toolbook skill 自动生成于 2026-09-19。可交互版（搜索/按分类筛选/考点互跳/一键复制命令）请打开本机手册：`D:/CaptureTheFlag/CTFTool/工具速查手册.html`。
+> 本页由 ctf-toolbook skill 自动生成于 2026-09-20。可交互版（搜索/按分类筛选/考点互跳/一键复制命令）请打开本机手册：`D:/CaptureTheFlag/CTFTool/工具速查手册.html`。
 > 手册支持 URL 深链（如 `工具速查手册.html#cat-crypto&q=RSA`），可直接引用；有新工具时对任意 AI 说「收录新工具 XXX」即可自动重建本页。
 
 ## 环境速览
@@ -66,8 +64,8 @@ updated: 2026-09-19T09:57
 | **GitHack** | 🪟 Win | Win: `C:/Users/glj07/bin/githack.cmd` | .git 目录泄露还原源码 | `githack.cmd <url>/.git/` |
 | **git-dumper** | 🪟 Win | Win: `C:/Users/glj07/AppData/Roaming/Python/Python310/Scripts/git-dumper.exe` | .git 泄露还原（GitHack 失败时用，支持 index 缺失） | `git-dumper <url>/.git/ outdir` |
 | **Xray** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/Xray_1` | 自动化 Web 漏洞扫描器 | `xray webscan --url <url> --html-out out.html` |
-| **DirBuster** |  | Win: `D:/CaptureTheFlag/CTFTool/DirBuster` | Java 目录爆破（自带字典，界面直观） | `java -jar DirBuster.jar -u <url> -l 目录字典` |
-| **scan4all** |  | Win: `D:/CaptureTheFlag/CTFTool/scan4all_2.9.1_windows_amd64.zip` | 集成 27 种漏洞扫描的一体化扫描器（补 nuclei 盲区） ⚠️压缩包，用时先解压 | `scan4all -t <target>` |
+| **DirBuster** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/DirBuster` | Java 目录爆破（自带字典，界面直观） | `java -jar DirBuster.jar -u <url> -l 目录字典` |
+| **scan4all** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/scan4all_2.9.1_windows_amd64.zip` | 集成 27 种漏洞扫描的一体化扫描器（补 nuclei 盲区） ⚠️压缩包，用时先解压 | `scan4all -t <target>` |
 
 ### 🔐 密码学
 
@@ -84,11 +82,11 @@ updated: 2026-09-19T09:57
 | **RsaCtfTool** | ❌ 未装 | — | RSA 攻击全自动集合（本机未装，GitHub 克隆 RsaCtfTool/RsaCtfTool 后 python3 运行） ⚠️未安装；需要时 git clone https://mirror.ghproxy.com/https://github.com/RsaCtfTool/RsaCtfTool | `python3 RsaCtfTool.py --publickey key.pub --uncipherfile flag.enc --attack all` |
 | **fastcoll** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/fastcoll_v1.0.0.5.exe.zip` | MD5 快速碰撞生成（前缀相同后缀碰撞） ⚠️压缩包，用时先解压 | `fastcoll -p prefix.txt -o a.txt b.txt` |
 | **hashid** | 🐧 WSL | WSL: `/usr/bin/hashid` | 识别哈希/密文类型 | `hashid 'e10adc3949ba...'` |
-| **hashcat** | ✅ 双端 | Win: `D:/Forensic/ForensicTool/Decrypt/hashcat-7.1.2/` <br> WSL: `/usr/bin/hashcat` | GPU 口令破解；本机 RTX 5090 走 Windows 版才有 GPU 加速 ⚠️GPU 爆破用 Windows 版；WSL 版无 GPU 直通 | `hashcat -m 0 -a 0 hash.txt D:/CaptureTheFlag/CTFTool/Cryptodictionary/rockyou` <br> `hashcat -m 1000 nt.txt -a 3 ?u?d?d?d?d?d?d` |
+| **hashcat** | ✅ 双端 | Win: `D:/Forensic/ForensicTool/Decrypt/hashcat-7.1.2/` <br> WSL: `/usr/bin/hashcat` | GPU 口令破解；本机 RTX 5090 走 Windows 版才有 GPU 加速 ⚠️GPU 爆破用 Windows 版（WSL 无 GPU 直通）；必须在 hashcat.exe 所在目录内运行（OpenCL 内核相对路径）。RTX 5090 实测 2026-09-20: MD5 ~91 GH/s、NTLM ~154 GH/s(全机 162 含核显)——rockyou 字典秒级，8位纯数字掩码分钟级，长随机口令直接换思路 | `hashcat -m 0 -a 0 hash.txt D:/CaptureTheFlag/CTFTool/Cryptodictionary/rockyou` <br> `hashcat -m 1000 nt.txt -a 3 ?u?d?d?d?d?d?d` |
 | **john** | 🐧 WSL | WSL: `/usr/sbin/john` | 经典口令破解（zip/ssh2john 转换链好用） | `zip2john flag.zip > hash; john hash --wordlist=/usr/share/wordlists/rockyou` |
 | **SageMath** | ❌ 未装 | — | 数论全功能（格/椭圆曲线/多项式环），本机未装（体积 2GB+） ⚠️未安装；格密码题建议在线 sagecell 或 Docker 镜像 sagemath/sagemath | `在线用 sagecell.sagemath.org；轻量场景用 sympy/gmpy2 替代` |
-| **HashCalc** |  | Win: `D:/CaptureTheFlag/CTFTool/HashCalc.exe` | 图形化哈希计算（MD5/SHA/CRC/base64 一键） | `拖入文件或粘贴文本选算法` |
-| **CTFReBox** |  | Win: `D:/CaptureTheFlag/CTFTool/CTFReBox_52` | CTF 编码/加密集成箱（键盘码/敲击码等冷门编码也有） | `GUI 按分类试` |
+| **HashCalc** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/HashCalc.exe` | 图形化哈希计算（MD5/SHA/CRC/base64 一键） | `拖入文件或粘贴文本选算法` |
+| **CTFReBox** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/CTFReBox_52` | CTF 编码/加密集成箱（键盘码/敲击码等冷门编码也有） | `GUI 按分类试` |
 
 ### 💥 二进制利用 Pwn
 
@@ -111,7 +109,7 @@ updated: 2026-09-19T09:57
 | **nc** | 🐧 WSL | WSL: `/usr/bin/nc` | 连接远程靶机/手测服务 | `nc <ip> <port>` |
 | **musl-gcc** | 🐧 WSL | WSL: `/usr/bin/musl-gcc` | 编译 musl libc 环境的题目配套程序 | `musl-gcc main.c -o pwn` |
 | **gcc/g++** | 🐧 WSL | WSL: `/usr/bin/gcc` | 编译利用代码与本地复现 | `gcc exp.c -o exp` <br> `gcc vuln.c -o vuln -fno-stack-protector -no-pie -z execstack` |
-| **PWN 模板 ~/CTF** | ❌ 未装 | WSL: `~/CTF/PWN/tools/pwn_template.py` | 预置 PWN/Web/Crypto 分类工作区与 toolkit 脚本 ⚠️2026-09-19 审计 ~/CTF 目录疑似已不存在，如缺失按 WSL_CTF工具清单.txt 结构重建 | `cd ~/CTF/PWN && cp tools/pwn_template.py exp.py` |
+| **exp 模板库 ~/CTF** | 🐧 WSL | WSL: `~/CTF/templates` | WSL 预置 exp 模板：ret2libc/格式化字符串/shellcode/RSA攻击函数库/one-liner速查，cp 下来改参数就用 ⚠️2026-09-19 重建（原 ~/CTF 工作区已丢失，模板+速查恢复） | `cp ~/CTF/templates/pwn_ret2libc.py exp.py 后改 OFFSET/POP_RDI/IP/PORT` <br> `python3 -c "from crypto_rsa_box import *" 或直接跑函数` <br> `cat ~/CTF/templates/cheatsheet.md 查杂项 one-liner` |
 
 ### 🔍 逆向工程
 
@@ -133,9 +131,9 @@ updated: 2026-09-19T09:57
 | **010 Editor** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/010Editor` | 十六进制编辑 + 文件模板解析（改宽高/修文件头神器） | `用模板解析 PNG/ZIP 结构直接改字节` |
 | **WinHex / X-Ways** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/Xways Winhex 19.8 Professional License` | 专业十六进制/磁盘编辑，NTFS 流与恢复 | `打开磁盘/文件做底层数据恢复` |
 | **wabt** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/wabt-1.0.35-windows.tar.gz` | WebAssembly 工具集（wasm2wat/wat2wasm） ⚠️压缩包，用时先解压 | `wasm2wat main.wasm -o main.wat` |
-| **dex-tools** |  | Win: `D:/CaptureTheFlag/CTFTool/dex-tools-v2.4` | dex2jar（APK dex 转 jar 再配 jd-gui） | `d2j-dex2jar.bat app.apk 再 jd-gui 打开 jar` |
-| **Resource Hacker** |  | Win: `D:/CaptureTheFlag/CTFTool/Resource Hacker-5.2.6425简体中文-色汉化版` | exe 资源提取/替换（图标/对话框/字符串表里藏 flag） | `打开 exe 展开 RC 数据/字符串表` |
-| **zipalign** |  | Win: `D:/CaptureTheFlag/CTFTool/zipalign.exe` | APK 对齐校验（Android 逆向配套） | `zipalign -c 4 app.apk` |
+| **dex-tools** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/dex-tools-v2.4` | dex2jar（APK dex 转 jar 再配 jd-gui） | `d2j-dex2jar.bat app.apk 再 jd-gui 打开 jar` |
+| **Resource Hacker** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/Resource Hacker -5.2.6425简体中文-色汉化版` | exe 资源提取/替换（图标/对话框/字符串表里藏 flag） | `打开 exe 展开 RC 数据/字符串表` |
+| **zipalign** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/zipalign.exe` | APK 对齐校验（Android 逆向配套） | `zipalign -c 4 app.apk` |
 
 ### 🕵️ 取证与流量
 
@@ -155,13 +153,13 @@ updated: 2026-09-19T09:57
 | **lads** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/lads.exe` | NTFS ADS 交换数据流检测 | `lads /s D:\` |
 | **LastActivityView** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/LastActivityView.exe` | Windows 主机活动痕迹一键查看 | `运行即出报告` |
 | **sqlcipher** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/sqlcipher-3.0.1` | 加密 SQLite 数据库读取 | `PRAGMA key='pass'; 后正常查询` |
-| **TrueCrypt** |  | Win: `D:/CaptureTheFlag/CTFTool/TrueCrypt Setup 7.1a.exe` | 老牌加密容器（挂载 tc 卷取证） | `Select File 选 .tc 输密码挂载` |
-| **WeFlow** |  | Win: `C:/Users/glj07/Desktop/Codex工作区/工具/WeFlow` | 微信 4.0+ 聊天记录本地查看/导出/朋友圈解密，含本地 HTTP API | `运行 exe 自动读取本地微信数据；导出记录写进取证报告` |
-| **SQLite Expert** |  | Win: `D:/Forensic/ForensicTool/Database/SQLite Expert Professional/` | SQLite 图形化浏览（Chrome历史/聊天库/取证库直接开） | `打开 .db/.sqlite 看表；损坏库试 Recover` |
-| **R-Studio** |  | Win: `D:/CaptureTheFlag/CTFTool/R-Studio` | 专业数据恢复（删除文件/RAID/签名扫描） | `打开磁盘/镜像 -> Scan -> 按签名恢复` |
-| **DiskGenius** |  | Win: `D:/CaptureTheFlag/CTFTool/diskgenius吾爱专业破解版 v5` | 磁盘分区/恢复/镜像挂载 | `打开磁盘恢复文件；镜像可挂载浏览` |
-| **Python-dsstore** |  | Win: `D:/CaptureTheFlag/CTFTool/Python-dsstore` | .DS_Store 文件解析（苹果目录泄露文件名） | `python main.py <.DS_Store> 列出隐藏文件名` |
-| **VBCABLE** |  | Win: `D:/CaptureTheFlag/CTFTool/VBCABLE_Driver_Pack43` | 虚拟声卡驱动（把音频环路录给 SSTV 等解码器） | `装驱动后播放设备设为 CABLE Input 再录制` |
+| **TrueCrypt** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/TrueCrypt Setup 7.1a.exe` | 老牌加密容器（挂载 tc 卷取证） | `Select File 选 .tc 输密码挂载` |
+| **WeFlow** | 🪟 Win | Win: `C:/Users/glj07/Desktop/Codex工作区/工具/WeFlow` | 微信 4.0+ 聊天记录本地查看/导出/朋友圈解密，含本地 HTTP API | `运行 exe 自动读取本地微信数据；导出记录写进取证报告` |
+| **SQLite Expert** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Database/SQLite Expert Professional-专门用于查看、编辑和分析SQLite数据库文件（常见于手机App）` | SQLite 图形化浏览（Chrome历史/聊天库/取证库直接开） | `打开 .db/.sqlite 看表；损坏库试 Recover` |
+| **R-Studio** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/R-Studio` | 专业数据恢复（删除文件/RAID/签名扫描） | `打开磁盘/镜像 -> Scan -> 按签名恢复` |
+| **DiskGenius** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/diskgenius吾爱专业破解版 v5` | 磁盘分区/恢复/镜像挂载 | `打开磁盘恢复文件；镜像可挂载浏览` |
+| **Python-dsstore** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/Python-dsstore` | .DS_Store 文件解析（苹果目录泄露文件名） | `python main.py <.DS_Store> 列出隐藏文件名` |
+| **VBCABLE** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/VBCABLE_Driver_Pack43` | 虚拟声卡驱动（把音频环路录给 SSTV 等解码器） | `装驱动后播放设备设为 CABLE Input 再录制` |
 
 ### 🖼️ 隐写与杂项
 
@@ -193,11 +191,11 @@ updated: 2026-09-19T09:57
 | **ZipCenOp** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/ZipCenOp.jar` | zip 伪加密一键修复 | `java -jar ZipCenOp.jar r flag.zip` |
 | **PasswareKit Forensic** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/PasswareKitForensic_2022汉化破解版` | 全类型文件口令恢复套件 | `选文件类型→字典/GPU` |
 | **PDF批量解密** | ❌ 未装 | — | PDF 口令移除 ⚠️2026-09-19 目录审计未找到，已移除；用 WSL 的 qpdf --decrypt 替代 | `拖入 PDF` |
-| **MidiEditor** |  | Win: `D:/CaptureTheFlag/CTFTool/MidiEditor-3.3.0-Setup.exe` | MIDI 音轨编辑查看（音符/力度/通道隐写） | `打开 .mid 逐轨看音符排布规律` |
-| **RXSSTV** |  | Win: `D:/CaptureTheFlag/CTFTool/Setup_RXSSTV.exe` | SSTV 慢扫描电视音频解码成图片 | `播放音频给 RX 模式自动出图（Robot36/Martin1 常见）` |
-| **海龟画图** |  | Win: `D:/CaptureTheFlag/CTFTool/海龟画图` | Logo 海龟语言解释器（logo 指令画出 flag 图） | `粘贴 logo 代码运行看绘图` |
-| **速查资源图集** |  | Win: `D:/CaptureTheFlag/CTFTool/（摩斯密码表.png / 010editor文件头汇总.jpg / 二维码定位点.png / 各厂商网络通讯协议图.png）` | 摩斯码对照表/文件头魔数汇总/二维码定位角/协议图，解题直接对照 | `看图对照；文件头修复配 010 Editor` |
-| **隐形水印工具** |  | Win: `D:/CaptureTheFlag/CTFTool/隐形水印工具.exe 与 WaterMark.exe` | 图片空域隐形水印加解（盲水印题常见配套） | `GUI 提取水印图层` |
+| **MidiEditor** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/MidiEditor-3.3.0-Setup.exe` | MIDI 音轨编辑查看（音符/力度/通道隐写） | `打开 .mid 逐轨看音符排布规律` |
+| **RXSSTV** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/Setup_RXSSTV.exe` | SSTV 慢扫描电视音频解码成图片 | `播放音频给 RX 模式自动出图（Robot36/Martin1 常见）` |
+| **海龟画图** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/海龟画图` | Logo 海龟语言解释器（logo 指令画出 flag 图） | `粘贴 logo 代码运行看绘图` |
+| **速查资源图集** | ❌ 未装 | — | 摩斯密码表.png / 010editor文件头汇总.jpg / 二维码定位点.png / 各厂商网络通讯协议图.png 散在 CTFTool 根目录，解题直接对照 | `看图对照；文件头修复配 010 Editor` |
+| **隐形水印工具** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/隐形水印工具.exe` | 图片空域隐形水印加解（盲水印题常见配套）；WaterMark.exe 是同类替代 | `GUI 提取水印图层` |
 
 ### 📚 字典与资源包
 
@@ -206,6 +204,7 @@ updated: 2026-09-19T09:57
 | **字典库 Cryptodictionary** | ✅ 双端 | Win: `D:/CaptureTheFlag/CTFTool/Cryptodictionary` <br> WSL: `/usr/share/wordlists (软链)` | 46 项统一字典库：rockyou、SecLists、中文用户名/密码、SSTI/JNDI/Webshell 专题、28GB 超大字典 7z | `hashcat/john/ffuf 直接传具体文件路径` <br> `28GB 7z 按需解压勿常驻` |
 | **/opt/security-tools** | 🐧 WSL | WSL: `/opt/security-tools` | SecLists 完整版 + PayloadsAllTheThings（SSTI/反序列化等 Payload 库）+ theHarvester + sqlmap 源码 | `find /opt/security-tools/SecLists -name '*.txt' 挑字典` <br> `查 Payload 直接 grep` |
 | **后台常用密码** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/后台常用密码.txt` | 小而精的中文后台弱口令字典 | `后台登录爆破首选小字典` |
+| **GTFOBins 离线库** | 🐧 WSL | WSL: `/opt/security-tools/GTFOBins` | Linux 提权/逃逸命令用法离线库（sudo/suid/capabilities/docker 等 2.6MB） | `ls /opt/security-tools/GTFOBins/_gtfobins/<命令> 查该命令的提权用法` <br> `grep -rl 'sudo' /opt/security-tools/GTFOBins/_gtfobins \| head` |
 
 ### 🧰 桌面辅助
 
@@ -219,7 +218,7 @@ updated: 2026-09-19T09:57
 | **QtScrcpy / platform-tools** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/QtScrcpy-win-x64-v1.4.5` | 安卓投屏与 adb（Android 题配套） | `adb devices → scrcpy 投屏` |
 | **Docker** | 🪟 Win | Win: `docker CLI 29.2.1 (docker-desktop 发行版)` | 起靶场/漏洞环境镜像 | `docker run -d -p 80:80 vulhub/xxx` <br> `docker-desktop 平时停止状态，用时启动` |
 | **Notepad++** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/Notepad++` | 文本编辑（大文件/HEX 插件） | `HEX-Editor 插件看二进制` |
-| **Netcat-win32** |  | Win: `D:/CaptureTheFlag/CTFTool/Netcat-win32-1` | Windows 原生 nc（不想进 WSL 时快速连靶机） | `nc.exe <ip> <port>` |
+| **Netcat-win32** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/Netcat-win32-1` | Windows 原生 nc（不想进 WSL 时快速连靶机） | `nc.exe <ip> <port>` |
 
 ## 考点速查：遇到什么题用什么工具
 
@@ -329,8 +328,9 @@ updated: 2026-09-19T09:57
 | Misc | **MIDI 音符隐写** | MidiEditor | `逐轨看音符：音高=A1Z26、力度/通道藏比特、音符拼写字母` | python mido（pip） |
 | Misc | **Logo 海龟画图指令** | 海龟画图工具 | `粘贴 logo 指令运行，轨迹画出 flag；可 python turtle 重放` | python turtle |
 | Misc | **二维码碎片拼接/反色** | PS + QR_Research | `碎片拼完整图（对齐定位角）后反色/补静区再识别` | python PIL 拼接 |
+| Misc | **Linux 提权/sudo 逃逸/docker 逃逸** | GTFOBins 离线库 | `拿到低权 shell 后先 sudo -l；按可执行命令查 /opt/security-tools/GTFOBins/_gtfobins 对应用法` | linpeas（未装，可 GitHub 拉） |
 
 ## 更新记录
 
-- 2026-09-19 手册升级：命令一键复制、考点↔工具双向互跳、URL 深链（#cat-x&q=y）、多词 AND 搜索+高亮、收藏置顶、打印导出、内嵌 JSON 数据。
-- 2026-09-19 首次生成：工具 145 项，考点映射 104 条；WSL 已补装 gdb-multiarch/strace/ltrace/patchelf/qemu-user/upx/tshark/tcpdump/steghide/outguess/fcrackzip/zip/qpdf/mutool/socat/ncat/hashid/masscan/musl-tools + seccomp-tools + z3 + one_gadget。
+- 2026-09-20 手册升级：命令一键复制、考点↔工具双向互跳、URL 深链（#cat-x&q=y）、多词 AND 搜索+高亮、收藏置顶、打印导出、内嵌 JSON 数据。
+- 2026-09-20 首次生成：工具 146 项，考点映射 105 条；WSL 已补装 gdb-multiarch/strace/ltrace/patchelf/qemu-user/upx/tshark/tcpdump/steghide/outguess/fcrackzip/zip/qpdf/mutool/socat/ncat/hashid/masscan/musl-tools + seccomp-tools + z3 + one_gadget。
