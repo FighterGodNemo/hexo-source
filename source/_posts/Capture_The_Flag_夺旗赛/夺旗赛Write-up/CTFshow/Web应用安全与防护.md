@@ -13,7 +13,7 @@ tags:
   - Base64
   - 编码
 created: 2026-03-15T16:49
-updated: 2026-09-20T16:54
+updated: 2026-09-20T16:57
 ---
 ## Base64编码隐藏
 ![](Web应用安全与防护/file-20260331130229538.png)![](Web应用安全与防护/file-20260331130229549.png)![](Web应用安全与防护/file-20260331130229558.png)
@@ -72,7 +72,7 @@ btoa("Hello") 的输入就是这 5 个字节：48 65 6C 6C 6F。
 解读题目代码：
 ```
 encoded = btoa(input);                          // 1. 密码先 base64
-encoded = btoa(encoded + 'xH7jK').slice(3);     // 2. 拼盐再 base64（在密码学中，通过在密码任意固定位置插入特定字符串，让散列后的结果和使用原始密码的散列结果不相符，这样一个过程我们称之为“加盐”）；slice指砍掉前3字符
+encoded = btoa(encoded + 'xH7jK').slice(3);     // 2. 拼盐再 base64（在密码学中，通过在密码任意固定位置插入特定字符串，让散列后的结果和使用原始密码的散列结果不相符，这样一个过程我们称之为“加盐”）；slice(3)指从第 3 个字符开始拿，也就是丢弃了前 3 个字符
 encoded = btoa(encoded.split('').reverse().join('')); // 3. 逆序后再 base64
 encoded = btoa('aB3' + encoded + 'qW9').substr(2);    // 4. 加前后缀再 base64，砍掉前2字符
 return btoa(encoded) === correctPassword;       // 5. 最后再 base64 一次比较
