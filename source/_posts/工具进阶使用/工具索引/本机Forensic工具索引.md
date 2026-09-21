@@ -12,7 +12,7 @@ tags:
   - 工具索引
   - 工具进阶
 created: 2026-05-05T09:20
-updated: 2026-08-03T08:13
+updated: 2026-09-21T19:39
 ---
 
 # 本机 Forensic 工具索引
@@ -37,7 +37,7 @@ C:\Users\glj07\.codex\skills\ctf-memory-playbook\references\local-tool-index.md
 | --- | --- | --- |
 | 压缩包、套娃、伪加密 | 7-Zip、bkcrack、ZipCenOp、Python、foremost、binwalk | 先列目录和测试完整性，再判断伪加密、明文攻击或雕刻 |
 | 磁盘镜像、分区、文件系统 | X-Ways Forensics、DiskGenius、WinHex/X-Ways、FTK/DFIR 工具箱 | 镜像挂载、文件恢复、时间线、分区和文件系统结构 |
-| 内存镜像 | Volatility 3、strings、YARA、Elcomsoft Disk Decryptor | 进程、网络、命令行、文件扫描、BitLocker 密钥线索 |
+| 内存镜像 | Volatility 3、strings、YARA、bulk_extractor、Elcomsoft Disk Decryptor | 进程、网络、命令行、文件扫描、特征规则与 BitLocker 密钥线索 |
 | 手机取证 | UFED、DataFindx、iBackup Viewer Pro、WeFlow、AndroidKiller、JADX、DB Browser/SQLite Expert | Android/iOS 备份、微信聊天记录、App 数据库、APK 逆向 |
 | 数据库和日志 | SQLite Expert、DB Browser for SQLite、Navicat Premium 17、NTFS Log Tracker | SQLite、SQLCipher、MySQL dump、NTFS `$LogFile`、应用日志 |
 | 网络流量 | Wireshark、TShark、Fiddler Everywhere、Scapy | pcap、HTTP/HTTPS、导出对象、DNS、TLS、移动 App 抓包 |
