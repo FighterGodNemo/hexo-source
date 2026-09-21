@@ -1,6 +1,5 @@
 ---
 title: 本机CTF工具索引
-permalink: /2026/09/20/Capture_The_Flag_夺旗赛/CTF解题妙具/本机CTF工具索引/
 date: 2026-09-20
 categories:
   - Capture_The_Flag_夺旗赛
@@ -8,8 +7,8 @@ tags:
   - CTF
   - 工具索引
   - 速查手册
-created: 2026-09-19T01:01
-updated: 2026-09-20T23:19
+created: 2026-09-20T23:19
+updated: 2026-09-21T16:26
 ---
 
 > 本页由 ctf-toolbook skill 自动生成于 2026-09-20。可交互版（搜索/按分类筛选/考点互跳/一键复制命令）请打开本机手册：`D:/CaptureTheFlag/CTFTool/工具速查手册.html`。
@@ -60,7 +59,7 @@ updated: 2026-09-20T23:19
 | **ffuf** | 🐧 WSL | WSL: `/usr/local/bin/ffuf` | 快速 Web fuzzer（目录/参数/Header） | `ffuf -u <url>/FUZZ -w /usr/share/wordlists/Seclists/Discovery/Web-Content/raft-medium-words.txt -mc all -fc 404` |
 | **wfuzz** | 🐧 WSL | WSL: `/usr/local/bin/wfuzz` | Web 模糊测试（参数/字典替换） | `wfuzz -c -z file,<wordlist> <url>/FUZZ` |
 | **dirsearch** | 🐧 WSL | WSL: `/usr/bin/dirsearch` | Python 目录扫描器 | `dirsearch -u <url>` |
-| **Burp Suite** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/Burpsuite/BurpSuiteV2026.8/` | HTTP 抓包改包/Intruder 爆破/AI 自动化，Web 题核心 GUI；已接入 MCP (27 个工具) | `启动后浏览器代理 127.0.0.1:8080` <br> `AI 调用: "用 Burp 查看代理历史"、"生成 Collaborator 载荷"` <br> `MCP 工具: get_proxy_http_history/send_http1_request/get_scanner_issues 等` <br> `命令行: python C:/Users/glj07/.zcode/workspace/default/burp-tools/burp_mcp.py list` |
+| **Burp Suite** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/BurpSuite V2025.9.4/` | HTTP 抓包改包/Intruder 爆破，Web 题核心 GUI | `启动后浏览器代理 127.0.0.1:8080` <br> `Intruder 爆破时字典用 D:/CaptureTheFlag/CTFTool/Cryptodictionary` |
 | **HackBar** | ❌ 未装 | — | Chrome 扩展，快速发 POST/编码请求 ⚠️2026-09-19 目录审计未找到，已移除；需要时重装 Chrome 扩展 | `浏览器加载 HackBar-chrome 目录` |
 | **中国蚁剑 AntSword** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/AntSword-Loader-v4` | WebShell 管理器（一句话连接） | `上传一句话后添加数据，连接密码=POST参数名` |
 | **冰蝎 Behinder** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/Behinder` | 加密流量 WebShell 管理 | `配合 webshell.jsp/php 使用` |
