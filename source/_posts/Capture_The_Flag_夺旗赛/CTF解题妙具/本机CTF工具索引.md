@@ -1,6 +1,5 @@
 ---
 title: 本机CTF工具索引
-permalink: /2026/09/20/Capture_The_Flag_夺旗赛/CTF解题妙具/本机CTF工具索引/
 date: 2026-09-20
 categories:
   - Capture_The_Flag_夺旗赛
@@ -9,7 +8,7 @@ tags:
   - 工具索引
   - 速查手册
 created: 2026-09-20T23:19
-updated: 2026-09-21T16:30
+updated: 2026-09-21T16:49
 ---
 
 > 本页由 ctf-toolbook skill 自动生成于 2026-09-20。可交互版（搜索/按分类筛选/考点互跳/一键复制命令）请打开本机手册：`D:/CaptureTheFlag/CTFTool/工具速查手册.html`。
