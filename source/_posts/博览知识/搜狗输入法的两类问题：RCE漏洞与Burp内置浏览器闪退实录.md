@@ -1,7 +1,7 @@
 ---
 title: 搜狗输入法的两类问题：RCE漏洞与Burp内置浏览器闪退实录
 date: 2026-09-20 21:33:00
-permalink: posts/sogou-ime-security-and-burp-browser-exit/
+permalink: /posts/sogou-ime-security-and-burp-browser-exit/
 categories:
   - 博览知识
 tags:
@@ -9,7 +9,7 @@ tags:
   - BurpSuite
   - Windows
 created: 2026-09-20 21:33:00
-updated: 2026-09-20 21:33:00
+updated: 2026-09-21T17:18
 description: 从一次 Burp 内置浏览器启动即退出的排查说起，记录搜狗输入法异常的调用栈证据，并区分客户端兼容性缺陷与远程代码执行漏洞。
 ---
 
