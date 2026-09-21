@@ -1,6 +1,6 @@
 ---
 title: 本机CTF工具索引
-date: 2026-09-20
+date: 2026-09-21
 categories:
   - Capture_The_Flag_夺旗赛
 tags:
@@ -8,18 +8,18 @@ tags:
   - 工具索引
   - 速查手册
 created: 2026-09-21T18:08
-updated: 2026-09-21T18:56
+updated: 2026-09-21T19:18
 ---
 
-> 本页由 ctf-toolbook skill 自动生成于 2026-09-20。可交互版（搜索/按分类筛选/考点互跳/一键复制命令）请打开本机手册：`D:/CaptureTheFlag/CTFTool/工具速查手册.html`。
+> 本页由 ctf-toolbook skill 自动生成于 2026-09-21。可交互版（搜索/按分类筛选/考点互跳/一键复制命令）请打开本机手册：`D:/CaptureTheFlag/CTFTool/工具速查手册.html`。
 > 手册支持 URL 深链（如 `工具速查手册.html#cat-crypto&q=RSA`），可直接引用；有新工具时对任意 AI 说「收录新工具 XXX」即可自动重建本页。
 
 ## 环境速览
 
 | 环境 | 位置 | 说明 |
 | --- | --- | --- |
-| WSL Ubuntu-CTF | `wsl -d Ubuntu-CTF` | CTF 主力环境 Ubuntu 24.04 (noble)，python3.12 + pwntools 4.15 + GEF/pwndbg 双调试器；apt/pip/gem 均已配清华源 |
-| WSL Ubuntu-22.04 | `wsl -d Ubuntu-22.04` | 备用发行版，已配 pip 清华源与 wordlists 软链，工具不全，比赛优先用 Ubuntu-CTF |
+| WSL Ubuntu-CTF | `wsl -d Ubuntu-CTF` | CTF 主力环境 Ubuntu 24.04 (noble)：pwntools 4.15、pwndbg、pwninit、stegseek、YARA、SQLite、bulk_extractor；angr/RsaCtfTool 使用 /opt/ctf-venvs 隔离环境 |
+| WSL Ubuntu-22.04 | `wsl -d Ubuntu-22.04` | 备用发行版：SageMath 9.5 已验证；工具册可按 probe.wsl_distro 指定这里，比赛主流程仍优先 Ubuntu-CTF |
 | Windows Python 3.10 | `C:/Users/glj07/AppData/Local/Programs/Python/Python310/python.exe` | pwntools/pycryptodome/z3/gmpy2/sympy/binwalk/scapy 已装，pip 已配清华源 |
 | 爆破字典库 | `D:/CaptureTheFlag/CTFTool/Cryptodictionary` | 46 项：rockyou、SecLists、中文字典、SSTI/JNDI/Webshell 专题、28GB超大字典.7z（按需解压）；Ubuntu-CTF 已软链 /usr/share/wordlists；比赛禁止联网重下 |
 | 工具根目录 | `D:/CaptureTheFlag/CTFTool/` | Windows 侧 CTF 工具约 172 项；取证工具在 D:/Forensic/ForensicTool |
@@ -59,7 +59,7 @@ updated: 2026-09-21T18:56
 | **ffuf** | 🐧 WSL | WSL: `/usr/local/bin/ffuf` | 快速 Web fuzzer（目录/参数/Header） | `ffuf -u <url>/FUZZ -w /usr/share/wordlists/Seclists/Discovery/Web-Content/raft-medium-words.txt -mc all -fc 404` |
 | **wfuzz** | 🐧 WSL | WSL: `/usr/local/bin/wfuzz` | Web 模糊测试（参数/字典替换） | `wfuzz -c -z file,<wordlist> <url>/FUZZ` |
 | **dirsearch** | 🐧 WSL | WSL: `/usr/bin/dirsearch` | Python 目录扫描器 | `dirsearch -u <url>` |
-| **Burp Suite** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/BurpSuite V2025.9.4/` | HTTP 抓包改包/Intruder 爆破，Web 题核心 GUI | `启动后浏览器代理 127.0.0.1:8080` <br> `Intruder 爆破时字典用 D:/CaptureTheFlag/CTFTool/Cryptodictionary` |
+| **Burp Suite** | ❌ 未装 | Win: `D:/CaptureTheFlag/CTFTool/BurpSuite V2025.9.4/` | HTTP 抓包改包/Intruder 爆破，Web 题核心 GUI | `启动后浏览器代理 127.0.0.1:8080` <br> `Intruder 爆破时字典用 D:/CaptureTheFlag/CTFTool/Cryptodictionary` |
 | **HackBar** | ❌ 未装 | — | Chrome 扩展，快速发 POST/编码请求 ⚠️2026-09-19 目录审计未找到，已移除；需要时重装 Chrome 扩展 | `浏览器加载 HackBar-chrome 目录` |
 | **中国蚁剑 AntSword** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/AntSword-Loader-v4` | WebShell 管理器（一句话连接） | `上传一句话后添加数据，连接密码=POST参数名` |
 | **冰蝎 Behinder** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/Behinder` | 加密流量 WebShell 管理 | `配合 webshell.jsp/php 使用` |
@@ -81,12 +81,12 @@ updated: 2026-09-21T18:56
 | **CyberChef** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/CyberChef/CyberChef_v9.28.0.html` | 编码/加密/压缩瑞士军刀，离线打开即用 | `浏览器打开 html；汉化版 SRK_Toolbox 也在 CTFTool` |
 | **CaptfEncoder** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/CaptfEncoder-win-x64-3.1.2.exe` | CTF 编码转换集合工具 | `图形界面，适合快速试遍各种编码` |
 | **轩禹CTF_RSA工具** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/轩禹CTF_RSA工具3.6` | 图形化 RSA 各类攻击一键尝试 | `填 n/e/c 或 p/q 自动算` |
-| **RsaCtfTool** | ❌ 未装 | — | RSA 攻击全自动集合（本机未装，GitHub 克隆 RsaCtfTool/RsaCtfTool 后 python3 运行） ⚠️未安装；需要时 git clone https://mirror.ghproxy.com/https://github.com/RsaCtfTool/RsaCtfTool | `python3 RsaCtfTool.py --publickey key.pub --uncipherfile flag.enc --attack all` |
+| **RsaCtfTool** | 🐧 WSL | WSL: `/opt/security-tools/RsaCtfTool + /opt/ctf-venvs/rsactftool` | RSA 攻击集合；隔离在 rsactftool venv，覆盖分解、低指数、共模、Wiener、格攻击等 ⚠️已安装现代 src 布局版本；入口 /usr/local/bin/rsacrack，运行时使用 /opt/ctf-venvs/rsactftool；Sage 可选后端在 Ubuntu-22.04。 | `rsacrack --publickey key.pub --attack all` <br> `wsl -d Ubuntu-CTF -- rsacrack --publickey key.pub --attack wiener` |
 | **fastcoll** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/fastcoll_v1.0.0.5.exe.zip` | MD5 快速碰撞生成（前缀相同后缀碰撞） ⚠️压缩包，用时先解压 | `fastcoll -p prefix.txt -o a.txt b.txt` |
 | **hashid** | 🐧 WSL | WSL: `/usr/bin/hashid` | 识别哈希/密文类型 | `hashid 'e10adc3949ba...'` |
 | **hashcat** | ✅ 双端 | Win: `D:/Forensic/ForensicTool/Decrypt/hashcat-7.1.2/` <br> WSL: `/usr/bin/hashcat` | GPU 口令破解；本机 RTX 5090 走 Windows 版才有 GPU 加速 ⚠️GPU 爆破用 Windows 版（WSL 无 GPU 直通）；必须在 hashcat.exe 所在目录内运行（OpenCL 内核相对路径）。RTX 5090 实测 2026-09-20: MD5 ~91 GH/s、NTLM ~154 GH/s(全机 162 含核显)——rockyou 字典秒级，8位纯数字掩码分钟级，长随机口令直接换思路 | `hashcat -m 0 -a 0 hash.txt D:/CaptureTheFlag/CTFTool/Cryptodictionary/rockyou` <br> `hashcat -m 1000 nt.txt -a 3 ?u?d?d?d?d?d?d` |
 | **john** | 🐧 WSL | WSL: `/usr/sbin/john` | 经典口令破解（zip/ssh2john 转换链好用） | `zip2john flag.zip > hash; john hash --wordlist=/usr/share/wordlists/rockyou` |
-| **SageMath** | ❌ 未装 | — | 数论全功能（格/椭圆曲线/多项式环），本机未装（体积 2GB+） ⚠️未安装；格密码题建议在线 sagecell 或 Docker 镜像 sagemath/sagemath | `在线用 sagecell.sagemath.org；轻量场景用 sympy/gmpy2 替代` |
+| **SageMath** | 🐧 WSL | WSL: `/usr/bin/sage (Ubuntu-22.04)` | 数论全功能（格/椭圆曲线/多项式环），安装在 Ubuntu-22.04，避免占用主力发行版 ⚠️已验证 SageMath 9.5；工具册扫描支持 probe.wsl_distro=Ubuntu-22.04。 | `wsl -d Ubuntu-22.04 -- sage -c "print(factor(123456789))"` <br> `wsl -d Ubuntu-22.04 -- sage script.sage` |
 | **HashCalc** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/HashCalc.exe` | 图形化哈希计算（MD5/SHA/CRC/base64 一键） | `拖入文件或粘贴文本选算法` |
 | **CTFReBox** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/CTFReBox_52` | CTF 编码/加密集成箱（键盘码/敲击码等冷门编码也有） | `GUI 按分类试` |
 
@@ -95,8 +95,8 @@ updated: 2026-09-21T18:56
 | 工具 | 状态 | 位置 | 用途 | 常用命令 |
 | --- | --- | --- | --- | --- |
 | **pwntools** | ✅ 双端 | Win: `pip (Python310)` <br> WSL: `/usr/local/bin/pwn (pip3)` | Pwn 全能框架：连接/payload/shellcode/ELF 解析 | `from pwn import *; p=remote('ip',port)` <br> `cyclic(200) / cyclic_find(0x61616162)` <br> `asm(shellcraft.sh())` |
-| **GEF (gdb 插件)** | 🐧 WSL | WSL: `~/.gdbinit-gef.py` | gdb 增强：堆/栈/上下文可视化 | `gdb ./pwn 后: pattern create / heap bins / vmmap / got` |
-| **pwndbg** | 🐧 WSL | WSL: `~/.pwndbg` | gdb 增强备选（与 GEF 二选一，改 ~/.gdbinit 切换） | `gdb ./pwn 后: cyclic / heap / search -s flag` |
+| **GEF (gdb 插件)** | ❌ 未装 | WSL: `~/.gdbinit-gef.py (当前为空占位)` | gdb 增强插件备用；当前仅有 0 字节占位文件，主力使用 pwndbg ⚠️未启用；不覆盖 pwndbg 配置。需要 GEF 时单独安装并在题目环境切换。 | `gdb ./pwn 后: pattern create / heap bins / vmmap / got` |
+| **pwndbg** | 🐧 WSL | WSL: `~/.pwndbg + /usr/local/bin/gdb-pwndbg` | gdb 增强调试器；已完成私有 venv 初始化，使用独立 wrapper 不改全局 ~/.gdbinit ⚠️已验证加载 194 个 pwndbg 命令；wrapper 以 gdb -ex source ~/.pwndbg/gdbinit.py 启动。 | `gdb-pwndbg ./pwn` <br> `gdb-pwndbg ./pwn 后: cyclic / heap / search -s flag` |
 | **gdb-multiarch** | 🐧 WSL | WSL: `/usr/bin/gdb-multiarch` | 跨架构调试（配合 qemu-user 调 ARM/MIPS 题） | `gdb-multiarch ./elf 后: set architecture arm; target remote :1234` |
 | **ROPgadget** | ✅ 双端 | Win: `pip (Python310)` <br> WSL: `/usr/local/bin/ROPgadget` | 搜索 ROP gadget | `ROPgadget --binary ./pwn \| grep 'pop rdi'` |
 | **ropper** | ✅ 双端 | Win: `pip (Python310)` <br> WSL: `/usr/local/bin/ropper` | ROP gadget 搜索备选（支持更多架构） | `ropper --file ./pwn --search 'pop rdi'` |
@@ -112,6 +112,7 @@ updated: 2026-09-21T18:56
 | **musl-gcc** | 🐧 WSL | WSL: `/usr/bin/musl-gcc` | 编译 musl libc 环境的题目配套程序 | `musl-gcc main.c -o pwn` |
 | **gcc/g++** | 🐧 WSL | WSL: `/usr/bin/gcc` | 编译利用代码与本地复现 | `gcc exp.c -o exp` <br> `gcc vuln.c -o vuln -fno-stack-protector -no-pie -z execstack` |
 | **exp 模板库 ~/CTF** | 🐧 WSL | WSL: `~/CTF/templates` | WSL 预置 exp 模板：ret2libc/格式化字符串/shellcode/RSA攻击函数库/one-liner速查，cp 下来改参数就用 ⚠️2026-09-19 重建（原 ~/CTF 工作区已丢失，模板+速查恢复） | `cp ~/CTF/templates/pwn_ret2libc.py exp.py 后改 OFFSET/POP_RDI/IP/PORT` <br> `python3 -c "from crypto_rsa_box import *" 或直接跑函数` <br> `cat ~/CTF/templates/cheatsheet.md 查杂项 one-liner` |
+| **pwninit** | 🐧 WSL | WSL: `/usr/local/bin/pwninit` | 按题目 libc/ld 自动 patch Pwn 二进制并生成调试模板 ⚠️官方 release 3.3.3，SHA-256 已核验；适合题目目录内运行。 | `pwninit` <br> `pwninit --bin ./pwn --libc ./libc.so.6` |
 
 ### 🔍 逆向工程
 
@@ -136,6 +137,7 @@ updated: 2026-09-21T18:56
 | **dex-tools** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/dex-tools-v2.4` | dex2jar（APK dex 转 jar 再配 jd-gui） | `d2j-dex2jar.bat app.apk 再 jd-gui 打开 jar` |
 | **Resource Hacker** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/Resource Hacker -5.2.6425简体中文-色汉化版` | exe 资源提取/替换（图标/对话框/字符串表里藏 flag） | `打开 exe 展开 RC 数据/字符串表` |
 | **zipalign** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/zipalign.exe` | APK 对齐校验（Android 逆向配套） | `zipalign -c 4 app.apk` |
+| **angr** | 🐧 WSL | WSL: `/opt/ctf-venvs/angr/bin/python` | 隔离虚拟环境中的符号执行/CFG 分析框架（含 Unicorn 后端） ⚠️angr 10.0.0 + Unicorn 2.1.4；不改系统 Python，入口 angr-python。 | `/opt/ctf-venvs/angr/bin/python solve.py` <br> `angr-python solve.py` |
 
 ### 🕵️ 取证与流量
 
@@ -150,7 +152,7 @@ updated: 2026-09-21T18:56
 | **tcpdump** | 🐧 WSL | WSL: `/usr/bin/tcpdump` | 命令行抓包 | `tcpdump -i eth0 -w out.pcap` |
 | **CTF-NetA** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/CTF-NetA-V2.11.15` | CTF 流量题一键分析工具（含 USB 键鼠流量） | `拖入 pcap 自动出报告` |
 | **USBPcap** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/USBPcap` | Windows USB 抓包驱动 | `配合 Wireshark 抓 USB 键盘流量` |
-| **bulk_extractor** | ❌ 未装 | — | 批量提取文件中的邮箱/URL/密钥等特征 ⚠️Ubuntu 24.04 源无此包，暂缺；类似需求用 strings + grep 代替 | `bulk_extractor -o outdir image.raw` |
+| **bulk_extractor** | 🐧 WSL | WSL: `/opt/security-tools/bulk_extractor/bin/bulk_extractor` | 批量提取文件中的邮箱/URL/密钥等特征；官方 v2.2.0 源码编译版 ⚠️已用 Ubuntu 官方开发库 + RE2 编译安装；版本 2.2.0。 | `bulk_extractor -o outdir image.raw` <br> `bulk_extractor -o outdir evidence_dir/` |
 | **untrunc** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/untrunc_x64` | 损坏 MP4 视频修复 | `untrunc 参考完整.mp4 损坏.mp4` |
 | **lads** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/lads.exe` | NTFS ADS 交换数据流检测 | `lads /s D:\` |
 | **LastActivityView** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/LastActivityView.exe` | Windows 主机活动痕迹一键查看 | `运行即出报告` |
@@ -162,6 +164,8 @@ updated: 2026-09-21T18:56
 | **DiskGenius** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/diskgenius吾爱专业破解版 v5` | 磁盘分区/恢复/镜像挂载 | `打开磁盘恢复文件；镜像可挂载浏览` |
 | **Python-dsstore** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/Python-dsstore` | .DS_Store 文件解析（苹果目录泄露文件名） | `python main.py <.DS_Store> 列出隐藏文件名` |
 | **VBCABLE** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/VBCABLE_Driver_Pack43` | 虚拟声卡驱动（把音频环路录给 SSTV 等解码器） | `装驱动后播放设备设为 CABLE Input 再录制` |
+| **YARA** | 🐧 WSL | WSL: `/usr/bin/yara` | 恶意样本/取证特征规则匹配 ⚠️Ubuntu 24.04 官方包 4.5.0；适合本地样本和 CTF 附件。 | `yara -w rules.yar sample.bin` <br> `yara -r rules.yar evidence_dir/` |
+| **sqlite3 CLI** | 🐧 WSL | WSL: `/usr/bin/sqlite3` | SQLite 数据库命令行检查、导出与损坏库初筛 ⚠️Ubuntu 24.04 官方包 3.45.1；加密库仍用 SQLite Expert/sqlcipher。 | `sqlite3 evidence.db ".tables"` <br> `sqlite3 evidence.db "select * from sqlite_master;"` |
 
 ### 🖼️ 隐写与杂项
 
@@ -171,7 +175,7 @@ updated: 2026-09-21T18:56
 | **steghide** | ✅ 双端 | Win: `D:/CaptureTheFlag/CTFTool/steghide` <br> WSL: `/usr/bin/steghide` | jpg/bmp/wav 密码隐写（DCT 频域） | `steghide info img.jpg` <br> `steghide extract -sf img.jpg -p <pass> -xf flag.txt` <br> `无密码试空密码` |
 | **zsteg** | 🐧 WSL | WSL: `/usr/local/bin/zsteg` | PNG/BMP LSB 全自动检测（ruby gem） | `zsteg flag.png 逐条看 b1,rgb,lsb,xy 等` |
 | **outguess** | 🐧 WSL | WSL: `/usr/bin/outguess` | jpg 统计隐写（steghide 失败后试） | `outguess -r img.jpg out.txt` <br> `有 key: outguess -k key -r img.jpg out.txt` |
-| **stegseek** | ❌ 未装 | — | steghide 密码爆破（跑 rockyou 秒级） ⚠️2026-09-19 ghproxy 下载失败未装成；可换 gh-proxy.com 前缀重试或暂用 steghide+hashcat | `stegseek img.jpg /usr/share/wordlists/rockyou` |
+| **stegseek** | 🐧 WSL | WSL: `/usr/bin/stegseek` | steghide 密码爆破（跑 rockyou 秒级） ⚠️已安装 Ubuntu 24.04 官方包 0.6；已用合成 JPEG + 合成字典验证提取成功。 | `stegseek img.jpg /usr/share/wordlists/rockyou` <br> `stegseek img.jpg words.txt recovered.txt` |
 | **SNOW** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/SNOW` | 文本尾随空格/Tab 隐写 | `SNOW -C -p pass flag.txt` |
 | **F5-steganography** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/F5-steganography-master.zip` | F5 JPG 隐写提取 ⚠️压缩包，用时先解压 | `java Extract img.jpg -p pass` |
 | **MP3Stego** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/MP3Stego_1_1_19` | MP3 音频隐写 | `MP3StegoDecrypt -P pass file.mp3 out.txt` |
@@ -206,13 +210,13 @@ updated: 2026-09-21T18:56
 | **字典库 Cryptodictionary** | ✅ 双端 | Win: `D:/CaptureTheFlag/CTFTool/Cryptodictionary` <br> WSL: `/usr/share/wordlists (软链)` | 46 项统一字典库：rockyou、SecLists、中文用户名/密码、SSTI/JNDI/Webshell 专题、28GB 超大字典 7z | `hashcat/john/ffuf 直接传具体文件路径` <br> `28GB 7z 按需解压勿常驻` |
 | **/opt/security-tools** | 🐧 WSL | WSL: `/opt/security-tools` | SecLists 完整版 + PayloadsAllTheThings（SSTI/反序列化等 Payload 库）+ theHarvester + sqlmap 源码 | `find /opt/security-tools/SecLists -name '*.txt' 挑字典` <br> `查 Payload 直接 grep` |
 | **后台常用密码** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/后台常用密码.txt` | 小而精的中文后台弱口令字典 | `后台登录爆破首选小字典` |
-| **GTFOBins 离线库** | 🐧 WSL | WSL: `/opt/security-tools/GTFOBins` | Linux 提权/逃逸命令用法离线库（sudo/suid/capabilities/docker 等 2.6MB） | `ls /opt/security-tools/GTFOBins/_gtfobins/<命令> 查该命令的提权用法` <br> `grep -rl 'sudo' /opt/security-tools/GTFOBins/_gtfobins \| head` |
+| **GTFOBins 离线库** | 🐧 WSL | WSL: `/opt/security-tools/GTFOBins` | Linux 提权/逃逸命令用法离线库（sudo/suid/capabilities/docker 等 2.6MB） ⚠️已确认 /opt/security-tools/GTFOBins/_gtfobins，约 2.6MB；只查离线资料，不自动执行其中命令。 | `ls /opt/security-tools/GTFOBins/_gtfobins/<命令> 查该命令的提权用法` <br> `grep -rl 'sudo' /opt/security-tools/GTFOBins/_gtfobins \| head` |
 
 ### 🧰 桌面辅助
 
 | 工具 | 状态 | 位置 | 用途 | 常用命令 |
 | --- | --- | --- | --- | --- |
-| **7-Zip / Bandizip / WinRAR** | ✅ 双端 | Win: `D:/CaptureTheFlag/CTFTool/7-Zip/7z.exe` <br> WSL: `/usr/bin/7z` | 压缩包处理（伪加密排查/多格式解压） | `7z l -slt flag.zip 看详细头信息` <br> `7z x file.7z` |
+| **7-Zip / Bandizip / WinRAR** | ✅ 双端 | Win: `D:/CaptureTheFlag/CTFTool/7-Zip/7z.exe` <br> WSL: `/usr/bin/7z` | 压缩包处理（伪加密排查/多格式解压） ⚠️Windows 7z.exe 已确认；不在 Windows PATH 时用完整路径 D:/CaptureTheFlag/CTFTool/7-Zip/7z.exe。 | `7z l -slt flag.zip 看详细头信息` <br> `7z x file.7z` |
 | **cmder** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/cmder` | Windows 便携终端（内置 ImageStrike 等工具） | `cmder.exe` |
 | **VMware** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/VMware` | 虚拟机（跑靶机/内核题环境） | `加载比赛提供 OVA/VMX` |
 | **frp** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/frp_0.39.0_windows_amd64.zip` | 内网穿透（线上赛端口转发） | `按赛方 frpc.toml 启动` |
@@ -331,8 +335,12 @@ updated: 2026-09-21T18:56
 | Misc | **Logo 海龟画图指令** | 海龟画图工具 | `粘贴 logo 指令运行，轨迹画出 flag；可 python turtle 重放` | python turtle |
 | Misc | **二维码碎片拼接/反色** | PS + QR_Research | `碎片拼完整图（对齐定位角）后反色/补静区再识别` | python PIL 拼接 |
 | Misc | **Linux 提权/sudo 逃逸/docker 逃逸** | GTFOBins 离线库 | `拿到低权 shell 后先 sudo -l；按可执行命令查 /opt/security-tools/GTFOBins/_gtfobins 对应用法` | linpeas（未装，可 GitHub 拉） |
+| Reverse | **符号执行/复杂输入约束** | angr | `angr-python solve.py；先 CFGFast 再按约束找 stdin/path` | z3-solver 手写约束 |
+| Pwn | **题目附带 libc/ld 本地复现** | pwninit | `pwninit 后检查生成的 patch/solve.py，再用 gdb-pwndbg 调试` | patchelf 手工设置 interpreter/rpath |
+| Forensics | **文件特征规则匹配** | YARA | `yara -r rules.yar evidence_dir/` | strings + grep |
+| Forensics | **SQLite 数据库快速初筛** | sqlite3 CLI | `sqlite3 evidence.db ".tables"；再查 sqlite_master 和关键表` | SQLite Expert |
 
 ## 更新记录
 
-- 2026-09-20 手册升级：命令一键复制、考点↔工具双向互跳、URL 深链（#cat-x&q=y）、多词 AND 搜索+高亮、收藏置顶、打印导出、内嵌 JSON 数据。
-- 2026-09-20 首次生成：工具 146 项，考点映射 105 条；WSL 已补装 gdb-multiarch/strace/ltrace/patchelf/qemu-user/upx/tshark/tcpdump/steghide/outguess/fcrackzip/zip/qpdf/mutool/socat/ncat/hashid/masscan/musl-tools + seccomp-tools + z3 + one_gadget。
+- 2026-09-21 手册升级：命令一键复制、考点↔工具双向互跳、URL 深链（#cat-x&q=y）、多词 AND 搜索+高亮、收藏置顶、打印导出、内嵌 JSON 数据。
+- 2026-09-21 首次生成：工具 150 项，考点映射 109 条；WSL 已补装 gdb-multiarch/strace/ltrace/patchelf/qemu-user/upx/tshark/tcpdump/steghide/outguess/fcrackzip/zip/qpdf/mutool/socat/ncat/hashid/masscan/musl-tools + seccomp-tools + z3 + one_gadget。
