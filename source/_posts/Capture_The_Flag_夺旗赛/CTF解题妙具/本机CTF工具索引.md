@@ -8,7 +8,7 @@ tags:
   - 工具索引
   - 速查手册
 created: 2026-09-21T18:08
-updated: 2026-09-26T11:07
+updated: 2026-09-26T11:48
 ---
 
 > 本页由 ctf-toolbook skill 自动生成于 2026-09-26。可交互版（搜索/按分类筛选/考点互跳/一键复制命令）请打开本机手册：`D:/CaptureTheFlag/CTFTool/工具速查手册.html`。
@@ -295,8 +295,8 @@ updated: 2026-09-26T11:07
 | 工具 | 状态 | 位置 | 用途 | 常用命令 |
 | --- | --- | --- | --- | --- |
 | **Lads ADS** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/lads.exe` | NTFS Alternate Data Streams 检测 | `l` <br> `a` <br> `d` <br> `s` <br> ` ` <br> `/` <br> `s` <br> ` ` <br> `D` <br> `:` <br> `\` <br> `；` <br> `P` <br> `o` <br> `w` <br> `e` <br> `r` <br> `S` <br> `h` <br> `e` <br> `l` <br> `l` <br> ` ` <br> `G` <br> `e` <br> `t` <br> `-` <br> `I` <br> `t` <br> `e` <br> `m` <br> ` ` <br> `-` <br> `S` <br> `t` <br> `r` <br> `e` <br> `a` <br> `m` <br> ` ` <br> `*` |
-| **regipy** | ❌ 未装 | WSL: `pip install regipy` | Python 注册表解析库 ⚠️按需安装，使用证据副本 | `p` <br> `y` <br> `t` <br> `h` <br> `o` <br> `n` <br> `3` <br> ` ` <br> `-` <br> `c` <br> ` ` <br> `"` <br> `f` <br> `r` <br> `o` <br> `m` <br> ` ` <br> `r` <br> `e` <br> `g` <br> `i` <br> `p` <br> `y` <br> `.` <br> `r` <br> `e` <br> `g` <br> `i` <br> `s` <br> `t` <br> `r` <br> `y` <br> ` ` <br> `i` <br> `m` <br> `p` <br> `o` <br> `r` <br> `t` <br> ` ` <br> `R` <br> `e` <br> `g` <br> `i` <br> `s` <br> `t` <br> `r` <br> `y` <br> `"` |
-| **python-evtx** | ❌ 未装 | WSL: `pip install python-evtx` | Windows EVTX 事件日志解析库 ⚠️按需安装，清华源 | `p` <br> `i` <br> `p` <br> ` ` <br> `i` <br> `n` <br> `s` <br> `t` <br> `a` <br> `l` <br> `l` <br> ` ` <br> `p` <br> `y` <br> `t` <br> `h` <br> `o` <br> `n` <br> `-` <br> `e` <br> `v` <br> `t` <br> `x` <br> `;` <br> ` ` <br> `p` <br> `y` <br> `t` <br> `h` <br> `o` <br> `n` <br> ` ` <br> `p` <br> `a` <br> `r` <br> `s` <br> `e` <br> `_` <br> `e` <br> `v` <br> `t` <br> `x` <br> `.` <br> `p` <br> `y` <br> ` ` <br> `S` <br> `e` <br> `c` <br> `u` <br> `r` <br> `i` <br> `t` <br> `y` <br> `.` <br> `e` <br> `v` <br> `t` <br> `x` |
+| **regipy** | ❌ 未装 | WSL: `pip install regipy` | Python 注册表解析库 ⚠️已装入 conda base（/root/miniconda3） | `p` <br> `y` <br> `t` <br> `h` <br> `o` <br> `n` <br> `3` <br> ` ` <br> `-` <br> `c` <br> ` ` <br> `"` <br> `f` <br> `r` <br> `o` <br> `m` <br> ` ` <br> `r` <br> `e` <br> `g` <br> `i` <br> `p` <br> `y` <br> `.` <br> `r` <br> `e` <br> `g` <br> `i` <br> `s` <br> `t` <br> `r` <br> `y` <br> ` ` <br> `i` <br> `m` <br> `p` <br> `o` <br> `r` <br> `t` <br> ` ` <br> `R` <br> `e` <br> `g` <br> `i` <br> `s` <br> `t` <br> `r` <br> `y` <br> `"` |
+| **python-evtx** | ❌ 未装 | WSL: `pip install python-evtx` | Windows EVTX 事件日志解析库 ⚠️已装入 conda base（/root/miniconda3），导入名是 Evtx 不是 evtx | `p` <br> `i` <br> `p` <br> ` ` <br> `i` <br> `n` <br> `s` <br> `t` <br> `a` <br> `l` <br> `l` <br> ` ` <br> `p` <br> `y` <br> `t` <br> `h` <br> `o` <br> `n` <br> `-` <br> `e` <br> `v` <br> `t` <br> `x` <br> `;` <br> ` ` <br> `p` <br> `y` <br> `t` <br> `h` <br> `o` <br> `n` <br> ` ` <br> `p` <br> `a` <br> `r` <br> `s` <br> `e` <br> `_` <br> `e` <br> `v` <br> `t` <br> `x` <br> `.` <br> `p` <br> `y` <br> ` ` <br> `S` <br> `e` <br> `c` <br> `u` <br> `r` <br> `i` <br> `t` <br> `y` <br> `.` <br> `e` <br> `v` <br> `t` <br> `x` |
 | **FileLocator Pro** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Database/FileLocator Pro-强大的文件内容搜索工具，可快速在全盘搜索关键词` | 案件目录内全文/正则/文件名搜索 | `限` <br> `定` <br> `证` <br> `据` <br> `目` <br> `录` <br> `→` <br> `搜` <br> `索` <br> `关` <br> `键` <br> `字` <br> `→` <br> `导` <br> `出` <br> `命` <br> `中` <br> `路` <br> `径` |
 
 ### 🧬 恶意样本与规则
