@@ -12,7 +12,7 @@ tags:
   - 工具索引
   - 工具进阶
 created: 2026-05-05T09:20
-updated: 2026-09-21T19:39
+updated: 2026-09-21T19:41
 ---
 
 # 本机 Forensic 工具索引
@@ -39,9 +39,9 @@ C:\Users\glj07\.codex\skills\ctf-memory-playbook\references\local-tool-index.md
 | 磁盘镜像、分区、文件系统 | X-Ways Forensics、DiskGenius、WinHex/X-Ways、FTK/DFIR 工具箱 | 镜像挂载、文件恢复、时间线、分区和文件系统结构 |
 | 内存镜像 | Volatility 3、strings、YARA、bulk_extractor、Elcomsoft Disk Decryptor | 进程、网络、命令行、文件扫描、特征规则与 BitLocker 密钥线索 |
 | 手机取证 | UFED、DataFindx、iBackup Viewer Pro、WeFlow、AndroidKiller、JADX、DB Browser/SQLite Expert | Android/iOS 备份、微信聊天记录、App 数据库、APK 逆向 |
-| 数据库和日志 | SQLite Expert、DB Browser for SQLite、Navicat Premium 17、NTFS Log Tracker | SQLite、SQLCipher、MySQL dump、NTFS `$LogFile`、应用日志 |
+| 数据库和日志 | SQLite Expert、sqlite3 CLI、DB Browser for SQLite、Navicat Premium 17、NTFS Log Tracker | SQLite、SQLCipher、MySQL dump、NTFS `$LogFile`、应用日志；sqlite3 适合先做只读初筛 |
 | 网络流量 | Wireshark、TShark、Fiddler Everywhere、Scapy | pcap、HTTP/HTTPS、导出对象、DNS、TLS、移动 App 抓包 |
-| 密码恢复 | hashcat 7.1.2、john、Passware Kit、Elcomsoft | Office、压缩包、BitLocker、系统账户、哈希爆破 |
+| 密码恢复 | hashcat 7.1.2、john、stegseek、Passware Kit、Elcomsoft | Office、压缩包、steghide 隐写、BitLocker、系统账户、哈希爆破 |
 | 文件修复与雕刻 | foremost、binwalk、PuzzleSolver、010 Editor、WinHex/X-Ways | 损坏图片、碎片文件、文件头错乱、拼接恢复 |
 | 逆向辅助 | IDA、JADX、AndroidKiller、OllyDbg、x64dbg、CFF Explorer | 恶意样本、APK、壳、配置提取、简单动态调试 |
 | 自动化与 AI 辅助 | Python、pa_script、DFIR 工具箱、DeepSeek-Coder GGUF、maleme | 批量解析、辅助脚本、代码阅读、规则生成、本地对话历史统计 |
@@ -168,6 +168,10 @@ hashcat 默认注意显卡设备选择；本机清单记录 RTX 5090 常用 `-d 
 | 工具 | 命令 | 版本线索 |
 | --- | --- | --- |
 | Volatility 3 | `vol`、`volshell` | 2.26.2 |
+| bulk_extractor | WSL `/usr/local/bin/bulk_extractor` | `bulk_extractor -o outdir image.raw` | 邮箱、URL、密钥等批量特征提取 |
+| YARA | WSL `/usr/bin/yara` | `yara -r rules.yar evidence_dir/` | 恶意样本与取证规则匹配 |
+| sqlite3 CLI | WSL `/usr/bin/sqlite3` | `sqlite3 evidence.db ".tables"` | SQLite 只读初筛、表结构与关键字段导出 |
+| stegseek | WSL `/usr/bin/stegseek` | `stegseek img.jpg /usr/share/wordlists/rockyou` | steghide 密码隐写字典破解 |
 | ExifTool | `exiftool` | 12.76 |
 | binwalk | `binwalk` | 已安装 |
 | foremost | `foremost` | 已安装 |
@@ -180,6 +184,20 @@ hashcat 默认注意显卡设备选择；本机清单记录 RTX 5090 常用 `-d 
 ```powershell
 wsl -d Ubuntu-CTF -u glj07
 cd ~/CTF/Forensics
+```
+
+## 2026-09-21 新增 WSL 取证命令
+
+这批工具均在 Ubuntu-CTF 本地完成版本和合成样本验证；不联网处理证据、不使用真实口令。大型镜像先复制到题目/案件工作目录并记录 SHA-256，再指定输出目录。
+
+```bash
+bulk_extractor -o outdir image.raw
+# 规则文件匹配
+ yara -r rules.yar evidence_dir/
+# 数据库只读初筛
+ sqlite3 evidence.db ".tables"
+# steghide 图片字典破解
+ stegseek img.jpg /usr/share/wordlists/rockyou
 ```
 
 ## 本地对话与辅助分析
