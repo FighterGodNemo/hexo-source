@@ -8,7 +8,7 @@ tags:
   - 工具索引
   - 速查手册
 created: 2026-09-21T18:08
-updated: 2026-09-26T11:48
+updated: 2026-09-26T12:12
 ---
 
 > 本页由 ctf-toolbook skill 自动生成于 2026-09-26。可交互版（搜索/按分类筛选/考点互跳/一键复制命令）请打开本机手册：`D:/CaptureTheFlag/CTFTool/工具速查手册.html`。
@@ -20,7 +20,7 @@ updated: 2026-09-26T11:48
 | --- | --- | --- |
 | WSL Ubuntu-CTF | `wsl -d Ubuntu-CTF` | 默认 CTF 主力环境 Ubuntu 24.04 (noble)，直接运行 wsl 即进入；完整 CTF 工具链：pwntools/z3/pwndbg/GEF/pwninit/angr/RsaCtfTool/stegseek/bulk_extractor/YARA/sqlite3/SageMath 等 |
 | WSL Ubuntu-22.04 | `wsl -d Ubuntu-22.04` | 备用 Ubuntu 22.04；不作为直接 wsl 入口，工具不完整；已有系统 SageMath 9.5 仅供兼容旧题，主力请用默认 Ubuntu-CTF 的 SageMath 10.2 |
-| Windows Python 3.10 | `C:/Users/glj07/AppData/Local/Programs/Python/Python310/python.exe` | pwntools/pycryptodome/z3/gmpy2/sympy/binwalk/scapy 已装，pip 已配清华源 |
+| Windows Python 3.10 | `C:/Users/glj07/AppData/Local/Programs/Python/Python310/python.exe` | pwntools/pycryptodome/z3/gmpy2/sympy/scapy/unicorn 已装，pip 已配清华源；binwalk Windows 版不可用，请用 WSL |
 | 爆破字典库 | `D:/CaptureTheFlag/CTFTool/Cryptodictionary` | 46 项：rockyou、SecLists、中文字典、SSTI/JNDI/Webshell 专题、28GB超大字典.7z（按需解压）；Ubuntu-CTF 已软链 /usr/share/wordlists；比赛禁止联网重下 |
 | 工具根目录 | `D:/CaptureTheFlag/CTFTool/` | Windows 侧 CTF 工具约 172 项；取证工具在 D:/Forensic/ForensicTool |
 | CTF 工作区 | `C:/Users/glj07/Desktop/Codex工作区/Writeup/CTF` | 解题过程目录 Writeup/CTF/来源/分类/题目名；WSL 内资源包 /opt/security-tools（SecLists、PayloadsAllTheThings、theHarvester） |
@@ -64,7 +64,7 @@ updated: 2026-09-26T11:48
 | **中国蚁剑 AntSword** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/AntSword-Loader-v4` | WebShell 管理器（一句话连接） | `上传一句话后添加数据，连接密码=POST参数名` |
 | **冰蝎 Behinder** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/Behinder` | 加密流量 WebShell 管理 | `配合 webshell.jsp/php 使用` |
 | **GitHack** | 🪟 Win | Win: `C:/Users/glj07/bin/githack.cmd` | .git 目录泄露还原源码 | `githack.cmd <url>/.git/` |
-| **git-dumper** | 🪟 Win | Win: `C:/Users/glj07/AppData/Roaming/Python/Python310/Scripts/git-dumper.exe` | .git 泄露还原（GitHack 失败时用，支持 index 缺失） | `git-dumper <url>/.git/ outdir` |
+| **git-dumper** | 🪟 Win | Win: `C:/Users/glj07/AppData/Local/Programs/Python/Python311/Scripts/git-dumper.exe` | .git 泄露还原（GitHack 失败时用，支持 index 缺失） | `git-dumper <url>/.git/ outdir` |
 | **Xray** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/Xray_1` | 自动化 Web 漏洞扫描器 | `xray webscan --url <url> --html-out out.html` |
 | **DirBuster** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/DirBuster` | Java 目录爆破（自带字典，界面直观） | `java -jar DirBuster.jar -u <url> -l 目录字典` |
 | **scan4all** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/scan4all_2.9.1_windows_amd64.zip` | 集成 27 种漏洞扫描的一体化扫描器（补 nuclei 盲区） ⚠️压缩包，用时先解压 | `scan4all -t <target>` |
@@ -143,7 +143,7 @@ updated: 2026-09-26T11:48
 
 | 工具 | 状态 | 位置 | 用途 | 常用命令 |
 | --- | --- | --- | --- | --- |
-| **binwalk** | ✅ 双端 | Win: `pip (Python310)` <br> WSL: `/usr/bin/binwalk` | 固件/文件内嵌数据扫描与提取 | `binwalk -Me file` |
+| **binwalk** | ✅ 双端 | WSL: `/usr/bin/binwalk` | 固件/文件内嵌数据扫描与提取 ⚠️Windows pip 包损坏（缺 binwalk.core），统一使用 WSL 版；提取输出仍写到工作副本 | `binwalk -Me file` |
 | **foremost** | ✅ 双端 | Win: `D:/CaptureTheFlag/CTFTool/CTF-NetA-V2.11.15/plugins/foremostlrb/foremost.exe` <br> WSL: `/usr/bin/foremost` | 按文件头 carving 恢复文件 | `foremost -i img.png -o out/` |
 | **exiftool** | 🐧 WSL | WSL: `/usr/bin/exiftool` | 读/写文件元数据（EXIF 隐藏信息） | `exiftool img.jpg` |
 | **volatility3** | ✅ 双端 | Win: `D:/Forensic/ForensicTool/Decrypt/volatility3-develop/volatility3-develop/vol.py` <br> WSL: `/usr/local/bin/vol` | 内存取证标准工具 | `vol -f mem.raw windows.info` <br> `vol -f mem.raw windows.filescan \| grep flag` <br> `vol -f mem.raw windows.pslist` |
@@ -230,7 +230,7 @@ updated: 2026-09-26T11:48
 
 | 工具 | 状态 | 位置 | 用途 | 常用命令 |
 | --- | --- | --- | --- | --- |
-| **X-Ways Forensics** | ❌ 未装 | Win: `D:/Forensic/ForensicTool/Mirror/X-Ways Forensics` | 专业磁盘/镜像取证平台：分区、文件系统、时间线、书签与报告 | `打` <br> `开` <br> `案` <br> `件` <br> `→` <br> `添` <br> `加` <br> `镜` <br> `像` <br> `→` <br> `只` <br> `读` <br> `分` <br> `析` <br> `→` <br> `书` <br> `签` <br> `/` <br> `导` <br> `出` <br> `报` <br> `告` |
+| **X-Ways Forensics** | ❌ 未装 | Win: `D:/Forensic/ForensicTool/Mirror/X-Ways Forensics-顶级的综合磁盘取证平台，以速度快、资源占用低著称` | 专业磁盘/镜像取证平台：分区、文件系统、时间线、书签与报告 | `打` <br> `开` <br> `案` <br> `件` <br> `→` <br> `添` <br> `加` <br> `镜` <br> `像` <br> `→` <br> `只` <br> `读` <br> `分` <br> `析` <br> `→` <br> `书` <br> `签` <br> `/` <br> `导` <br> `出` <br> `报` <br> `告` |
 | **Autopsy** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mirror/Autopsy` | 开源数字取证平台，适合镜像、文件系统、关键字和时间线综合分析 | `新` <br> `建` <br> ` ` <br> `C` <br> `a` <br> `s` <br> `e` <br> `→` <br> `A` <br> `d` <br> `d` <br> ` ` <br> `D` <br> `a` <br> `t` <br> `a` <br> ` ` <br> `S` <br> `o` <br> `u` <br> `r` <br> `c` <br> `e` <br> `→` <br> `I` <br> `n` <br> `g` <br> `e` <br> `s` <br> `t` <br> ` ` <br> `M` <br> `o` <br> `d` <br> `u` <br> `l` <br> `e` <br> `s` <br> `→` <br> `查` <br> `看` <br> `结` <br> `果` |
 | **Arsenal Image Mounter** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mirror/Arsenal Image Mounter Professional-将磁盘镜像文件（如.E01, .dd）挂载为Windows虚拟磁盘，便于只读访问` | 将 E01/DD 只读挂载为 Windows 磁盘，供取证工具访问 | `选` <br> `择` <br> ` ` <br> `I` <br> `m` <br> `a` <br> `g` <br> `e` <br> `→` <br> `R` <br> `e` <br> `a` <br> `d` <br> `-` <br> `o` <br> `n` <br> `l` <br> `y` <br> ` ` <br> `M` <br> `o` <br> `u` <br> `n` <br> `t` <br> `→` <br> `记` <br> `录` <br> `盘` <br> `符` <br> `与` <br> `哈` <br> `希` |
 | **Mount Image Pro** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mirror/Mount Image Pro-镜像文件挂载工具` | 多格式磁盘镜像挂载 | `选` <br> `择` <br> `镜` <br> `像` <br> `→` <br> `只` <br> `读` <br> `挂` <br> `载` <br> `→` <br> `在` <br> ` ` <br> `X` <br> `-` <br> `W` <br> `a` <br> `y` <br> `s` <br> `/` <br> `A` <br> `u` <br> `t` <br> `o` <br> `p` <br> `s` <br> `y` <br> ` ` <br> `中` <br> `分` <br> `析` |
@@ -276,7 +276,7 @@ updated: 2026-09-26T11:48
 | 工具 | 状态 | 位置 | 用途 | 常用命令 |
 | --- | --- | --- | --- | --- |
 | **Magnet AXIOM** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mobile/magnetaxiom.all.to.9.9.0.46675` | 综合电脑/手机/云取证分析平台，自动解析应用与时间线 | `创` <br> `建` <br> ` ` <br> `C` <br> `a` <br> `s` <br> `e` <br> `→` <br> `添` <br> `加` <br> `镜` <br> `像` <br> `/` <br> `备` <br> `份` <br> `→` <br> `P` <br> `r` <br> `o` <br> `c` <br> `e` <br> `s` <br> `s` <br> `→` <br> `A` <br> `n` <br> `a` <br> `l` <br> `y` <br> `z` <br> `e` <br> `→` <br> `导` <br> `出` <br> `报` <br> `告` |
-| **UFED** | ❌ 未装 | Win: `D:/Forensic/ForensicTool/Mobile/UFED-全球顶尖的手机物理取证工具` | 手机物理提取与移动设备取证平台 | `按` <br> `设` <br> `备` <br> `型` <br> `号` <br> `选` <br> `择` <br> ` ` <br> `e` <br> `x` <br> `t` <br> `r` <br> `a` <br> `c` <br> `t` <br> `i` <br> `o` <br> `n` <br> ` ` <br> `p` <br> `r` <br> `o` <br> `f` <br> `i` <br> `l` <br> `e` <br> `→` <br> `保` <br> `存` <br> `原` <br> `始` <br> `提` <br> `取` <br> `物` <br> `→` <br> `在` <br> `分` <br> `析` <br> `工` <br> `具` <br> `中` <br> `解` <br> `析` |
+| **UFED** | ❌ 未装 | Win: `D:/Forensic/ForensicTool/Mobile/UFED-全球顶尖的手机物理取证工具，能破解锁屏、深度提取数据` | 手机物理提取与移动设备取证平台 | `按` <br> `设` <br> `备` <br> `型` <br> `号` <br> `选` <br> `择` <br> ` ` <br> `e` <br> `x` <br> `t` <br> `r` <br> `a` <br> `c` <br> `t` <br> `i` <br> `o` <br> `n` <br> ` ` <br> `p` <br> `r` <br> `o` <br> `f` <br> `i` <br> `l` <br> `e` <br> `→` <br> `保` <br> `存` <br> `原` <br> `始` <br> `提` <br> `取` <br> `物` <br> `→` <br> `在` <br> `分` <br> `析` <br> `工` <br> `具` <br> `中` <br> `解` <br> `析` |
 | **iBackup Viewer** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mobile/iBackup Viewer Pro-专门用于解析和查看苹果iTunes备份文件的内容` | Apple iTunes 备份解析 | `打` <br> `开` <br> `备` <br> `份` <br> `→` <br> `查` <br> `看` <br> `消` <br> `息` <br> `/` <br> `照` <br> `片` <br> `/` <br> `联` <br> `系` <br> `人` <br> `→` <br> `导` <br> `出` <br> `证` <br> `据` |
 | **plist Editor Pro** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mobile/plist Editor Pro` | Apple plist 配置与取证字段查看 | `打` <br> `开` <br> ` ` <br> `p` <br> `l` <br> `i` <br> `s` <br> `t` <br> ` ` <br> `副` <br> `本` <br> `→` <br> `查` <br> `看` <br> `键` <br> `值` <br> `/` <br> `时` <br> `间` <br> `字` <br> `段` |
 | **AndroidKiller** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mobile/AndroidKiller-master` | Android APK 反编译与资源分析 | `导` <br> `入` <br> ` ` <br> `A` <br> `P` <br> `K` <br> `→` <br> `查` <br> `看` <br> ` ` <br> `M` <br> `a` <br> `n` <br> `i` <br> `f` <br> `e` <br> `s` <br> `t` <br> `/` <br> `代` <br> `码` <br> `/` <br> `资` <br> `源` <br> `→` <br> `导` <br> `出` <br> `证` <br> `据` |
@@ -310,7 +310,7 @@ updated: 2026-09-26T11:48
 | 工具 | 状态 | 位置 | 用途 | 常用命令 |
 | --- | --- | --- | --- | --- |
 | **UEFITool** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Others/UEFITool_NE_A72_win64` | UEFI 固件结构查看与模块提取 | `打` <br> `开` <br> ` ` <br> `R` <br> `O` <br> `M` <br> `→` <br> `树` <br> `状` <br> `查` <br> `看` <br> ` ` <br> `F` <br> `V` <br> `/` <br> `P` <br> `E` <br> `I` <br> `/` <br> `D` <br> `X` <br> `E` <br> `→` <br> `导` <br> `出` <br> `模` <br> `块` |
-| **CFF Explorer** | ❌ 未装 | Win: `D:/Forensic/ForensicTool/Reverse/CFF_Explorer-强大的PE文件（Windows可执行文件）编辑器` | PE 结构、节、导入导出表分析 | `打` <br> `开` <br> ` ` <br> `P` <br> `E` <br> `→` <br> `查` <br> `看` <br> ` ` <br> `H` <br> `e` <br> `a` <br> `d` <br> `e` <br> `r` <br> `s` <br> `/` <br> `S` <br> `e` <br> `c` <br> `t` <br> `i` <br> `o` <br> `n` <br> `s` <br> `/` <br> `I` <br> `m` <br> `p` <br> `o` <br> `r` <br> `t` <br> `s` |
+| **CFF Explorer** | ❌ 未装 | Win: `D:/Forensic/ForensicTool/Reverse/CFF_Explorer-强大的PE文件（Windows可执行文件）编辑器，用于逆向分析` | PE 结构、节、导入导出表分析 | `打` <br> `开` <br> ` ` <br> `P` <br> `E` <br> `→` <br> `查` <br> `看` <br> ` ` <br> `H` <br> `e` <br> `a` <br> `d` <br> `e` <br> `r` <br> `s` <br> `/` <br> `S` <br> `e` <br> `c` <br> `t` <br> `i` <br> `o` <br> `n` <br> `s` <br> `/` <br> `I` <br> `m` <br> `p` <br> `o` <br> `r` <br> `t` <br> `s` |
 
 ## 考点速查：遇到什么题用什么工具
 
