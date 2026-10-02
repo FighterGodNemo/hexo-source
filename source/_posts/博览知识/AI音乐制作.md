@@ -2,6 +2,7 @@
 created: 2026-09-29T15:03
 updated: 2026-09-29T15:03
 title: AI音乐制作
+permalink: '/2026/09/29/博览知识/AI音乐制作/'
 ---
 智能音乐工具：http://www.suno.cn
 
