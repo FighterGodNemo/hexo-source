@@ -8,8 +8,6 @@ tags:
   - CTF
   - 工具索引
   - 速查手册
-created: 2026-09-21T18:08
-updated: 2026-09-26T12:12
 ---
 
 > 本页由 ctf-toolbook skill 自动生成于 2026-09-26。可交互版（搜索/按分类筛选/考点互跳/一键复制命令）请打开本机手册：`D:/CaptureTheFlag/CTFTool/工具速查手册.html`。
@@ -37,14 +35,14 @@ updated: 2026-09-26T12:12
 | 工具 | 状态 | 位置 | 用途 | 常用命令 |
 | --- | --- | --- | --- | --- |
 | **nmap** | 🐧 WSL | WSL: `/usr/bin/nmap` | 端口扫描与服务识别，Web/Pwn 开题第一件事 | `nmap -sV -A <target>` <br> `nmap -p- --min-rate 5000 <target>` |
-| **masscan** | 🐧 WSL | WSL: `/usr/bin/masscan` | 超高速全端口扫描，nmap 全端口太慢时用 ⚠️需要 root | `masscan -p1-65535 --rate 10000 <target>` |
+| **masscan** | 🐧 WSL | WSL: `/usr/bin/masscan` | 超高速全端口扫描，nmap 全端口太慢时用 ⚠️需要 root | `masscan -p1-65535 --rate 10000 <target>` <br> `masscan -p80,443 --rate 5000 <target>（先确认出网口，误扫内网会被Ban）` |
 | **amass** | 🐧 WSL | WSL: `/usr/local/bin/amass` | 子域名深度枚举 | `amass enum -d <domain>` |
-| **subfinder** | 🐧 WSL | WSL: `/usr/local/bin/subfinder` | 被动子域名发现，快 | `subfinder -d <domain>` |
-| **httpx** | 🐧 WSL | WSL: `/usr/local/bin/httpx` | 批量 HTTP 存活探测与标题/状态码 | `cat hosts.txt \| httpx -title -tech-detect` |
-| **nuclei** | 🐧 WSL | WSL: `/usr/local/bin/nuclei` | PoC 模板批量漏洞扫描 | `nuclei -u <url> -severity medium,high,critical` |
+| **subfinder** | 🐧 WSL | WSL: `/usr/local/bin/subfinder` | 被动子域名发现，快 | `subfinder -d <domain>` <br> `subfinder -d <domain> -silent \| httpx -title（子域+存活一条链）` |
+| **httpx** | 🐧 WSL | WSL: `/usr/local/bin/httpx` | 批量 HTTP 存活探测与标题/状态码 | `cat hosts.txt \| httpx -title -tech-detect` <br> `httpx -l urls.txt -status-code -content-length -tech-detect` |
+| **nuclei** | 🐧 WSL | WSL: `/usr/local/bin/nuclei` | PoC 模板批量漏洞扫描 | `nuclei -u <url> -severity medium,high,critical` <br> `nuclei -l urls.txt -t cves/ -severity high,critical（批量模式）` |
 | **naabu** | 🐧 WSL | WSL: `/usr/local/bin/naabu` | Go 版快速端口扫描 | `naabu -host <target> -p -` |
-| **katana** | 🐧 WSL | WSL: `/usr/local/bin/katana` | 网页爬取/链接发现 | `katana -u <url> -d 3` |
-| **gau** | 🐧 WSL | WSL: `/usr/local/bin/gau` | 聚合历史 URL（Wayback/Common Crawl） | `gau <domain>` |
+| **katana** | 🐧 WSL | WSL: `/usr/local/bin/katana` | 网页爬取/链接发现 | `katana -u <url> -d 3` <br> `katana -u <url> -d 2 -jc（JSON 输出便于脚本处理）` |
+| **gau** | 🐧 WSL | WSL: `/usr/local/bin/gau` | 聚合历史 URL（Wayback/Common Crawl） | `gau <domain>` <br> `gau <domain> \| grep -E "\.php\|\.bak\|\.zip"（历史敏感文件挖掘）` |
 | **waybackurls** | 🐧 WSL | WSL: `/usr/local/bin/waybackurls` | Wayback Machine 历史 URL | `waybackurls <domain>` |
 | **dnsx** | 🐧 WSL | WSL: `/usr/local/bin/dnsx` | DNS 解析/枚举探测 | `dnsx -d <domain> -a -mx` |
 | **whatweb** | 🐧 WSL | WSL: `/usr/bin/whatweb` | Web 指纹识别（框架/CMS/语言） | `whatweb <url>` |
@@ -54,7 +52,7 @@ updated: 2026-09-26T12:12
 
 | 工具 | 状态 | 位置 | 用途 | 常用命令 |
 | --- | --- | --- | --- | --- |
-| **sqlmap** | ✅ 双端 | Win: `D:/CaptureTheFlag/CTFTool/SQL注入工具包/SQL注入/sqlmap-master/sqlmap.py` <br> WSL: `/usr/local/bin/sqlmap` | 自动化 SQL 注入 | `sqlmap -u "<url>?id=1" --batch --dbs` <br> `sqlmap -r req.txt --batch --dump` |
+| **sqlmap** | ✅ 双端 | Win: `D:/CaptureTheFlag/CTFTool/SQL注入工具包/SQL注入/sqlmap-master/sqlmap.py` <br> WSL: `/usr/local/bin/sqlmap` | 自动化 SQL 注入 | `sqlmap -u "<url>?id=1" --batch --dbs` <br> `sqlmap -r req.txt --batch --dump` <br> `sqlmap -r req.txt --level 3 --risk 2 --os-shell（POST 注入升级）` |
 | **nikto** | 🐧 WSL | WSL: `/usr/bin/nikto` | Web 服务器漏洞扫描器 | `nikto -h <url>` |
 | **gobuster** | 🐧 WSL | WSL: `/usr/bin/gobuster` | 目录/子域名/虚拟主机爆破 | `gobuster dir -u <url> -w /usr/share/wordlists/Seclists/Discovery/Web-Content/common.txt` |
 | **ffuf** | 🐧 WSL | WSL: `/usr/local/bin/ffuf` | 快速 Web fuzzer（目录/参数/Header） | `ffuf -u <url>/FUZZ -w /usr/share/wordlists/Seclists/Discovery/Web-Content/raft-medium-words.txt -mc all -fc 404` |
@@ -101,7 +99,7 @@ updated: 2026-09-26T12:12
 | **gdb-multiarch** | 🐧 WSL | WSL: `/usr/bin/gdb-multiarch` | 跨架构调试（配合 qemu-user 调 ARM/MIPS 题） | `gdb-multiarch ./elf 后: set architecture arm; target remote :1234` |
 | **ROPgadget** | ✅ 双端 | Win: `pip (Python310)` <br> WSL: `/usr/local/bin/ROPgadget` | 搜索 ROP gadget | `ROPgadget --binary ./pwn \| grep 'pop rdi'` |
 | **ropper** | ✅ 双端 | Win: `pip (Python310)` <br> WSL: `/usr/local/bin/ropper` | ROP gadget 搜索备选（支持更多架构） | `ropper --file ./pwn --search 'pop rdi'` |
-| **one_gadget** | 🐧 WSL | WSL: `/usr/local/bin/one_gadget` | libc 中一键 execve('/bin/sh') 的 magic gadget | `one_gadget ./libc.so.6` |
+| **one_gadget** | 🐧 WSL | WSL: `/usr/local/bin/one_gadget` | libc 中一键 execve('/bin/sh') 的 magic gadget | `one_gadget ./libc.so.6` <br> `one_gadget --level 5 ./libc.so.6（扩大搜索范围）` |
 | **seccomp-tools** | 🐧 WSL | WSL: `/usr/local/bin/seccomp-tools` | dump 沙箱规则，看哪些 syscall 被禁 | `seccomp-tools dump ./pwn` |
 | **checksec** | ✅ 双端 | Win: `pip scripts` <br> WSL: `/usr/local/bin/checksec` | 查看 ELF 保护（NX/PIE/Canary/RELRO） | `checksec --file=./pwn` |
 | **libcdb** | 🐧 WSL | WSL: `/usr/local/bin/libcdb` | pwntools 自带 libc 数据库查询，泄漏 libc 版本 | `libcdb search printf 6?0 3?0` <br> `libcdb download libc6 2.35-0ubuntu3.4 amd64` |
@@ -112,7 +110,7 @@ updated: 2026-09-26T12:12
 | **nc** | 🐧 WSL | WSL: `/usr/bin/nc` | 连接远程靶机/手测服务 | `nc <ip> <port>` |
 | **musl-gcc** | 🐧 WSL | WSL: `/usr/bin/musl-gcc` | 编译 musl libc 环境的题目配套程序 | `musl-gcc main.c -o pwn` |
 | **gcc/g++** | 🐧 WSL | WSL: `/usr/bin/gcc` | 编译利用代码与本地复现 | `gcc exp.c -o exp` <br> `gcc vuln.c -o vuln -fno-stack-protector -no-pie -z execstack` |
-| **exp 模板库 ~/CTF** | 🐧 WSL | WSL: `~/CTF/templates` | WSL 预置 exp 模板：ret2libc/格式化字符串/shellcode/RSA攻击函数库/one-liner速查，cp 下来改参数就用 ⚠️2026-09-19 重建（原 ~/CTF 工作区已丢失，模板+速查恢复） | `cp ~/CTF/templates/pwn_ret2libc.py exp.py 后改 OFFSET/POP_RDI/IP/PORT` <br> `python3 -c "from crypto_rsa_box import *" 或直接跑函数` <br> `cat ~/CTF/templates/cheatsheet.md 查杂项 one-liner` |
+| **exp 模板库 ~/CTF** | 🐧 WSL | WSL: `~/CTF/templates` | WSL 预置 exp 模板：ret2libc/格式化字符串/shellcode/RSA攻击函数库/one-liner速查，cp 下来改参数就用 ⚠️2026-09-19 重建（原 ~/CTF 工作区已丢失，模板+速查恢复） | `cp ~/CTF/templates/pwn_ret2libc.py exp.py 后改 OFFSET/POP_RDI/IP/PORT` <br> `wsl -d Ubuntu-CTF -- python3 ~/CTF/templates/crypto_rsa_box.py（small_e/fermat/wiener/rabin/共模函数直接调）` <br> `cat ~/CTF/templates/cheatsheet.md 查 tshark/fcrackzip/binwalk/vol 等 one-liner` |
 | **pwninit** | 🐧 WSL | WSL: `/usr/local/bin/pwninit` | 按题目 libc/ld 自动 patch Pwn 二进制并生成调试模板 ⚠️官方 release 3.3.3，SHA-256 已核验；适合题目目录内运行。 | `pwninit` <br> `pwninit --bin ./pwn --libc ./libc.so.6` |
 
 ### 🔍 逆向工程
@@ -145,10 +143,10 @@ updated: 2026-09-26T12:12
 | 工具 | 状态 | 位置 | 用途 | 常用命令 |
 | --- | --- | --- | --- | --- |
 | **binwalk** | ✅ 双端 | WSL: `/usr/bin/binwalk` | 固件/文件内嵌数据扫描与提取 ⚠️Windows pip 包损坏（缺 binwalk.core），统一使用 WSL 版；提取输出仍写到工作副本 | `binwalk -Me file` |
-| **foremost** | ✅ 双端 | Win: `D:/CaptureTheFlag/CTFTool/CTF-NetA-V2.11.15/plugins/foremostlrb/foremost.exe` <br> WSL: `/usr/bin/foremost` | 按文件头 carving 恢复文件 | `foremost -i img.png -o out/` |
-| **exiftool** | 🐧 WSL | WSL: `/usr/bin/exiftool` | 读/写文件元数据（EXIF 隐藏信息） | `exiftool img.jpg` |
+| **foremost** | ✅ 双端 | Win: `D:/CaptureTheFlag/CTFTool/CTF-NetA-V2.11.15/plugins/foremostlrb/foremost.exe` <br> WSL: `/usr/bin/foremost` | 按文件头 carving 恢复文件 | `foremost -i img.png -o out/` <br> `foremost -i evidence.img -o out/（取证输出目录先建好）` |
+| **exiftool** | 🐧 WSL | WSL: `/usr/bin/exiftool` | 读/写文件元数据（EXIF 隐藏信息） | `exiftool img.jpg` <br> `exiftool -a -u -g1 img.jpg（全元数据含隐藏字段）` |
 | **volatility3** | ✅ 双端 | Win: `D:/Forensic/ForensicTool/Decrypt/volatility3-develop/volatility3-develop/vol.py` <br> WSL: `/usr/local/bin/vol` | 内存取证标准工具 | `vol -f mem.raw windows.info` <br> `vol -f mem.raw windows.filescan \| grep flag` <br> `vol -f mem.raw windows.pslist` |
-| **Wireshark** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/Wireshark/Wireshark.exe` | 流量分析 GUI（协议层级/流追踪） | `右键 Follow TCP Stream；导出对象 File>Export Objects>HTTP` |
+| **Wireshark** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/Wireshark/Wireshark.exe` | 流量分析 GUI（协议层级/流追踪） | `右键 Follow TCP Stream；导出对象 File>Export Objects>HTTP` <br> `统计>协议分层 / 会话——取证案件先看协议分布` |
 | **tshark** | ✅ 双端 | Win: `D:/CaptureTheFlag/CTFTool/Wireshark/tshark.exe` <br> WSL: `/usr/bin/tshark` | Wireshark 命令行版，脚本化流量提取 | `tshark -r a.pcapng --export-objects http,outdir` <br> `tshark -r a.pcapng -Y 'http.request' -T fields -e http.request.uri` |
 | **tcpdump** | 🐧 WSL | WSL: `/usr/bin/tcpdump` | 命令行抓包 | `tcpdump -i eth0 -w out.pcap` |
 | **CTF-NetA** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/CTF-NetA-V2.11.15` | CTF 流量题一键分析工具（含 USB 键鼠流量） | `拖入 pcap 自动出报告` |
@@ -157,7 +155,7 @@ updated: 2026-09-26T12:12
 | **untrunc** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/untrunc_x64` | 损坏 MP4 视频修复 | `untrunc 参考完整.mp4 损坏.mp4` |
 | **lads** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/lads.exe` | NTFS ADS 交换数据流检测 | `lads /s D:\` |
 | **LastActivityView** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/LastActivityView.exe` | Windows 主机活动痕迹一键查看 | `运行即出报告` |
-| **sqlcipher** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/sqlcipher-3.0.1` | 加密 SQLite 数据库读取 | `PRAGMA key='pass'; 后正常查询` |
+| **sqlcipher** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/sqlcipher-3.0.1` | 加密 SQLite 数据库读取 | `PRAGMA key='pass'; 后正常查询` <br> `PRAGMA cipher_version;（先验证库确实加密再试 key）` |
 | **TrueCrypt** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/TrueCrypt Setup 7.1a.exe` | 老牌加密容器（挂载 tc 卷取证） | `Select File 选 .tc 输密码挂载` |
 | **WeFlow** | 🪟 Win | Win: `C:/Users/glj07/Desktop/Codex工作区/工具/WeFlow` | 微信 4.0+ 聊天记录本地查看/导出/朋友圈解密，含本地 HTTP API | `运行 exe 自动读取本地微信数据；导出记录写进取证报告` |
 | **SQLite Expert** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Database/SQLite Expert Professional-专门用于查看、编辑和分析SQLite数据库文件（常见于手机App）` | SQLite 图形化浏览（Chrome历史/聊天库/取证库直接开） | `打开 .db/.sqlite 看表；损坏库试 Recover` |
@@ -211,7 +209,7 @@ updated: 2026-09-26T12:12
 | **字典库 Cryptodictionary** | ✅ 双端 | Win: `D:/CaptureTheFlag/CTFTool/Cryptodictionary` <br> WSL: `/usr/share/wordlists (软链)` | 46 项统一字典库：rockyou、SecLists、中文用户名/密码、SSTI/JNDI/Webshell 专题、28GB 超大字典 7z | `hashcat/john/ffuf 直接传具体文件路径` <br> `28GB 7z 按需解压勿常驻` |
 | **/opt/security-tools** | 🐧 WSL | WSL: `/opt/security-tools` | SecLists 完整版 + PayloadsAllTheThings（SSTI/反序列化等 Payload 库）+ theHarvester + sqlmap 源码 | `find /opt/security-tools/SecLists -name '*.txt' 挑字典` <br> `查 Payload 直接 grep` |
 | **后台常用密码** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/后台常用密码.txt` | 小而精的中文后台弱口令字典 | `后台登录爆破首选小字典` |
-| **GTFOBins 离线库** | 🐧 WSL | WSL: `/opt/security-tools/GTFOBins` | Linux 提权/逃逸命令用法离线库（sudo/suid/capabilities/docker 等 2.6MB） ⚠️已确认 /opt/security-tools/GTFOBins/_gtfobins，约 2.6MB；只查离线资料，不自动执行其中命令。 | `ls /opt/security-tools/GTFOBins/_gtfobins/<命令> 查该命令的提权用法` <br> `grep -rl 'sudo' /opt/security-tools/GTFOBins/_gtfobins \| head` |
+| **GTFOBins 离线库** | 🐧 WSL | WSL: `/opt/security-tools/GTFOBins` | Linux 提权/逃逸命令用法离线库（sudo/suid/capabilities/docker 等 2.6MB） ⚠️已确认 /opt/security-tools/GTFOBins/_gtfobins，约 2.6MB；只查离线资料，不自动执行其中命令。 | `sudo -l 拿到可执行清单后逐个查: ls /opt/security-tools/GTFOBins/_gtfobins/ \| grep <命令>` <br> `grep -rl "sudo" /opt/security-tools/GTFOBins/_gtfobins \| head（列出所有可 sudo 的命令）` <br> `cat /opt/security-tools/GTFOBins/_gtfobins/vi/sudo.md 看具体逃逸用法` |
 
 ### 🧰 桌面辅助
 
@@ -226,12 +224,13 @@ updated: 2026-09-26T12:12
 | **Docker** | 🪟 Win | Win: `docker CLI 29.2.1 (docker-desktop 发行版)` | 起靶场/漏洞环境镜像 | `docker run -d -p 80:80 vulhub/xxx` <br> `docker-desktop 平时停止状态，用时启动` |
 | **Notepad++** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/Notepad++` | 文本编辑（大文件/HEX 插件） | `HEX-Editor 插件看二进制` |
 | **Netcat-win32** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/Netcat-win32-1` | Windows 原生 nc（不想进 WSL 时快速连靶机） | `nc.exe <ip> <port>` |
+| **开赛预检 pre_flight** | 🪟 Win | Win: `C:/Users/glj07/.skills/ctf-toolbook/scripts/pre_flight.py` | 比赛前一键环境体检+建赛事目录与 _contest-state.md（含 flag 格式），说「开赛预检」即跑 | `python C:/Users/glj07/.skills/ctf-toolbook/scripts/pre_flight.py --contest 赛事名 --flag-format flag --duration 6` <br> `可选参数 --refresh-index 先刷新工具索引` |
 
 ### 🧱 证据采集与镜像
 
 | 工具 | 状态 | 位置 | 用途 | 常用命令 |
 | --- | --- | --- | --- | --- |
-| **X-Ways Forensics** | ❌ 未装 | Win: `D:/Forensic/ForensicTool/Mirror/X-Ways Forensics-顶级的综合磁盘取证平台，以速度快、资源占用低著称` | 专业磁盘/镜像取证平台：分区、文件系统、时间线、书签与报告 | `打` <br> `开` <br> `案` <br> `件` <br> `→` <br> `添` <br> `加` <br> `镜` <br> `像` <br> `→` <br> `只` <br> `读` <br> `分` <br> `析` <br> `→` <br> `书` <br> `签` <br> `/` <br> `导` <br> `出` <br> `报` <br> `告` |
+| **X-Ways Forensics** | ❌ 未装 | Win: `D:/Forensic/ForensicTool/Mirror/X-Ways Forensics-顶级的综合磁盘取证平台，以速度快、资源占用低著称` | 专业磁盘/镜像取证平台：分区、文件系统、时间线、书签与报告 ⚠️商业许可，启动需授权文件；案件前先校验镜像哈希 | `打` <br> `开` <br> `案` <br> `件` <br> `→` <br> `添` <br> `加` <br> `镜` <br> `像` <br> `→` <br> `只` <br> `读` <br> `分` <br> `析` <br> `→` <br> `书` <br> `签` <br> `/` <br> `导` <br> `出` <br> `报` <br> `告` |
 | **Autopsy** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mirror/Autopsy` | 开源数字取证平台，适合镜像、文件系统、关键字和时间线综合分析 | `新` <br> `建` <br> ` ` <br> `C` <br> `a` <br> `s` <br> `e` <br> `→` <br> `A` <br> `d` <br> `d` <br> ` ` <br> `D` <br> `a` <br> `t` <br> `a` <br> ` ` <br> `S` <br> `o` <br> `u` <br> `r` <br> `c` <br> `e` <br> `→` <br> `I` <br> `n` <br> `g` <br> `e` <br> `s` <br> `t` <br> ` ` <br> `M` <br> `o` <br> `d` <br> `u` <br> `l` <br> `e` <br> `s` <br> `→` <br> `查` <br> `看` <br> `结` <br> `果` |
 | **Arsenal Image Mounter** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mirror/Arsenal Image Mounter Professional-将磁盘镜像文件（如.E01, .dd）挂载为Windows虚拟磁盘，便于只读访问` | 将 E01/DD 只读挂载为 Windows 磁盘，供取证工具访问 | `选` <br> `择` <br> ` ` <br> `I` <br> `m` <br> `a` <br> `g` <br> `e` <br> `→` <br> `R` <br> `e` <br> `a` <br> `d` <br> `-` <br> `o` <br> `n` <br> `l` <br> `y` <br> ` ` <br> `M` <br> `o` <br> `u` <br> `n` <br> `t` <br> `→` <br> `记` <br> `录` <br> `盘` <br> `符` <br> `与` <br> `哈` <br> `希` |
 | **Mount Image Pro** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mirror/Mount Image Pro-镜像文件挂载工具` | 多格式磁盘镜像挂载 | `选` <br> `择` <br> `镜` <br> `像` <br> `→` <br> `只` <br> `读` <br> `挂` <br> `载` <br> `→` <br> `在` <br> ` ` <br> `X` <br> `-` <br> `W` <br> `a` <br> `y` <br> `s` <br> `/` <br> `A` <br> `u` <br> `t` <br> `o` <br> `p` <br> `s` <br> `y` <br> ` ` <br> `中` <br> `分` <br> `析` |
@@ -277,7 +276,7 @@ updated: 2026-09-26T12:12
 | 工具 | 状态 | 位置 | 用途 | 常用命令 |
 | --- | --- | --- | --- | --- |
 | **Magnet AXIOM** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mobile/magnetaxiom.all.to.9.9.0.46675` | 综合电脑/手机/云取证分析平台，自动解析应用与时间线 | `创` <br> `建` <br> ` ` <br> `C` <br> `a` <br> `s` <br> `e` <br> `→` <br> `添` <br> `加` <br> `镜` <br> `像` <br> `/` <br> `备` <br> `份` <br> `→` <br> `P` <br> `r` <br> `o` <br> `c` <br> `e` <br> `s` <br> `s` <br> `→` <br> `A` <br> `n` <br> `a` <br> `l` <br> `y` <br> `z` <br> `e` <br> `→` <br> `导` <br> `出` <br> `报` <br> `告` |
-| **UFED** | ❌ 未装 | Win: `D:/Forensic/ForensicTool/Mobile/UFED-全球顶尖的手机物理取证工具，能破解锁屏、深度提取数据` | 手机物理提取与移动设备取证平台 | `按` <br> `设` <br> `备` <br> `型` <br> `号` <br> `选` <br> `择` <br> ` ` <br> `e` <br> `x` <br> `t` <br> `r` <br> `a` <br> `c` <br> `t` <br> `i` <br> `o` <br> `n` <br> ` ` <br> `p` <br> `r` <br> `o` <br> `f` <br> `i` <br> `l` <br> `e` <br> `→` <br> `保` <br> `存` <br> `原` <br> `始` <br> `提` <br> `取` <br> `物` <br> `→` <br> `在` <br> `分` <br> `析` <br> `工` <br> `具` <br> `中` <br> `解` <br> `析` |
+| **UFED** | ❌ 未装 | Win: `D:/Forensic/ForensicTool/Mobile/UFED-全球顶尖的手机物理取证工具，能破解锁屏、深度提取数据` | 手机物理提取与移动设备取证平台 ⚠️商业设备配套软件；无授权时用 iBackup Viewer 解 iTunes 备份替代 | `按` <br> `设` <br> `备` <br> `型` <br> `号` <br> `选` <br> `择` <br> ` ` <br> `e` <br> `x` <br> `t` <br> `r` <br> `a` <br> `c` <br> `t` <br> `i` <br> `o` <br> `n` <br> ` ` <br> `p` <br> `r` <br> `o` <br> `f` <br> `i` <br> `l` <br> `e` <br> `→` <br> `保` <br> `存` <br> `原` <br> `始` <br> `提` <br> `取` <br> `物` <br> `→` <br> `在` <br> `分` <br> `析` <br> `工` <br> `具` <br> `中` <br> `解` <br> `析` |
 | **iBackup Viewer** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mobile/iBackup Viewer Pro-专门用于解析和查看苹果iTunes备份文件的内容` | Apple iTunes 备份解析 | `打` <br> `开` <br> `备` <br> `份` <br> `→` <br> `查` <br> `看` <br> `消` <br> `息` <br> `/` <br> `照` <br> `片` <br> `/` <br> `联` <br> `系` <br> `人` <br> `→` <br> `导` <br> `出` <br> `证` <br> `据` |
 | **plist Editor Pro** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mobile/plist Editor Pro` | Apple plist 配置与取证字段查看 | `打` <br> `开` <br> ` ` <br> `p` <br> `l` <br> `i` <br> `s` <br> `t` <br> ` ` <br> `副` <br> `本` <br> `→` <br> `查` <br> `看` <br> `键` <br> `值` <br> `/` <br> `时` <br> `间` <br> `字` <br> `段` |
 | **AndroidKiller** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mobile/AndroidKiller-master` | Android APK 反编译与资源分析 | `导` <br> `入` <br> ` ` <br> `A` <br> `P` <br> `K` <br> `→` <br> `查` <br> `看` <br> ` ` <br> `M` <br> `a` <br> `n` <br> `i` <br> `f` <br> `e` <br> `s` <br> `t` <br> `/` <br> `代` <br> `码` <br> `/` <br> `资` <br> `源` <br> `→` <br> `导` <br> `出` <br> `证` <br> `据` |
@@ -304,14 +303,14 @@ updated: 2026-09-26T12:12
 
 | 工具 | 状态 | 位置 | 用途 | 常用命令 |
 | --- | --- | --- | --- | --- |
-| **strings / file / sha256sum** | ❌ 未装 | WSL: `/usr/bin/strings` | 样本初筛：文件类型、字符串和证据哈希 | `f` <br> `i` <br> `l` <br> `e` <br> ` ` <br> `s` <br> `a` <br> `m` <br> `p` <br> `l` <br> `e` <br> `;` <br> ` ` <br> `s` <br> `h` <br> `a` <br> `2` <br> `5` <br> `6` <br> `s` <br> `u` <br> `m` <br> ` ` <br> `s` <br> `a` <br> `m` <br> `p` <br> `l` <br> `e` <br> `;` <br> ` ` <br> `s` <br> `t` <br> `r` <br> `i` <br> `n` <br> `g` <br> `s` <br> ` ` <br> `-` <br> `a` <br> ` ` <br> `s` <br> `a` <br> `m` <br> `p` <br> `l` <br> `e` <br> ` ` <br> `\|` <br> ` ` <br> `l` <br> `e` <br> `s` <br> `s` |
+| **strings / file / sha256sum** | ❌ 未装 | WSL: `/usr/bin/strings` | 样本初筛：文件类型、字符串和证据哈希 ⚠️证据初筛三件套：file→sha256sum→strings 顺序固定，结果全部记录进 notes | `f` <br> `i` <br> `l` <br> `e` <br> ` ` <br> `s` <br> `a` <br> `m` <br> `p` <br> `l` <br> `e` <br> `;` <br> ` ` <br> `s` <br> `h` <br> `a` <br> `2` <br> `5` <br> `6` <br> `s` <br> `u` <br> `m` <br> ` ` <br> `s` <br> `a` <br> `m` <br> `p` <br> `l` <br> `e` <br> `;` <br> ` ` <br> `s` <br> `t` <br> `r` <br> `i` <br> `n` <br> `g` <br> `s` <br> ` ` <br> `-` <br> `a` <br> ` ` <br> `s` <br> `a` <br> `m` <br> `p` <br> `l` <br> `e` <br> ` ` <br> `\|` <br> ` ` <br> `l` <br> `e` <br> `s` <br> `s` |
 
 ### 🧩 固件与文件结构
 
 | 工具 | 状态 | 位置 | 用途 | 常用命令 |
 | --- | --- | --- | --- | --- |
 | **UEFITool** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Others/UEFITool_NE_A72_win64` | UEFI 固件结构查看与模块提取 | `打` <br> `开` <br> ` ` <br> `R` <br> `O` <br> `M` <br> `→` <br> `树` <br> `状` <br> `查` <br> `看` <br> ` ` <br> `F` <br> `V` <br> `/` <br> `P` <br> `E` <br> `I` <br> `/` <br> `D` <br> `X` <br> `E` <br> `→` <br> `导` <br> `出` <br> `模` <br> `块` |
-| **CFF Explorer** | ❌ 未装 | Win: `D:/Forensic/ForensicTool/Reverse/CFF_Explorer-强大的PE文件（Windows可执行文件）编辑器，用于逆向分析` | PE 结构、节、导入导出表分析 | `打` <br> `开` <br> ` ` <br> `P` <br> `E` <br> `→` <br> `查` <br> `看` <br> ` ` <br> `H` <br> `e` <br> `a` <br> `d` <br> `e` <br> `r` <br> `s` <br> `/` <br> `S` <br> `e` <br> `c` <br> `t` <br> `i` <br> `o` <br> `n` <br> `s` <br> `/` <br> `I` <br> `m` <br> `p` <br> `o` <br> `r` <br> `t` <br> `s` |
+| **CFF Explorer** | ❌ 未装 | Win: `D:/Forensic/ForensicTool/Reverse/CFF_Explorer-强大的PE文件（Windows可执行文件）编辑器，用于逆向分析` | PE 结构、节、导入导出表分析 ⚠️免费版够用；复杂 PE 转用 CFF Explorer 的建议替代品 Detect It Easy + IDA | `打` <br> `开` <br> ` ` <br> `P` <br> `E` <br> `→` <br> `查` <br> `看` <br> ` ` <br> `H` <br> `e` <br> `a` <br> `d` <br> `e` <br> `r` <br> `s` <br> `/` <br> `S` <br> `e` <br> `c` <br> `t` <br> `i` <br> `o` <br> `n` <br> `s` <br> `/` <br> `I` <br> `m` <br> `p` <br> `o` <br> `r` <br> `t` <br> `s` |
 
 ## 考点速查：遇到什么题用什么工具
 
@@ -451,4 +450,4 @@ updated: 2026-09-26T12:12
 ## 更新记录
 
 - 2026-09-26 手册升级：命令一键复制、考点↔工具双向互跳、URL 深链（#cat-x&q=y）、多词 AND 搜索+高亮、收藏置顶、打印导出、内嵌 JSON 数据。
-- 2026-09-26 首次生成：工具 186 项，考点映射 130 条；WSL 已补装 gdb-multiarch/strace/ltrace/patchelf/qemu-user/upx/tshark/tcpdump/steghide/outguess/fcrackzip/zip/qpdf/mutool/socat/ncat/hashid/masscan/musl-tools + seccomp-tools + z3 + one_gadget。
+- 2026-09-26 首次生成：工具 187 项，考点映射 130 条；WSL 已补装 gdb-multiarch/strace/ltrace/patchelf/qemu-user/upx/tshark/tcpdump/steghide/outguess/fcrackzip/zip/qpdf/mutool/socat/ncat/hashid/masscan/musl-tools + seccomp-tools + z3 + one_gadget。
