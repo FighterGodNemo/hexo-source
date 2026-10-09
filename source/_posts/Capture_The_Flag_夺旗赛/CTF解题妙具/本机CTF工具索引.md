@@ -1,6 +1,5 @@
 ---
 title: 本机CTF工具索引
-permalink: '/2026/09/26/Capture_The_Flag_夺旗赛/CTF解题妙具/本机CTF工具索引/'
 date: 2026-09-26
 categories:
   - Capture_The_Flag_夺旗赛
@@ -26,7 +25,7 @@ tags:
 | 网络与镜像 | `` | 默认无 VPN 国内直连；pip/apt/gem 已配清华源；GitHub 下载可试 mirror.ghproxy.com 前缀；比赛现场避免临时下载工具 |
 | IDA/JADX MCP | `记忆 ida-jadx-mcp` | AI 远程操控逆向 GUI：IDA 打开后 Ctrl+Alt+M 启动插件；JADX-GUI 需开着且 8650 端口插件在线；能查反编译/函数/字符串，不能执行脚本 |
 | NSSCTF Agent Arena | `skill: nssctf-agent-arena` | agent 自动领题/提交 flag 接口（nssctf-agent-arena skill，Token 在环境变量 NSSCTF_AGENT_TOKEN） |
-| LM Studio 本地模型 | `http://localhost:1234` | 离线大模型 27B q4_0，6 并发但每请求仅 13.3K 上下文，超长材料会 context_exceeded，长文本分析优先云端 |
+| LM Studio 本地模型 | `http://localhost:1234` | 离线本地大模型，断网比赛唯一可用的 AI 方案。LM Studio 里点 Start Server 后 OpenCode 自动发现 lmstudio provider（默认 http://127.0.0.1:1234/v1）。模型盘 C:/Users/glj07/.lmstudio/models，三个 Q4 档 24GB 显存单卡满血：Qwen3.8-27B-UD-Q4_K_XL 16.4GB（比赛默认，唯一带 mmproj 视觉投影能读题目/流量/GUI 截图，稠密 27B 指令遵循与输出格式最稳）；Qwen3.6-35B-A3B-Uncensored-Genesis-MTP-APEX-Compact 16.9GB（MoE 35B 仅激活 3B，出 token 最快，适合纯文本大批量分析与日志流水）；GLM-4.7-Flash-Uncensored-Hrt-NEO-CODE-MAX 16.2GB（GLM 系指令遵循好、NEO-CODE 强化，适合纯代码生成与严格格式输出）。注意：OpenCode Zen 云端免费模型是限时活动且多款不保证零保留，断网时不要依赖 |
 
 ## 工具清单（按分类）
 
@@ -225,92 +224,95 @@ tags:
 | **Notepad++** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/Notepad++` | 文本编辑（大文件/HEX 插件） | `HEX-Editor 插件看二进制` |
 | **Netcat-win32** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/Netcat-win32-1` | Windows 原生 nc（不想进 WSL 时快速连靶机） | `nc.exe <ip> <port>` |
 | **开赛预检 pre_flight** | 🪟 Win | Win: `C:/Users/glj07/.skills/ctf-toolbook/scripts/pre_flight.py` | 比赛前一键环境体检+建赛事目录与 _contest-state.md（含 flag 格式），说「开赛预检」即跑 | `python C:/Users/glj07/.skills/ctf-toolbook/scripts/pre_flight.py --contest 赛事名 --flag-format flag --duration 6` <br> `可选参数 --refresh-index 先刷新工具索引` |
+| **Qwen3.8-27B-UD (本地·比赛默认)** | 🪟 Win | Win: `C:/Users/glj07/.lmstudio/models/unsloth/Qwen3.8-27B-UD-Q4_K_XL/Qwen3.8-27B-UD-Q4_K_XL.gguf` | 比赛默认本地模型。唯一带 mmproj 视觉投影，能直接读题目截图/流量截图/GUI界面/图片型证据；稠密 27B 指令遵循与输出格式比小激活 MoE 更稳，写 exp 提 flag 这类不能出岔子的场合更可靠；Q4_K_XL 量化质量三者最高。代价是比 MoE 慢，但比赛不缺时间 | `LM Studio 载入该 GGUF（需同时载入 mmproj-Qwen3.8-27B-BF16.gguf 启用视觉）后 Start Server` <br> `断网比赛：OpenCode 里选 lmstudio/Qwen3.8-27B-UD-Q4_K_XL` <br> `读图片类证据时确认 vision 已启用` |
+| **Qwen3.6-35B-A3B (本地)** | 🪟 Win | Win: `C:/Users/glj07/.lmstudio/models/LuffyTheFox/Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-GGUF/Hermes3.6-35B-A3B-Uncensored-Genesis-MTP-APEX-Compact.gguf` | 本地 MoE 35B 仅激活 3B，出 token 最快；纯文本大批量分析、长文档、日志流水首选，激活小所以长文本吞吐高。缺视觉投影，看不了图 | `LM Studio 载入该 GGUF 后 Start Server` <br> `断网比赛：批量读日志/长文档时优先于默认模型` |
+| **GLM-4.7-Flash (本地)** | 🪟 Win | Win: `C:/Users/glj07/.lmstudio/models/DavidAU/GLM-4.7-Flash-Uncensored-Heretic-NEO-CODE-Imatrix-MAX-GGUF/GLM-4.7-Flash-Uncen-Hrt-NEO-CODE-MAX-imat-D_AU-Q4_K_S.gguf` | 本地 GLM 系，NEO-CODE 强化；写代码、生成 exp、严格格式输出场景指令遵循更稳。缺视觉投影 | `LM Studio 载入该 GGUF 后 Start Server` <br> `断网比赛：写脚本/生成 exp 时优先于默认模型` |
 
 ### 🧱 证据采集与镜像
 
 | 工具 | 状态 | 位置 | 用途 | 常用命令 |
 | --- | --- | --- | --- | --- |
-| **X-Ways Forensics** | ❌ 未装 | Win: `D:/Forensic/ForensicTool/Mirror/X-Ways Forensics-顶级的综合磁盘取证平台，以速度快、资源占用低著称` | 专业磁盘/镜像取证平台：分区、文件系统、时间线、书签与报告 ⚠️商业许可，启动需授权文件；案件前先校验镜像哈希 | `打` <br> `开` <br> `案` <br> `件` <br> `→` <br> `添` <br> `加` <br> `镜` <br> `像` <br> `→` <br> `只` <br> `读` <br> `分` <br> `析` <br> `→` <br> `书` <br> `签` <br> `/` <br> `导` <br> `出` <br> `报` <br> `告` |
-| **Autopsy** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mirror/Autopsy` | 开源数字取证平台，适合镜像、文件系统、关键字和时间线综合分析 | `新` <br> `建` <br> ` ` <br> `C` <br> `a` <br> `s` <br> `e` <br> `→` <br> `A` <br> `d` <br> `d` <br> ` ` <br> `D` <br> `a` <br> `t` <br> `a` <br> ` ` <br> `S` <br> `o` <br> `u` <br> `r` <br> `c` <br> `e` <br> `→` <br> `I` <br> `n` <br> `g` <br> `e` <br> `s` <br> `t` <br> ` ` <br> `M` <br> `o` <br> `d` <br> `u` <br> `l` <br> `e` <br> `s` <br> `→` <br> `查` <br> `看` <br> `结` <br> `果` |
-| **Arsenal Image Mounter** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mirror/Arsenal Image Mounter Professional-将磁盘镜像文件（如.E01, .dd）挂载为Windows虚拟磁盘，便于只读访问` | 将 E01/DD 只读挂载为 Windows 磁盘，供取证工具访问 | `选` <br> `择` <br> ` ` <br> `I` <br> `m` <br> `a` <br> `g` <br> `e` <br> `→` <br> `R` <br> `e` <br> `a` <br> `d` <br> `-` <br> `o` <br> `n` <br> `l` <br> `y` <br> ` ` <br> `M` <br> `o` <br> `u` <br> `n` <br> `t` <br> `→` <br> `记` <br> `录` <br> `盘` <br> `符` <br> `与` <br> `哈` <br> `希` |
-| **Mount Image Pro** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mirror/Mount Image Pro-镜像文件挂载工具` | 多格式磁盘镜像挂载 | `选` <br> `择` <br> `镜` <br> `像` <br> `→` <br> `只` <br> `读` <br> `挂` <br> `载` <br> `→` <br> `在` <br> ` ` <br> `X` <br> `-` <br> `W` <br> `a` <br> `y` <br> `s` <br> `/` <br> `A` <br> `u` <br> `t` <br> `o` <br> `p` <br> `s` <br> `y` <br> ` ` <br> `中` <br> `分` <br> `析` |
-| **Virtual Forensic Computing** | 🪟 Win | Win: `D:/Forensic/ForensicTool/HelperKit/Virtual Forensic Computing-证据仿真工具，可直接启动嫌疑人的磁盘镜像` | 在隔离虚拟机中启动镜像观察系统行为 | `复` <br> `制` <br> `证` <br> `据` <br> `镜` <br> `像` <br> `→` <br> `隔` <br> `离` <br> `启` <br> `动` <br> `→` <br> `记` <br> `录` <br> `行` <br> `为` <br> `与` <br> `截` <br> `图` |
+| **X-Ways Forensics** | ❌ 未装 | Win: `D:/Forensic/ForensicTool/Mirror/X-Ways Forensics-顶级的综合磁盘取证平台，以速度快、资源占用低著称` | 专业磁盘/镜像取证平台：分区、文件系统、时间线、书签与报告 ⚠️商业许可，启动需授权文件；案件前先校验镜像哈希 | `打开案件→添加镜像→只读分析→书签/导出报告` |
+| **Autopsy** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mirror/Autopsy` | 开源数字取证平台，适合镜像、文件系统、关键字和时间线综合分析 | `新建 Case→Add Data Source→Ingest Modules→查看结果` |
+| **Arsenal Image Mounter** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mirror/Arsenal Image Mounter Professional-将磁盘镜像文件（如.E01, .dd）挂载为Windows虚拟磁盘，便于只读访问` | 将 E01/DD 只读挂载为 Windows 磁盘，供取证工具访问 | `选择 Image→Read-only Mount→记录盘符与哈希` |
+| **Mount Image Pro** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mirror/Mount Image Pro-镜像文件挂载工具` | 多格式磁盘镜像挂载 | `选择镜像→只读挂载→在 X-Ways/Autopsy 中分析` |
+| **Virtual Forensic Computing** | 🪟 Win | Win: `D:/Forensic/ForensicTool/HelperKit/Virtual Forensic Computing-证据仿真工具，可直接启动嫌疑人的磁盘镜像` | 在隔离虚拟机中启动镜像观察系统行为 | `复制证据镜像→隔离启动→记录行为与截图` |
 
 ### ♻️ 恢复与解密
 
 | 工具 | 状态 | 位置 | 用途 | 常用命令 |
 | --- | --- | --- | --- | --- |
-| **UFS Explorer** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mirror/UFS Explorer Professional Recovery-数据恢复和镜像挂载工具，支持复杂RAID重组` | 复杂文件系统、RAID 和镜像恢复 | `打` <br> `开` <br> `镜` <br> `像` <br> `→` <br> `S` <br> `c` <br> `a` <br> `n` <br> `/` <br> `R` <br> `A` <br> `I` <br> `D` <br> ` ` <br> `重` <br> `组` <br> `→` <br> `恢` <br> `复` <br> `到` <br> `另` <br> `一` <br> `块` <br> `盘` |
-| **R-Studio/RDS** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Decrypt/RDS_2024-likely 是 R-Studio 网络版，强大的数据恢复工具，也用于破解简单密码` | 删除文件、分区、RAID 与镜像数据恢复 | `选` <br> `择` <br> `源` <br> `盘` <br> `/` <br> `镜` <br> `像` <br> `→` <br> `S` <br> `c` <br> `a` <br> `n` <br> `→` <br> `预` <br> `览` <br> `→` <br> `恢` <br> `复` <br> `到` <br> `独` <br> `立` <br> `输` <br> `出` <br> `盘` |
-| **FinalData/Fatbeans** | 🪟 Win | Win: `D:/Forensic/ForensicTool/FileDataRecovery/Fatbeans-likely 是 FinalData，经典的数据恢复软件` | 文件删除恢复和签名扫描 | `选` <br> `择` <br> `镜` <br> `像` <br> `→` <br> `扫` <br> `描` <br> `已` <br> `删` <br> `除` <br> `文` <br> `件` <br> `→` <br> `导` <br> `出` <br> `到` <br> `工` <br> `作` <br> `副` <br> `本` |
-| **PuzzleSolver** | 🪟 Win | Win: `D:/Forensic/ForensicTool/FileDataRecovery/PuzzleSolver-main` | 特定文件/密码恢复辅助工具集合 | `先` <br> `阅` <br> `读` <br> ` ` <br> `R` <br> `E` <br> `A` <br> `D` <br> `M` <br> `E` <br> `，` <br> `再` <br> `对` <br> `副` <br> `本` <br> `执` <br> `行` <br> `恢` <br> `复` |
-| **Passware Kit Forensic** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Decrypt/Passware Kit Forensic 2022（汉化版）` | 文件、容器和凭据密码恢复套件 | `选` <br> `择` <br> `案` <br> `件` <br> `文` <br> `件` <br> `→` <br> `选` <br> `择` <br> `攻` <br> `击` <br> `方` <br> `式` <br> `→` <br> `恢` <br> `复` <br> `到` <br> `工` <br> `作` <br> `副` <br> `本` |
-| **Elcomsoft Forensic Disk Decryptor** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Decrypt/Elcomsoft.Forensic.Disk.Decryptor` | 加密磁盘/容器取证辅助 | `导` <br> `入` <br> `密` <br> `钥` <br> `材` <br> `料` <br> `/` <br> `镜` <br> `像` <br> `→` <br> `只` <br> `读` <br> `解` <br> `密` <br> `分` <br> `析` |
-| **Ciphey** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Decrypt/Ciphey` | 自动识别与解码常见编码/密码文本 | `c` <br> `i` <br> `p` <br> `h` <br> `e` <br> `y` <br> ` ` <br> `-` <br> `t` <br> ` ` <br> `"` <br> `密` <br> `文` <br> `"` |
+| **UFS Explorer** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mirror/UFS Explorer Professional Recovery-数据恢复和镜像挂载工具，支持复杂RAID重组` | 复杂文件系统、RAID 和镜像恢复 | `打开镜像→Scan/RAID 重组→恢复到另一块盘` |
+| **R-Studio/RDS** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Decrypt/RDS_2024-likely 是 R-Studio 网络版，强大的数据恢复工具，也用于破解简单密码` | 删除文件、分区、RAID 与镜像数据恢复 | `选择源盘/镜像→Scan→预览→恢复到独立输出盘` |
+| **FinalData/Fatbeans** | 🪟 Win | Win: `D:/Forensic/ForensicTool/FileDataRecovery/Fatbeans-likely 是 FinalData，经典的数据恢复软件` | 文件删除恢复和签名扫描 | `选择镜像→扫描已删除文件→导出到工作副本` |
+| **PuzzleSolver** | 🪟 Win | Win: `D:/Forensic/ForensicTool/FileDataRecovery/PuzzleSolver-main` | 特定文件/密码恢复辅助工具集合 | `先阅读 README，再对副本执行恢复` |
+| **Passware Kit Forensic** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Decrypt/Passware Kit Forensic 2022（汉化版）` | 文件、容器和凭据密码恢复套件 | `选择案件文件→选择攻击方式→恢复到工作副本` |
+| **Elcomsoft Forensic Disk Decryptor** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Decrypt/Elcomsoft.Forensic.Disk.Decryptor` | 加密磁盘/容器取证辅助 | `导入密钥材料/镜像→只读解密分析` |
+| **Ciphey** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Decrypt/Ciphey` | 自动识别与解码常见编码/密码文本 | `ciphey -t "密文"` |
 
 ### 🧠 内存取证
 
 | 工具 | 状态 | 位置 | 用途 | 常用命令 |
 | --- | --- | --- | --- | --- |
-| **Volatility 3** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Decrypt/volatility3-develop/volatility3-develop/vol.py` | 内存镜像进程、网络、文件、注册表和凭据分析 | `v` <br> `o` <br> `l` <br> ` ` <br> `-` <br> `f` <br> ` ` <br> `m` <br> `e` <br> `m` <br> `.` <br> `r` <br> `a` <br> `w` <br> ` ` <br> `w` <br> `i` <br> `n` <br> `d` <br> `o` <br> `w` <br> `s` <br> `.` <br> `i` <br> `n` <br> `f` <br> `o` <br> `;` <br> ` ` <br> `v` <br> `o` <br> `l` <br> ` ` <br> `-` <br> `f` <br> ` ` <br> `m` <br> `e` <br> `m` <br> `.` <br> `r` <br> `a` <br> `w` <br> ` ` <br> `w` <br> `i` <br> `n` <br> `d` <br> `o` <br> `w` <br> `s` <br> `.` <br> `p` <br> `s` <br> `l` <br> `i` <br> `s` <br> `t` <br> `;` <br> ` ` <br> `v` <br> `o` <br> `l` <br> ` ` <br> `-` <br> `f` <br> ` ` <br> `m` <br> `e` <br> `m` <br> `.` <br> `r` <br> `a` <br> `w` <br> ` ` <br> `w` <br> `i` <br> `n` <br> `d` <br> `o` <br> `w` <br> `s` <br> `.` <br> `f` <br> `i` <br> `l` <br> `e` <br> `s` <br> `c` <br> `a` <br> `n` |
+| **Volatility 3** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Decrypt/volatility3-develop/volatility3-develop/vol.py` | 内存镜像进程、网络、文件、注册表和凭据分析 | `vol -f mem.raw windows.info` <br> `vol -f mem.raw windows.pslist` <br> `vol -f mem.raw windows.filescan` |
 
 ### 📡 网络流量取证
 
 | 工具 | 状态 | 位置 | 用途 | 常用命令 |
 | --- | --- | --- | --- | --- |
-| **Fiddler Everywhere** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Web/fiddler-everywhere-Web调试代理工具，捕获和分析HTTPHTTPS流量` | HTTP/HTTPS 调试代理与请求重放 | `启` <br> `动` <br> `代` <br> `理` <br> `→` <br> `导` <br> `入` <br> `会` <br> `话` <br> `→` <br> `保` <br> `存` <br> ` ` <br> `H` <br> `A` <br> `R` <br> `/` <br> `请` <br> `求` <br> `证` <br> `据` |
+| **Fiddler Everywhere** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Web/fiddler-everywhere-Web调试代理工具，捕获和分析HTTPHTTPS流量` | HTTP/HTTPS 调试代理与请求重放 | `启动代理→导入会话→保存 HAR/请求证据` |
 
 ### 🗃️ 数据库取证
 
 | 工具 | 状态 | 位置 | 用途 | 常用命令 |
 | --- | --- | --- | --- | --- |
-| **DB Browser for SQLite** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Database/DB/DB Browser for SQLite.exe` | SQLite 数据库初筛、表浏览和 CSV 导出 | `打` <br> `开` <br> `副` <br> `本` <br> `→` <br> `B` <br> `r` <br> `o` <br> `w` <br> `s` <br> `e` <br> ` ` <br> `D` <br> `a` <br> `t` <br> `a` <br> `→` <br> `导` <br> `出` <br> `关` <br> `键` <br> `表` |
-| **DB Browser for SQLCipher** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Database/DB/DB Browser for SQLCipher.exe` | 加密 SQLite/SQLCipher 数据库查看 | `打` <br> `开` <br> `数` <br> `据` <br> `库` <br> `→` <br> `输` <br> `入` <br> ` ` <br> `k` <br> `e` <br> `y` <br> `→` <br> `导` <br> `出` <br> `查` <br> `询` <br> `结` <br> `果` |
-| **SQLCipher** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/sqlcipher-3.0.1` | 加密 SQLite 命令行读取 | `s` <br> `q` <br> `l` <br> `c` <br> `i` <br> `p` <br> `h` <br> `e` <br> `r` <br> ` ` <br> `d` <br> `b` <br> `.` <br> `s` <br> `q` <br> `l` <br> `i` <br> `t` <br> `e` <br> `;` <br> ` ` <br> `P` <br> `R` <br> `A` <br> `G` <br> `M` <br> `A` <br> ` ` <br> `k` <br> `e` <br> `y` <br> `=` <br> `"` <br> `p` <br> `a` <br> `s` <br> `s` <br> `"` <br> `;` <br> ` ` <br> `.` <br> `t` <br> `a` <br> `b` <br> `l` <br> `e` <br> `s` <br> `;` |
-| **HexHub** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Database/HexHub` | 数据库/十六进制相关本地分析工具 | `打` <br> `开` <br> `副` <br> `本` <br> `→` <br> `按` <br> `项` <br> `目` <br> `功` <br> `能` <br> `查` <br> `看` <br> `结` <br> `构` <br> `与` <br> `字` <br> `段` |
-| **NTFS Log Tracker** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Database/NTFS Log Tracker-分析NTFS文件系统的日志（$LogFile），追踪文件操作历史` | NTFS $LogFile 操作记录和文件活动分析 | `导` <br> `入` <br> ` ` <br> `$` <br> `L` <br> `o` <br> `g` <br> `F` <br> `i` <br> `l` <br> `e` <br> `→` <br> `按` <br> `时` <br> `间` <br> `/` <br> `路` <br> `径` <br> `筛` <br> `选` <br> `→` <br> `导` <br> `出` <br> `报` <br> `告` |
+| **DB Browser for SQLite** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Database/DB/DB Browser for SQLite.exe` | SQLite 数据库初筛、表浏览和 CSV 导出 | `打开副本→Browse Data→导出关键表` |
+| **DB Browser for SQLCipher** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Database/DB/DB Browser for SQLCipher.exe` | 加密 SQLite/SQLCipher 数据库查看 | `打开数据库→输入 key→导出查询结果` |
+| **SQLCipher** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/sqlcipher-3.0.1` | 加密 SQLite 命令行读取 | `sqlcipher db.sqlite` <br> `PRAGMA key="pass"` <br> `.tables` |
+| **HexHub** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Database/HexHub` | 数据库/十六进制相关本地分析工具 | `打开副本→按项目功能查看结构与字段` |
+| **NTFS Log Tracker** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Database/NTFS Log Tracker-分析NTFS文件系统的日志（$LogFile），追踪文件操作历史` | NTFS $LogFile 操作记录和文件活动分析 | `导入 $LogFile→按时间/路径筛选→导出报告` |
 | **MySQL MCP 只读工具集** | 🪟 Win | Win: `C:/Users/glj07/.mcp-toolbox/v1.12.0/run-mysql-toolbox.cmd` | Google MCP Toolbox v1.12.0 统一入口（非 Oracle/MySQL 官方）：只读列出数据库/表/列结构与 EXPLAIN，七端共用 launcher ⚠️binary SHA256 c8d382ed597596f96aa015bf8ab5aaad557eb831d342813b8312fc582aa040f6 已核验；tools/list 与真实连库烟测通过；AionUI 待 UI 手动登记 | `工具：mysql_list_databases / mysql_list_tables / mysql_table_columns / mysql_explain_select` <br> `launcher：cmd.exe /c C:/Users/glj07/.mcp-toolbox/v1.12.0/run-mysql-toolbox.cmd（已登记 ZCode/Codex/Claude/CodeBuddy/Trae/LM Studio）` <br> `凭据：只读账号 mcp_readonly，SELECT-only，密码仅在 .mcp-toolbox/v1.12.0/mysql.env` |
 
 ### 📱 手机取证
 
 | 工具 | 状态 | 位置 | 用途 | 常用命令 |
 | --- | --- | --- | --- | --- |
-| **Magnet AXIOM** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mobile/magnetaxiom.all.to.9.9.0.46675` | 综合电脑/手机/云取证分析平台，自动解析应用与时间线 | `创` <br> `建` <br> ` ` <br> `C` <br> `a` <br> `s` <br> `e` <br> `→` <br> `添` <br> `加` <br> `镜` <br> `像` <br> `/` <br> `备` <br> `份` <br> `→` <br> `P` <br> `r` <br> `o` <br> `c` <br> `e` <br> `s` <br> `s` <br> `→` <br> `A` <br> `n` <br> `a` <br> `l` <br> `y` <br> `z` <br> `e` <br> `→` <br> `导` <br> `出` <br> `报` <br> `告` |
-| **UFED** | ❌ 未装 | Win: `D:/Forensic/ForensicTool/Mobile/UFED-全球顶尖的手机物理取证工具，能破解锁屏、深度提取数据` | 手机物理提取与移动设备取证平台 ⚠️商业设备配套软件；无授权时用 iBackup Viewer 解 iTunes 备份替代 | `按` <br> `设` <br> `备` <br> `型` <br> `号` <br> `选` <br> `择` <br> ` ` <br> `e` <br> `x` <br> `t` <br> `r` <br> `a` <br> `c` <br> `t` <br> `i` <br> `o` <br> `n` <br> ` ` <br> `p` <br> `r` <br> `o` <br> `f` <br> `i` <br> `l` <br> `e` <br> `→` <br> `保` <br> `存` <br> `原` <br> `始` <br> `提` <br> `取` <br> `物` <br> `→` <br> `在` <br> `分` <br> `析` <br> `工` <br> `具` <br> `中` <br> `解` <br> `析` |
-| **iBackup Viewer** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mobile/iBackup Viewer Pro-专门用于解析和查看苹果iTunes备份文件的内容` | Apple iTunes 备份解析 | `打` <br> `开` <br> `备` <br> `份` <br> `→` <br> `查` <br> `看` <br> `消` <br> `息` <br> `/` <br> `照` <br> `片` <br> `/` <br> `联` <br> `系` <br> `人` <br> `→` <br> `导` <br> `出` <br> `证` <br> `据` |
-| **plist Editor Pro** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mobile/plist Editor Pro` | Apple plist 配置与取证字段查看 | `打` <br> `开` <br> ` ` <br> `p` <br> `l` <br> `i` <br> `s` <br> `t` <br> ` ` <br> `副` <br> `本` <br> `→` <br> `查` <br> `看` <br> `键` <br> `值` <br> `/` <br> `时` <br> `间` <br> `字` <br> `段` |
-| **AndroidKiller** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mobile/AndroidKiller-master` | Android APK 反编译与资源分析 | `导` <br> `入` <br> ` ` <br> `A` <br> `P` <br> `K` <br> `→` <br> `查` <br> `看` <br> ` ` <br> `M` <br> `a` <br> `n` <br> `i` <br> `f` <br> `e` <br> `s` <br> `t` <br> `/` <br> `代` <br> `码` <br> `/` <br> `资` <br> `源` <br> `→` <br> `导` <br> `出` <br> `证` <br> `据` |
-| **PH-PhoneForensics** | 🪟 Win | Win: `D:/Forensic/ForensicTool/pinghang/PH-PhoneForensics` | 平航移动取证工具，手机数据提取/解析辅助 | `按` <br> `设` <br> `备` <br> `/` <br> `备` <br> `份` <br> `类` <br> `型` <br> `导` <br> `入` <br> `→` <br> `生` <br> `成` <br> `案` <br> `件` <br> `报` <br> `告` |
-| **JADX GUI AI (Forensic)** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Others/jadx-gui-ai-master` | Android 应用取证/逆向查看，含 AI MCP 连接能力 | `启` <br> `动` <br> ` ` <br> `G` <br> `U` <br> `I` <br> `→` <br> `导` <br> `入` <br> ` ` <br> `A` <br> `P` <br> `K` <br> `→` <br> `搜` <br> `索` <br> `数` <br> `据` <br> `库` <br> `/` <br> `A` <br> `P` <br> `I` <br> `/` <br> `密` <br> `钥` |
+| **Magnet AXIOM** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mobile/magnetaxiom.all.to.9.9.0.46675` | 综合电脑/手机/云取证分析平台，自动解析应用与时间线 | `创建 Case→添加镜像/备份→Process→Analyze→导出报告` |
+| **UFED** | ❌ 未装 | Win: `D:/Forensic/ForensicTool/Mobile/UFED-全球顶尖的手机物理取证工具，能破解锁屏、深度提取数据` | 手机物理提取与移动设备取证平台 ⚠️商业设备配套软件；无授权时用 iBackup Viewer 解 iTunes 备份替代 | `按设备型号选择 extraction profile→保存原始提取物→在分析工具中解析` |
+| **iBackup Viewer** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mobile/iBackup Viewer Pro-专门用于解析和查看苹果iTunes备份文件的内容` | Apple iTunes 备份解析 | `打开备份→查看消息/照片/联系人→导出证据` |
+| **plist Editor Pro** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mobile/plist Editor Pro` | Apple plist 配置与取证字段查看 | `打开 plist 副本→查看键值/时间字段` |
+| **AndroidKiller** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mobile/AndroidKiller-master` | Android APK 反编译与资源分析 | `导入 APK→查看 Manifest/代码/资源→导出证据` |
+| **PH-PhoneForensics** | 🪟 Win | Win: `D:/Forensic/ForensicTool/pinghang/PH-PhoneForensics` | 平航移动取证工具，手机数据提取/解析辅助 | `按设备/备份类型导入→生成案件报告` |
+| **JADX GUI AI (Forensic)** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Others/jadx-gui-ai-master` | Android 应用取证/逆向查看，含 AI MCP 连接能力 | `启动 GUI→导入 APK→搜索数据库/API/密钥` |
 
 ### 🕒 时间线与主机活动
 
 | 工具 | 状态 | 位置 | 用途 | 常用命令 |
 | --- | --- | --- | --- | --- |
-| **DCode** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Others/DCode v5` | Windows 时间戳、FILETIME、Unix 时间转换 | `输` <br> `入` <br> `十` <br> `六` <br> `进` <br> `制` <br> `/` <br> `十` <br> `进` <br> `制` <br> `时` <br> `间` <br> `戳` <br> `→` <br> `核` <br> `对` <br> ` ` <br> `U` <br> `T` <br> `C` <br> `/` <br> `本` <br> `地` <br> `时` <br> `间` |
-| **Autopsy/时间线模块** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mirror/Autopsy` | 从文件系统和日志构建统一时间线 | `I` <br> `n` <br> `g` <br> `e` <br> `s` <br> `t` <br> ` ` <br> `后` <br> `打` <br> `开` <br> ` ` <br> `T` <br> `i` <br> `m` <br> `e` <br> `l` <br> `i` <br> `n` <br> `e` <br> `→` <br> `按` <br> `来` <br> `源` <br> `/` <br> `时` <br> `间` <br> `/` <br> `关` <br> `键` <br> `字` <br> `筛` <br> `选` |
+| **DCode** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Others/DCode v5` | Windows 时间戳、FILETIME、Unix 时间转换 | `输入十六进制/十进制时间戳→核对 UTC/本地时间` |
+| **Autopsy/时间线模块** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mirror/Autopsy` | 从文件系统和日志构建统一时间线 | `Ingest 后打开 Timeline→按来源/时间/关键字筛选` |
 
 ### 🖥️ 主机与系统取证
 
 | 工具 | 状态 | 位置 | 用途 | 常用命令 |
 | --- | --- | --- | --- | --- |
-| **Lads ADS** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/lads.exe` | NTFS Alternate Data Streams 检测 | `l` <br> `a` <br> `d` <br> `s` <br> ` ` <br> `/` <br> `s` <br> ` ` <br> `D` <br> `:` <br> `\` <br> `；` <br> `P` <br> `o` <br> `w` <br> `e` <br> `r` <br> `S` <br> `h` <br> `e` <br> `l` <br> `l` <br> ` ` <br> `G` <br> `e` <br> `t` <br> `-` <br> `I` <br> `t` <br> `e` <br> `m` <br> ` ` <br> `-` <br> `S` <br> `t` <br> `r` <br> `e` <br> `a` <br> `m` <br> ` ` <br> `*` |
-| **regipy** | ❌ 未装 | WSL: `pip install regipy` | Python 注册表解析库 ⚠️已装入 conda base（/root/miniconda3） | `p` <br> `y` <br> `t` <br> `h` <br> `o` <br> `n` <br> `3` <br> ` ` <br> `-` <br> `c` <br> ` ` <br> `"` <br> `f` <br> `r` <br> `o` <br> `m` <br> ` ` <br> `r` <br> `e` <br> `g` <br> `i` <br> `p` <br> `y` <br> `.` <br> `r` <br> `e` <br> `g` <br> `i` <br> `s` <br> `t` <br> `r` <br> `y` <br> ` ` <br> `i` <br> `m` <br> `p` <br> `o` <br> `r` <br> `t` <br> ` ` <br> `R` <br> `e` <br> `g` <br> `i` <br> `s` <br> `t` <br> `r` <br> `y` <br> `"` |
-| **python-evtx** | ❌ 未装 | WSL: `pip install python-evtx` | Windows EVTX 事件日志解析库 ⚠️已装入 conda base（/root/miniconda3），导入名是 Evtx 不是 evtx | `p` <br> `i` <br> `p` <br> ` ` <br> `i` <br> `n` <br> `s` <br> `t` <br> `a` <br> `l` <br> `l` <br> ` ` <br> `p` <br> `y` <br> `t` <br> `h` <br> `o` <br> `n` <br> `-` <br> `e` <br> `v` <br> `t` <br> `x` <br> `;` <br> ` ` <br> `p` <br> `y` <br> `t` <br> `h` <br> `o` <br> `n` <br> ` ` <br> `p` <br> `a` <br> `r` <br> `s` <br> `e` <br> `_` <br> `e` <br> `v` <br> `t` <br> `x` <br> `.` <br> `p` <br> `y` <br> ` ` <br> `S` <br> `e` <br> `c` <br> `u` <br> `r` <br> `i` <br> `t` <br> `y` <br> `.` <br> `e` <br> `v` <br> `t` <br> `x` |
-| **FileLocator Pro** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Database/FileLocator Pro-强大的文件内容搜索工具，可快速在全盘搜索关键词` | 案件目录内全文/正则/文件名搜索 | `限` <br> `定` <br> `证` <br> `据` <br> `目` <br> `录` <br> `→` <br> `搜` <br> `索` <br> `关` <br> `键` <br> `字` <br> `→` <br> `导` <br> `出` <br> `命` <br> `中` <br> `路` <br> `径` |
+| **Lads ADS** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/lads.exe` | NTFS Alternate Data Streams 检测 | `lads /s D:\；PowerShell Get-Item -Stream *` |
+| **regipy** | ❌ 未装 | WSL: `pip install regipy` | Python 注册表解析库 ⚠️已装入 conda base（/root/miniconda3） | `python3 -c "from regipy.registry import Registry"` |
+| **python-evtx** | ❌ 未装 | WSL: `pip install python-evtx` | Windows EVTX 事件日志解析库 ⚠️已装入 conda base（/root/miniconda3），导入名是 Evtx 不是 evtx | `pip install python-evtx` <br> `python parse_evtx.py Security.evtx` |
+| **FileLocator Pro** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Database/FileLocator Pro-强大的文件内容搜索工具，可快速在全盘搜索关键词` | 案件目录内全文/正则/文件名搜索 | `限定证据目录→搜索关键字→导出命中路径` |
 
 ### 🧬 恶意样本与规则
 
 | 工具 | 状态 | 位置 | 用途 | 常用命令 |
 | --- | --- | --- | --- | --- |
-| **strings / file / sha256sum** | ❌ 未装 | WSL: `/usr/bin/strings` | 样本初筛：文件类型、字符串和证据哈希 ⚠️证据初筛三件套：file→sha256sum→strings 顺序固定，结果全部记录进 notes | `f` <br> `i` <br> `l` <br> `e` <br> ` ` <br> `s` <br> `a` <br> `m` <br> `p` <br> `l` <br> `e` <br> `;` <br> ` ` <br> `s` <br> `h` <br> `a` <br> `2` <br> `5` <br> `6` <br> `s` <br> `u` <br> `m` <br> ` ` <br> `s` <br> `a` <br> `m` <br> `p` <br> `l` <br> `e` <br> `;` <br> ` ` <br> `s` <br> `t` <br> `r` <br> `i` <br> `n` <br> `g` <br> `s` <br> ` ` <br> `-` <br> `a` <br> ` ` <br> `s` <br> `a` <br> `m` <br> `p` <br> `l` <br> `e` <br> ` ` <br> `\|` <br> ` ` <br> `l` <br> `e` <br> `s` <br> `s` |
+| **strings / file / sha256sum** | ❌ 未装 | WSL: `/usr/bin/strings` | 样本初筛：文件类型、字符串和证据哈希 ⚠️证据初筛三件套：file→sha256sum→strings 顺序固定，结果全部记录进 notes | `file sample` <br> `sha256sum sample` <br> `strings -a sample \| less` |
 
 ### 🧩 固件与文件结构
 
 | 工具 | 状态 | 位置 | 用途 | 常用命令 |
 | --- | --- | --- | --- | --- |
-| **UEFITool** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Others/UEFITool_NE_A72_win64` | UEFI 固件结构查看与模块提取 | `打` <br> `开` <br> ` ` <br> `R` <br> `O` <br> `M` <br> `→` <br> `树` <br> `状` <br> `查` <br> `看` <br> ` ` <br> `F` <br> `V` <br> `/` <br> `P` <br> `E` <br> `I` <br> `/` <br> `D` <br> `X` <br> `E` <br> `→` <br> `导` <br> `出` <br> `模` <br> `块` |
-| **CFF Explorer** | ❌ 未装 | Win: `D:/Forensic/ForensicTool/Reverse/CFF_Explorer-强大的PE文件（Windows可执行文件）编辑器，用于逆向分析` | PE 结构、节、导入导出表分析 ⚠️免费版够用；复杂 PE 转用 CFF Explorer 的建议替代品 Detect It Easy + IDA | `打` <br> `开` <br> ` ` <br> `P` <br> `E` <br> `→` <br> `查` <br> `看` <br> ` ` <br> `H` <br> `e` <br> `a` <br> `d` <br> `e` <br> `r` <br> `s` <br> `/` <br> `S` <br> `e` <br> `c` <br> `t` <br> `i` <br> `o` <br> `n` <br> `s` <br> `/` <br> `I` <br> `m` <br> `p` <br> `o` <br> `r` <br> `t` <br> `s` |
+| **UEFITool** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Others/UEFITool_NE_A72_win64` | UEFI 固件结构查看与模块提取 | `打开 ROM→树状查看 FV/PEI/DXE→导出模块` |
+| **CFF Explorer** | ❌ 未装 | Win: `D:/Forensic/ForensicTool/Reverse/CFF_Explorer-强大的PE文件（Windows可执行文件）编辑器，用于逆向分析` | PE 结构、节、导入导出表分析 ⚠️免费版够用；复杂 PE 转用 CFF Explorer 的建议替代品 Detect It Easy + IDA | `打开 PE→查看 Headers/Sections/Imports` |
 
 ## 考点速查：遇到什么题用什么工具
 
@@ -324,7 +326,7 @@ tags:
 | Crypto | **RSA dp/dq 泄露** | python3 标准公式 | `m = pow(c, dp, n) 变体；参照 dp 泄露模板脚本` | RsaCtfTool --attack dp_leak |
 | Crypto | **RSA 格攻击（Boneh-Durfee/低加密指数广播 Hastad）** | SageMath (在线 sagecell) | `sagecell.sagemath.org 在线跑格脚本` | 多组同 e 用 CRT 直接合 |
 | Crypto | **MD5 碰撞（要求两串相同 md5）** | fastcoll | `fastcoll -p prefix -o a.txt b.txt 生成同前缀碰撞对` | 在线 fastcoll 服务 |
-| Crypto | **哈希长度扩展攻击** | hash_extender 思路手写 | `python 实现 md5 padding 追加；或装 hash_extender` | 脚本库 PayloadsAllTheThings |
+| Crypto | **哈希长度扩展攻击** | hash_extender 思路手写 | `python -c "import hashlib;h=hashlib.sha256();h.update(b'digest');print(h.hexdigest())"` | python -c "import hle;print(hle.extend('sha256',b'secret'))" |
 | Crypto | **AES ECB/CBC（密钥在题目/ padding oracle）** | pycryptodome | `from Crypto.Cipher import AES; AES.new(key, AES.MODE_ECB).decrypt(ct)` | pycryptodome CBC+unpad |
 | Crypto | **异或加密（ repeating-key XOR）** | python3 手写 | `已知前缀推 key；未知用 xortool 思路/频率分析` | CyberChef XOR Brute |
 | Crypto | **哈希类型识别后爆破** | hashid 识别 → hashcat (Windows 版吃 5090) | `hashcat -m <mode> -a 0 hash.txt D:/CaptureTheFlag/CTFTool/Cryptodictionary/rockyou` | john（WSL） |
@@ -350,7 +352,7 @@ tags:
 | Web | **文件上传拿 WebShell** | 中国蚁剑/冰蝎 | `上传一句话（绕过检测）→ 蚁剑连接` | 哥斯拉思路 |
 | Web | **PHP/Java 反序列化** | 手写 POP 链 + PayloadsAllTheThings | `phpggc 思路生成 payload` | ysoserial (Java) |
 | Web | **git 源码泄露** | GitHack | `githack.cmd url/.git/；失败用 git-dumper` | 手动 curl refs |
-| Web | **JWT 伪造** | python3 pyjwt 手改 | `none 算法/弱密钥字典爆破/算法混淆` | jwt_tool (未装可 pip) |
+| Web | **JWT 伪造** | python3 pyjwt 手改 | `python -c "import jwt,base64;print(jwt.decode(open('t.txt').read(),options={'verify_signature':False}))"` | python -c "import base64;s=open('t.txt').read().split('.')[0];print(base64.urlsafe_b64decode(s+'=='))" |
 | Web | **弱口令爆破后台** | hydra + 后台常用密码.txt | `hydra -L users -P D:/.../后台常用密码.txt target http-post-form` | Burp Intruder |
 | Forensics | **图片宽高/文件头损坏** | 010 Editor + tweakpng | `010 模板改 IHDR 宽高；tweakpng 提示 CRC 错即宽高错` | python 手算 CRC 爆破宽高 |
 | Forensics | **PNG/BMP LSB 隐写** | zsteg → Stegsolve | `zsteg flag.png 自动出；手动用 Stegsolve Data Extract 逐通道` | python PIL 手写 |
@@ -411,7 +413,7 @@ tags:
 | Forensics | **浏览器历史/密码提取** | SQLite Expert + python | `History.db 查 urls/visits；Login Data 用 DPAPI 解密` | WeFlow（微信场景） |
 | Forensics | **微信/QQ 聊天记录取证** | WeFlow | `WeFlow 4.5.1 读本地微信 4.0+ 数据库导出 HTML/CSV` | SQLite Expert + 密钥解密 |
 | Forensics | **BitLocker/VeraCrypt/TC 加密卷** | PasswareKit | `选容器类型后字典/GPU 恢复口令；TC 卷用 TrueCrypt 7.1a 挂载` | hashcat 提取后爆破 |
-| Forensics | **WiFi 握手包破解** | WSL hashcat | `aircrack-ng 转 hc22000 后 hashcat -m 22000；GPU 用 Windows hashcat` | john --wordlist |
+| Forensics | **WiFi 握手包破解** | WSL hashcat | `hashcat -m 22000 capture.hccapx wordlist.txt` | hcxpcapng -o capture.pcapng capture.cap && hashcat -m 22000 capture.pcapx wordlist.txt |
 | Forensics | **PDF 流对象/隐藏文字** | qpdf/mutool | `mutool show in.pdf objects；qpdf --qdf 拆流对象找 JS/隐藏内容` | pdftotext + 010 Editor |
 | Forensics | **Office 隐藏内容（docx/xlsx）** | 7z 解包 + grep | `docx 即 zip：unzip 后看 word/document.xml 的 vanish 隐藏文本` | 010 Editor 模板 |
 | Misc | **SSTV 音频还原图片** | RXSSTV | `播放 wav 给 RXSSTV（Robot36/Martin1 常见）；VBCABLE 虚拟声卡内录` | 在线 SSTV 解码 |
@@ -446,8 +448,21 @@ tags:
 | Forensics | **时间戳转换与时间线核对** | DCode | `识别 FILETIME/Unix/浏览器时间格式→转换 UTC/本地→记录时区` | Python datetime |
 | Forensics | **UEFI/固件结构提取** | UEFITool + binwalk | `计算固件哈希→UEFITool 查看 FV/模块→导出→binwalk 辅助提取` | strings |
 | Forensics | **PE 样本结构/导入导出分析** | CFF Explorer + Detect It Easy | `确认 PE 架构/节/导入表→查壳和编译器→再交给 IDA/x64dbg` | IDA/DiE |
+| Web | **XXE** | CyberChef | `<?xml version="1.0"?><!DOCTYPE x [<!ENTITY xxe SYSTEM "file:///etc/passwd">]>&xxe;` | python -c "import lxml.etree as e;print(e.parse('flag.xml').xpath('//a/text()'))" |
+| Web | **SSRF** | curl | `curl -v "http://127.0.0.1:6379/"` | python -c "import requests;print(requests.get('http://127.0.0.1:6379/').text)" |
+| Web | **文件包含 LFI/RFI** | php://filter | `curl -G --data-urlencode 'page=php://filter/convert.base64-encode/resource=flag.php' http://x/index.php` | cat /proc/self/cwd/flag |
+| Web | **命令注入** | curl | `curl -G --data-urlencode 'a=;cat /etc/passwd' 'http://x/index.php'` | ;id  /  \|id  /  &&id  /  `id`  /  $(id)  /  换行id |
+| Web | **CSRF** | Burp Suite | `Burp: 抓包右键 "Generate CSRF PoC"` | python -c "import requests;requests.post(url,data={'x':1})" |
+| Web | **权限绕过/越权** | Burp Suite | `改 id 参数: ?id=1 -> ?id=2; 或改 X-Forwarded-For / X-Real-IP` | python -c "import requests;print(requests.get(url,headers={'X-Forwarded-For':'127.0.0.1'}).text)" |
+| Web | **Java 反序列化** | ysoserial | `java -jar ysoserial.jar CommonsCollections6 - touch /tmp/pwned` | python -c "import requests;requests.post(url,data=open('payload.bin','rb').read())" |
+| Crypto | **国密 SM2/SM3/SM4** | gmssl | `gmssl sm4 -e -in plain.txt -out enc.bin -pass pass:1234` | python -c "from gmssl.sm4 import CryptSM4,SM4_DECRYPT;print(CryptSM4(SM4_DECRYPT).crypt_ecb(key,data))" |
+| Crypto | **Padding Oracle** | curl | `curl -X POST -d 'ct=<截断密文>' http://x/decrypt` | python -c "import hashpump;print(hashpump.hashpump('sha256',data))" |
+| Crypto | **侧信道/计时攻击** | python | `python -c "import time;a=input();[print(i,time.perf_counter()) for i in a]"` | for i in $(seq 1 20);do curl -s -o /dev/null -w "%{time_total}\n" url;done |
+| Crypto | **彩虹表** | hashcat | `hashcat -m 0 hash.txt` | hashcat -m 1000 hash.txt   # NTLM;  -m 1400 sha2$ ;  -m 13100 kerberos |
+| Pwn | **ret2dlresolve** | pwntools | `python -c "from pwn import *;e=ELF('./p');print(e.symbols)"` | ret2dlresolve.py - ./p ./p |
+| Reverse | **Python 反序列化 pickle** | pickle | `python -c "import pickle;print(pickle.loads(open('p','rb').read()))"` | python -c "import pickletools;pickletools.dis(open('p','rb').read())" |
 
 ## 更新记录
 
 - 2026-09-26 手册升级：命令一键复制、考点↔工具双向互跳、URL 深链（#cat-x&q=y）、多词 AND 搜索+高亮、收藏置顶、打印导出、内嵌 JSON 数据。
-- 2026-09-26 首次生成：工具 187 项，考点映射 130 条；WSL 已补装 gdb-multiarch/strace/ltrace/patchelf/qemu-user/upx/tshark/tcpdump/steghide/outguess/fcrackzip/zip/qpdf/mutool/socat/ncat/hashid/masscan/musl-tools + seccomp-tools + z3 + one_gadget。
+- 2026-09-26 首次生成：工具 190 项，考点映射 143 条；WSL 已补装 gdb-multiarch/strace/ltrace/patchelf/qemu-user/upx/tshark/tcpdump/steghide/outguess/fcrackzip/zip/qpdf/mutool/socat/ncat/hashid/masscan/musl-tools + seccomp-tools + z3 + one_gadget。
