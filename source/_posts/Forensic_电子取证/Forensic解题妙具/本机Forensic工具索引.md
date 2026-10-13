@@ -1,5 +1,6 @@
 ---
 title: 本机Forensic工具索引
+permalink: '/2026/09/26/Forensic_电子取证/Forensic解题妙具/本机Forensic工具索引/'
 date: 2026-09-26
 categories:
   - Forensic_电子取证
