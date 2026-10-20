@@ -27,17 +27,19 @@ function isFile(absPath) {
 }
 
 function resolvePostDir(data) {
+  if (data.path) {
+    return String(data.path).replace(/index\.html$/i, '').replace(/^\/+|\/+$/g, '');
+  }
   if (data.permalink) {
     try {
-      return new URL(data.permalink).pathname
-        .replace(/index\.html$/i, '')
-        .replace(/^\/+|\/+$/g, '');
+      return safeDecode(
+        new URL(data.permalink).pathname
+          .replace(/index\.html$/i, '')
+          .replace(/^\/+|\/+$/g, '')
+      );
     } catch (_) {
       // fall through
     }
-  }
-  if (data.path) {
-    return String(data.path).replace(/index\.html$/i, '').replace(/^\/+|\/+$/g, '');
   }
   return '';
 }
