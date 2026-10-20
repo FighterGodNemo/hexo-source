@@ -28,9 +28,19 @@ function collectKeywords(page, config) {
 
 hexo.extend.filter.register('after_render:html', function (html, locals) {
   if (!html || !locals || !locals.page) return html;
+
+  const config = locals.config || hexo.config;
+
+  if (locals.page.type === '404') {
+    const siteTitle = config.title || '';
+    const pageTitle = '页面未找到';
+    const title = siteTitle ? `${pageTitle} | ${siteTitle}` : pageTitle;
+    html = html.replace(/<title>[^<]*<\/title>/i, `<title>${escapeAttr(title)}</title>`);
+  }
+
   if (/<meta[^>]+name=["']keywords["']/i.test(html)) return html;
 
-  const keywords = collectKeywords(locals.page, locals.config || hexo.config);
+  const keywords = collectKeywords(locals.page, config);
   if (!keywords) return html;
 
   const tag = `<meta name="keywords" content="${escapeAttr(keywords)}">`;
