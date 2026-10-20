@@ -94,13 +94,13 @@ function toTrack(filePath, publicPath, coverPath) {
     name,
     artist,
     url: publicPath,
-    cover: coverPath || '/img/index-bg.jpg'
+    cover: coverPath || '/img/index-bg.webp'
   };
 }
 
 function getBgCoverMap(bgDir) {
   const byKey = {};
-  let defaultCover = '/img/index-bg.jpg';
+  let defaultCover = '/img/index-bg.webp';
   if (!fs.existsSync(bgDir)) {
     return { byKey, defaultCover };
   }

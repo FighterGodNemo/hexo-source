@@ -105,7 +105,7 @@ function collectBgData(hexo) {
     else if (typeof themeBg === 'string' && themeBg) list = [themeBg];
   }
 
-  if (!list.length) list = ['/img/index-bg.jpg'];
+  if (!list.length) list = ['/img/index-bg.webp'];
   if (!items.length) items = createFallbackBgItems(list);
 
   if (fs.existsSync(musicDir)) {

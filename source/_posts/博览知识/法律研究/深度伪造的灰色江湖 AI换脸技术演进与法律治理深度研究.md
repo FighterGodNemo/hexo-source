@@ -1,13 +1,16 @@
 ---
+title: 深度伪造的灰色江湖：AI 换脸技术演进与法律治理
 AIGC:
-    Label: "1"
-    ContentProducer: 001191440300708461136T1XGW3
-    ProduceID: d561a41903fa0b85dc50035c4c549bb5_0800379abe8911f1bc7e525400638852
-    ReservedCode1: 6KeIQmPtvLEn1HMmUSCKYxRd2oYUCe7aUzvkwzE6F8YWTJs11BHt1edvclESZSnkCmgvAAOmjYC3RysE2Yxefb2Bqr75KdgxiVXqPjsalS+e/7CJIpgbxxar59/0Uo5FiHQctkoDeEn5auIuluas04hM37a5eebNM10z8G6GgKmElJJaptbigCzm3zw=
-    ContentPropagator: 001191440300708461136T1XGW3
-    PropagateID: d561a41903fa0b85dc50035c4c549bb5_0800379abe8911f1bc7e525400638852
-    ReservedCode2: 6KeIQmPtvLEn1HMmUSCKYxRd2oYUCe7aUzvkwzE6F8YWTJs11BHt1edvclESZSnkCmgvAAOmjYC3RysE2Yxefb2Bqr75KdgxiVXqPjsalS+e/7CJIpgbxxar59/0Uo5FiHQctkoDeEn5auIuluas04hM37a5eebNM10z8G6GgKmElJJaptbigCzm3zw=
-permalink: '/2026/10/03/博览知识/法律研究/深度伪造的灰色江湖 AI换脸技术演进与法律治理深度研究/'
+  Label: "1"
+  ContentProducer: 001191440300708461136T1XGW3
+  ProduceID: d561a41903fa0b85dc50035c4c549bb5_0800379abe8911f1bc7e525400638852
+  ReservedCode1: 6KeIQmPtvLEn1HMmUSCKYxRd2oYUCe7aUzvkwzE6F8YWTJs11BHt1edvclESZSnkCmgvAAOmjYC3RysE2Yxefb2Bqr75KdgxiVXqPjsalS+e/7CJIpgbxxar59/0Uo5FiHQctkoDeEn5auIuluas04hM37a5eebNM10z8G6GgKmElJJaptbigCzm3zw=
+  ContentPropagator: 001191440300708461136T1XGW3
+  PropagateID: d561a41903fa0b85dc50035c4c549bb5_0800379abe8911f1bc7e525400638852
+  ReservedCode2: 6KeIQmPtvLEn1HMmUSCKYxRd2oYUCe7aUzvkwzE6F8YWTJs11BHt1edvclESZSnkCmgvAAOmjYC3RysE2Yxefb2Bqr75KdgxiVXqPjsalS+e/7CJIpgbxxar59/0Uo5FiHQctkoDeEn5auIuluas04hM37a5eebNM10z8G6GgKmElJJaptbigCzm3zw=
+permalink: /2026/10/03/博览知识/法律研究/深度伪造的灰色江湖 AI换脸技术演进与法律治理深度研究/
+created: 2026-10-03T01:45
+updated: 2026-10-20T14:15
 ---
 
 

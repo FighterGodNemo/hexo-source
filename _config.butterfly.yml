@@ -21,7 +21,7 @@ menu:
   主页: / || fas fa-home
   分类: /categories/ || fas fa-folder-open
   标签: /tags/ || fas fa-tags
-  归档: ''
+  归档: /archives/ || fas fa-archive
   友链: /link/ || fas fa-link
   留言板: /messageboard/ || fas fa-comment-dots
 
@@ -65,10 +65,10 @@ avatar:
 disable_top_img: false
 
 # If the banner of page not setting, it will show the default_top_img
-default_top_img: /img/index-bg.jpg
+default_top_img: /img/index-bg.webp
 
 # The banner image of index page
-index_img: /img/index-bg.jpg
+index_img: /img/index-bg.webp
 
 # The banner image of archive page
 archive_img:
@@ -113,7 +113,7 @@ error_img:
 
 # A simple 404 page
 error_404:
-  enable: false
+  enable: true
   subtitle: 'Page Not Found'
   background: /img/error-page.png
 
@@ -1032,7 +1032,7 @@ snackbar:
 
 # Instant.page
 # https://instant.page/
-instantpage: false
+instantpage: true
 
 # Lazyload
 # https://github.com/verlok/vanilla-lazyload
