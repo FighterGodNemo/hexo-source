@@ -24,6 +24,7 @@ menu:
   归档: /archives/ || fas fa-archive
   友链: /link/ || fas fa-link
   留言板: /messageboard/ || fas fa-comment-dots
+  作品集: /portfolio/ || fas fa-layer-group
 
 # --------------------------------------
 # Code Blocks Settings
@@ -1085,7 +1086,7 @@ css_prefix: true
 inject:
   head:
     - <script src="/js/bg-firstpaint.js?v=20260402-2"></script>
-    - <link rel="stylesheet" href="/css/custom.css?v=20260402-2">
+    - <link rel="stylesheet" href="/css/custom.css?v=20261027-1">
   bottom:
     - <script src="/js/custom.js?v=20260402-2"></script>
 
