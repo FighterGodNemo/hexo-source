@@ -7,7 +7,7 @@ tags:
   - Forensic
   - 工具索引
 created: 2026-10-03T00:04
-updated: 2026-10-27T15:49
+updated: 2026-10-27T23:32
 ---
 
 > 本页由 ctf-toolbook 自动生成。交互版手册的「🧪 Forensic 取证中心」独立于 CTF 比赛和日常练习中心。
@@ -20,7 +20,7 @@ updated: 2026-10-27T15:49
 | **binwalk** | WSL: `/usr/bin/binwalk` | 固件/文件内嵌数据扫描与提取 | `binwalk -Me file` |
 | **foremost** | Win: `D:/CaptureTheFlag/CTFTool/CTF-NetA-V2.11.15/plugins/foremostlrb/foremost.exe` <br> WSL: `/usr/bin/foremost` | 按文件头 carving 恢复文件 | `foremost -i img.png -o out/` <br> `foremost -i evidence.img -o out/（取证输出目录先建好）` |
 | **exiftool** | WSL: `/usr/bin/exiftool` | 读/写文件元数据（EXIF 隐藏信息） | `exiftool img.jpg` <br> `exiftool -a -u -g1 img.jpg（全元数据含隐藏字段）` |
-| **volatility3** | Win: `D:/Forensic/ForensicTool/Decrypt/volatility3-develop/volatility3-develop/vol.py` <br> WSL: `/usr/local/bin/vol` | 内存取证标准工具 | `vol -f mem.raw windows.info` <br> `vol -f mem.raw windows.filescan \| grep flag` <br> `vol -f mem.raw windows.pslist` |
+| **volatility3** | Win: `D:/Forensic/ForensicTool/Decrypt/volatility3-develop/volatility3-develop/vol.py` <br> WSL: `/usr/local/bin/vol` | 内存取证标准工具 | `vol -f mem.raw windows.info` <br> `vol -f mem.raw windows.filescan \| grep flag` <br> `vol -f mem.raw windows.pslist` <br> `vol -f mem.raw windows.filescan` |
 | **Wireshark** | Win: `D:/CaptureTheFlag/CTFTool/Wireshark/Wireshark.exe` | 流量分析 GUI（协议层级/流追踪） | `右键 Follow TCP Stream；导出对象 File>Export Objects>HTTP` <br> `统计>协议分层 / 会话——取证案件先看协议分布` |
 | **tshark** | Win: `D:/CaptureTheFlag/CTFTool/Wireshark/tshark.exe` <br> WSL: `/usr/bin/tshark` | Wireshark 命令行版，脚本化流量提取 | `tshark -r a.pcapng --export-objects http,outdir` <br> `tshark -r a.pcapng -Y 'http.request' -T fields -e http.request.uri` |
 | **tcpdump** | WSL: `/usr/bin/tcpdump` | 命令行抓包 | `tcpdump -i eth0 -w out.pcap` |
@@ -28,9 +28,9 @@ updated: 2026-10-27T15:49
 | **USBPcap** | Win: `D:/CaptureTheFlag/CTFTool/USBPcap` | Windows USB 抓包驱动 | `配合 Wireshark 抓 USB 键盘流量` |
 | **bulk_extractor** | WSL: `/opt/security-tools/bulk_extractor/bin/bulk_extractor` | 批量提取文件中的邮箱/URL/密钥等特征；官方 v2.2.0 源码编译版 | `bulk_extractor -o outdir image.raw` <br> `bulk_extractor -o outdir evidence_dir/` |
 | **untrunc** | Win: `D:/CaptureTheFlag/CTFTool/untrunc_x64` | 损坏 MP4 视频修复 | `untrunc 参考完整.mp4 损坏.mp4` |
-| **lads** | Win: `D:/CaptureTheFlag/CTFTool/lads.exe` | NTFS ADS 交换数据流检测 | `lads /s D:\` |
+| **lads** | Win: `D:/CaptureTheFlag/CTFTool/lads.exe` | NTFS ADS 交换数据流检测 | `lads /s D:\` <br> `lads /s D:\；PowerShell Get-Item -Stream *` |
 | **LastActivityView** | Win: `D:/CaptureTheFlag/CTFTool/LastActivityView.exe` | Windows 主机活动痕迹一键查看 | `运行即出报告` |
-| **sqlcipher** | Win: `D:/CaptureTheFlag/CTFTool/sqlcipher-3.0.1` | 加密 SQLite 数据库读取 | `PRAGMA key='pass'; 后正常查询` <br> `PRAGMA cipher_version;（先验证库确实加密再试 key）` |
+| **sqlcipher** | Win: `D:/CaptureTheFlag/CTFTool/sqlcipher-3.0.1` | 加密 SQLite 数据库读取 | `PRAGMA key='pass'; 后正常查询` <br> `PRAGMA cipher_version;（先验证库确实加密再试 key）` <br> `sqlcipher db.sqlite` <br> `PRAGMA key="pass"` |
 | **TrueCrypt** | Win: `D:/CaptureTheFlag/CTFTool/TrueCrypt Setup 7.1a.exe` | 老牌加密容器（挂载 tc 卷取证） | `Select File 选 .tc 输密码挂载` |
 | **WeFlow** | Win: `C:/Users/glj07/Desktop/Codex工作区/工具/WeFlow` | 微信 4.0+ 聊天记录本地查看/导出/朋友圈解密，含本地 HTTP API | `运行 exe 自动读取本地微信数据；导出记录写进取证报告` |
 | **SQLite Expert** | Win: `D:/Forensic/ForensicTool/Database/SQLite Expert Professional-专门用于查看、编辑和分析SQLite数据库文件（常见于手机App）` | SQLite 图形化浏览（Chrome历史/聊天库/取证库直接开） | `打开 .db/.sqlite 看表；损坏库试 Recover` |
@@ -41,7 +41,7 @@ updated: 2026-10-27T15:49
 | **YARA** | WSL: `/usr/bin/yara` | 恶意样本/取证特征规则匹配 | `yara -w rules.yar sample.bin` <br> `yara -r rules.yar evidence_dir/` |
 | **sqlite3 CLI** | WSL: `/usr/bin/sqlite3` | SQLite 数据库命令行检查、导出与损坏库初筛 | `sqlite3 evidence.db ".tables"` <br> `sqlite3 evidence.db "select * from sqlite_master;"` |
 | **X-Ways Forensics** | Win: `D:/Forensic/ForensicTool/Mirror/X-Ways Forensics-顶级的综合磁盘取证平台，以速度快、资源占用低著称` | 专业磁盘/镜像取证平台：分区、文件系统、时间线、书签与报告 | `打开案件→添加镜像→只读分析→书签/导出报告` |
-| **Autopsy** | Win: `D:/Forensic/ForensicTool/Mirror/Autopsy` | 开源数字取证平台，适合镜像、文件系统、关键字和时间线综合分析 | `新建 Case→Add Data Source→Ingest Modules→查看结果` |
+| **Autopsy** | Win: `D:/Forensic/ForensicTool/Mirror/Autopsy` | 开源数字取证平台，适合镜像、文件系统、关键字和时间线综合分析 | `新建 Case→Add Data Source→Ingest Modules→查看结果` <br> `Ingest 后打开 Timeline→按来源/时间/关键字筛选` |
 | **Arsenal Image Mounter** | Win: `C:/Program Files/Arsenal Image Mounter` | 将 E01/DD 只读挂载为 Windows 磁盘，供取证工具访问 | `启动：C:/Program Files/Arsenal Image Mounter/ArsenalImageMounter.exe` <br> `File→Open Image→只读挂载 → 记录盘符与哈希` <br> `E01/VMDK/DD 都能挂；挂载后给 AXIOM/火眼/GoldenEyes 访问` |
 | **Mount Image Pro** | Win: `D:/Forensic/ForensicTool/Mirror/Mount Image Pro-镜像文件挂载工具` | 多格式磁盘镜像挂载 | `选择镜像→只读挂载→在 X-Ways/Autopsy 中分析` |
 | **Virtual Forensic Computing** | Win: `D:/Forensic/ForensicTool/HelperKit/Virtual Forensic Computing-证据仿真工具，可直接启动嫌疑人的磁盘镜像` | 在隔离虚拟机中启动镜像观察系统行为 | `复制证据镜像→隔离启动→记录行为与截图` |
@@ -49,12 +49,10 @@ updated: 2026-10-27T15:49
 | **R-Studio/RDS** | Win: `D:/Forensic/ForensicTool/Decrypt/RDS_2024-likely 是 R-Studio 网络版，强大的数据恢复工具，也用于破解简单密码` | 删除文件、分区、RAID 与镜像数据恢复 | `选择源盘/镜像→Scan→预览→恢复到独立输出盘` |
 | **FinalData/Fatbeans** | Win: `D:/Forensic/ForensicTool/FileDataRecovery/Fatbeans-likely 是 FinalData，经典的数据恢复软件` | 文件删除恢复和签名扫描 | `选择镜像→扫描已删除文件→导出到工作副本` |
 | **PuzzleSolver** | Win: `D:/Forensic/ForensicTool/FileDataRecovery/PuzzleSolver-main` | 特定文件/密码恢复辅助工具集合 | `先阅读 README，再对副本执行恢复` |
-| **Volatility 3** | Win: `D:/Forensic/ForensicTool/Decrypt/volatility3-develop/volatility3-develop/vol.py` | 内存镜像进程、网络、文件、注册表和凭据分析 | `vol -f mem.raw windows.info` <br> `vol -f mem.raw windows.pslist` <br> `vol -f mem.raw windows.filescan` |
 | **strings / file / sha256sum** | WSL: `/usr/bin/strings` | 样本初筛：文件类型、字符串和证据哈希 | `file sample` <br> `sha256sum sample` <br> `strings -a sample \| less` |
 | **Fiddler Everywhere** | Win: `D:/Forensic/ForensicTool/Web/fiddler-everywhere-Web调试代理工具，捕获和分析HTTPHTTPS流量` | HTTP/HTTPS 调试代理与请求重放 | `启动代理→导入会话→保存 HAR/请求证据` |
 | **DB Browser for SQLite** | Win: `D:/Forensic/ForensicTool/Database/DB/DB Browser for SQLite.exe` | SQLite 数据库初筛、表浏览和 CSV 导出 | `打开副本→Browse Data→导出关键表` |
 | **DB Browser for SQLCipher** | Win: `D:/Forensic/ForensicTool/Database/DB/DB Browser for SQLCipher.exe` | 加密 SQLite/SQLCipher 数据库查看 | `打开数据库→输入 key→导出查询结果` |
-| **SQLCipher** | Win: `D:/CaptureTheFlag/CTFTool/sqlcipher-3.0.1` | 加密 SQLite 命令行读取 | `sqlcipher db.sqlite` <br> `PRAGMA key="pass"` <br> `.tables` |
 | **HexHub** | Win: `D:/Forensic/ForensicTool/Database/HexHub` | 数据库/十六进制相关本地分析工具 | `打开副本→按项目功能查看结构与字段` |
 | **NTFS Log Tracker** | Win: `D:/Forensic/ForensicTool/Database/NTFS Log Tracker-分析NTFS文件系统的日志（$LogFile），追踪文件操作历史` | NTFS $LogFile 操作记录和文件活动分析 | `导入 $LogFile→按时间/路径筛选→导出报告` |
 | **Magnet AXIOM** | Win: `D:/Forensic/ForensicTool/Mobile/magnetaxiom.all.to.9.9.0.46675` | 综合电脑/手机/云取证分析平台，自动解析应用与时间线 | `创建 Case→添加镜像/备份→Process→Analyze→导出报告` |
@@ -64,17 +62,13 @@ updated: 2026-10-27T15:49
 | **AndroidKiller** | Win: `D:/Forensic/ForensicTool/Mobile/AndroidKiller-master` | Android APK 反编译与资源分析 | `导入 APK→查看 Manifest/代码/资源→导出证据` |
 | **PH-PhoneForensics** | Win: `D:/Forensic/ForensicTool/pinghang/PH-PhoneForensics` | 平航移动取证工具，手机数据提取/解析辅助 | `按设备/备份类型导入→生成案件报告` |
 | **DCode** | Win: `D:/Forensic/ForensicTool/Others/DCode v5` | Windows 时间戳、FILETIME、Unix 时间转换 | `输入十六进制/十进制时间戳→核对 UTC/本地时间` |
-| **Autopsy/时间线模块** | Win: `D:/Forensic/ForensicTool/Mirror/Autopsy` | 从文件系统和日志构建统一时间线 | `Ingest 后打开 Timeline→按来源/时间/关键字筛选` |
-| **Lads ADS** | Win: `D:/CaptureTheFlag/CTFTool/lads.exe` | NTFS Alternate Data Streams 检测 | `lads /s D:\；PowerShell Get-Item -Stream *` |
 | **regipy** | WSL: `pip install regipy` | Python 注册表解析库 | `python3 -c "from regipy.registry import Registry"` |
 | **python-evtx** | WSL: `pip install python-evtx` | Windows EVTX 事件日志解析库 | `pip install python-evtx` <br> `python parse_evtx.py Security.evtx` |
-| **Passware Kit Forensic** | Win: `D:/Forensic/ForensicTool/Decrypt/Passware Kit Forensic 2022（汉化版）` | 文件、容器和凭据密码恢复套件 | `选择案件文件→选择攻击方式→恢复到工作副本` |
 | **Elcomsoft Forensic Disk Decryptor** | Win: `D:/Forensic/ForensicTool/Decrypt/Elcomsoft.Forensic.Disk.Decryptor` | 加密磁盘/容器取证辅助 | `导入密钥材料/镜像→只读解密分析` |
 | **Ciphey** | Win: `D:/Forensic/ForensicTool/Decrypt/Ciphey` | 自动识别与解码常见编码/密码文本 | `ciphey -t "密文"` |
 | **FileLocator Pro** | Win: `D:/Forensic/ForensicTool/Database/FileLocator Pro-强大的文件内容搜索工具，可快速在全盘搜索关键词` | 案件目录内全文/正则/文件名搜索 | `限定证据目录→搜索关键字→导出命中路径` |
 | **UEFITool** | Win: `D:/Forensic/ForensicTool/Others/UEFITool_NE_A72_win64` | UEFI 固件结构查看与模块提取 | `打开 ROM→树状查看 FV/PEI/DXE→导出模块` |
 | **CFF Explorer** | Win: `D:/Forensic/ForensicTool/Reverse/CFF_Explorer-强大的PE文件（Windows可执行文件）编辑器，用于逆向分析` | PE 结构、节、导入导出表分析 | `打开 PE→查看 Headers/Sections/Imports` |
-| **JADX GUI AI (Forensic)** | Win: `D:/Forensic/ForensicTool/Others/jadx-gui-ai-master` | Android 应用取证/逆向查看，含 AI MCP 连接能力 | `启动 GUI→导入 APK→搜索数据库/API/密钥` |
 | **MySQL MCP 只读工具集** | Win: `C:/Users/glj07/.mcp-toolbox/v1.12.0/run-mysql-toolbox.cmd` | Google MCP Toolbox v1.12.0 统一入口（非 Oracle/MySQL 官方）：只读列出数据库/表/列结构与 EXPLAIN，七端共用 launcher | `工具：mysql_list_databases / mysql_list_tables / mysql_table_columns / mysql_explain_select` <br> `launcher：cmd.exe /c C:/Users/glj07/.mcp-toolbox/v1.12.0/run-mysql-toolbox.cmd（已登记 ZCode/Codex/Claude/CodeBuddy/Trae/LM Studio）` <br> `凭据：只读账号 mcp_readonly，SELECT-only，密码仅在 .mcp-toolbox/v1.12.0/mysql.env` |
 | **PhotoRec / TestDisk** | — | 按文件头 carving 恢复被删/格式化分区里的文件；取证与 Misc 大文件（zip 删了、盘格了）主力，覆盖面比 foremost 更广（还能整盘恢复） | `安装（WSL）：sudo apt install testdisk   # 同时提供 photorec 与 testdisk` <br> `恢复文件：sudo photorec /dev/sdX（选分区 → FileOpt 只留目标类型 → 输出目录）` <br> `修复分区表：sudo testdisk /dev/sdX` <br> `只恢复某类：photorec 里 FileOpt 取消全选，只留 jpg/png/zip/pdf` <br> `Windows 侧可先替代：R-Studio、Winhex、foremost（本机已装）` |
 | **LovelyMem 内存取证** | Win: `D:/Forensic/ForensicTool/Others/Lovelymem` | 国产图形化内存取证工具（LovelymemLuxe 豪华版），Windows 侧跑 volatility 系流程，比命令行 volatility3 上手快 | `启动：D:/Forensic/ForensicTool/Others/Lovelymem/LovelymemLuxe/LovelymemLuxe.exe` <br> `导入 raw/vmem/mem 镜像 → 选 profile/系统版本 → 按功能区跑（进程/网络/注册表/文件）` <br> `与 volatility3 互补：图形快筛，命令行做深度定制` <br> `Windows 内存题先它、Linux 内存题用 volatility3` |
