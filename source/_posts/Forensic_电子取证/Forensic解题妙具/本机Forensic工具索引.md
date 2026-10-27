@@ -1,12 +1,13 @@
 ---
 title: 本机Forensic工具索引
-permalink: '/2026/09/26/Forensic_电子取证/Forensic解题妙具/本机Forensic工具索引/'
-date: 2026-09-26
+date: 2026-10-27
 categories:
   - Forensic_电子取证
 tags:
   - Forensic
   - 工具索引
+created: 2026-10-03T00:04
+updated: 2026-10-27T15:37
 ---
 
 > 本页由 ctf-toolbook 自动生成。交互版手册的「🧪 Forensic 取证中心」独立于 CTF 比赛和日常练习中心。

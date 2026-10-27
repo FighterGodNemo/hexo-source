@@ -1,7 +1,6 @@
 ---
 title: 本机CTF工具索引
-permalink: '/2026/09/26/Capture_The_Flag_夺旗赛/CTF解题妙具/本机CTF工具索引/'
-date: 2026-09-26
+date: 2026-10-27
 categories:
   - Capture_The_Flag_夺旗赛
 tags:
@@ -9,10 +8,10 @@ tags:
   - 工具索引
   - 速查手册
 created: 2026-10-03T00:04
-updated: 2026-10-09T13:33
+updated: 2026-10-27T15:37
 ---
 
-> 本页由 ctf-toolbook skill 自动生成于 2026-09-26。可交互版（搜索/按分类筛选/考点互跳/一键复制命令）请打开本机手册：`D:/CaptureTheFlag/CTFTool/工具速查手册.html`。
+> 本页由 ctf-toolbook skill 自动生成于 2026-10-27。可交互版（搜索/按分类筛选/考点互跳/一键复制命令）请打开本机手册：`D:/CaptureTheFlag/CTFTool/工具速查手册.html`。
 > 手册支持 URL 深链（如 `工具速查手册.html#cat-crypto&q=RSA`），可直接引用；有新工具时对任意 AI 说「收录新工具 XXX」即可自动重建本页。
 
 ## 环境速览
@@ -90,6 +89,7 @@ updated: 2026-10-09T13:33
 | **SageMath** | 🐧 WSL | WSL: `/usr/local/bin/sage -> /root/miniconda3/envs/sage/bin/sage` | 数论全功能（格/椭圆曲线/多项式环）；默认 Ubuntu-CTF 已装隔离 conda 环境 ⚠️SageMath 10.2 安装在 Ubuntu-CTF /root/miniconda3/envs/sage；Ubuntu-22.04 的 9.5 作为旧备用，不是默认入口。 | `wsl -- sage -c "print(factor(123456789))"` <br> `wsl -- sage script.sage` |
 | **HashCalc** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/HashCalc.exe` | 图形化哈希计算（MD5/SHA/CRC/base64 一键） | `拖入文件或粘贴文本选算法` |
 | **CTFReBox** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/CTFReBox_52` | CTF 编码/加密集成箱（键盘码/敲击码等冷门编码也有） | `GUI 按分类试` |
+| **随曰 SuiYue 文本加解密** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/随波逐流原创软件/随曰` | AES-CTR + ChaCha20-Poly1305 文本加解密，特征是【中文 Base64】：密文看上去就是一串汉字（湋渄漋泽汈溿…），CTF 里辨识度极高 ⚠️开源 https://github.com/zb848/suiyue-crypto ，pip 包名 suiyue。密文示例：湋渄漋泽汈溿溿涷泳漙灡漑汁洉漛汮… 看到这种字符直接上它。 | `GUI：D:/CaptureTheFlag/CTFTool/随波逐流原创软件/随曰/SuiYue_GUI_V1.0.exe` <br> `看到一串像乱码的汉字（非正常中文、偏旁部首杂乱）：先怀疑随曰加密，用它解` <br> `命令行/嵌脚本：suiyue-crypto/SuiYue.py（PBKDF2 派生密钥，需密码）` <br> `无密码时试默认密码；网页版 http://suiyue.1o1o.xyz/ 可对照` |
 
 ### 💥 二进制利用 Pwn
 
@@ -187,7 +187,7 @@ updated: 2026-10-09T13:33
 | **Npiet** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/Npiet.zip` | Piet 图形语言解释器 | `npiet hello.png` |
 | **tweakpng** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/tweakpng-1.4.6` | PNG chunk 编辑器（改 IDAT/删 CRC 报错块/宽高） | `打开 png 右键编辑 chunk；CRC 错误提示即线索` |
 | **图片异或/图像恢复** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/图片异或` | 像素异或/畸形图像修复脚本集（Deformed-Image-Restorer-main 在同级目录） | `按 README 跑脚本` |
-| **随波逐流** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/随波逐流原创软件` | 国产 CTF 杂项大集合（编码/图片/音频/二维码全家桶） | `GUI 各功能区逐个试` |
+| **随波逐流 CTF编码工具** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/随波逐流原创软件/随波逐流CTF编码工具` | 国产 CTF 杂项全能 GUI（中文圈最常用）：编码解码、图片/音频/流量/文档隐写、二维码、文件头修复、编码对照。V8.0.0 是 2026-10-20 新版 ⚠️V8.0.0 Release 20261020（185MB，比 V7.4 的 92MB 翻倍）；旧版 V7.4_20260708 仍在同目录，可删省 92MB。同目录有使用手册 PDF（1.66MB）和 软件测试用文件/ 一批样题素材（F5、LSB、jsteg、mp3stego、npiet、pcap、DTMF 等）。 | `启动：D:/CaptureTheFlag/CTFTool/随波逐流原创软件/随波逐流CTF编码工具/[随波逐流]CTF编码工具_V8.0.0_Release_20261020.exe` <br> `未知编码/密文：整段粘进去，逐个功能区试解（Base64/摩斯/培根/栅栏/凯撒/AAEncode/JJEncode/JSFuck 全在）` <br> `图片题：图片功能区走 LSB/F5/jsteg/盲水印/缩略图/EXIF/图片合成` <br> `音频题：音频功能区走 MP3Stego/DTMF/频谱；流量题走 pcap 区` <br> `功能不确定就先开《随波逐流CTF编码工具使用手册.pdf》查目录` |
 | **Audacity** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/Audacity` | 音频波形/频谱查看（摩斯/频谱隐写/倒放） | `切换频谱图看莫斯/文字图案；效果>反转倒放` |
 | **bftools** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/bftools` | Brainfuck 编解码 | `bfdecode brainfuck.txt` |
 | **qpdf** | 🐧 WSL | WSL: `/usr/bin/qpdf` | PDF 解密/结构修复 | `qpdf --decrypt in.pdf out.pdf` <br> `qpdf --show-object=trailer in.pdf` |
@@ -203,6 +203,9 @@ updated: 2026-10-09T13:33
 | **海龟画图** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/海龟画图` | Logo 海龟语言解释器（logo 指令画出 flag 图） | `粘贴 logo 代码运行看绘图` |
 | **速查资源图集** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool` | 摩斯密码表.png / 010editor文件头汇总.jpg / 二维码定位点.png / 各厂商网络通讯协议图.png 散在 CTFTool 根目录，解题直接对照 ⚠️CTFTool 根目录已确认包含摩斯密码表、010 Editor 文件头、二维码定位点等图集。 | `看图对照；文件头修复配 010 Editor` |
 | **隐形水印工具** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/隐形水印工具.exe` | 图片空域隐形水印加解（盲水印题常见配套）；WaterMark.exe 是同类替代 | `GUI 提取水印图层` |
+| **随波逐流 OCR 识别工具** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/随波逐流原创软件/随波逐流OCR识别工具` | 图片文字提取（截图题、验证码、图片藏字），V4.0 Release 20251006 ⚠️exe 文件名开头缺了方括号【随波逐流】→ 实际是 '随波逐流]OCR识别工具 V4.0Release 20251006.exe'，脚本里按文件名精确匹配会踩坑。备选：easyocr（本机 Python310 已装）。 | `启动：D:/CaptureTheFlag/CTFTool/随波逐流原创软件/随波逐流OCR识别工具/随波逐流]OCR识别工具 V4.0Release 20251006.exe` <br> `图片题先肉眼看不清文字/被旋转倾斜：用它批量识别` <br> `首次运行若报缺 DLL，先装同目录 vcredist_x64.exe` |
+| **随波逐流 二维码识别工具** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/随波逐流原创软件/随波逐流二维码识别工具` | 二维码识别/修复，V2.0 20250710；配套 测试二维码/ 样例 ⚠️同目录 qr_research.log 说明与 QR_Research 配合使用；测试二维码/ 有样本可先验证工具是否正常。 | `启动：D:/CaptureTheFlag/CTFTool/随波逐流原创软件/随波逐流二维码识别工具/[随波逐流]二维码识别工具V2.0 20250710.exe` <br> `残缺/反色/旋转/局部遮挡的二维码先丢进去试识别` <br> `识别不出再上 QR_Research 做结构分析或手工拼接` |
+| **224 种编码图** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/随波逐流原创软件/随波逐流其他原创作品` | 224 种编码/字符集对照图谱（随波逐流原创），遇到不认识的花式字符编码按图索骥 ⚠️rar 需解压；是参考图谱不是可执行工具。 | `解压：D:/CaptureTheFlag/CTFTool/随波逐流原创软件/随波逐流其他原创作品/[随波逐流]224种编码图 V2.0.rar` <br> `Misc 拿到怪字符（颜文字/象形/点阵/符号表）先翻图对照，认出编码名再上工具解` <br> `认出后配 CyberChef 或 随波逐流CTF编码工具 直接解` |
 
 ### 📚 字典与资源包
 
@@ -230,6 +233,7 @@ updated: 2026-10-09T13:33
 | **Qwen3.8-27B-UD (本地·比赛默认)** | 🪟 Win | Win: `C:/Users/glj07/.lmstudio/models/unsloth/Qwen3.8-27B-UD-Q4_K_XL/Qwen3.8-27B-UD-Q4_K_XL.gguf` | 比赛默认本地模型。唯一带 mmproj 视觉投影，能直接读题目截图/流量截图/GUI界面/图片型证据；稠密 27B 指令遵循与输出格式比小激活 MoE 更稳，写 exp 提 flag 这类不能出岔子的场合更可靠；Q4_K_XL 量化质量三者最高。代价是比 MoE 慢，但比赛不缺时间 | `LM Studio 载入该 GGUF（需同时载入 mmproj-Qwen3.8-27B-BF16.gguf 启用视觉）后 Start Server` <br> `断网比赛：OpenCode 里选 lmstudio/Qwen3.8-27B-UD-Q4_K_XL` <br> `读图片类证据时确认 vision 已启用` |
 | **Qwen3.6-35B-A3B (本地)** | 🪟 Win | Win: `C:/Users/glj07/.lmstudio/models/LuffyTheFox/Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-GGUF/Hermes3.6-35B-A3B-Uncensored-Genesis-MTP-APEX-Compact.gguf` | 本地 MoE 35B 仅激活 3B，出 token 最快；纯文本大批量分析、长文档、日志流水首选，激活小所以长文本吞吐高。缺视觉投影，看不了图 | `LM Studio 载入该 GGUF 后 Start Server` <br> `断网比赛：批量读日志/长文档时优先于默认模型` |
 | **GLM-4.7-Flash (本地)** | 🪟 Win | Win: `C:/Users/glj07/.lmstudio/models/DavidAU/GLM-4.7-Flash-Uncensored-Heretic-NEO-CODE-Imatrix-MAX-GGUF/GLM-4.7-Flash-Uncen-Hrt-NEO-CODE-MAX-imat-D_AU-Q4_K_S.gguf` | 本地 GLM 系，NEO-CODE 强化；写代码、生成 exp、严格格式输出场景指令遵循更稳。缺视觉投影 | `LM Studio 载入该 GGUF 后 Start Server` <br> `断网比赛：写脚本/生成 exp 时优先于默认模型` |
+| **随波逐流 CTF Flags** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/随波逐流原创软件/随波逐流Flags` | flag 提交/格式化辅助小工具，1.0.0（Windows exe + Android apk） ⚠️轻量辅助，非解题主力。 | `启动：D:/CaptureTheFlag/CTFTool/随波逐流原创软件/随波逐流Flags/[随波逐流]CTF Flags1.0.0.exe` <br> `整理多题 flag、统一格式、批量核对时用；比赛现场也可装 apk 到手机` |
 
 ### 🧱 证据采集与镜像
 
@@ -321,8 +325,8 @@ updated: 2026-10-09T13:33
 
 | 分类 | 考点 | 首选 | 关键命令/思路 | 备选 |
 | --- | --- | --- | --- | --- |
-| Crypto | **Base16/32/58/64/85 及变体编码** | CyberChef | `拖入密文自动试 Magic 咖啡壶配方；或 CaptfEncoder` | 随波逐流 |
-| Crypto | **凯撒/栅栏/维吉尼亚/培根/摩斯** | CyberChef + 随波逐流 | `CyberChef ROT/Brute Force；摩斯用摩斯密码表.png 对照或 CyberChef Morse` | CaptfEncoder |
+| Crypto | **Base16/32/58/64/85 及变体编码** | CyberChef | `拖入密文自动试 Magic 咖啡壶配方；或 CaptfEncoder` | 随波逐流 CTF编码工具 |
+| Crypto | **凯撒/栅栏/维吉尼亚/培根/摩斯** | CyberChef + 随波逐流 CTF编码工具 | `CyberChef ROT/Brute Force；摩斯用摩斯密码表.png 对照或 CyberChef Morse` | CaptfEncoder |
 | Crypto | **RSA 小指数 e（e=3 且明文小）** | python3 + gmpy2 | `gmpy2.iroot(c, 3) 直接开三次方；不行则模 n 开方+CRT` | RsaCtfTool --attack small_e |
 | Crypto | **RSA 共模攻击（同 n 不同 e）** | python3 手写 | `g=(e1*x+e2*y) 用扩展欧里得求 x,y；m=(c1^x*c2^y)%n` | 轩禹CTF_RSA工具 |
 | Crypto | **RSA n 可分解（小素数/费马/已知库）** | factordb 在线查询 | `n 粘到 factordb.com；无果再 yafu/sympy.factorint` | RsaCtfTool --attack factordb |
@@ -377,12 +381,12 @@ updated: 2026-10-09T13:33
 | Crypto | **RSA Rabin（e=2）** | python3 手写 | `m^2=c mod n：mod p 与 mod q 各开平方，CRT 组合四种结果逐个试` | RsaCtfTool --attack rabin |
 | Crypto | **n 含小因子/素数试除** | python3 + sympy.factorint | `sympy.factorint(n, limit=10**7)；或先查 factordb.com` | yafu |
 | Crypto | **ECC 椭圆曲线（点乘/小阶离散对数）** | python3 手写/sagecell | `点加/倍点手写；小曲线 BSGS；sagecell 直接 EllipticCurve` | sympy discrete_log（有限域） |
-| Crypto | **仿射/希尔密码** | python3 手写解方程 | `两对明密文解 a,b（逆元 gmpy2.invert）；希尔矩阵求逆 mod 26` | 随波逐流 |
+| Crypto | **仿射/希尔密码** | python3 手写解方程 | `两对明密文解 a,b（逆元 gmpy2.invert）；希尔矩阵求逆 mod 26` | 随波逐流 CTF编码工具 |
 | Crypto | **rot47/rotN 全旋转枚举** | CyberChef | `ROT13 Brute Force 看全部偏移；rot47 选 ROT47` | CaptfEncoder |
 | Crypto | **jsfuck/颜文字编码** | 浏览器控制台/Node | `粘贴到 console 回车 eval；WSL node -e 亦可` | CyberChef |
-| Crypto | **与佛论禅/熊曰/新佛曰** | 随波逐流 | `随波逐流 中文加密分类一键解；无 GUI 时在线与佛论禅` | CTFReBox |
-| Crypto | **键盘码/敲击码/九键** | CTFReBox + 人工 | `敲击码按行列对照；九键按 数字*次数 映射九宫格字母` | 随波逐流 |
-| Crypto | **A1Z26/当铺/拼音首字母** | 随波逐流 | `A1Z26 数字转字母序号；当铺按汉字出头笔画数对照` | CyberChef |
+| Crypto | **与佛论禅/熊曰/新佛曰** | 随波逐流 CTF编码工具 | `随波逐流 CTF编码工具 中文加密分类一键解；无 GUI 时在线与佛论禅` | CTFReBox |
+| Crypto | **键盘码/敲击码/九键** | CTFReBox + 人工 | `敲击码按行列对照；九键按 数字*次数 映射九宫格字母` | 随波逐流 CTF编码工具 |
+| Crypto | **A1Z26/当铺/拼音首字母** | 随波逐流 CTF编码工具 | `A1Z26 数字转字母序号；当铺按汉字出头笔画数对照` | CyberChef |
 | Crypto | **CRC32 校验/碰撞** | python3 zlib | `zlib.crc32(data)；伪造碰撞用 CRC 反算脚本` | HashCalc |
 | Crypto | **MD5 假盐/fake_salt 变体** | 本机 fake_salt 工具目录 | `D:/CaptureTheFlag/CTFTool/密码学fake_salt_md5 目录内脚本` | python3 手写 |
 | Pwn | **栈迁移 stack pivot（栈不够长）** | ROPgadget + pwntools | `找 leave;ret gadget，先写 bss 假栈再 pivot 执行第二段 ROP` | one_gadget 配合 |
@@ -421,7 +425,7 @@ updated: 2026-10-09T13:33
 | Forensics | **Office 隐藏内容（docx/xlsx）** | 7z 解包 + grep | `docx 即 zip：unzip 后看 word/document.xml 的 vanish 隐藏文本` | 010 Editor 模板 |
 | Misc | **SSTV 音频还原图片** | RXSSTV | `播放 wav 给 RXSSTV（Robot36/Martin1 常见）；VBCABLE 虚拟声卡内录` | 在线 SSTV 解码 |
 | Misc | **DTMF 拨号音** | Audacity 频谱 | `频谱看双频组合对照 DTMF 表拼号码；或 python Goertzel 手写` | dtmf2num（未装） |
-| Misc | **汉信码/条形码/残缺码** | 随波逐流 + QR_Research | `随波逐流识别多码制；残缺二维码 PS 补三个定位角再识别` | ZXing 在线 |
+| Misc | **汉信码/条形码/残缺码** | 随波逐流 CTF编码工具 + QR_Research | `随波逐流 CTF编码工具识别多码制；残缺二维码 PS 补三个定位角再识别` | ZXing 在线 |
 | Misc | **MIDI 音符隐写** | MidiEditor | `逐轨看音符：音高=A1Z26、力度/通道藏比特、音符拼写字母` | python mido（pip） |
 | Misc | **Logo 海龟画图指令** | 海龟画图工具 | `粘贴 logo 指令运行，轨迹画出 flag；可 python turtle 重放` | python turtle |
 | Misc | **二维码碎片拼接/反色** | PS + QR_Research | `碎片拼完整图（对齐定位角）后反色/补静区再识别` | python PIL 拼接 |
@@ -464,8 +468,13 @@ updated: 2026-10-09T13:33
 | Crypto | **彩虹表** | hashcat | `hashcat -m 0 hash.txt` | hashcat -m 1000 hash.txt   # NTLM;  -m 1400 sha2$ ;  -m 13100 kerberos |
 | Pwn | **ret2dlresolve** | pwntools | `python -c "from pwn import *;e=ELF('./p');print(e.symbols)"` | ret2dlresolve.py - ./p ./p |
 | Reverse | **Python 反序列化 pickle** | pickle | `python -c "import pickle;print(pickle.loads(open('p','rb').read()))"` | python -c "import pickletools;pickletools.dis(open('p','rb').read())" |
+| Misc | **一串乱码汉字/中文密文（随曰加密特征）** | 随曰 SuiYue 文本加解密 | `GUI 粘密文直接解；无密码试默认密码` | 随波逐流 CTF编码工具 CTF编码工具 V8.0.0 |
+| Misc | **图片里有看不清的文字/被旋转倾斜的字符** | 随波逐流 OCR 识别工具 | `拖图识别；识别不出换 easyocr` | CyberChef |
+| Misc | **二维码识别（完整图，非残缺）** | 随波逐流 二维码识别工具 | `直接拖入识别；失败再上 QR_Research` | QR_Research |
+| Misc | **完全不认识的花式字符编码（颜文字/点阵/符号）** | 224 种编码图 | `翻图对照认出编码名，再上 CyberChef 解` | 随波逐流 CTF编码工具 CTF编码工具 V8.0.0 |
+| Misc | **未知编码/密文想批量试解（几十种编码一把梭）** | 随波逐流 CTF编码工具 CTF编码工具 V8.0.0 | `整段粘进去逐个功能区试；先查使用手册 PDF 目录` | CyberChef |
 
 ## 更新记录
 
-- 2026-09-26 手册升级：命令一键复制、考点↔工具双向互跳、URL 深链（#cat-x&q=y）、多词 AND 搜索+高亮、收藏置顶、打印导出、内嵌 JSON 数据。
-- 2026-09-26 首次生成：工具 190 项，考点映射 143 条；WSL 已补装 gdb-multiarch/strace/ltrace/patchelf/qemu-user/upx/tshark/tcpdump/steghide/outguess/fcrackzip/zip/qpdf/mutool/socat/ncat/hashid/masscan/musl-tools + seccomp-tools + z3 + one_gadget。
+- 2026-10-27 手册升级：命令一键复制、考点↔工具双向互跳、URL 深链（#cat-x&q=y）、多词 AND 搜索+高亮、收藏置顶、打印导出、内嵌 JSON 数据。
+- 2026-10-27 首次生成：工具 195 项，考点映射 148 条；WSL 已补装 gdb-multiarch/strace/ltrace/patchelf/qemu-user/upx/tshark/tcpdump/steghide/outguess/fcrackzip/zip/qpdf/mutool/socat/ncat/hashid/masscan/musl-tools + seccomp-tools + z3 + one_gadget。
