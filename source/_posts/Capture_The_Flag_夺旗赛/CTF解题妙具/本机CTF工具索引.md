@@ -8,7 +8,7 @@ tags:
   - 工具索引
   - 速查手册
 created: 2026-10-03T00:04
-updated: 2026-10-27T15:37
+updated: 2026-10-27T15:49
 ---
 
 > 本页由 ctf-toolbook skill 自动生成于 2026-10-27。可交互版（搜索/按分类筛选/考点互跳/一键复制命令）请打开本机手册：`D:/CaptureTheFlag/CTFTool/工具速查手册.html`。
@@ -68,6 +68,7 @@ updated: 2026-10-27T15:37
 | **Xray** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/Xray_1` | 自动化 Web 漏洞扫描器 | `xray webscan --url <url> --html-out out.html` |
 | **DirBuster** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/DirBuster` | Java 目录爆破（自带字典，界面直观） | `java -jar DirBuster.jar -u <url> -l 目录字典` |
 | **scan4all** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/scan4all_2.9.1_windows_amd64.zip` | 集成 27 种漏洞扫描的一体化扫描器（补 nuclei 盲区） ⚠️压缩包，用时先解压 | `scan4all -t <target>` |
+| **PHP 手册（中文增强版）** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool` | php_enhanced_zh.chm：PHP 函数中文速查，Web 题读源码/构造 payload 时查函数行为 | `双击 php_enhanced_zh.chm 打开` <br> `查危险函数（eval/system/preg_replace /e、unserialize）的确切语义` |
 
 ### 🔐 密码学
 
@@ -90,6 +91,7 @@ updated: 2026-10-27T15:37
 | **HashCalc** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/HashCalc.exe` | 图形化哈希计算（MD5/SHA/CRC/base64 一键） | `拖入文件或粘贴文本选算法` |
 | **CTFReBox** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/CTFReBox_52` | CTF 编码/加密集成箱（键盘码/敲击码等冷门编码也有） | `GUI 按分类试` |
 | **随曰 SuiYue 文本加解密** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/随波逐流原创软件/随曰` | AES-CTR + ChaCha20-Poly1305 文本加解密，特征是【中文 Base64】：密文看上去就是一串汉字（湋渄漋泽汈溿…），CTF 里辨识度极高 ⚠️开源 https://github.com/zb848/suiyue-crypto ，pip 包名 suiyue。密文示例：湋渄漋泽汈溿溿涷泳漙灡漑汁洉漛汮… 看到这种字符直接上它。 | `GUI：D:/CaptureTheFlag/CTFTool/随波逐流原创软件/随曰/SuiYue_GUI_V1.0.exe` <br> `看到一串像乱码的汉字（非正常中文、偏旁部首杂乱）：先怀疑随曰加密，用它解` <br> `命令行/嵌脚本：suiyue-crypto/SuiYue.py（PBKDF2 派生密钥，需密码）` <br> `无密码时试默认密码；网页版 http://suiyue.1o1o.xyz/ 可对照` |
+| **ctftools V8.8 Beta（含国密）** | 🪟 Win | Win: `C:/Users/glj07/Desktop/ctftoolsV8.8Beta` | 国产 CTF 密码工具集（PySide6 打包），**支持 SM2/SM3/SM4 国密 + RSA**——国内赛国密题的现成入口 | `双击 7z.dist 内的启动器（PySide6 GUI）` <br> `国密题：SM2/SM3/SM4 直接选对应算法输入密文与参数试` <br> `与 RsaCtfTool / sympy 互补：先试 GUI 再写脚本` |
 
 ### 💥 二进制利用 Pwn
 
@@ -119,7 +121,7 @@ updated: 2026-10-27T15:37
 
 | 工具 | 状态 | 位置 | 用途 | 常用命令 |
 | --- | --- | --- | --- | --- |
-| **IDA Pro 8.3** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/IDA Pro 8.3` | 最强静态反汇编/反编译，主逆向工具 | `F5 反编译；MCP 插件按 Ctrl+Alt+M 启动后 AI 可远程操作` <br> `Shift+F12 看字符串` |
+| **IDA Pro（8.3 / 9.4 汉化）** | 🪟 Win | Win: `C:/Users/glj07/Desktop/IDA94ProBable_CN` | 最强静态反汇编/反编译，主逆向工具。现用 9.4 汉化版（含 capa-rules 与 MCP 配置图），8.3 仍在旧目录 ⚠️9.4 版目录含 Hook.log/IDAHook.log（hook 记录）与 dbgsrv（远程调试服务）；官方 MCP 已配到 8948 共享 HTTP（见记忆 ida-official-mcp）。 | `9.4 汉化：C:/Users/glj07/Desktop/IDA94ProBable_CN/ 下的 ida.exe/ida64.exe` <br> `F5 反编译；MCP 插件按 Ctrl+Alt+M 启动后 AI 可远程操作` <br> `Shift+F12 看字符串；N 重命名，X 交叉引用` <br> `capa 规则在 IDA94ProBable_CN/capa-rules（能力识别）` <br> `MCP 接入配置见 IDA MCP配置图/ 目录截图` |
 | **Ghidra 11.2** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/ghidra_11.2_PUBLIC_20240926.zip` | NSA 免费反编译器，IDA 备选，支持多架构 | `解压后 analysisHeadless 或 GUI` |
 | **JEB 5.0** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/JEB_5_0_0_202308071454搭配400M+的7Z使用` | Android/原生混合逆向利器 | `GUI 加载 apk；解压密码注意配套 7z 说明` |
 | **dnSpy** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/dnSpy-net-win64` | .NET 程序反编译/动态调试 | `打开 exe/dll 直接看 C# 源码，可改 IL` |
@@ -139,6 +141,8 @@ updated: 2026-10-27T15:37
 | **Resource Hacker** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/Resource Hacker -5.2.6425简体中文-色汉化版` | exe 资源提取/替换（图标/对话框/字符串表里藏 flag） | `打开 exe 展开 RC 数据/字符串表` |
 | **zipalign** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/zipalign.exe` | APK 对齐校验（Android 逆向配套） | `zipalign -c 4 app.apk` |
 | **angr** | 🐧 WSL | WSL: `/opt/ctf-venvs/angr/bin/python` | 隔离虚拟环境中的符号执行/CFG 分析框架（含 Unicorn 后端） ⚠️angr 10.0.0 + Unicorn 2.1.4；不改系统 Python，入口 angr-python。 | `/opt/ctf-venvs/angr/bin/python solve.py` <br> `angr-python solve.py` |
+| **汇编查询工具** | 🪟 Win | Win: `C:/Users/glj07/Desktop/汇编查询工具` | 汇编指令速查（x86 指令/寄存器/标志位含义），逆向读汇编时随手查 | `启动 汇编查询.exe，输入助记符或浏览指令表` <br> `看不懂的指令/条件跳转含义直接查` |
+| **二进制反汇编（小工具）** | 🪟 Win | Win: `C:/Users/glj07/Desktop` | 桌面单文件反汇编小工具，快速查看指令流（无版本信息，轻量应急） ⚠️exe 无 VersionInfo，功能范围未实测；有 IDA 时不优先用。 | `双击 二进制反汇编.exe 打开目标文件看反汇编` <br> `正式逆向仍用 IDA / Ghidra，这个只做快速一瞥` |
 
 ### 🕵️ 取证与流量
 
@@ -206,6 +210,11 @@ updated: 2026-10-27T15:37
 | **随波逐流 OCR 识别工具** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/随波逐流原创软件/随波逐流OCR识别工具` | 图片文字提取（截图题、验证码、图片藏字），V4.0 Release 20251006 ⚠️exe 文件名开头缺了方括号【随波逐流】→ 实际是 '随波逐流]OCR识别工具 V4.0Release 20251006.exe'，脚本里按文件名精确匹配会踩坑。备选：easyocr（本机 Python310 已装）。 | `启动：D:/CaptureTheFlag/CTFTool/随波逐流原创软件/随波逐流OCR识别工具/随波逐流]OCR识别工具 V4.0Release 20251006.exe` <br> `图片题先肉眼看不清文字/被旋转倾斜：用它批量识别` <br> `首次运行若报缺 DLL，先装同目录 vcredist_x64.exe` |
 | **随波逐流 二维码识别工具** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/随波逐流原创软件/随波逐流二维码识别工具` | 二维码识别/修复，V2.0 20250710；配套 测试二维码/ 样例 ⚠️同目录 qr_research.log 说明与 QR_Research 配合使用；测试二维码/ 有样本可先验证工具是否正常。 | `启动：D:/CaptureTheFlag/CTFTool/随波逐流原创软件/随波逐流二维码识别工具/[随波逐流]二维码识别工具V2.0 20250710.exe` <br> `残缺/反色/旋转/局部遮挡的二维码先丢进去试识别` <br> `识别不出再上 QR_Research 做结构分析或手工拼接` |
 | **224 种编码图** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/随波逐流原创软件/随波逐流其他原创作品` | 224 种编码/字符集对照图谱（随波逐流原创），遇到不认识的花式字符编码按图索骥 ⚠️rar 需解压；是参考图谱不是可执行工具。 | `解压：D:/CaptureTheFlag/CTFTool/随波逐流原创软件/随波逐流其他原创作品/[随波逐流]224种编码图 V2.0.rar` <br> `Misc 拿到怪字符（颜文字/象形/点阵/符号表）先翻图对照，认出编码名再上工具解` <br> `认出后配 CyberChef 或 随波逐流CTF编码工具 直接解` |
+| **EBCTFCodeBox CTF编码盒** | 🪟 Win | Win: `C:/Users/glj07/Desktop` | Henglie 出品的国产 CTF 编码/密码综合工具箱（Native Launcher 打包，61MB），覆盖 AES/RSA/MD5/URL/Hex/ROT 等常见编码加解密 + 图片与压缩包处理；与随波逐流编码工具互为补充 ⚠️exe 内嵌资源已加密，无法静态读取功能清单，VersionInfo 显示 FileVersion 0.1.8 而文件名为 v0.1.11；桌面另存【批量下载】EBCTFCodeBox-v0.1.11-官方版等.zip 原始包。 | `双击 EBCTFCodeBox-v0.1.11-官方版.exe（免安装，绿色）` <br> `常见编码/加密一把梭：界面按功能区分类，逐个试解` <br> `随波逐流解不出的编码变体，换它再试一轮` |
+| **ffmpeg 视频/音频处理** | 🐧 WSL | WSL: `/usr/bin/ffmpeg` | 音视频万能转换：Misc 视频题抽帧、逐帧 LSB/二维码、音频转格式喂 Audacity、计算时长/帧率定位隐藏信息 | `抽全部帧：ffmpeg -i in.mp4 -vsync 0 frames/f%05d.png` <br> `按秒抽帧：ffmpeg -i in.mp4 -vf fps=1 out%03d.png` <br> `指定时间段：ffmpeg -ss 00:01:20 -i in.mp4 -t 5 clip.mp4` <br> `音频转 wav 喂 Audacity/频谱：ffmpeg -i in.mp4 -vn -acodec pcm_s16le out.wav` <br> `看时长与帧数：ffprobe -v error -show_entries format=duration -of csv in.mp4` <br> `逐帧图像题套路：抽帧 → Stegsolve/zsteg 每帧 → 或帧间差分` |
+| **DCode 编码转换** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Others/DCode v5` | 编码转换合集（v5），ASCII/Unicode/Base 系列/进制/压缩等一把梭，取证与 Misc 都可用 | `打开后选编码类型输入文本即时转换` <br> `随波逐流/EBCTFCodeBox 都不认的冷门编码来这试` |
+| **CTFReBox（吾爱版）** | 🪟 Win | Win: `C:/Users/glj07/Desktop/CTFReBox` | Electron 打包的 CTF 综合工具盒（吾爱破解版），内含 T00Ls 子工具集 | `双击 CTFReBox.exe 启动` <br> `先看目录里《1.吾爱版说明（请先看我！！！）.txt》` <br> `内嵌 ffmpeg.dll：视频/音频转换在工具盒内直接做` |
+| **CQR（二维码研究）** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/QR_Research` | QR_Research 套件的 CQR 组件：二维码结构分析、纠错级别判定、手工还原辅助 | `启动 CQR.exe` <br> `残缺/变形二维码先看结构（版本/纠错/掩码），再决定补哪块` <br> `与 随波逐流二维码识别工具 配合：它认不出时来这里做结构级修复` |
 
 ### 📚 字典与资源包
 
@@ -215,6 +224,7 @@ updated: 2026-10-27T15:37
 | **/opt/security-tools** | 🐧 WSL | WSL: `/opt/security-tools` | SecLists 完整版 + PayloadsAllTheThings（SSTI/反序列化等 Payload 库）+ theHarvester + sqlmap 源码 | `find /opt/security-tools/SecLists -name '*.txt' 挑字典` <br> `查 Payload 直接 grep` |
 | **后台常用密码** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/后台常用密码.txt` | 小而精的中文后台弱口令字典 | `后台登录爆破首选小字典` |
 | **GTFOBins 离线库** | 🐧 WSL | WSL: `/opt/security-tools/GTFOBins` | Linux 提权/逃逸命令用法离线库（sudo/suid/capabilities/docker 等 2.6MB） ⚠️已确认 /opt/security-tools/GTFOBins/_gtfobins，约 2.6MB；只查离线资料，不自动执行其中命令。 | `sudo -l 拿到可执行清单后逐个查: ls /opt/security-tools/GTFOBins/_gtfobins/ \| grep <命令>` <br> `grep -rl "sudo" /opt/security-tools/GTFOBins/_gtfobins \| head（列出所有可 sudo 的命令）` <br> `cat /opt/security-tools/GTFOBins/_gtfobins/vi/sudo.md 看具体逃逸用法` |
+| **CTFcrack** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/CTFtools` | Java 版 CTF 综合工具（jar），杂项/编码/加解密集合，跨平台需 JRE | `java -jar CTFcrack.jar` <br> `界面按分类选功能` |
 
 ### 🧰 桌面辅助
 
@@ -234,6 +244,7 @@ updated: 2026-10-27T15:37
 | **Qwen3.6-35B-A3B (本地)** | 🪟 Win | Win: `C:/Users/glj07/.lmstudio/models/LuffyTheFox/Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-GGUF/Hermes3.6-35B-A3B-Uncensored-Genesis-MTP-APEX-Compact.gguf` | 本地 MoE 35B 仅激活 3B，出 token 最快；纯文本大批量分析、长文档、日志流水首选，激活小所以长文本吞吐高。缺视觉投影，看不了图 | `LM Studio 载入该 GGUF 后 Start Server` <br> `断网比赛：批量读日志/长文档时优先于默认模型` |
 | **GLM-4.7-Flash (本地)** | 🪟 Win | Win: `C:/Users/glj07/.lmstudio/models/DavidAU/GLM-4.7-Flash-Uncensored-Heretic-NEO-CODE-Imatrix-MAX-GGUF/GLM-4.7-Flash-Uncen-Hrt-NEO-CODE-MAX-imat-D_AU-Q4_K_S.gguf` | 本地 GLM 系，NEO-CODE 强化；写代码、生成 exp、严格格式输出场景指令遵循更稳。缺视觉投影 | `LM Studio 载入该 GGUF 后 Start Server` <br> `断网比赛：写脚本/生成 exp 时优先于默认模型` |
 | **随波逐流 CTF Flags** | 🪟 Win | Win: `D:/CaptureTheFlag/CTFTool/随波逐流原创软件/随波逐流Flags` | flag 提交/格式化辅助小工具，1.0.0（Windows exe + Android apk） ⚠️轻量辅助，非解题主力。 | `启动：D:/CaptureTheFlag/CTFTool/随波逐流原创软件/随波逐流Flags/[随波逐流]CTF Flags1.0.0.exe` <br> `整理多题 flag、统一格式、批量核对时用；比赛现场也可装 apk 到手机` |
+| **Python 3.10 解释器** | 🪟 Win | Win: `C:/Users/glj07/AppData/Local/Programs/Python/Python310` | Windows 侧 CTF 万能胶水：pwntools/pycryptodome/z3/gmpy2/sympy/scapy/unicorn 已装，pip 走清华源；反序列化、爆破脚本、协议交互全靠它 ⚠️PATH 里的 python 常被其他 venv 抢占（且无 pip），一律用全路径。binwalk 的 pip 包在本机会损坏，别装。 | `全路径调用（PATH 里默认 python 是别的 venv）：C:/Users/glj07/AppData/Local/Programs/Python/Python310/python.exe xxx.py` <br> `pickle 分析：python -c "import pickletools,sys;pickletools.dis(open('p.bin','rb').read())"` <br> `PyYAML 探测：python -c "import yaml;print(yaml.load(open('a.yml'),Loader=yaml.Loader))"` <br> `装包：python.exe -m pip install <pkg> -i https://pypi.tuna.tsinghua.edu.cn/simple` |
 
 ### 🧱 证据采集与镜像
 
@@ -241,9 +252,11 @@ updated: 2026-10-27T15:37
 | --- | --- | --- | --- | --- |
 | **X-Ways Forensics** | ❌ 未装 | Win: `D:/Forensic/ForensicTool/Mirror/X-Ways Forensics-顶级的综合磁盘取证平台，以速度快、资源占用低著称` | 专业磁盘/镜像取证平台：分区、文件系统、时间线、书签与报告 ⚠️商业许可，启动需授权文件；案件前先校验镜像哈希 | `打开案件→添加镜像→只读分析→书签/导出报告` |
 | **Autopsy** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mirror/Autopsy` | 开源数字取证平台，适合镜像、文件系统、关键字和时间线综合分析 | `新建 Case→Add Data Source→Ingest Modules→查看结果` |
-| **Arsenal Image Mounter** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mirror/Arsenal Image Mounter Professional-将磁盘镜像文件（如.E01, .dd）挂载为Windows虚拟磁盘，便于只读访问` | 将 E01/DD 只读挂载为 Windows 磁盘，供取证工具访问 | `选择 Image→Read-only Mount→记录盘符与哈希` |
+| **Arsenal Image Mounter** | 🪟 Win | Win: `C:/Program Files/Arsenal Image Mounter` | 将 E01/DD 只读挂载为 Windows 磁盘，供取证工具访问 | `启动：C:/Program Files/Arsenal Image Mounter/ArsenalImageMounter.exe` <br> `File→Open Image→只读挂载 → 记录盘符与哈希` <br> `E01/VMDK/DD 都能挂；挂载后给 AXIOM/火眼/GoldenEyes 访问` |
 | **Mount Image Pro** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mirror/Mount Image Pro-镜像文件挂载工具` | 多格式磁盘镜像挂载 | `选择镜像→只读挂载→在 X-Ways/Autopsy 中分析` |
 | **Virtual Forensic Computing** | 🪟 Win | Win: `D:/Forensic/ForensicTool/HelperKit/Virtual Forensic Computing-证据仿真工具，可直接启动嫌疑人的磁盘镜像` | 在隔离虚拟机中启动镜像观察系统行为 | `复制证据镜像→隔离启动→记录行为与截图` |
+| **火眼仿真取证 BootMagix V4** | 🪟 Win | Win: `C:/Program Files/Honglian/BootMagixV4` | 红莲（Honglian）仿真取证系统 V4：把镜像/物理盘仿真启动成虚拟机，只读取证 | `启动：C:/Program Files/Honglian/BootMagixV4/BootMagixV4.exe` <br> `加载镜像 → 创建仿真环境 → 开机进系统看现场（全程只读，不污染证据）` <br> `先记录镜像哈希再仿真` |
+| **火眼取证桌面 / 录像** | 🪟 Win | Win: `C:/Program Files/Honglian/ForensicDesktop` | 红莲取证工作台（HLForensicDesktop）+ 取证录像（ForensicRecorder）——现场取证过程留痕，符合证据链要求 | `工作台：C:/Program Files/Honglian/ForensicDesktop/HLForensicDesktop.exe` <br> `录像：C:/Program Files (x86)/Honglian/ForensicRecorder/ForensicRecorder.exe —— 操作前先开录，全程留痕` <br> `比赛交卷若要求证据链，录像文件一并归档` |
 
 ### ♻️ 恢复与解密
 
@@ -256,12 +269,14 @@ updated: 2026-10-27T15:37
 | **Passware Kit Forensic** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Decrypt/Passware Kit Forensic 2022（汉化版）` | 文件、容器和凭据密码恢复套件 | `选择案件文件→选择攻击方式→恢复到工作副本` |
 | **Elcomsoft Forensic Disk Decryptor** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Decrypt/Elcomsoft.Forensic.Disk.Decryptor` | 加密磁盘/容器取证辅助 | `导入密钥材料/镜像→只读解密分析` |
 | **Ciphey** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Decrypt/Ciphey` | 自动识别与解码常见编码/密码文本 | `ciphey -t "密文"` |
+| **PhotoRec / TestDisk** | ❌ 未装 | — | 按文件头 carving 恢复被删/格式化分区里的文件；取证与 Misc 大文件（zip 删了、盘格了）主力，覆盖面比 foremost 更广（还能整盘恢复） ⚠️**本机未装**（wsl which photorec 无输出）。apt 源已配清华，`sudo apt install testdisk` 一条命令即可装，装上后本条目状态自动转 wsl。 | `安装（WSL）：sudo apt install testdisk   # 同时提供 photorec 与 testdisk` <br> `恢复文件：sudo photorec /dev/sdX（选分区 → FileOpt 只留目标类型 → 输出目录）` <br> `修复分区表：sudo testdisk /dev/sdX` <br> `只恢复某类：photorec 里 FileOpt 取消全选，只留 jpg/png/zip/pdf` <br> `Windows 侧可先替代：R-Studio、Winhex、foremost（本机已装）` |
 
 ### 🧠 内存取证
 
 | 工具 | 状态 | 位置 | 用途 | 常用命令 |
 | --- | --- | --- | --- | --- |
 | **Volatility 3** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Decrypt/volatility3-develop/volatility3-develop/vol.py` | 内存镜像进程、网络、文件、注册表和凭据分析 | `vol -f mem.raw windows.info` <br> `vol -f mem.raw windows.pslist` <br> `vol -f mem.raw windows.filescan` |
+| **LovelyMem 内存取证** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Others/Lovelymem` | 国产图形化内存取证工具（LovelymemLuxe 豪华版），Windows 侧跑 volatility 系流程，比命令行 volatility3 上手快 ⚠️桌面另有 LovelyMem-NewWorld 目录与 .zip，为另一版本/备份。 | `启动：D:/Forensic/ForensicTool/Others/Lovelymem/LovelymemLuxe/LovelymemLuxe.exe` <br> `导入 raw/vmem/mem 镜像 → 选 profile/系统版本 → 按功能区跑（进程/网络/注册表/文件）` <br> `与 volatility3 互补：图形快筛，命令行做深度定制` <br> `Windows 内存题先它、Linux 内存题用 volatility3` |
 
 ### 📡 网络流量取证
 
@@ -291,6 +306,9 @@ updated: 2026-10-27T15:37
 | **AndroidKiller** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mobile/AndroidKiller-master` | Android APK 反编译与资源分析 | `导入 APK→查看 Manifest/代码/资源→导出证据` |
 | **PH-PhoneForensics** | 🪟 Win | Win: `D:/Forensic/ForensicTool/pinghang/PH-PhoneForensics` | 平航移动取证工具，手机数据提取/解析辅助 | `按设备/备份类型导入→生成案件报告` |
 | **JADX GUI AI (Forensic)** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Others/jadx-gui-ai-master` | Android 应用取证/逆向查看，含 AI MCP 连接能力 | `启动 GUI→导入 APK→搜索数据库/API/密钥` |
+| **Magnet AXIOM Process** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mobile/magnetaxiom.all.to.9.9.0.46675` | 商业手机取证套件 AXIOM 9.9：APK/应用数据、聊天记录、云数据解析，取证赛手机方向主力 ⚠️商业许可版本，需授权；APK 侧够用不必跑完整镜像流程。 | `启动：D:/Forensic/ForensicTool/Mobile/magnetaxiom.all.to.9.9.0.46675/base/AXIOM Process/AXIOMProcess.exe` <br> `APK 题：新建案件 → 导入 APK/镜像 → 选 App 解析` <br> `产出报告：AXIOM Examine 查看，按时间线/聊天/位置过滤` |
+| **apk_analyzer** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Mobile/apk_analyzer.windows` | APK 静态分析（清单/权限/组件/字符串），手机取证与 Android 逆向快速摸底 | `拖入 APK → 看 AndroidManifest 权限、Activity/Service、硬编码字符串` <br> `配合 jadx-gui 做代码级逆向` |
+| **火眼 APP 智能分析** | 🪟 Win | Win: `C:/Program Files/Honglian/APPAnalysis` | 红莲手机应用智能分析：APK/应用数据的自动化解析与关联 | `启动：C:/Program Files/Honglian/APPAnalysis/APPAnalysis.exe` <br> `导入 APK 或应用数据目录 → 自动解析` |
 
 ### 🕒 时间线与主机活动
 
@@ -307,6 +325,8 @@ updated: 2026-10-27T15:37
 | **regipy** | ❌ 未装 | WSL: `pip install regipy` | Python 注册表解析库 ⚠️已装入 conda base（/root/miniconda3） | `python3 -c "from regipy.registry import Registry"` |
 | **python-evtx** | ❌ 未装 | WSL: `pip install python-evtx` | Windows EVTX 事件日志解析库 ⚠️已装入 conda base（/root/miniconda3），导入名是 Evtx 不是 evtx | `pip install python-evtx` <br> `python parse_evtx.py Security.evtx` |
 | **FileLocator Pro** | 🪟 Win | Win: `D:/Forensic/ForensicTool/Database/FileLocator Pro-强大的文件内容搜索工具，可快速在全盘搜索关键词` | 案件目录内全文/正则/文件名搜索 | `限定证据目录→搜索关键字→导出命中路径` |
+| **火眼证据分析 GoldenEyes V4** | 🪟 Win | Win: `C:/Program Files/Honglian/GoldenEyesV4` | 红莲证据分析系统 V4：镜像/证据文件的浏览、搜索、时间线、报告导出 | `启动：C:/Program Files/Honglian/GoldenEyesV4/GoldenEyesV4.exe` <br> `导入镜像 → 按文件系统浏览 / 关键词搜索 / 时间线过滤` <br> `导出报告前核对哈希链` |
+| **苍穹取证 AI 助手** | 🪟 Win | Win: `C:/Program Files/Honglian/ForensicDesktop` | 红莲苍穹取证桌面 + AI 助手（FirmamentAI）：取证工作台与智能分析入口 | `启动：C:/Program Files/Honglian/ForensicDesktop/FirmamentAI.exe` <br> `桌面模式整合取证流程；AI 侧做线索归集与问答` |
 
 ### 🧬 恶意样本与规则
 
@@ -345,7 +365,7 @@ updated: 2026-10-27T15:37
 | Pwn | **seccomp 沙箱题（禁 execve）** | seccomp-tools | `seccomp-tools dump ./pwn 看白名单 → ORW shellcode (open/read/write)` | pwntools shellcraft.orw |
 | Pwn | **跨架构 ARM/MIPS pwn** | qemu-user + gdb-multiarch | `qemu-arm -g 1234 -L /usr/arm-linux-gnueabihf ./elf；gdb-multiarch target remote :1234` | 静态分析为主 |
 | Pwn | **本地指定 libc 复现** | patchelf | `patchelf --set-interpreter ./ld-2.35.so --set-rpath . ./pwn` | LD_PRELOAD / docker |
-| Reverse | **ELF 静态分析入门** | IDA Pro 8.3 (F5) | `看 main→关键函数；Shift+F12 字符串定位` | Ghidra / r2 izz |
+| Reverse | **ELF 静态分析入门** | IDA Pro（8.3 / 9.4 汉化） (F5) | `看 main→关键函数；Shift+F12 字符串定位` | Ghidra / r2 izz |
 | Reverse | **UPX 壳** | upx -d | `upx -d packed.exe -o unpacked.exe 后再静态分析` | DiE 确认壳类型 |
 | Reverse | **Python 打包 exe (PyInstaller)** | pyinstxtractor | `python pyinstxtractor.py exe → 主 pyc 用 pycdc/uncompyle 还原` | pycdc 直接反编译 |
 | Reverse | **.NET 程序** | dnSpy | `直接打开看 C# 源码，可断点可改 IL` | ILSpy |
@@ -467,14 +487,28 @@ updated: 2026-10-27T15:37
 | Crypto | **侧信道/计时攻击** | python | `python -c "import time;a=input();[print(i,time.perf_counter()) for i in a]"` | for i in $(seq 1 20);do curl -s -o /dev/null -w "%{time_total}\n" url;done |
 | Crypto | **彩虹表** | hashcat | `hashcat -m 0 hash.txt` | hashcat -m 1000 hash.txt   # NTLM;  -m 1400 sha2$ ;  -m 13100 kerberos |
 | Pwn | **ret2dlresolve** | pwntools | `python -c "from pwn import *;e=ELF('./p');print(e.symbols)"` | ret2dlresolve.py - ./p ./p |
-| Reverse | **Python 反序列化 pickle** | pickle | `python -c "import pickle;print(pickle.loads(open('p','rb').read()))"` | python -c "import pickletools;pickletools.dis(open('p','rb').read())" |
-| Misc | **一串乱码汉字/中文密文（随曰加密特征）** | 随曰 SuiYue 文本加解密 | `GUI 粘密文直接解；无密码试默认密码` | 随波逐流 CTF编码工具 CTF编码工具 V8.0.0 |
+| Reverse | **Python 反序列化 pickle** | Python 3.10 解释器 | `python -c "import pickle;print(pickle.loads(open('p','rb').read()))"` | python -c "import pickletools;pickletools.dis(open('p','rb').read())" |
+| Misc | **一串乱码汉字/中文密文（随曰加密特征）** | 随曰 SuiYue 文本加解密 | `GUI 粘密文直接解；无密码试默认密码` | 随波逐流 CTF编码工具 |
 | Misc | **图片里有看不清的文字/被旋转倾斜的字符** | 随波逐流 OCR 识别工具 | `拖图识别；识别不出换 easyocr` | CyberChef |
 | Misc | **二维码识别（完整图，非残缺）** | 随波逐流 二维码识别工具 | `直接拖入识别；失败再上 QR_Research` | QR_Research |
-| Misc | **完全不认识的花式字符编码（颜文字/点阵/符号）** | 224 种编码图 | `翻图对照认出编码名，再上 CyberChef 解` | 随波逐流 CTF编码工具 CTF编码工具 V8.0.0 |
-| Misc | **未知编码/密文想批量试解（几十种编码一把梭）** | 随波逐流 CTF编码工具 CTF编码工具 V8.0.0 | `整段粘进去逐个功能区试；先查使用手册 PDF 目录` | CyberChef |
+| Misc | **完全不认识的花式字符编码（颜文字/点阵/符号）** | 224 种编码图 | `翻图对照认出编码名，再上 CyberChef 解` | 随波逐流 CTF编码工具 |
+| Misc | **未知编码/密文想批量试解（几十种编码一把梭）** | 随波逐流 CTF编码工具 | `整段粘进去逐个功能区试；先查使用手册 PDF 目录` | CyberChef |
+| Misc | **视频题：从 mp4/avi 抽帧、找隐藏帧或二维码** | ffmpeg 视频/音频处理 | `ffmpeg -i in.mp4 -vsync 0 frames/f%05d.png 抽全部帧，再 Stegsolve/zsteg 逐帧；秒级抽样用 -vf fps=1` | CTFReBox（内嵌 ffmpeg） |
+| Misc | **音频题：音视频转 wav 喂 Audacity 看频谱** | ffmpeg 视频/音频处理 | `ffmpeg -i in.mp4 -vn -acodec pcm_s16le out.wav，然后 Audacity 看频谱/波形` | Audacity |
+| Crypto | **国密 SM2/SM3/SM4（国内赛常见）** | ctftools V8.8 Beta（含国密） | `GUI 选 SM2/SM3/SM4 输入密文与参数直接试；脚本侧 pip install gmssl` | Python gmssl |
+| Crypto | **Python pickle 反序列化（opcode/__reduce__）** | Python 3.10 解释器 | `pickletools.dis(payload) 看 opcode 流；构造 __reduce__ 触发 RCE，用 pytorch/pickle 反序列化链` | CyberChef |
+| Crypto | **PyYAML 反序列化（!!python/object）** | Python 3.10 解释器 | `yaml.load 危险 payload：!!python/object/apply:os.system ['id']；确认是否 safe_load` | CyberChef |
+| Pwn | **ret2dlresolve / 延迟绑定劫持（partial RELRO 且无 libc 泄漏）** | pwntools | `Ret2dlresolvePayload(elf,symbol='system',args=['/bin/sh']) + ROP 链，注意需要可写段与已知栈地址` | ~/CTF/templates/ 下 ret2libc 模板改造 |
+| Forensics | **已删除文件/格式化分区的文件恢复（carving）** | PhotoRec / TestDisk | `sudo apt install testdisk 后 sudo photorec /dev/sdX，FileOpt 只留目标类型；分区表坏了用 testdisk` | foremost（已装）/ R-Studio / Winhex |
+| Forensics | **镜像挂载取证（E01/DD/VMDK 只读访问）** | Arsenal Image Mounter | `Open Image → 只读挂载 → 记录盘符与哈希，再交给 AXIOM/火眼/GoldenEyes` | ArsenalImageMounter 命令行 / ewfmount（WSL） |
+| Forensics | **Windows 内存镜像分析（进程/网络/注册表）** | LovelyMem 内存取证 | `LovelymemLuxe 导入 raw/vmem → 选系统版本 → 按功能区跑；深度定制再上 volatility3` | volatility3（WSL） |
+| Forensics | **Android APK 静态分析（权限/组件/硬编码）** | apk_analyzer | `拖入 APK 看 Manifest 权限与组件，再 jadx-gui 读代码` | jadx-gui-ai / AXIOM Process |
+| Forensics | **iOS 备份/plist 解析（Manifest、Info.plist）** | plist Editor Pro | `直接打开二进制 plist 树状查看；备份包先解出 Manifest.plist` | plutil（macOS）/ python plistlib |
+| Misc | **二维码结构级修复（残缺/变形认不出）** | CQR（二维码研究） | `CQR 看版本/纠错级别/掩码，判断能补多少；再回 随波逐流二维码识别工具 识别` | QR_Research |
+| Misc | **未知编码换工具再试一轮（多引擎对照）** | EBCTFCodeBox CTF编码盒 | `随波逐流解不出的编码变体换它再试；两家算法覆盖不同` | 随波逐流 CTF编码工具 / CyberChef |
+| Reverse | **看不懂的汇编指令/条件跳转语义** | 汇编查询工具 | `输入助记符查含义与标志位影响；IDA 里配 F5 一起看` | IDA Pro（8.3 / 9.4 汉化） |
 
 ## 更新记录
 
 - 2026-10-27 手册升级：命令一键复制、考点↔工具双向互跳、URL 深链（#cat-x&q=y）、多词 AND 搜索+高亮、收藏置顶、打印导出、内嵌 JSON 数据。
-- 2026-10-27 首次生成：工具 195 项，考点映射 148 条；WSL 已补装 gdb-multiarch/strace/ltrace/patchelf/qemu-user/upx/tshark/tcpdump/steghide/outguess/fcrackzip/zip/qpdf/mutool/socat/ncat/hashid/masscan/musl-tools + seccomp-tools + z3 + one_gadget。
+- 2026-10-27 首次生成：工具 215 项，考点映射 162 条；WSL 已补装 gdb-multiarch/strace/ltrace/patchelf/qemu-user/upx/tshark/tcpdump/steghide/outguess/fcrackzip/zip/qpdf/mutool/socat/ncat/hashid/masscan/musl-tools + seccomp-tools + z3 + one_gadget。

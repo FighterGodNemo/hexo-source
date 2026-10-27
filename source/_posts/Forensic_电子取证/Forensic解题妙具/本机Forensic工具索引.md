@@ -7,7 +7,7 @@ tags:
   - Forensic
   - 工具索引
 created: 2026-10-03T00:04
-updated: 2026-10-27T15:37
+updated: 2026-10-27T15:49
 ---
 
 > 本页由 ctf-toolbook 自动生成。交互版手册的「🧪 Forensic 取证中心」独立于 CTF 比赛和日常练习中心。
@@ -42,7 +42,7 @@ updated: 2026-10-27T15:37
 | **sqlite3 CLI** | WSL: `/usr/bin/sqlite3` | SQLite 数据库命令行检查、导出与损坏库初筛 | `sqlite3 evidence.db ".tables"` <br> `sqlite3 evidence.db "select * from sqlite_master;"` |
 | **X-Ways Forensics** | Win: `D:/Forensic/ForensicTool/Mirror/X-Ways Forensics-顶级的综合磁盘取证平台，以速度快、资源占用低著称` | 专业磁盘/镜像取证平台：分区、文件系统、时间线、书签与报告 | `打开案件→添加镜像→只读分析→书签/导出报告` |
 | **Autopsy** | Win: `D:/Forensic/ForensicTool/Mirror/Autopsy` | 开源数字取证平台，适合镜像、文件系统、关键字和时间线综合分析 | `新建 Case→Add Data Source→Ingest Modules→查看结果` |
-| **Arsenal Image Mounter** | Win: `D:/Forensic/ForensicTool/Mirror/Arsenal Image Mounter Professional-将磁盘镜像文件（如.E01, .dd）挂载为Windows虚拟磁盘，便于只读访问` | 将 E01/DD 只读挂载为 Windows 磁盘，供取证工具访问 | `选择 Image→Read-only Mount→记录盘符与哈希` |
+| **Arsenal Image Mounter** | Win: `C:/Program Files/Arsenal Image Mounter` | 将 E01/DD 只读挂载为 Windows 磁盘，供取证工具访问 | `启动：C:/Program Files/Arsenal Image Mounter/ArsenalImageMounter.exe` <br> `File→Open Image→只读挂载 → 记录盘符与哈希` <br> `E01/VMDK/DD 都能挂；挂载后给 AXIOM/火眼/GoldenEyes 访问` |
 | **Mount Image Pro** | Win: `D:/Forensic/ForensicTool/Mirror/Mount Image Pro-镜像文件挂载工具` | 多格式磁盘镜像挂载 | `选择镜像→只读挂载→在 X-Ways/Autopsy 中分析` |
 | **Virtual Forensic Computing** | Win: `D:/Forensic/ForensicTool/HelperKit/Virtual Forensic Computing-证据仿真工具，可直接启动嫌疑人的磁盘镜像` | 在隔离虚拟机中启动镜像观察系统行为 | `复制证据镜像→隔离启动→记录行为与截图` |
 | **UFS Explorer** | Win: `D:/Forensic/ForensicTool/Mirror/UFS Explorer Professional Recovery-数据恢复和镜像挂载工具，支持复杂RAID重组` | 复杂文件系统、RAID 和镜像恢复 | `打开镜像→Scan/RAID 重组→恢复到另一块盘` |
@@ -76,6 +76,15 @@ updated: 2026-10-27T15:37
 | **CFF Explorer** | Win: `D:/Forensic/ForensicTool/Reverse/CFF_Explorer-强大的PE文件（Windows可执行文件）编辑器，用于逆向分析` | PE 结构、节、导入导出表分析 | `打开 PE→查看 Headers/Sections/Imports` |
 | **JADX GUI AI (Forensic)** | Win: `D:/Forensic/ForensicTool/Others/jadx-gui-ai-master` | Android 应用取证/逆向查看，含 AI MCP 连接能力 | `启动 GUI→导入 APK→搜索数据库/API/密钥` |
 | **MySQL MCP 只读工具集** | Win: `C:/Users/glj07/.mcp-toolbox/v1.12.0/run-mysql-toolbox.cmd` | Google MCP Toolbox v1.12.0 统一入口（非 Oracle/MySQL 官方）：只读列出数据库/表/列结构与 EXPLAIN，七端共用 launcher | `工具：mysql_list_databases / mysql_list_tables / mysql_table_columns / mysql_explain_select` <br> `launcher：cmd.exe /c C:/Users/glj07/.mcp-toolbox/v1.12.0/run-mysql-toolbox.cmd（已登记 ZCode/Codex/Claude/CodeBuddy/Trae/LM Studio）` <br> `凭据：只读账号 mcp_readonly，SELECT-only，密码仅在 .mcp-toolbox/v1.12.0/mysql.env` |
+| **PhotoRec / TestDisk** | — | 按文件头 carving 恢复被删/格式化分区里的文件；取证与 Misc 大文件（zip 删了、盘格了）主力，覆盖面比 foremost 更广（还能整盘恢复） | `安装（WSL）：sudo apt install testdisk   # 同时提供 photorec 与 testdisk` <br> `恢复文件：sudo photorec /dev/sdX（选分区 → FileOpt 只留目标类型 → 输出目录）` <br> `修复分区表：sudo testdisk /dev/sdX` <br> `只恢复某类：photorec 里 FileOpt 取消全选，只留 jpg/png/zip/pdf` <br> `Windows 侧可先替代：R-Studio、Winhex、foremost（本机已装）` |
+| **LovelyMem 内存取证** | Win: `D:/Forensic/ForensicTool/Others/Lovelymem` | 国产图形化内存取证工具（LovelymemLuxe 豪华版），Windows 侧跑 volatility 系流程，比命令行 volatility3 上手快 | `启动：D:/Forensic/ForensicTool/Others/Lovelymem/LovelymemLuxe/LovelymemLuxe.exe` <br> `导入 raw/vmem/mem 镜像 → 选 profile/系统版本 → 按功能区跑（进程/网络/注册表/文件）` <br> `与 volatility3 互补：图形快筛，命令行做深度定制` <br> `Windows 内存题先它、Linux 内存题用 volatility3` |
+| **Magnet AXIOM Process** | Win: `D:/Forensic/ForensicTool/Mobile/magnetaxiom.all.to.9.9.0.46675` | 商业手机取证套件 AXIOM 9.9：APK/应用数据、聊天记录、云数据解析，取证赛手机方向主力 | `启动：D:/Forensic/ForensicTool/Mobile/magnetaxiom.all.to.9.9.0.46675/base/AXIOM Process/AXIOMProcess.exe` <br> `APK 题：新建案件 → 导入 APK/镜像 → 选 App 解析` <br> `产出报告：AXIOM Examine 查看，按时间线/聊天/位置过滤` |
+| **apk_analyzer** | Win: `D:/Forensic/ForensicTool/Mobile/apk_analyzer.windows` | APK 静态分析（清单/权限/组件/字符串），手机取证与 Android 逆向快速摸底 | `拖入 APK → 看 AndroidManifest 权限、Activity/Service、硬编码字符串` <br> `配合 jadx-gui 做代码级逆向` |
+| **火眼仿真取证 BootMagix V4** | Win: `C:/Program Files/Honglian/BootMagixV4` | 红莲（Honglian）仿真取证系统 V4：把镜像/物理盘仿真启动成虚拟机，只读取证 | `启动：C:/Program Files/Honglian/BootMagixV4/BootMagixV4.exe` <br> `加载镜像 → 创建仿真环境 → 开机进系统看现场（全程只读，不污染证据）` <br> `先记录镜像哈希再仿真` |
+| **火眼证据分析 GoldenEyes V4** | Win: `C:/Program Files/Honglian/GoldenEyesV4` | 红莲证据分析系统 V4：镜像/证据文件的浏览、搜索、时间线、报告导出 | `启动：C:/Program Files/Honglian/GoldenEyesV4/GoldenEyesV4.exe` <br> `导入镜像 → 按文件系统浏览 / 关键词搜索 / 时间线过滤` <br> `导出报告前核对哈希链` |
+| **火眼 APP 智能分析** | Win: `C:/Program Files/Honglian/APPAnalysis` | 红莲手机应用智能分析：APK/应用数据的自动化解析与关联 | `启动：C:/Program Files/Honglian/APPAnalysis/APPAnalysis.exe` <br> `导入 APK 或应用数据目录 → 自动解析` |
+| **苍穹取证 AI 助手** | Win: `C:/Program Files/Honglian/ForensicDesktop` | 红莲苍穹取证桌面 + AI 助手（FirmamentAI）：取证工作台与智能分析入口 | `启动：C:/Program Files/Honglian/ForensicDesktop/FirmamentAI.exe` <br> `桌面模式整合取证流程；AI 侧做线索归集与问答` |
+| **火眼取证桌面 / 录像** | Win: `C:/Program Files/Honglian/ForensicDesktop` | 红莲取证工作台（HLForensicDesktop）+ 取证录像（ForensicRecorder）——现场取证过程留痕，符合证据链要求 | `工作台：C:/Program Files/Honglian/ForensicDesktop/HLForensicDesktop.exe` <br> `录像：C:/Program Files (x86)/Honglian/ForensicRecorder/ForensicRecorder.exe —— 操作前先开录，全程留痕` <br> `比赛交卷若要求证据链，录像文件一并归档` |
 
 ## Forensic 考点与流程
 
@@ -126,6 +135,11 @@ updated: 2026-10-27T15:37
 | **时间戳转换与时间线核对** | DCode | `识别 FILETIME/Unix/浏览器时间格式→转换 UTC/本地→记录时区` | Python datetime |
 | **UEFI/固件结构提取** | UEFITool + binwalk | `计算固件哈希→UEFITool 查看 FV/模块→导出→binwalk 辅助提取` | strings |
 | **PE 样本结构/导入导出分析** | CFF Explorer + Detect It Easy | `确认 PE 架构/节/导入表→查壳和编译器→再交给 IDA/x64dbg` | IDA/DiE |
+| **已删除文件/格式化分区的文件恢复（carving）** | PhotoRec / TestDisk | `sudo apt install testdisk 后 sudo photorec /dev/sdX，FileOpt 只留目标类型；分区表坏了用 testdisk` | foremost（已装）/ R-Studio / Winhex |
+| **镜像挂载取证（E01/DD/VMDK 只读访问）** | Arsenal Image Mounter | `Open Image → 只读挂载 → 记录盘符与哈希，再交给 AXIOM/火眼/GoldenEyes` | ArsenalImageMounter 命令行 / ewfmount（WSL） |
+| **Windows 内存镜像分析（进程/网络/注册表）** | LovelyMem 内存取证 | `LovelymemLuxe 导入 raw/vmem → 选系统版本 → 按功能区跑；深度定制再上 volatility3` | volatility3（WSL） |
+| **Android APK 静态分析（权限/组件/硬编码）** | apk_analyzer | `拖入 APK 看 Manifest 权限与组件，再 jadx-gui 读代码` | jadx-gui-ai / AXIOM Process |
+| **iOS 备份/plist 解析（Manifest、Info.plist）** | plist Editor Pro | `直接打开二进制 plist 树状查看；备份包先解出 Manifest.plist` | plutil（macOS）/ python plistlib |
 
 ## 来源与范围
 
