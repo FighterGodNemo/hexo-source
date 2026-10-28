@@ -76,6 +76,23 @@ class ContestRadarTests(unittest.TestCase):
         value = radar.extract_json_array('```json\n[{"id":"event-1"}]\n```')
         self.assertEqual(value, [{"id": "event-1"}])
 
+    def test_latin_alias_requires_standalone_token(self):
+        # "misc CTF" must not contain the alias ISCC after punctuation stripping
+        text = "Undutmaning categories: crypto, web, pwn, misc CTF information"
+        self.assertEqual(radar.match_whitelist(text, self.whitelist), [])
+        # a real standalone mention still matches, CJK neighbours included
+        self.assertEqual(radar.match_whitelist("第十八届ISCC 即将开始", self.whitelist), [38])
+
+    def test_search_result_needs_event_signal(self):
+        platform_page = {"title": "CTFHub 在线 CTF 平台", "summary": "提供分类刷题与技能训练", "url": "https://ctfhub.example.com/", "published_at": "2026-10-01T00:00:00Z"}
+        self.assertIsNone(radar.make_event(platform_page, self.whitelist, self.projects, self.now))
+
+    def test_search_result_with_notice_signal_is_kept(self):
+        notice = {"title": "示例电子数据取证大赛报名启动", "summary": "全国大学生电子取证竞赛通知，线上赛制。", "url": "https://example.com/notice", "published_at": "2026-10-01T00:00:00Z"}
+        event = radar.make_event(notice, self.whitelist, self.projects, self.now)
+        self.assertIsNotNone(event)
+        self.assertEqual(event["category"], "电子取证")
+
     def test_real_profiles_have_expected_sizes(self):
         whitelist = radar.read_json(radar.WHITELIST_FILE, [])
         projects = radar.read_json(radar.PROJECTS_FILE, [])

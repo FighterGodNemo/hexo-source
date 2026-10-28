@@ -111,11 +111,25 @@ def classify(text: str) -> str:
 
 def match_whitelist(text: str, whitelist: list[dict[str, Any]]) -> list[int]:
     lookup = normalise_lookup(text)
+    raw_lower = str(text or "").lower()
     matches = []
     for item in whitelist:
         names = [item["name"], *ALIASES.get(item["id"], [])]
-        if any(len(normalise_lookup(name)) >= 4 and normalise_lookup(name) in lookup for name in names):
-            matches.append(item["id"])
+        for name in names:
+            token = normalise_lookup(name)
+            if len(token) < 4:
+                continue
+            if re.fullmatch(r"[a-z0-9]+", token):
+                # Latin aliases (ISCC / CISCN ...) must appear as a standalone
+                # word in the raw text. Punctuation-stripped substring matching
+                # lets fragments like "misc CTF" -> "miscctf" falsely contain
+                # "iscc", mislabeling overseas CTFs as whitelist competitions.
+                if re.search(rf"(?<![a-z0-9]){re.escape(token)}(?![a-z0-9])", raw_lower):
+                    matches.append(item["id"])
+                    break
+            elif token in lookup:
+                matches.append(item["id"])
+                break
     return matches
 
 
@@ -275,10 +289,20 @@ def parse_feed(data: bytes) -> list[dict[str, str]]:
     return items
 
 
+EVENT_SIGNAL = re.compile(
+    r"报名|截止|启动|开赛|开报|通知|公告|赛程|时间安排|线上赛|线下赛|邀请赛|选拔赛|资格赛|积分赛|第[一二三四五六七八九十百千\d]+届|register",
+    re.I,
+)
+
+
 def relevant(text: str) -> bool:
     competition = re.search(r"大赛|竞赛|比赛|挑战赛|ctf|contest|competition", text, re.I)
     domain = re.search(r"ctf|取证|网络安全|信息安全|软件|计算机|人工智能|大数据|电子设计|数学建模|创新创业|公安|警务|反诈|数字媒体", text, re.I)
-    return bool(competition and domain)
+    # Evergreen pages (practice-platform homepages, encyclopedia entries, study
+    # guides) mention CTF itself and pass competition+domain; a real notice also
+    # carries an event signal like 报名 / 通知 / 第X届, so require one.
+    signal = EVENT_SIGNAL.search(text)
+    return bool(competition and domain and signal)
 
 
 def make_event(raw: dict[str, Any], whitelist: list[dict[str, Any]], projects: list[dict[str, Any]], now: datetime) -> dict[str, Any] | None:
