@@ -27,13 +27,17 @@ jobs:
 
       # projects.json is gitignored on purpose (the source repo is public); it is
       # injected from a secret so cloud runs can still compute project matching.
+      # Note: secrets cannot appear in a step `if`; check the env var in the shell.
       - name: Restore private project profiles
-        if: ${{ secrets.CONTEST_PROJECTS_JSON != '' }}
         env:
           CONTEST_PROJECTS_JSON: ${{ secrets.CONTEST_PROJECTS_JSON }}
         run: |
+          if [ -z "$CONTEST_PROJECTS_JSON" ]; then
+            echo "No CONTEST_PROJECTS_JSON secret — skipping project profiles."
+            exit 0
+          fi
           printf '%s' "$CONTEST_PROJECTS_JSON" > tools/contest-radar/projects.json
-          python -c "import json,sys;data=json.load(open('tools/contest-radar/projects.json',encoding='utf-8'));print('projects:',len(data))"
+          python -c "import json;data=json.load(open('tools/contest-radar/projects.json',encoding='utf-8'));print('projects:',len(data))"
 
       - name: Collect and analyse public competition notices
         env:
