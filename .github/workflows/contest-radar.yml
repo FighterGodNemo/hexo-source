@@ -25,6 +25,16 @@ jobs:
         with:
           python-version: "3.12"
 
+      # projects.json is gitignored on purpose (the source repo is public); it is
+      # injected from a secret so cloud runs can still compute project matching.
+      - name: Restore private project profiles
+        if: ${{ secrets.CONTEST_PROJECTS_JSON != '' }}
+        env:
+          CONTEST_PROJECTS_JSON: ${{ secrets.CONTEST_PROJECTS_JSON }}
+        run: |
+          printf '%s' "$CONTEST_PROJECTS_JSON" > tools/contest-radar/projects.json
+          python -c "import json,sys;data=json.load(open('tools/contest-radar/projects.json',encoding='utf-8'));print('projects:',len(data))"
+
       - name: Collect and analyse public competition notices
         env:
           CONTEST_AI_API_KEY: ${{ secrets.CONTEST_AI_API_KEY }}
@@ -33,11 +43,21 @@ jobs:
           CONTEST_EXTRA_RSS: ${{ vars.CONTEST_EXTRA_RSS }}
         run: python tools/contest-radar/collect.py
 
+      # Encrypts the private analysis payload with AES-256-GCM. Without the
+      # secret the committed vault is kept and only the public data refreshes.
+      - name: Encrypt private analysis payload
+        env:
+          CONTEST_VAULT_PASSWORD: ${{ secrets.CONTEST_VAULT_PASSWORD }}
+        run: node tools/contest-radar/encrypt-vault.mjs
+
       - name: Commit changed intelligence data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add source/contest-radar/data.json
+          if [ -f source/contest-radar/private.enc.json ]; then
+            git add source/contest-radar/private.enc.json
+          fi
           if ! git diff --cached --quiet; then
             git commit -m "chore: update contest intelligence"
             git push

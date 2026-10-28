@@ -14,3 +14,6 @@ _raw_media/
 .trash/
 .serena/
 .obsidian/workspace.json
+# 赛讯雷达：本地项目储备与私密载荷不进公开仓库
+tools/contest-radar/projects.json
+tools/contest-radar/.private/

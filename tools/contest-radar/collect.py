@@ -22,6 +22,8 @@ from typing import Any
 TOOL_DIR = Path(__file__).resolve().parent
 ROOT = TOOL_DIR.parents[1]
 OUTPUT = ROOT / "source" / "contest-radar" / "data.json"
+PRIVATE_DIR = TOOL_DIR / ".private"
+PRIVATE_PLAIN = PRIVATE_DIR / "private.plain.json"
 WHITELIST_FILE = TOOL_DIR / "whitelist.json"
 PROJECTS_FILE = TOOL_DIR / "projects.json"
 USER_AGENT = "ContestRadar/1.0 (+https://fightergodnemo.github.io/contest-radar/)"
@@ -488,7 +490,82 @@ def meaningful_payload(data: dict[str, Any]) -> dict[str, Any]:
     return {k: v for k, v in data.items() if k != "generated_at"}
 
 
-def build(offline: bool = False) -> dict[str, Any]:
+# Fields that belong to the private analysis and must never ship in data.json.
+PRIVATE_EVENT_FIELDS = ("matched_projects", "match_score", "recommendation_reason")
+PRIVATE_WATCHLIST_FIELDS = ("matched_projects", "match_score", "school_status", "department")
+PUBLIC_WATCHLIST_SUMMARY = "已纳入长期监测，等待新一届官方通知与公开报名线索。"
+
+
+def refresh_matches(event: dict[str, Any], whitelist: list[dict[str, Any]], projects: list[dict[str, Any]]) -> dict[str, Any]:
+    """Recompute project matching for an event from its public text (offline rebuilds)."""
+    text = f"{event.get('title', '')} {event.get('summary', '')}"
+    ids = match_whitelist(text, whitelist)
+    names = project_names_for(ids, text, projects)
+    event["whitelist_ids"] = ids
+    event["whitelist"] = bool(ids)
+    event["matched_projects"] = names
+    event["match_score"] = score_event(ids, names, event.get("registration_deadline"), event.get("source") == "CTFtime")
+    event["recommendation_reason"] = "命中你的项目储备" if names else "命中赛事关键词"
+    return event
+
+
+def public_payload(full: dict[str, Any]) -> dict[str, Any]:
+    """Public view: competition intelligence only, no project portfolio or matching."""
+    events = [{k: v for k, v in item.items() if k not in PRIVATE_EVENT_FIELDS} for item in full["events"]]
+    watchlist = []
+    for item in full["watchlist"]:
+        clean = {k: v for k, v in item.items() if k not in PRIVATE_WATCHLIST_FIELDS}
+        clean["summary"] = PUBLIC_WATCHLIST_SUMMARY
+        watchlist.append(clean)
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    deadline = (datetime.now(timezone.utc) + timedelta(days=30)).strftime("%Y-%m-%d")
+    urgent = [e for e in events if e.get("registration_deadline") and today <= e["registration_deadline"] <= deadline]
+    return {
+        "generated_at": full["generated_at"],
+        "analysis": full["analysis"],
+        "stats": {
+            "whitelist": len(watchlist),
+            "events": len(events),
+            "urgent": len(urgent),
+            "wechat": sum(1 for e in events if e.get("source_kind") == "微信公众号公开索引"),
+        },
+        "events": events,
+        "watchlist": watchlist,
+        "sources": full["sources"],
+    }
+
+
+def private_payload(full: dict[str, Any]) -> dict[str, Any]:
+    """Private analysis: project portfolio and competition matching, encrypted before publishing."""
+    event_matches = {
+        item["id"]: {
+            "matched_projects": item.get("matched_projects", []),
+            "match_score": item.get("match_score", 0),
+            "recommendation_reason": item.get("recommendation_reason", ""),
+            "whitelist_ids": item.get("whitelist_ids", []),
+        }
+        for item in full["events"]
+    }
+    watchlist_matches = {}
+    for item in full["watchlist"]:
+        ids = item.get("whitelist_ids") or []
+        key = str(ids[0]) if ids else str(item.get("id"))
+        watchlist_matches[key] = {
+            "title": item.get("title", ""),
+            "matched_projects": item.get("matched_projects", []),
+            "match_score": item.get("match_score", 0),
+            "school_status": item.get("school_status"),
+            "department": item.get("department") or "",
+        }
+    return {
+        "generated_at": full["generated_at"],
+        "projects": full["projects"],
+        "event_matches": event_matches,
+        "watchlist_matches": watchlist_matches,
+    }
+
+
+def build(offline: bool = False) -> tuple[dict[str, Any], dict[str, Any]]:
     whitelist = read_json(WHITELIST_FILE, [])
     projects = read_json(PROJECTS_FILE, [])
     previous_data = read_json(OUTPUT, {})
@@ -506,7 +583,8 @@ def build(offline: bool = False) -> dict[str, Any]:
             {"name": name, "status": "pending", "count": 0, "detail": f"等待{kind}首次采集"}
             for name, kind in configured_sources
         ]
-        current = previous_events
+        # data.json no longer carries matches, so rebuild them from the stored text
+        current = [refresh_matches(dict(item), whitelist, projects) for item in previous_events]
     else:
         collectors = [("CTFtime", lambda: fetch_ctftime(now, whitelist, projects))]
         collectors.extend((name, lambda q=query, n=name: fetch_search(q, n, now, whitelist, projects)) for name, query in SEARCH_QUERIES)
@@ -538,38 +616,42 @@ def build(offline: bool = False) -> dict[str, Any]:
         analysis_mode = previous_data.get("analysis", {}).get("mode", "rules")
     else:
         ai_count, analysis_mode = apply_ai(current, projects)
-    today = now.strftime("%Y-%m-%d")
-    urgent = [e for e in current if e.get("registration_deadline") and today <= e["registration_deadline"] <= (now + timedelta(days=30)).strftime("%Y-%m-%d")]
-    data = {
+
+    full = {
         "generated_at": now.isoformat().replace("+00:00", "Z"),
         "analysis": {"mode": analysis_mode, "ai_analyzed": ai_count, "deadline_policy": "仅从原文提取，不由模型猜测"},
-        "stats": {
-            "whitelist": len(whitelist),
-            "projects": len(projects),
-            "events": len(current),
-            "urgent": len(urgent),
-            "wechat": sum(1 for e in current if e.get("source_kind") == "微信公众号公开索引"),
-        },
         "events": current,
         "watchlist": build_watchlist(whitelist, projects),
         "projects": projects,
         "sources": statuses,
     }
-    if previous_data and meaningful_payload(previous_data) == meaningful_payload(data):
-        data["generated_at"] = previous_data.get("generated_at", data["generated_at"])
-    return data
+    public = public_payload(full)
+    private = private_payload(full)
+    if previous_data and meaningful_payload(previous_data) == meaningful_payload(public):
+        stamp = previous_data.get("generated_at", public["generated_at"])
+        public["generated_at"] = stamp
+        private["generated_at"] = stamp
+    return public, private
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Build contest-radar data from public sources")
     parser.add_argument("--offline", action="store_true", help="Rebuild static profiles without network requests")
     args = parser.parse_args()
-    data = build(offline=args.offline)
+    public, private = build(offline=args.offline)
+
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     temporary = OUTPUT.with_suffix(".json.tmp")
-    temporary.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    temporary.write_text(json.dumps(public, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     temporary.replace(OUTPUT)
-    print(f"Wrote {OUTPUT}: {len(data['events'])} events, {len(data['watchlist'])} whitelist entries")
+
+    PRIVATE_DIR.mkdir(parents=True, exist_ok=True)
+    private_tmp = PRIVATE_PLAIN.with_suffix(".json.tmp")
+    private_tmp.write_text(json.dumps(private, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    private_tmp.replace(PRIVATE_PLAIN)
+
+    print(f"Wrote {OUTPUT}: {len(public['events'])} public events, {len(public['watchlist'])} watchlist entries")
+    print(f"Wrote {PRIVATE_PLAIN}: {len(private['projects'])} projects (private, encrypt separately)")
     return 0
 
 
