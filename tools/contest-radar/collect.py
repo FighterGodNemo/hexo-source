@@ -501,7 +501,11 @@ def build(offline: bool = False) -> dict[str, Any]:
             time.sleep(0.25)
         current = merge_events(current, previous_events, now)
 
-    ai_count, analysis_mode = apply_ai(current, projects)
+    if offline:
+        ai_count = 0
+        analysis_mode = previous_data.get("analysis", {}).get("mode", "rules")
+    else:
+        ai_count, analysis_mode = apply_ai(current, projects)
     today = now.strftime("%Y-%m-%d")
     urgent = [e for e in current if e.get("registration_deadline") and today <= e["registration_deadline"] <= (now + timedelta(days=30)).strftime("%Y-%m-%d")]
     data = {
