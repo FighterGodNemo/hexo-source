@@ -24,6 +24,7 @@ menu:
   归档: /archives/ || fas fa-archive
   友链: /link/ || fas fa-link
   留言板: /messageboard/ || fas fa-comment-dots
+  竞赛情报: /contest-radar/ || fas fa-bullseye
   数据报告: /report/ || fas fa-chart-column
   作品集: /portfolio/ || fas fa-layer-group
 

@@ -1,0 +1,332 @@
+[
+  {
+    "id": 1,
+    "name": "中国国际“互联网+”大学生创新创业大赛",
+    "department": "学员管理处",
+    "school_status": "已参加"
+  },
+  {
+    "id": 2,
+    "name": "全国大学生创新创业训练计划年会展示",
+    "department": "学员管理处",
+    "school_status": "已参加"
+  },
+  {
+    "id": 3,
+    "name": "全国公安院校学生科技应用创新大赛",
+    "department": "科研管理处",
+    "school_status": "已参加"
+  },
+  {
+    "id": 4,
+    "name": "“蓝帽杯”全国大学生网络安全技能大赛",
+    "department": "信安系",
+    "school_status": "已参加"
+  },
+  {
+    "id": 5,
+    "name": "“智警杯”大数据技能竞赛",
+    "department": "信安系",
+    "school_status": "已参加"
+  },
+  {
+    "id": 6,
+    "name": "“盘古石杯”全国电子数据取证大赛",
+    "department": "信安系",
+    "school_status": "已参加"
+  },
+  {
+    "id": 7,
+    "name": "“美亚杯”全国电子数据取证竞赛",
+    "department": "信安系",
+    "school_status": "已参加"
+  },
+  {
+    "id": 8,
+    "name": "上海市大学生模拟法庭竞赛",
+    "department": "法律教研部",
+    "school_status": "已参加"
+  },
+  {
+    "id": 9,
+    "name": "中华经典诵写讲大赛",
+    "department": "基础部",
+    "school_status": "已参加"
+  },
+  {
+    "id": 10,
+    "name": "“外教社杯”全国高校学生跨文化能力大赛",
+    "department": "基础部",
+    "school_status": "已参加"
+  },
+  {
+    "id": 11,
+    "name": "“挑战杯”全国大学生课外学术科技作品竞赛",
+    "department": "团委",
+    "school_status": "已参加"
+  },
+  {
+    "id": 12,
+    "name": "“知行杯”上海市大学生社会实践大赛",
+    "department": "团委",
+    "school_status": "已参加"
+  },
+  {
+    "id": 13,
+    "name": "码蹄杯全国职业院校程序设计大赛",
+    "department": "信安系",
+    "school_status": "准备组织学生参赛"
+  },
+  {
+    "id": 14,
+    "name": "上海市大学生网络安全大赛",
+    "department": "信安系",
+    "school_status": "准备组织学生参赛"
+  },
+  {
+    "id": 15,
+    "name": "上海市大学生数学竞赛",
+    "department": "基础部",
+    "school_status": "准备组织学生参赛"
+  },
+  {
+    "id": 16,
+    "name": "外研社全国大学生英语系列赛：①英语演讲、②英语辩论、③英语写作、④英语阅读",
+    "department": "基础部",
+    "school_status": "准备组织学生参赛"
+  },
+  {
+    "id": 17,
+    "name": "“21世纪杯”全国英语演讲比赛",
+    "department": "基础部",
+    "school_status": "准备组织学生参赛"
+  },
+  {
+    "id": 18,
+    "name": "全国大学生数学建模竞赛",
+    "department": "基础部",
+    "school_status": "准备组织学生参赛"
+  },
+  {
+    "id": 19,
+    "name": "ACM-ICPC 国际大学生程序设计竞赛",
+    "department": "",
+    "school_status": "未标注"
+  },
+  {
+    "id": 20,
+    "name": "全国大学生电子设计竞赛",
+    "department": "",
+    "school_status": "未标注"
+  },
+  {
+    "id": 21,
+    "name": "全国三维数字化创新设计大赛",
+    "department": "",
+    "school_status": "未标注"
+  },
+  {
+    "id": 22,
+    "name": "中国大学生计算机设计大赛",
+    "department": "",
+    "school_status": "未标注"
+  },
+  {
+    "id": 23,
+    "name": "中国高校计算机大赛：①大数据挑战赛、②团体程序设计天梯赛、③移动应用创新赛、④网络技术挑战赛、⑤人工智能创意赛",
+    "department": "",
+    "school_status": "未标注"
+  },
+  {
+    "id": 24,
+    "name": "蓝桥杯全国软件和信息技术专业人才大赛",
+    "department": "",
+    "school_status": "未标注"
+  },
+  {
+    "id": 25,
+    "name": "全国大学生信息安全竞赛",
+    "department": "",
+    "school_status": "未标注"
+  },
+  {
+    "id": 26,
+    "name": "“中国软件杯”大学生软件设计大赛",
+    "department": "",
+    "school_status": "未标注"
+  },
+  {
+    "id": 27,
+    "name": "中美青年创客大赛",
+    "department": "",
+    "school_status": "未标注"
+  },
+  {
+    "id": 28,
+    "name": "“大唐杯”全国大学生新一代信息通信技术大赛",
+    "department": "",
+    "school_status": "未标注"
+  },
+  {
+    "id": 29,
+    "name": "华为ICT大赛",
+    "department": "",
+    "school_status": "未标注"
+  },
+  {
+    "id": 30,
+    "name": "全国大学生物理实验竞赛",
+    "department": "",
+    "school_status": "未标注"
+  },
+  {
+    "id": 31,
+    "name": "中国机器人及人工智能大赛",
+    "department": "",
+    "school_status": "未标注"
+  },
+  {
+    "id": 32,
+    "name": "全国大学生节能减排社会实践与科技竞赛",
+    "department": "",
+    "school_status": "未标注"
+  },
+  {
+    "id": 33,
+    "name": "iCAN大学生创新创业大赛",
+    "department": "",
+    "school_status": "未标注"
+  },
+  {
+    "id": 34,
+    "name": "百度之星·程序设计大赛",
+    "department": "",
+    "school_status": "未标注"
+  },
+  {
+    "id": 35,
+    "name": "全国大学生化学实验创新设计大赛",
+    "department": "",
+    "school_status": "未标注"
+  },
+  {
+    "id": 36,
+    "name": "全国大学生计算机系统能力大赛",
+    "department": "",
+    "school_status": "未标注"
+  },
+  {
+    "id": 37,
+    "name": "全国大学生物联网设计竞赛",
+    "department": "",
+    "school_status": "未标注"
+  },
+  {
+    "id": 38,
+    "name": "全国大学生信息安全与对抗技术竞赛",
+    "department": "",
+    "school_status": "未标注"
+  },
+  {
+    "id": 39,
+    "name": "全国大学生数字媒体科技作品及创意竞赛",
+    "department": "",
+    "school_status": "未标注"
+  },
+  {
+    "id": 40,
+    "name": "全球校园人工智能算法精英大赛",
+    "department": "",
+    "school_status": "未标注"
+  },
+  {
+    "id": 41,
+    "name": "全国职业院校技能大赛",
+    "department": "",
+    "school_status": "未标注"
+  },
+  {
+    "id": 42,
+    "name": "世界技能大赛（含中国选拔赛）",
+    "department": "",
+    "school_status": "未标注"
+  },
+  {
+    "id": 43,
+    "name": "一带一路暨金砖国家技能发展与技术创新大赛",
+    "department": "",
+    "school_status": "未标注"
+  },
+  {
+    "id": 44,
+    "name": "2022年金砖国家职业技能大赛",
+    "department": "",
+    "school_status": "未标注"
+  },
+  {
+    "id": 45,
+    "name": "“振兴杯”全国青年职业技能大赛",
+    "department": "",
+    "school_status": "未标注"
+  },
+  {
+    "id": 46,
+    "name": "“创青春”全国大学生创业大赛",
+    "department": "",
+    "school_status": "未标注"
+  },
+  {
+    "id": 47,
+    "name": "中国青少年科技创新奖",
+    "department": "",
+    "school_status": "未标注"
+  },
+  {
+    "id": 48,
+    "name": "上海市大学生“创造杯”大赛",
+    "department": "",
+    "school_status": "未标注"
+  },
+  {
+    "id": 49,
+    "name": "上海市大学生原创文学大赛",
+    "department": "",
+    "school_status": "未标注"
+  },
+  {
+    "id": 50,
+    "name": "上海市大学生电子设计竞赛（TI 杯）",
+    "department": "",
+    "school_status": "未标注"
+  },
+  {
+    "id": 51,
+    "name": "上海市大学生创客大赛暨长三角大学生邀请赛",
+    "department": "",
+    "school_status": "未标注"
+  },
+  {
+    "id": 52,
+    "name": "上海市大学生计算机应用能力大赛",
+    "department": "",
+    "school_status": "未标注"
+  },
+  {
+    "id": 53,
+    "name": "上海大学生化学实验竞赛",
+    "department": "",
+    "school_status": "未标注"
+  },
+  {
+    "id": 54,
+    "name": "上海市机器人与人工智能大赛",
+    "department": "",
+    "school_status": "未标注"
+  },
+  {
+    "id": 55,
+    "name": "上海市大学生物理实验竞赛",
+    "department": "",
+    "school_status": "未标注"
+  }
+]

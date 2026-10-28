@@ -1,0 +1,92 @@
+[
+  {
+    "id": "fadi-laozhen",
+    "name": "法底捞针",
+    "status": "已上线",
+    "summary": "AI 主持人驱动的海龟汤式互动反诈网站，以双线叙事和对话推理完成反诈教育。",
+    "tags": ["反诈", "AI应用", "React", "Node.js", "通义千问"],
+    "competition_ids": [1, 3, 11, 22, 25, 26, 27, 33, 38, 48, 51, 52],
+    "evidence": "已有完整比赛提交包与线上部署记录"
+  },
+  {
+    "id": "anti-fraud-shield",
+    "name": "反诈青春盾",
+    "status": "核心功能完成",
+    "summary": "结合心理脆弱性画像、分支剧情和多模态识别的反诈模拟小程序。",
+    "tags": ["反诈", "小程序", "NestJS", "多模态", "AIGC"],
+    "competition_ids": [1, 2, 3, 11, 22, 23, 26, 27, 33, 38, 51, 52],
+    "evidence": "核心功能已完成，试用与结题材料仍在完善"
+  },
+  {
+    "id": "suimai",
+    "name": "溯脉",
+    "status": "MVP 已验收",
+    "summary": "多源日志攻击链识别与取证平台，统一 Sysmon、DNS、Nginx/WAF 日志并输出可回溯证据。",
+    "tags": ["电子取证", "日志分析", "攻击链", "Python", "安全检测"],
+    "competition_ids": [3, 23, 25, 26, 38, 52],
+    "evidence": "第一阶段 MVP 与 11 项测试已验收"
+  },
+  {
+    "id": "shenjian",
+    "name": "深鉴",
+    "status": "持续研发",
+    "summary": "深度伪造攻防双端系统，覆盖数字人生成、鉴伪和样本哈希溯源。",
+    "tags": ["深度伪造", "数字人", "AIGC安全", "ffmpeg", "鉴伪"],
+    "competition_ids": [23, 25, 31, 38, 39, 40, 54],
+    "evidence": "守端全链路已跑通，攻端持续迭代"
+  },
+  {
+    "id": "voxemw",
+    "name": "VoxEMW",
+    "status": "工程原型",
+    "summary": "融合实时语音识别、语音克隆、视觉感知和数字人口型同步的聊天助手。",
+    "tags": ["数字人", "智能语音", "多模态", "WebSocket", "AI应用"],
+    "competition_ids": [22, 23, 26, 31, 38, 39, 40, 52, 54],
+    "evidence": "实时链路与工程文档完整，量化验收仍需补齐"
+  },
+  {
+    "id": "low-altitude-uav",
+    "name": "低空智感",
+    "status": "训练已实测",
+    "summary": "面向低空防控的无人机目标智能感知与识别项目，强调数据分组和负类误检治理。",
+    "tags": ["低空防控", "YOLO11", "计算机视觉", "公安科技", "数据集"],
+    "competition_ids": [3, 20, 23, 25, 31, 37, 40, 54],
+    "evidence": "本机 v1 训练与指标记录已完成"
+  },
+  {
+    "id": "eco-sentinel",
+    "name": "青山哨兵 EcoSentinel",
+    "status": "业务闭环完成",
+    "summary": "融合遥感变化检测、地图展示与核查工单的生态监测平台。",
+    "tags": ["遥感", "大数据", "FastAPI", "MapLibre", "变化检测"],
+    "competition_ids": [2, 3, 5, 18, 22, 23, 26, 31, 40, 52],
+    "evidence": "核心业务闭环已完成，赛题数据接入可继续深化"
+  },
+  {
+    "id": "xiaoyan",
+    "name": "AI 辅导员小严学长",
+    "status": "校园原型",
+    "summary": "基于本地大模型、知识库和学生档案记忆的校园咨询网站。",
+    "tags": ["本地大模型", "智慧校园", "知识库", "Ollama", "AI应用"],
+    "competition_ids": [1, 22, 23, 26, 27, 38, 52],
+    "evidence": "v1.6 原型及测试入口完整，需补量化结果"
+  },
+  {
+    "id": "game-fusion",
+    "name": "游戏融合工程",
+    "status": "链路已实测",
+    "summary": "以语义事件桥连接不同游戏世界，包含节奏控制、存档校验和备份回滚。",
+    "tags": ["软件工程", "交互创意", "Python", "Java", "游戏开发"],
+    "competition_ids": [21, 22, 26, 39, 51, 52],
+    "evidence": "跨游戏核心链路和 83 项测试已有记录"
+  },
+  {
+    "id": "liuli-rts",
+    "name": "琉璃帝国 RTS",
+    "status": "在线运行",
+    "summary": "具备联机同步、寻路、游戏 AI、回放和云存档的 HTML5 即时战略游戏。",
+    "tags": ["游戏开发", "WebSocket", "帧同步", "JavaScript", "软件工程"],
+    "competition_ids": [21, 22, 26, 39, 51, 52],
+    "evidence": "在线运行并持续迭代，工程成熟度较高"
+  }
+]
