@@ -33,6 +33,7 @@ skip_render:
   - 2026/04/01/游戏Game/帝国时代四/index.html
   - portfolio/**
   - report/**
+  - contest-radar/**
 
 # Writing
 new_post_name: :title.md # File name of new posts

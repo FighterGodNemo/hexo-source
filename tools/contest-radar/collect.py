@@ -148,6 +148,7 @@ def build_watchlist(whitelist: list[dict[str, Any]], projects: list[dict[str, An
         result.append({
             "id": f"whitelist-{item['id']}",
             "title": item["name"],
+            "aliases": ALIASES.get(item["id"], []),
             "category": classify(item["name"]),
             "url": OFFICIAL_LINKS.get(item["id"]),
             "source": "学校竞赛白名单",
@@ -473,7 +474,14 @@ def build(offline: bool = False) -> dict[str, Any]:
     statuses = []
 
     if offline:
-        statuses = previous_data.get("sources", []) or [{"name": "公开来源", "status": "pending", "count": 0, "detail": "等待首次定时采集"}]
+        configured_sources = [("CTFtime", "赛事日历 API")] + [(name, "公开搜索 RSS") for name, _ in SEARCH_QUERIES]
+        saved_sources = previous_data.get("sources", [])
+        if len(saved_sources) == 1 and saved_sources[0].get("name") == "公开来源":
+            saved_sources = []
+        statuses = saved_sources or [
+            {"name": name, "status": "pending", "count": 0, "detail": f"等待{kind}首次采集"}
+            for name, kind in configured_sources
+        ]
         current = previous_events
     else:
         collectors = [("CTFtime", lambda: fetch_ctftime(now, whitelist, projects))]
