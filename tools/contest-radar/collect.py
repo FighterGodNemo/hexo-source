@@ -98,7 +98,7 @@ def classify(text: str) -> str:
     value = text.lower()
     if re.search(r"取证|forensic|盘古石|美亚杯|獬豸", value, re.I):
         return "电子取证"
-    if re.search(r"作品|创新创业|软件设计|计算机设计|创客|挑战杯|互联网\+|数字媒体|创造杯|信息安全竞赛", value, re.I):
+    if re.search(r"作品|创新创业|科技应用创新|科技创新|创新设计|软件设计|计算机设计|应用能力|创客|挑战杯|互联网\+|数字媒体|创造杯|信息安全竞赛", value, re.I):
         return "作品赛"
     if re.search(r"ctf|夺旗|网络攻防|网络安全技能|蓝帽杯|信息安全与对抗|网络技术挑战", value, re.I):
         return "CTF / 网安"
@@ -400,7 +400,7 @@ def extract_json_array(content: str) -> list[dict[str, Any]]:
 
 def apply_ai(events: list[dict[str, Any]], projects: list[dict[str, Any]]) -> tuple[int, str]:
     api_key = os.getenv("CONTEST_AI_API_KEY", "").strip()
-    base_url = os.getenv("CONTEST_AI_BASE_URL", "https://api.openai.com/v1").strip().rstrip("/")
+    base_url = (os.getenv("CONTEST_AI_BASE_URL") or "https://api.openai.com/v1").strip().rstrip("/")
     model = os.getenv("CONTEST_AI_MODEL", "").strip()
     candidates = [e for e in events if e.get("analysis_mode") != "ai"][:12]
     if not candidates:
