@@ -441,9 +441,9 @@ rightside_config_animation: true
 
 anchor:
   # When you scroll, the URL will update according to header id.
-  auto_update: false
+  auto_update: true
   # Click the headline to scroll and update the anchor
-  click_to_scroll: true
+  click_to_scroll: false
 
 photofigcaption: false
 
