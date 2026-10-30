@@ -7,7 +7,7 @@ tags:
   - Forensic
   - 工具索引
 created: 2026-10-03T00:04
-updated: 2026-10-30T23:28
+updated: 2026-10-30T23:36
 ---
 
 > 本页由 ctf-toolbook 自动生成。交互版手册的「🧪 Forensic 取证中心」独立于 CTF 比赛和日常练习中心。
