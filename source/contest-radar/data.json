@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-03T19:32:37.972521Z",
+  "generated_at": "2026-11-07T06:06:57.943533Z",
   "analysis": {
     "mode": "rules",
     "ai_analyzed": 0,
@@ -7,7 +7,7 @@
   },
   "stats": {
     "whitelist": 55,
-    "events": 44,
+    "events": 46,
     "urgent": 0,
     "wechat": 0
   },
@@ -135,6 +135,27 @@
       "published_at": "2026-12-17T19:00:00Z",
       "discovered_at": "2026-10-28T17:14:13.761771Z",
       "summary": "BSides Algiers 2026 CTF, a jeopardy-style CTF featuring intermediate to extreme challenges on reverse-engineering, binary exploitation, cryptography, web security and more. Organized by Shellmates Club. Infra sponsored by https://goo.gle/ctfsponsorship Note: The CTF will be both onsite and online, but only Algerian teams can play onsite.",
+      "analysis_mode": "rules",
+      "ai_confidence": null
+    },
+    {
+      "id": "event-f31a27f37440c3d8",
+      "title": "Leo's 20th Birthday Bash",
+      "category": "CTF / 网安",
+      "url": "https://ctftime.org/event/3498/",
+      "source": "CTFtime",
+      "source_kind": "赛事日历 API",
+      "whitelist": false,
+      "whitelist_ids": [],
+      "school_status": null,
+      "status": "monitoring",
+      "registration_deadline": null,
+      "deadline_confidence": null,
+      "event_start": "2026-12-12T01:00:00Z",
+      "event_end": "2026-12-13T01:00:00Z",
+      "published_at": "2026-12-12T01:00:00Z",
+      "discovered_at": "2026-11-07T06:06:57.943533Z",
+      "summary": "Hey! You there! Do you like programming? Do you like puzzles? Do you like... money? Leo's 20th Birthday Bash is a 24-hour online team contest that's competitive-programming-ish, CTF-ish, math-olympiad-ish, and puzzle-hunt-ish, all wrapped into one. The contest runs on DMOJ, an online judge for competitive programming, and each team shares one DMOJ account to submit from. Teams can have 1 to 10 members (6 to 8 recommended). Some problems are CTF-ish, but DMOJ itself is not part of the contest, so please do not attack, probe, or abuse it. The people at DMOJ are hosting this for free >.< This contest has no sponsors, so all the prize money is from yours truly ;) Make sure you've read all the ru",
       "analysis_mode": "rules",
       "ai_confidence": null
     },
@@ -576,6 +597,27 @@
       "published_at": "2026-11-12T17:00:00Z",
       "discovered_at": "2026-10-28T17:14:13.761771Z",
       "summary": "CSAW CTF is one of the oldest and biggest CTFs. Designed as an entry-level, jeopardy-style CTF, this competition is for students who are trying to break into the field of security, as well as for advanced students and industry professionals who want to practice their skills.",
+      "analysis_mode": "rules",
+      "ai_confidence": null
+    },
+    {
+      "id": "event-3c88f842a65e00eb",
+      "title": "CyberZerk CTF 2026",
+      "category": "电子取证",
+      "url": "https://ctftime.org/event/3499/",
+      "source": "CTFtime",
+      "source_kind": "赛事日历 API",
+      "whitelist": false,
+      "whitelist_ids": [],
+      "school_status": null,
+      "status": "monitoring",
+      "registration_deadline": null,
+      "deadline_confidence": null,
+      "event_start": "2026-11-09T13:00:00Z",
+      "event_end": "2026-11-22T17:00:00Z",
+      "published_at": "2026-11-09T13:00:00Z",
+      "discovered_at": "2026-11-07T06:06:57.943533Z",
+      "summary": "CyberZerk CTF 2026 is a free, online Jeopardy-style CTF for all skill levels, organized by the CyberZerk association. It runs from November 9 (14:00 CET) to November 22 (18:00 CET). Challenges cover web, crypto, forensics, steganography and social engineering. Registration is individual. Donations to the association are optional and never required to play. Rules and registration: https://ctf.cyberzerk.fr",
       "analysis_mode": "rules",
       "ai_confidence": null
     },
@@ -2078,7 +2120,7 @@
     {
       "name": "CTFtime",
       "status": "ok",
-      "count": 32,
+      "count": 34,
       "detail": "采集成功"
     },
     {
