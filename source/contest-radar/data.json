@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-07T23:41:49.666701Z",
+  "generated_at": "2026-11-08T06:11:33.861905Z",
   "analysis": {
     "mode": "rules",
     "ai_analyzed": 0,
@@ -7,7 +7,7 @@
   },
   "stats": {
     "whitelist": 55,
-    "events": 46,
+    "events": 47,
     "urgent": 0,
     "wechat": 0
   },
@@ -618,6 +618,27 @@
       "published_at": "2026-11-09T13:00:00Z",
       "discovered_at": "2026-11-07T06:06:57.943533Z",
       "summary": "CyberZerk CTF 2026 is a free, online Jeopardy-style CTF for all skill levels, organized by the CyberZerk association. It runs from November 9 (14:00 CET) to November 22 (18:00 CET). Challenges cover web, crypto, forensics, steganography and social engineering. Registration is individual. Donations to the association are optional and never required to play. Rules and registration: https://ctf.cyberzerk.fr",
+      "analysis_mode": "rules",
+      "ai_confidence": null
+    },
+    {
+      "id": "event-4db7e17d9c7991d3",
+      "title": "51大赛_赛事报名与组队服务_综合性竞赛信息平台",
+      "category": "作品赛",
+      "url": "https://app-51dasaii.com.cn/",
+      "source": "微信公众号公开索引",
+      "source_kind": "公开搜索 RSS",
+      "whitelist": false,
+      "whitelist_ids": [],
+      "school_status": null,
+      "status": "monitoring",
+      "registration_deadline": null,
+      "deadline_confidence": null,
+      "event_start": null,
+      "event_end": null,
+      "published_at": "2026-11-08T06:11:33.861905Z",
+      "discovered_at": "2026-11-08T06:11:33.861905Z",
+      "summary": "51大赛是面向高校学生与青年创作者的综合性赛事服务平台，聚合计算机、数字素养、创意挑战等多赛道赛事信息，提供报名通道、组队大厅、备赛资源、作品提交与证书查询等一站式服务，帮助参赛者高效发现并参与适合的竞赛。",
       "analysis_mode": "rules",
       "ai_confidence": null
     },
@@ -2144,7 +2165,7 @@
     {
       "name": "微信公众号公开索引",
       "status": "ok",
-      "count": 0,
+      "count": 1,
       "detail": "采集成功"
     }
   ]
