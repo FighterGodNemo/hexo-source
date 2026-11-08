@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-08T06:11:33.861905Z",
+  "generated_at": "2026-11-08T15:19:25.633365Z",
   "analysis": {
     "mode": "rules",
     "ai_analyzed": 0,
@@ -636,7 +636,7 @@
       "deadline_confidence": null,
       "event_start": null,
       "event_end": null,
-      "published_at": "2026-11-08T06:11:33.861905Z",
+      "published_at": "2026-11-08T15:19:25.633365Z",
       "discovered_at": "2026-11-08T06:11:33.861905Z",
       "summary": "51大赛是面向高校学生与青年创作者的综合性赛事服务平台，聚合计算机、数字素养、创意挑战等多赛道赛事信息，提供报名通道、组队大厅、备赛资源、作品提交与证书查询等一站式服务，帮助参赛者高效发现并参与适合的竞赛。",
       "analysis_mode": "rules",
