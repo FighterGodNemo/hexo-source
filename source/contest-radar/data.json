@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-10T12:43:32.140173Z",
+  "generated_at": "2026-11-11T22:48:41.438425Z",
   "analysis": {
     "mode": "rules",
     "ai_analyzed": 0,
@@ -267,7 +267,7 @@
     {
       "id": "event-356e11dcbfda5d04",
       "title": "CyberNSK2027-Qualifier",
-      "category": "电子取证",
+      "category": "CTF / 网安",
       "url": "https://ctftime.org/event/3489/",
       "source": "CTFtime",
       "source_kind": "赛事日历 API",
@@ -281,7 +281,7 @@
       "event_end": "2026-11-28T21:00:00Z",
       "published_at": "2026-11-28T09:00:00Z",
       "discovered_at": "2026-10-28T17:14:13.761771Z",
-      "summary": "CyberNSK 2027 is one of the largest cybersecurity competitions in Siberia, organized by Siberian Security League in collaboration with Novosibirsk State Technical University (NSTU NETI), Department of Information Security. The online qualification round is a 12-hour Jeopardy-style CTF. Teams of up to 5 participants (school and university students) compete by solving practical security challenges and submitting flags. ✦ Start — November 28 at 12:00 PM (MSK)✦ ✦ End — November 29 at 00:00 PM (MSK)✦ The competition uses a dynamic scoring system: the fewer teams solve a task, the more points it is worth. Categories include: Web Crypto Reverse Engineering Pwn Forensics AI Hardware and others",
+      "summary": "CyberNSK 2027 is one of the largest cybersecurity competitions in Siberia, organized by Siberian Security League in collaboration with Novosibirsk State Technical University (NSTU NETI), Department of Information Security. The online qualification round is a 12-hour Jeopardy-style CTF. Teams of up to 5 participants (school and university students) compete by solving practical security challenges and submitting flags. ✦ Start — November 28 at 12:00 PM (MSK)✦ ✦ End — November 29 at 00:00 PM (MSK)✦ Teams that have passed the qualifying stage and reside in CIS countries or China are invited to the in-person final. The competition uses a dynamic scoring system: the fewer teams solve a task, the m",
       "analysis_mode": "rules",
       "ai_confidence": null
     },
