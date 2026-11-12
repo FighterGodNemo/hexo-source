@@ -1,6 +1,6 @@
 ---
 created: 2026-09-17T10:31
-updated: 2026-11-12T10:40
+updated: 2026-11-12T10:51
 title: 《Python程序设计基础》
 permalink: /2026/09/17/博览知识/《Python程序设计基础》/
 ---
@@ -101,5 +101,32 @@ cache = {(0, 0): "origin"}
 # 4. 保护常量数据不被误改
 COLORS = ("red", "green", "blue")
 ```
+
+## 3.2.6 实例：元组内嵌列表的可变边界
+```python
+my_tuple = (1, 2, 3, "hello", [1, 2, 3])
+my_tuple[4][0] = 100
+my_tuple[4][1] = 200
+my_tuple[4][2] = 300
+print(my_tuple)
+```
+
+输出：
+```text
+(1, 2, 3, 'hello', [100, 200, 300])
+```
+
+三行赋值改的都是**列表内部元素**，从未触碰元组第 4 号位置的引用，所以完全合法。
+
+对照三种写法：
+```python
+my_tuple[4][0] = 100   # 允许：改列表内部
+my_tuple[4] = [9]      # TypeError: 'tuple' object does not support item assignment
+my_tuple[0] = 9        # TypeError：同上，元组元素不能重新赋值
+```
+
+**结论**：元组的“不可变”锁的是每一层元素的**引用**。元素本身若是可变对象（`list` / `set` / `dict`），其内部照旧可改。要彻底冻结，元素也必须是不可变类型（数字、字符串、元组、`frozenset`）。
+
+小坑：`print(my_tuple)、` 结尾若误写中文逗号 `、`，会报 `SyntaxError: invalid character`，需写成英文逗号或直接 `print(my_tuple)`。
 
 记忆口诀：**元组 = 有顺序 + 不可改 + 逗号决定**；单元素那个逗号不是多余装饰，而是告诉解释器“我要元组”。
