@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-16T18:39:06.077071Z",
+  "generated_at": "2026-11-17T13:32:48.421869Z",
   "analysis": {
     "mode": "rules",
     "ai_analyzed": 0,
@@ -7,7 +7,7 @@
   },
   "stats": {
     "whitelist": 55,
-    "events": 56,
+    "events": 58,
     "urgent": 0,
     "wechat": 0
   },
@@ -135,6 +135,27 @@
       "published_at": "2026-12-27T14:00:00Z",
       "discovered_at": "2026-10-28T17:14:13.761771Z",
       "summary": "ASIS CTF Finals 2026",
+      "analysis_mode": "rules",
+      "ai_confidence": null
+    },
+    {
+      "id": "event-18d175b73694836d",
+      "title": "idktheCTF 2026",
+      "category": "电子取证",
+      "url": "https://ctftime.org/event/3429/",
+      "source": "CTFtime",
+      "source_kind": "赛事日历 API",
+      "whitelist": false,
+      "whitelist_ids": [],
+      "school_status": null,
+      "status": "monitoring",
+      "registration_deadline": null,
+      "deadline_confidence": null,
+      "event_start": "2026-12-26T01:00:00Z",
+      "event_end": "2026-12-28T04:59:59Z",
+      "published_at": "2026-12-26T01:00:00Z",
+      "discovered_at": "2026-11-17T13:32:48.421869Z",
+      "summary": "After coming together with an amazing run in 2026, the team at idktheflag is excited to announce our first, end of year CTF! Categories will include Crypto, Pwn, Rev, Forensics, OSINT and NOT Web (maybe)! We've taken a lot of care to ensure each challenge we put out is original and not slopped with AI. Likewise, we will take a stance against fully autonomous teams in the interest of promoting human ingenuity and creativity. No team size limit.",
       "analysis_mode": "rules",
       "ai_confidence": null
     },
@@ -433,6 +454,27 @@
       "ai_confidence": null
     },
     {
+      "id": "event-636dc9356bc15a02",
+      "title": "N0v4CTF 2026",
+      "category": "电子取证",
+      "url": "https://ctftime.org/event/3512/",
+      "source": "CTFtime",
+      "source_kind": "赛事日历 API",
+      "whitelist": false,
+      "whitelist_ids": [],
+      "school_status": null,
+      "status": "monitoring",
+      "registration_deadline": null,
+      "deadline_confidence": null,
+      "event_start": "2026-11-27T17:00:00Z",
+      "event_end": "2026-11-28T17:00:00Z",
+      "published_at": "2026-11-27T17:00:00Z",
+      "discovered_at": "2026-11-17T13:32:48.421869Z",
+      "summary": "N0v4CTF 2026 is a free, 24-hour online Jeopardy-style Capture the Flag competition open to teams worldwide. Challenges cover Web Exploitation, Pwn (Binary Exploitation), Reverse Engineering, Cryptography, Digital Forensics, and Miscellaneous. Teams can investigate digital evidence, recover hidden messages, and figure out how unfamiliar programs work. The challenge set includes beginner-friendly puzzles and tougher problems for experienced players. Teams earn points by submitting correct flags. A live scoreboard tracks team rankings throughout the competition. The event runs from 17:00 UTC on November 27 to 17:00 UTC on November 28, 2026. In Vietnam, that is midnight at the start of November ",
+      "analysis_mode": "rules",
+      "ai_confidence": null
+    },
+    {
       "id": "event-7339ddd5d213d9a8",
       "title": "RedReaper CTF",
       "category": "电子取证",
@@ -554,7 +596,7 @@
       "event_end": "2026-11-22T23:00:00Z",
       "published_at": "2026-11-20T23:00:00Z",
       "discovered_at": "2026-10-28T17:14:13.761771Z",
-      "summary": "Our challenges range from beginner to hard in difficulty. Our esteemed members have worked tirelessly to bring new and stimulating CTF challenges to pose varying levels of difficulty and topic (RE, binary exploit, web exploit, cryptography, forensics, osint, misc.). There are two divisions, Open and University of Michigan students. No team limit sizes. Thank you to our sponsors! Binary Ninja: https://binary.ninja/",
+      "summary": "Our challenges range from beginner to hard in difficulty. Our esteemed members have worked tirelessly to bring new and stimulating CTF challenges to pose varying levels of difficulty and topic (RE, binary exploit, web exploit, cryptography, forensics, osint). There are two divisions, Open and University of Michigan students. No team limit sizes. Thank you to our sponsors! Binary Ninja: https://binary.ninja/",
       "analysis_mode": "rules",
       "ai_confidence": null
     },
@@ -2330,7 +2372,7 @@
     {
       "name": "CTFtime",
       "status": "ok",
-      "count": 29,
+      "count": 31,
       "detail": "采集成功"
     },
     {
