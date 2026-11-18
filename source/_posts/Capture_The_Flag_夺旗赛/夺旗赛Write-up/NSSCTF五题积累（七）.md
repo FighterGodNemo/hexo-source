@@ -12,7 +12,7 @@ tags:
   - NSSCTF
   - 五题积累
 created: 2026-03-15T16:49
-updated: 2026-11-18T21:31
+updated: 2026-11-18T21:37
 ---
 
 # 第一轮
@@ -890,13 +890,28 @@ sqlmap -u "http://node5.anna.nssctf.cn:25436/?id=1" -D ctftraining -T flag --dum
 被拦 ，存在 WAF
 `fxck your symbol!`说明这次被拦在**符号层**
 过滤发生在 PHP 层，执行发生在 shell 层
-接下来：**找一个在 PHP 眼里不是空格、在 shell 眼里等于空格的 token**
-Shell 脚本中有个变量叫IFS(Internal Field Seprator) ，`内部域分隔符`
 
-思路：先获得index.php的WAF规则文本
+Shell 脚本中有个变量叫IFS(Internal Field Seprator) ，`内部域分隔符`
+`IFS` 的默认值是 `空格 + Tab + 换行`（`" \t\n"`）。所以 `$IFS` 展开出来不是 “一个空格”，而是**三种空白字符**。未加引号时这串结果还会触发一次 field splitting，正好被切成词分隔 —— 这就是它能顶替空格的根本原因。
+`$IFS` 取它的值
+#### $IFS 后面必须挂边界
+
+这是 sh 内部的第二层词法问题，和 PHP 无关：变量名是**贪婪**的，`cat$IFSindex.php` 会把 `IFSindex` 整体当成变量名（不存在→空），词变成 `catindex.php`。所以完整定义不是 “`$IFS`”，而是 “`$IFS` + 一个展开为空、以 `$` 开头的边界符”—— 筛到最后就是 `$1`~`$9`、`$@`（`$0`=`sh`、`$#`=`0`、`$$`=PID、`$?`= 退出码都不空）。
+
+总结：**找一个 “PHP 眼里不是空白、sh 展开后既是空白、又自带词边界” 的 token**。
+有了这个工具，接下来的思路：先获得index.php的WAF规则文本
 ```
 ?ip=127.0.0.1;cat$IFS$9index.php
 ```
+
+
+
+
+
+
+
+
+
 
 ![](NSSCTF五题积累（七）/file-20261118211625967.png)
 
