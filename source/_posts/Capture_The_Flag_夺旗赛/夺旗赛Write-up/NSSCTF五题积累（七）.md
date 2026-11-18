@@ -12,7 +12,7 @@ tags:
   - NSSCTF
   - 五题积累
 created: 2026-03-15T16:49
-updated: 2026-11-18T21:28
+updated: 2026-11-18T21:31
 ---
 
 # 第一轮
@@ -891,7 +891,7 @@ sqlmap -u "http://node5.anna.nssctf.cn:25436/?id=1" -D ctftraining -T flag --dum
 `fxck your symbol!`说明这次被拦在**符号层**
 过滤发生在 PHP 层，执行发生在 shell 层
 接下来：**找一个在 PHP 眼里不是空格、在 shell 眼里等于空格的 token**
-
+Shell 脚本中有个变量叫IFS(Internal Field Seprator) ，`内部域分隔符`
 
 思路：先获得index.php的WAF规则文本
 ```
