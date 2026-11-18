@@ -12,7 +12,7 @@ tags:
   - NSSCTF
   - 五题积累
 created: 2026-03-15T16:49
-updated: 2026-11-18T21:47
+updated: 2026-11-18T21:50
 ---
 
 # 第一轮
@@ -907,7 +907,30 @@ Shell 脚本中有个变量叫IFS(Internal Field Seprator) ，`内部域分隔�
 ![](NSSCTF五题积累（七）/file-20261118214327471.png)
 
 ```
+<?php
+	if(isset($_GET['ip'])){
+		$ip = $_GET['ip'];
+		if(preg_match("/\&|\/|\?|\*|\<|[\x{00}-\x{1f}]|\>|\'|\"|\\|\(|\)|\[|\]|\{|\}/", $ip, $match)){
+			print_r($match);
+			print($ip);
+			echo preg_match("/\&|\/|\?|\*|\<|[\x{00}-\x{20}]|\>|\'|\"|\\|\(|\)|\[|\]|\{|\}/", $ip, $match);
+			die("fxck your symbol!");
+		}
+		else if(preg_match("/ /", $ip)){
+			die("fxck your space!");
+		}
+		else if(preg_match("/bash/", $ip)){
+			die("fxck your bash!");
+		}
+		else if(preg_match("/.*f.*l.*a.*g.*/", $ip)){
+			die("fxck your flag!");
+		}
+		$a = shell_exec("ping -c 4 ".$ip);
+		echo "<pre>";
+		print_r($a);
+	}
 
+	?>
 ```
 
 
