@@ -12,7 +12,7 @@ tags:
   - NSSCTF
   - 五题积累
 created: 2026-03-15T16:49
-updated: 2026-05-12T17:34
+updated: 2026-11-18T20:25
 ---
 
 # 第一轮
@@ -871,3 +871,11 @@ sqlmap -u "http://node5.anna.nssctf.cn:25436/?id=1" -D ctftraining -T flag --dum
 ```
 
 ![](NSSCTF五题积累（七）/file-20260512173359800.png)
+
+
+# [GXYCTF 2019]Ping Ping Ping
+空格绕过 RCE WAF绕过
+
+![](NSSCTF五题积累（七）/file-20261118202416748.png)
+试试bjut.edu.cn
+![](NSSCTF五题积累（七）/file-20261118202521501.png)
