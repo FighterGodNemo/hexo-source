@@ -12,7 +12,7 @@ tags:
   - NSSCTF
   - 五题积累
 created: 2026-03-15T16:49
-updated: 2026-11-18T20:41
+updated: 2026-11-18T21:03
 ---
 
 # 第一轮
@@ -889,3 +889,8 @@ sqlmap -u "http://node5.anna.nssctf.cn:25436/?id=1" -D ctftraining -T flag --dum
 ![](NSSCTF五题积累（七）/file-20261118203119039.png)
 被拦 ，存在 WAF
 `fxck your symbol!`说明这次被拦在**符号层**
+思路：把 WAF 规则文本取回来” 的信息收集 payload。
+```
+?ip=127.0.0.1;cat$IFS$9index.php
+```
+
