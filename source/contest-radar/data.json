@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-17T23:32:37.429548Z",
+  "generated_at": "2026-11-19T23:05:43.011871Z",
   "analysis": {
     "mode": "rules",
     "ai_analyzed": 0,
@@ -7,7 +7,7 @@
   },
   "stats": {
     "whitelist": 55,
-    "events": 58,
+    "events": 59,
     "urgent": 0,
     "wechat": 0
   },
@@ -328,6 +328,27 @@
       "ai_confidence": null
     },
     {
+      "id": "event-4006965853266948",
+      "title": "TUCTF 2026",
+      "category": "电子取证",
+      "url": "https://ctftime.org/event/3518/",
+      "source": "CTFtime",
+      "source_kind": "赛事日历 API",
+      "whitelist": false,
+      "whitelist_ids": [],
+      "school_status": null,
+      "status": "monitoring",
+      "registration_deadline": null,
+      "deadline_confidence": null,
+      "event_start": "2026-12-04T10:00:00Z",
+      "event_end": "2026-12-06T18:00:00Z",
+      "published_at": "2026-12-04T10:00:00Z",
+      "discovered_at": "2026-11-19T23:05:43.011871Z",
+      "summary": "TUCTF26 is a Capture the Flag competition hosted by the CTF club at the University of Tulsa designed for a range of skill levels for teams that want to build their experience. We offer Web, Forensics, Crypto, Reverse Engineering, and Miscellanous based challenges. If you have any questions you can contact us through our Discord: https://discord.gg/Q35eWhHsw",
+      "analysis_mode": "rules",
+      "ai_confidence": null
+    },
+    {
       "id": "event-b65159756be6abde",
       "title": "2026 Qiangwang Challenge on Cyber Mimic Defense Finals",
       "category": "综合竞赛",
@@ -428,7 +449,7 @@
       "event_end": "2026-11-28T16:30:00Z",
       "published_at": "2026-11-28T04:30:00Z",
       "discovered_at": "2026-10-28T17:14:13.761771Z",
-      "summary": "L3m0n CTF is the annual flagship capture-the-flag competition of Amrita Vishwa Vidyapeetham, Coimbatore, hosted by TIFAC-CORE in Cyber Security. This is a team-based event: teams of 1 to 4 players. The online prelims is Jeopardy-style and run for 12 hours (10:00 to 22:00 IST, 04:30 to 16:30 UTC, on 28 November 2026). The top teams are invited to on-campus finals in Coimbatore. Challenges span web, pwn, reverse engineering, cryptography, forensics, OSINT and miscellaneous, with extra tracks in AI and LLM security, Web3 and hardware, IoT and RF. This edition is a broadcast themed on the cartoons we grew up with. Open to all, with a beginner category that teaches the basics. Registration opens ",
+      "summary": "TIFAC-CORE, Amrita Vishwa Vidyapeetham, Coimbatore, invites you to \"L3m0n CTF 2026\", our annual flagship Capture The Flag competition! - 12-hour Jeopardy-style online qualifiers. - Open to teams of 1–4 participants. - Challenges across Web, Pwn, Cryptography, AI/LLM, Forensics, OSINT and more. - Beginner-friendly category for newcomers. - Top teams advance to the on-campus finals at Coimbatore to be held on December 12th, 2026. Qualifiers Date: November 28th, 2026 Time: 4:30 AM – 4:30 PM GMT Register and stay tuned for updates: https://l3m0nctf.xyz",
       "analysis_mode": "rules",
       "ai_confidence": null
     },
@@ -596,7 +617,7 @@
       "event_end": "2026-11-22T23:00:00Z",
       "published_at": "2026-11-20T23:00:00Z",
       "discovered_at": "2026-10-28T17:14:13.761771Z",
-      "summary": "Our challenges range from beginner to hard in difficulty. Our esteemed members have worked tirelessly to bring new and stimulating CTF challenges to pose varying levels of difficulty and topic (RE, binary exploit, web exploit, cryptography, forensics, osint). There are two divisions, Open and University of Michigan students. No team limit sizes. Thank you to our sponsors! Binary Ninja: https://binary.ninja/",
+      "summary": "Our challenges range from beginner to hard in difficulty. Our esteemed members have worked tirelessly to bring new and stimulating CTF challenges to pose varying levels of difficulty and topic (RE, binary exploit, web exploit, cryptography, forensics, osint). There are two divisions, Open and University of Michigan students. No team limit sizes. Thank you to our sponsors! Binary Ninja: https://binary.ninja/ Altered Security: https://www.alteredsecurity.com/",
       "analysis_mode": "rules",
       "ai_confidence": null
     },
@@ -2372,7 +2393,7 @@
     {
       "name": "CTFtime",
       "status": "ok",
-      "count": 29,
+      "count": 30,
       "detail": "采集成功"
     },
     {
