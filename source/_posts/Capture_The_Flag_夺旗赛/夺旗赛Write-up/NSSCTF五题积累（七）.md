@@ -12,7 +12,7 @@ tags:
   - NSSCTF
   - 五题积累
 created: 2026-03-15T16:49
-updated: 2026-11-18T21:50
+updated: 2026-11-19T14:45
 ---
 
 # 第一轮
@@ -944,3 +944,4 @@ Shell 脚本中有个变量叫IFS(Internal Field Seprator) ，`内部域分隔�
 - 打 PHP 层：用**它看不见语义的写法**（`$IFS$9`、`$b$a` 拼接、反引号）
 - 打 sh 层：用**它一定认的语法**（`;` 分隔、变量展开、反引号内联）
 - 打 HTML 层：用 `view-source` 绕渲染，而不是去改 payload
+
