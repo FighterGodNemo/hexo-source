@@ -12,7 +12,7 @@ tags:
   - NSSCTF
   - 五题积累
 created: 2026-03-15T16:49
-updated: 2026-11-19T14:45
+updated: 2026-11-19T16:32
 ---
 
 # 第一轮
@@ -933,7 +933,7 @@ Shell 脚本中有个变量叫IFS(Internal Field Seprator) ，`内部域分隔�
 	?>
 ```
 
-
+![](NSSCTF五题积累（七）/file-20261119163212230.png)
 
 
 
