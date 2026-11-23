@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-23T00:56:29.780519Z",
+  "generated_at": "2026-11-23T14:47:36.506176Z",
   "analysis": {
     "mode": "rules",
     "ai_analyzed": 0,
@@ -239,7 +239,7 @@
       "event_end": "2026-12-20T09:00:00Z",
       "published_at": "2026-12-19T09:00:00Z",
       "discovered_at": "2026-10-28T17:14:13.761771Z",
-      "summary": "RÉSERVÉ UNIQUEMENT AUX LYCÉENS # Cyber Ninja CTF 2026 – BLACKOUT Gardez Paris allumé ! Le Cyber Ninja CTF revient pour sa 3e édition avec BLACKOUT, une compétition nationale de cybersécurité organisée par OTERIA Cyber School et destinée aux lycéens de toute la France. Cette année, un mystérieux hacker surnommé « Lights-Out » menace les infrastructures critiques de Paris : métro, électricité, réseaux de communication et distribution d'eau. Votre mission : résoudre des challenges de cybersécurité, récupérer des flags, découvrir des indices cachés et arrêter Lights-Out avant que Paris ne soit plongé dans le noir. ## Dates et déroulement Qualifications en ligne - Début : samedi 21 novembre 2026 ",
+      "summary": "RÉSERVÉ UNIQUEMENT AUX LYCÉENS # Cyber Ninja CTF 2026 – BLACKOUT Gardez Paris allumé ! Le Cyber Ninja CTF revient pour sa 3e édition avec BLACKOUT, une compétition nationale de cybersécurité organisée par OTERIA Cyber School et destinée aux lycéens de toute la France. Cette année, un mystérieux hacker surnommé « Lights-Out » menace les infrastructures critiques de Paris : métro, électricité, réseaux de communication et distribution d'eau. Votre mission : résoudre des challenges de cybersécurité, récupérer des flags, découvrir des indices cachés et arrêter Lights-Out avant que Paris ne soit plongé dans le noir. ## Dates et déroulement Qualifications en ligne - Début : samedi 19 décembre 2026 ",
       "analysis_mode": "rules",
       "ai_confidence": null
     },
@@ -2435,7 +2435,7 @@
     {
       "name": "CTFtime",
       "status": "ok",
-      "count": 33,
+      "count": 32,
       "detail": "采集成功"
     },
     {
