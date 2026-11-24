@@ -1,6 +1,6 @@
 ---
 created: 2026-11-24T18:59
-updated: 2026-11-24T19:31
+updated: 2026-11-24T19:57
 title: 2026 MoeCTF
 ---
 # 从此开始
@@ -75,5 +75,7 @@ Host *    ServerAliveInterval 30    ServerAliveCountMax 3
 
 要是我使用 Linux 呢？同样，我相信你搜集信息解决问题的能力。
 ```
+
+![](2026%20MoeCTF/file-20261124195658022.png)
 
 
