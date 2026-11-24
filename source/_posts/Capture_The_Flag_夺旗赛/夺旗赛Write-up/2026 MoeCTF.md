@@ -1,6 +1,6 @@
 ---
 created: 2026-11-24T18:59
-updated: 2026-11-24T19:57
+updated: 2026-11-24T19:58
 title: 2026 MoeCTF
 ---
 # 从此开始
@@ -77,5 +77,7 @@ Host *    ServerAliveInterval 30    ServerAliveCountMax 3
 ```
 
 ![](2026%20MoeCTF/file-20261124195658022.png)
+![](2026%20MoeCTF/file-20261124195840255.png)
+
 
 
