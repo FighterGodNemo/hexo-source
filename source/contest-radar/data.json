@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-23T14:47:36.506176Z",
+  "generated_at": "2026-11-24T02:55:57.565697Z",
   "analysis": {
     "mode": "rules",
     "ai_analyzed": 0,
@@ -554,7 +554,7 @@
       "event_end": "2026-11-28T17:00:00Z",
       "published_at": "2026-11-27T17:00:00Z",
       "discovered_at": "2026-11-17T13:32:48.421869Z",
-      "summary": "N0v4CTF 2026 is a free, 24-hour online Jeopardy-style Capture the Flag competition open to teams worldwide. Challenges cover Web Exploitation, Pwn (Binary Exploitation), Reverse Engineering, Cryptography, Digital Forensics, and Miscellaneous. Teams can investigate digital evidence, recover hidden messages, and figure out how unfamiliar programs work. The challenge set includes beginner-friendly puzzles and tougher problems for experienced players. Teams earn points by submitting correct flags. A live scoreboard tracks team rankings throughout the competition. The event runs from 17:00 UTC on November 27 to 17:00 UTC on November 28, 2026. In Vietnam, that is midnight at the start of November ",
+      "summary": "N0v4CTF 2026 is a free, 24-hour online Jeopardy-style Capture the Flag competition organized by NovaRun, open to teams and cybersecurity enthusiasts worldwide. Challenges cover Web Exploitation, Pwn (Binary Exploitation), Reverse Engineering, Cryptography, Digital Forensics, and Miscellaneous. Teams will investigate digital evidence, recover hidden messages, exploit vulnerabilities, and analyze unfamiliar programs. The challenge set includes both beginner-friendly puzzles and tougher problems for experienced players. Teams earn points by submitting correct flags, with a live scoreboard tracking rankings throughout the competition. [ SCHEDULE ] - Start: November 27, 2026, 17:00 UTC (November ",
       "analysis_mode": "rules",
       "ai_confidence": null
     },
@@ -2435,7 +2435,7 @@
     {
       "name": "CTFtime",
       "status": "ok",
-      "count": 32,
+      "count": 29,
       "detail": "采集成功"
     },
     {
