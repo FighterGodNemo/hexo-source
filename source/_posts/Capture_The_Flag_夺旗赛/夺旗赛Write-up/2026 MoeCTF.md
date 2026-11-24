@@ -1,6 +1,6 @@
 ---
 created: 2026-11-24T18:59
-updated: 2026-11-24T19:58
+updated: 2026-11-24T20:17
 title: 2026 MoeCTF
 ---
 # 从此开始
@@ -79,5 +79,25 @@ Host *    ServerAliveInterval 30    ServerAliveCountMax 3
 ![](2026%20MoeCTF/file-20261124195658022.png)
 ![](2026%20MoeCTF/file-20261124195840255.png)
 
+## 3-1 C语言环境配置与基础语法
+
+```
+我们熟悉完题目环境的连接方法，“连接不上题目导致做不了题”将不再是解题的阻碍。接下来是从零开始的计算机之旅，负责不同方向出题的学长将带你了解编程语言、命令行以及计算机一些基础功能的使用。
+
+直接获取本题flag？看看这段C语言代码，执行它？好像代码有点问题，改一改吧，然后执行就可以得到flag。
+
+#include <studio.h> int main() {    unsigned char encrypted[] = "8:06!3.6x<&x4x34&!x4;1x=<2=x90#09x94;2 420(";    unsigned char key = 0x55;    for(int i = 0; encrypted[i]; i++) {        encrypted[i] ^= key;    }    printf("%s\n", encrypted);    return 0;}
 
 
+操作视频：[https://www.bilibili.com/video/BV1kY3E6XESG/](https://www.bilibili.com/video/BV1kY3E6XESG/)
+
+## 环境配置
+
+[https://sourceforge.net/projects/mingw-w64/files/](https://sourceforge.net/projects/mingw-w64/files/)
+
+注册表打开方法：Win + R regedit
+
+Path环境变量在注册表的位置：`HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment`
+
+任务管理器打开方法：Win + R taskmgr
+```
