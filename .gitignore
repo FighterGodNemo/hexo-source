@@ -17,3 +17,6 @@ _raw_media/
 # 赛讯雷达：本地项目储备与私密载荷不进公开仓库
 tools/contest-radar/projects.json
 tools/contest-radar/.private/
+
+# 赛讯雷达：本地交接/运维文档（含 wxid 与项目结构），不进公开仓库
+tools/contest-radar/HANDOVER.local.md
