@@ -1,6 +1,6 @@
 ---
 created: 2026-11-24T18:59
-updated: 2026-11-24T20:17
+updated: 2026-11-24T20:24
 title: 2026 MoeCTF
 ---
 # 从此开始
@@ -86,7 +86,17 @@ Host *    ServerAliveInterval 30    ServerAliveCountMax 3
 
 直接获取本题flag？看看这段C语言代码，执行它？好像代码有点问题，改一改吧，然后执行就可以得到flag。
 
-#include <studio.h> int main() {    unsigned char encrypted[] = "8:06!3.6x<&x4x34&!x4;1x=<2=x90#09x94;2 420(";    unsigned char key = 0x55;    for(int i = 0; encrypted[i]; i++) {        encrypted[i] ^= key;    }    printf("%s\n", encrypted);    return 0;}
+#include <studio.h>
+
+int main() {
+    unsigned char encrypted[] = "8:06!3.6x<&x4x34&!x4;1x=<2=x90#09x94;2 420(";
+    unsigned char key = 0x55;
+    for(int i = 0; encrypted[i]; i++) {
+        encrypted[i] ^= key;
+    }
+    printf("%s\n", encrypted);
+    return 0;
+}
 
 
 操作视频：[https://www.bilibili.com/video/BV1kY3E6XESG/](https://www.bilibili.com/video/BV1kY3E6XESG/)
@@ -101,3 +111,153 @@ Path环境变量在注册表的位置：`HKEY_LOCAL_MACHINE\SYSTEM\CurrentContro
 
 任务管理器打开方法：Win + R taskmgr
 ```
+![](2026%20MoeCTF/file-20261124202022788.png)
+stdio全称standard input and output
+![](2026%20MoeCTF/file-20261124202113873.png)
+
+moectf{c-is-a-fast-and-high-level-language}
+
+##   3-2 Python环境配置与基础语法
+
+我们希望在此讲解 Python 的一些最基础的内容，方便你在后面做 CTF 题目的时候能得心应手。
+
+想直接得到 flag？运行一下这个代码就行了，希望你读懂了这段代码。
+
+```
+import base64
+i = 0
+while i < 103: i += 1
+print(f"moectf{{{base64.b64decode('cHl0aG9u').decode()}-{chr(i+2)}5-c0Ol}}")
+```
+
+操作视频：[https://www.bilibili.com/video/BV14kgC6fEYv/](https://www.bilibili.com/video/BV14kgC6fEYv/)
+
+## 如何安装 Python？
+
+请在官网的下载页面 [https://www.python.org/downloads/windows/](https://www.python.org/downloads/windows/) 找到 Stable Releases 下载安装包，注意要把 Python 添加到 Path。
+
+## 基础语法
+
+### Hello World
+
+```
+print("Hello World")
+```
+
+### 基本数据类型及其运算
+
+赋值，右值赋到左值
+
+```
+a = 1 # intb = 1.0 # floatc = "abc" # stringd = False # boolean
+```
+
+```
+print(1 + 1)print(1 + 1.0)print(1 + "1") # this will raise TypeErrorprint("1" + 1) # this tooprint("1" + "1")
+```
+
+```
+print(2 + 1)print(2 - 1)print(2 * 1)print(2 / 1)print(2 % 1)print(2 ** 1)print(3 // 2)
+```
+
+```
+print(1 > 2)print(1 < 2)print(1 == 2)print(1 >= 2)
+```
+
+```
+a = 1a += 1a -= 1a *= 2a /= 2
+```
+
+位运算符不讲
+
+逻辑运算符 AND OR NOT
+
+成员运算符 in, not in
+
+字符串格式化
+
+```
+name = "Starwalking"age = 19 print(f"My name is {name}, I'm {age} years old") # f-stringprint("My name is {}, I'm {} years old".format(name, age)) # format
+```
+
+### 流程控制
+
+```
+if (1 == 1):    pass # do thiselif (2 == 1):    pass # wont go into itelse:    pass # too
+```
+
+```
+for i in range(10):    print(i) # print nums from 0 to 9
+```
+
+```
+while(1):    pass # always running this code blockpass # wont go outside
+```
+
+### 复合数据类型及其方法
+
+List
+
+```
+a = [1, 2, 3, 4, 5] # this is a list of nums from 1 to 5a.append(6) # add 6 to the backa.pop() # delete the last num 6print(a[2]) # print the third element, caution, the third element
+```
+
+Tuple
+
+```
+a = (1, 2, 3)a.append(4) # this is a misktake, tuple cannot be editedb = (4,)c = a + b # but we can link two tuplesprint(a[1]) # print the second element, the same as List
+```
+
+Set 用的不是很多
+
+```
+a = {1, 2, 3, 4} # the same way we descibe a set in mathb = set([1, 2, 3, 4]) # or create from a Listc = set() # create a empty set, we cannot use {}print(1 in a)print(6 in a)d = a - b # differenced = a | b # uniond = a & b # intersectiond = a ^ b # symmetric difference
+```
+
+Dict 这个在网络请求处理json的时候用的比较多
+
+```
+a = {"key": "info"}print(a["key"])
+```
+
+### 函数
+
+```
+def add(a: int, b: int) -> int:    return a + b
+```
+
+类、对象、Pickle这些会在Web题当中出现，此处不讲。
+
+### 依赖
+
+Python有很多依赖，生态非常成熟。
+
+```
+import requests # import a libraryimport numpy as pd # rename a lib, just a kidding
+```
+
+有些依赖需要从网络中下载。
+
+```
+pip install requestspip install -r requirements.txt
+```
+
+### requests & flask
+
+requests是一个用来发包的库。
+
+```
+import requestsa = requests.get("http://moectf.example") # sending a get requestprint(a.ok) # is request okdata = {"something": "somedata"}b = requests.post("http://moectf.example", json=data) # sending a post req with dataprint(b.text) # print response
+```
+
+关于 http 的请求类型请查阅 Web 方向入门指北，此处不赘述。
+
+flask是一个轻量的后端库，可以用来创建一些简单的接口，在 Web 和 Devops 题目中可能用到。
+
+```
+from flask import Flaskapp = Flask(__name__)@app.get("/")def index():    return "Hello"if __name__ == "__main__":    app.run()
+```
+
+![](2026%20MoeCTF/file-20261124202321259.png)
+
+moectf{python-i5-c0Ol}
